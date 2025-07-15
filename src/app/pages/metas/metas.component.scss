@@ -1,0 +1,141 @@
+    .criar-meta svg{
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 4rem;
+      height: 4rem;
+    }
+
+    .minhas-metas{
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+
+        h1{
+            font-size: 3rem;
+        }  
+    }
+
+    .metas {
+        margin-top: 1rem;
+
+        .meta{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 1rem;
+            min-width: 20rem;
+            background-color: var(--secundaria);
+
+            .prog-ext{
+                width: 100%;
+                height: 1.5rem;
+                background-color: rgb(228, 243, 255);
+                border: 1px solid var(--primaria);
+                border-radius: 1rem;
+                margin-top: 0.5rem;
+
+                .prog-int{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: end;
+                    // width: 50%;
+                    min-width: 14%;
+                    height: 100%;
+                    background-color: var(--primaria);
+                    border-radius: 0.5rem;
+                    transition: width 0.3s ease-in-out;
+
+                    .porcentagem{
+                        margin-right: 0.5rem;
+                        color: var(--secundaria);
+                        font-weight: bold;
+                        font-size: 0.75rem;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    .fundo-modal{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.75);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .modal{
+            width: 90vw;
+            background-color: var(--secundaria);
+            padding: 1rem;
+            border-radius: 1rem;
+
+            .modal-content{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+
+                p{
+                    margin-top: 0.5rem;
+                }
+
+                .input{
+                    width: 90%;
+                    padding: 0.5rem;
+                    margin-top: 0.25rem;
+                    border: 1px solid var(--primaria);
+                    border-radius: 0.5rem;
+                }
+
+                .botoes{
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 1rem;
+                    padding: 1rem;
+
+                    .salvar, .cancelar{
+                        background-color: var(--primaria);
+                        color: var(--secundaria);  
+                        border-radius: 1rem;
+                        border: none;
+                        padding: 1rem 2rem;
+                        // min-width: 16rem;
+                        font-size: 1rem;       
+                        border-radius: 0.5rem;
+                        cursor: pointer;
+
+                        &:hover{
+                            background-color: var(--secundaria);
+                            color: var(--primaria);
+                            border: var(--primaria) 1px solid;
+                        } 
+                    }
+                    .cancelar{
+                        margin-left: 1rem;
+                        background-color: var(--secundaria);
+                        color: var(--primaria);
+                        border: var(--primaria) 1px solid;  
+
+                        &:hover{
+                            background-color: var(--primaria);
+                            color: var(--secundaria);
+                            // border: var(--primaria) 1px solid;
+                        }
+                    }
+                }
+            }
+        }
+    }

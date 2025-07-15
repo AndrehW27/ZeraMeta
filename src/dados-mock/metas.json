@@ -1,0 +1,23 @@
+{
+  "metas": [
+    {
+      "id": 1,
+      "titulo": "Investir 100k",
+      "progresso": 50,
+      "descricao": "Meta de investimento anual"
+    },
+    {
+      "id": 2,
+      "titulo": "Aprender Francês",
+      "progresso": 25,
+      "descricao": "Aprender a falar francês fluentemente"
+    }
+    ,
+    {
+      "id": 3,
+      "titulo": "Perder 10 de BF",
+      "progresso": 25,
+      "descricao": "Dentro de 6 meses, perder 10% de BF"
+    }
+  ]
+}

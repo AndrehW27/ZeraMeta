@@ -1,0 +1,87 @@
+.login{
+    margin-top: 4rem;
+     h1{
+        font-size: 3rem;
+    }   
+}
+
+.formulario{
+    margin-top: 2rem;
+    width: 350px;
+    padding: 2rem;
+    background-color: var(--secundaria);
+    border-radius: 1rem;
+
+    .input{
+        width: 100%;
+        padding: 1rem;
+        margin-top: 0.5rem;
+        // margin-bottom: 1rem;
+        border: 1px solid var(--primaria);
+        // border: none;
+        border-radius: 0.5rem;
+    }
+
+    .redefinir-senha{
+       border: none;
+       color: var(--primaria);
+        text-decoration: underline;
+        cursor: pointer; 
+        margin-top: 0.5rem;
+    }
+
+    .div-google-facebook{
+        margin-top: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        .icone-google, .icone-facebook{
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        
+        .google, .facebook{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            border: var(--primaria) 1px solid;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--primaria);
+            // background-color: white;
+        }
+
+    }
+
+}
+
+.botao{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
+    background-color: var(--primaria);
+    color: var(--secundaria);  
+    border-radius: 1rem;
+    border: none;
+    padding: 1rem;
+    min-width: 16rem;
+    font-size: 1.5rem;       
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+    &:hover{
+        background-color: var(--secundaria);
+        color: var(--primaria);
+        border: var(--primaria) 1px solid;
+    }   
+    
+}

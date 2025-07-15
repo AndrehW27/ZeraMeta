@@ -1,1 +1,118 @@
-/* You can add global styles to this file, and also import other style files */
+/* Reset básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primaria: #0e3553;
+  --secundaria: #e9e9e9;
+  --primaria-clara: #fff;
+  --secundaria-clara: #333333;
+  --sol: #fee4c4;
+  
+}
+
+/* Remove decoração de links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove lista padrão */
+ul, ol {
+  list-style: none;
+}
+
+/* Define fonte base e cor */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  color: #222;
+  line-height: 1.5;
+
+  // background-image: url('/assets/Prototipos/fundo-ZeraMeta2.png');
+  // background-size: cover;
+  // background-position: center;
+  // background-repeat: no-repeat;
+}
+
+section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+// .container {
+//   min-height: 100vh;
+//   background-image: url('/assets/Prototipos/fundo-ZeraMeta2.png');
+//   background-size: cover;
+//   background-position: center;
+//   background-repeat: no-repeat;
+// }
+
+// Exemplos de media queries padrão
+
+// Dispositivos pequenos (celulares)
+@media (max-width: 600px) {
+  /* Estilos para telas pequenas */
+  .container{
+    // width: 100%;
+    min-height: 100vh;
+    padding: 1rem;
+    font-size: 1rem;
+    color: var(--primaria);
+
+    background-image: url('assets/Prototipos/fundo-ZeraMeta2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    .voltar svg{
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      width: 3rem;
+      height: 3rem;
+    }
+
+  }
+}
+
+// Dispositivos médios (tablets)
+@media (min-width: 601px) and (max-width: 1024px) {
+  /* Estilos para tablets */
+}
+
+// Dispositivos grandes (desktops)
+@media (min-width: 1025px) {
+  /* Estilos para desktops */
+}
+
+// .container {
+//   max-width: 400px;
+//   margin: 2rem auto;
+//   padding: 1rem;
+//   background-color: #121212;
+//   color: #e0e0e0;
+//   border-radius: 8px;
+//   text-align: center;
+
+//   input, button {
+//     display: block;
+//     margin: 0.5rem auto;
+//     padding: 0.5rem;
+//     width: 80%;
+//     border-radius: 4px;
+//   }
+
+//   button {
+//     background-color: #7c3aed;
+//     color: white;
+//     border: none;
+//   }
+// }

@@ -1,0 +1,72 @@
+.boas-vindas{
+    margin-top: 10rem;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+
+    h1{
+        font-size: 3rem;
+    }   
+    
+    .icone-medalha svg{
+        width: 8rem;
+        height: 8rem;
+    }
+}
+
+.descricao{
+    max-width: 350px;
+    margin: 0 auto;
+    margin-top: 12rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+
+}
+
+.botoes{
+    position: fixed;
+    bottom: 2rem;
+    // width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
+    background-color: var(--secundaria);
+    // width: 300px;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    
+    .botao-entrar, .botao-conta{   
+        // width: 90%; 
+        min-width: 16rem;
+        padding: 1rem;
+        font-size: 1.5rem;       
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+    }
+
+    .botao-entrar{
+        background-color: var(--primaria);
+        color: var(--secundaria);   
+        margin-bottom: 1rem;  
+   
+        &:hover{
+            background-color: var(--secundaria);
+            color: var(--primaria);
+            border: var(--primaria) 1px solid;
+        }   
+    }
+
+    .botao-conta{
+        background-color: var(--secundaria);
+        color: var(--primaria);
+        border: var(--primaria) 1px solid;  
+
+        &:hover{
+            background-color: var(--primaria);
+            color: var(--secundaria);
+            // border: var(--primaria) 1px solid;
+        }        
+    }
+}

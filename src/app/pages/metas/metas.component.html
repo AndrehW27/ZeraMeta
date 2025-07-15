@@ -1,0 +1,66 @@
+<div class="container">
+
+  <section>
+      <div class="voltar">
+      <svg routerLink="/boas-vindas" width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <rect width="48" height="48" rx="24" fill=""/>
+          <path d="M30 12L18 24L30 36" stroke="#e9e9e9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      </div>
+  </section>
+
+  <section class="minhas-metas">
+     <h1>ZeraMeta</h1>
+  </section>
+
+  <section class="metas">
+    <div class="meta" *ngFor="let meta of metas">
+      <h1>{{ meta.titulo }}</h1>
+      <div class="prog-ext">
+        <div class="prog-int" [style.width.%]="meta.progresso">
+          <p class="porcentagem">{{ meta.progresso }}%</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+      <div class="criar-meta">
+        <button (click)="abrirModal()">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect width="48" height="48" rx="24" fill="#e9e9e9"/>
+            <line x1="24" y1="14" x2="24" y2="34" stroke="#0e3553" stroke-width="4" stroke-linecap="round"/>
+            <line x1="14" y1="24" x2="34" y2="24" stroke="#0e3553" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+  </section> 
+
+  <section>
+      <div class="fundo-modal" *ngIf="showFundoModal">
+        <div *ngIf="showModal" class="modal">
+          <div class="modal-content">
+            <h2>Criar nova meta</h2>
+            <p>Título</p>
+            <input class="input" [(ngModel)]="novaMeta.titulo" placeholder="Perder 10Kg">
+            <p>Prazo</p>
+            <input class="input" [(ngModel)]="novaMeta.prazo" placeholder="3 meses">
+            <p>Categoria</p>
+            <input class="input" [(ngModel)]="novaMeta.categoria" placeholder="Saúde">
+            <p>Prioridade</p>
+            <input class="input" [(ngModel)]="novaMeta.prioridade" placeholder="Alta">
+            <p>Status</p>
+            <input class="input" [(ngModel)]="novaMeta.status" placeholder="Nova">
+            <p>Progresso</p>
+            <input class="input" [(ngModel)]="novaMeta.progresso" placeholder="Progresso (%)" min="0" max="100">
+            <p>Descrição</p>
+            <input class="input" [(ngModel)]="novaMeta.descricao" placeholder="Fazer academia 3x por semana e dieta par perder 3KG+ por mês.">
+            <div class="botoes">
+              <button class="salvar" (click)="salvarMeta()">Salvar</button>
+              <button class="cancelar" (click)="fecharModal()">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>  
+</div>
