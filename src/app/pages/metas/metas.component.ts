@@ -7,20 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MetasComponent implements OnInit {
   metas = [
-    { titulo: 'Investir 100k', progresso: 50 },
-    { titulo: 'Aprender francês', progresso: 25 }
+    { titulo: '', prazo: '', categoria:'', prioridade:'', status:'', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false }
   ];
+
+  statusOptions = ['Novo', 'Em andamento', 'Pausado', 'Concluído'];
+  categoriaOptions = ["Outros", "Saúde", "Finanças", "Educação", "Pessoal", "Relacionamento", "Profissional", "Lazer", "Viagem", "Hobbie"];
+  prioridadeOptions = ['Baixa', 'Média', 'Alta'];
 
   showFundoModal = false;
   showModal = false;
-  novaMeta = { titulo: '', prazo: '', categoria:'', prioridade:'', status:'', descricao:'', progresso: 0 };
+  novaMeta = { titulo: '', prazo: '', categoria:'', prioridade:'', status:'', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
 
   constructor() { }
 
   ngOnInit(): void {}
 
   abrirModal() {
-    this.novaMeta = { titulo: '', prazo: '', categoria:'', prioridade:'', status:'', descricao:'', progresso: 0 };
+    this.novaMeta = { titulo: '', prazo: '', categoria:'Outros', prioridade:'Média', status:'Novo', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
     this.showModal = true;
     this.showFundoModal = true;
   }
@@ -31,9 +34,14 @@ export class MetasComponent implements OnInit {
   }
 
   salvarMeta() {
-    if (this.novaMeta.titulo && this.novaMeta.progresso) {
+    if (this.novaMeta.titulo) {
+      // this.metas.splice(0, 1);
+      this.metas[0].progresso = 100;
+      this.metas[0].titulo = "Criar primeira meta :D";
       this.metas.push({ ...this.novaMeta });
       this.fecharModal();
+      // this.novaMeta = { titulo: '', prazo: '', categoria:'', prioridade:'', status:'', descricao:'', progresso: 0 }; // Limpa os campos
+      // alert('Meta salva com sucesso!'+JSON.stringify(this.novaMeta));
     } else {      
       alert('Por favor, preencha todos os campos.');
     } 

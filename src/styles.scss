@@ -61,7 +61,10 @@ section{
 @media (max-width: 600px) {
   /* Estilos para telas pequenas */
   .container{
-    // width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // justify-content: center;
     min-height: 100vh;
     padding: 1rem;
     font-size: 1rem;

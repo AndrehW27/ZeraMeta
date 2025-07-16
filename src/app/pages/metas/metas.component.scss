@@ -6,7 +6,7 @@
       height: 4rem;
     }
 
-    .minhas-metas{
+    .zera-meta{
         margin-top: 4rem;
         margin-bottom: 2rem;
         font-size: 1.5rem;
@@ -17,17 +17,17 @@
     }
 
     .metas {
-        margin-top: 1rem;
+        // margin-top: 1rem;
 
         .meta{
-            display: flex;
+            word-wrap: break-word;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             padding: 1rem;
-            margin-top: 1rem;
+            margin-bottom: 1rem;
             border-radius: 1rem;
-            min-width: 20rem;
+            width: 20rem;
             background-color: var(--secundaria);
 
             .prog-ext{
@@ -77,7 +77,7 @@
         .modal{
             width: 90vw;
             background-color: var(--secundaria);
-            padding: 1rem;
+            padding: 1.5rem;
             border-radius: 1rem;
 
             .modal-content{
@@ -86,24 +86,134 @@
                 align-items: flex-start;
                 justify-content: center;
 
+                // h2{
+                //     margin-bottom: 1rem;
+                // }
+
                 p{
-                    margin-top: 0.5rem;
+                    margin-top: 1rem;
                 }
 
                 .input{
-                    width: 90%;
+                    width: 100%;
                     padding: 0.5rem;
                     margin-top: 0.25rem;
-                    border: 1px solid var(--primaria);
+                    border: none;
                     border-radius: 0.5rem;
                 }
+                .progresso-container {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                  }
+                  
+                  .progresso-slider { // Esta é a barra do slider
+                    -webkit-appearance: none; /* Remove estilos padrão para aplicar os nossos */
+                    appearance: none;
+                    flex: 1;
+                    // width: 100%; /* Largura total do slider */
+                    margin-right: 1rem;
+                    height: 1rem; /* Altura da barra */
+                    border-radius: 1rem;
+                    outline: none;
+                    transition: opacity .2s;
+
+                    /* Estilo da bolinha (thumb) para Chrome, Safari, Edge */
+                    &::-webkit-slider-thumb {
+                      -webkit-appearance: none;
+                      appearance: none;
+                      width: 20px; /* Largura da bolinha */
+                      height: 20px; /* Altura da bolinha */
+                      border-radius: 50%; /* Deixa a bolinha redonda */
+                      background: var(--primaria); /* Cor da bolinha */
+                      cursor: pointer;
+                    }
+
+                    /* Estilo da bolinha (thumb) para Firefox */
+                    &::-moz-range-thumb {
+                      width: 20px;
+                      height: 20px;
+                      border-radius: 50%;
+                      background: var(--primaria);
+                      cursor: pointer;
+                      border: none;
+                    }
+                  }
+                  
+                  .toggle-switch {
+                    position: relative;
+                    display: inline-block;
+                    width: 60px;
+                    height: 34px;
+                    margin-bottom: 1rem; /* Espaçamento antes dos botões */
+
+                    input {
+                      opacity: 0;
+                      width: 0;
+                      height: 0;
+                    }
+
+                    .slider {
+                      position: absolute;
+                      cursor: pointer;
+                      top: 0;
+                      left: 0;
+                      right: 0;
+                      bottom: 0;
+                      background-color: #ccc; /* Cor do toggle desligado */
+                      transition: .4s;
+                      border-radius: 34px;
+                    }
+
+                    .slider:before {
+                      position: absolute;
+                      content: "";
+                      height: 26px;
+                      width: 26px;
+                      left: 4px;
+                      bottom: 4px;
+                      background-color: white; /* Cor da bolinha */
+                      transition: .4s;
+                      border-radius: 50%;
+                    }
+
+                    input:checked + .slider {
+                      background-color: var(--primaria); /* Cor do toggle ligado */
+                    }
+
+                    input:checked + .slider:before {
+                      transform: translateX(26px);
+                    }
+                  }
+
+                  .toggles-container {
+                    display: flex;
+                    justify-content: space-evenly; /* Melhora a distribuição */
+                    width: 100%;
+                    margin-top: 1rem; /* Adiciona espaço acima */
+                  }
+
+                  .toggle-item {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    // justify-content: flex-start;
+                    // margin-right: 1rem;
+
+                    p {
+                      margin-top: 0; /* Reseta margem para alinhar texto */
+                      margin-bottom: 0.5rem;
+                      font-size: 0.9rem; /* Ajusta o tamanho da fonte da pergunta */
+                    }
+                  }
+
 
                 .botoes{
                     display: flex;
                     width: 100%;
                     align-items: center;
                     justify-content: center;
-                    margin-top: 1rem;
+                    // margin-top: 1rem;
                     padding: 1rem;
 
                     .salvar, .cancelar{

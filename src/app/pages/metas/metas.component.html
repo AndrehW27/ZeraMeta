@@ -9,19 +9,27 @@
       </div>
   </section>
 
-  <section class="minhas-metas">
+  <section class="zera-meta">
      <h1>ZeraMeta</h1>
   </section>
 
-  <section class="metas">
-    <div class="meta" *ngFor="let meta of metas">
-      <h1>{{ meta.titulo }}</h1>
-      <div class="prog-ext">
-        <div class="prog-int" [style.width.%]="meta.progresso">
-          <p class="porcentagem">{{ meta.progresso }}%</p>
+  <section class="metas" style="width: 20rem;">
+    <ng-container *ngIf="metas.length === 1 && !metas[0].titulo; else metasExistentes">
+      <div class="meta">
+        <h3>Você ainda não tem metas! Que tal criar a primeira?</h3>
+      </div>
+    </ng-container>
+  
+    <ng-template #metasExistentes>
+      <div class="meta" *ngFor="let meta of metas">
+        <h1 *ngIf="meta.titulo">{{ meta.titulo }}</h1>
+        <div class="prog-ext" *ngIf="meta.titulo">
+          <div class="prog-int" [style.width.%]="meta.progresso">
+            <p class="porcentagem">{{ meta.progresso }}%</p>
+          </div>
         </div>
       </div>
-    </div>
+    </ng-template>
   </section>
 
   <section>
@@ -46,16 +54,46 @@
             <p>Prazo</p>
             <input class="input" [(ngModel)]="novaMeta.prazo" placeholder="3 meses">
             <p>Categoria</p>
-            <input class="input" [(ngModel)]="novaMeta.categoria" placeholder="Saúde">
+            <select class="input" [(ngModel)]="novaMeta.categoria">
+              <option *ngFor="let categoria of categoriaOptions" [value]="categoria">{{ categoria }}</option>
+            </select>
             <p>Prioridade</p>
-            <input class="input" [(ngModel)]="novaMeta.prioridade" placeholder="Alta">
+            <select class="input" [(ngModel)]="novaMeta.prioridade">
+              <option *ngFor="let prioridade of prioridadeOptions" [value]="prioridade">{{ prioridade }}</option>
+            </select>
             <p>Status</p>
-            <input class="input" [(ngModel)]="novaMeta.status" placeholder="Nova">
+            <select class="input" [(ngModel)]="novaMeta.status">
+              <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+            </select>
             <p>Progresso</p>
-            <input class="input" [(ngModel)]="novaMeta.progresso" placeholder="Progresso (%)" min="0" max="100">
+            <div class="progresso-container">
+              <input type="range" min="0" max="100" [(ngModel)]="novaMeta.progresso" class="progresso-slider" [ngStyle]="{'background': 'linear-gradient(to right, var(--primaria) ' + novaMeta.progresso + '%, #ddd ' + novaMeta.progresso + '%)'}">
+              <span class="progresso-valor">{{ novaMeta.progresso }}%</span>
+            </div>
+
+              <!-- <input type="range" min="0" max="100" value="10"> -->
+            
             <p>Descrição</p>
-            <input class="input" [(ngModel)]="novaMeta.descricao" placeholder="Fazer academia 3x por semana e dieta par perder 3KG+ por mês.">
+            <textarea class="input" [(ngModel)]="novaMeta.descricao" placeholder="Fazer academia 3x por semana e dieta para perder 3KG+ por mês."></textarea>
+            
+            <div class="toggles-container">
+              <div class="toggle-item">
+                <p>Criar mini-metas?</p>
+                <label class="toggle-switch">
+                  <input type="checkbox" [(ngModel)]="novaMeta.criarMiniMetas">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <div class="toggle-item">
+                <p>Enviar lembrete?</p>
+                <label class="toggle-switch">
+                  <input type="checkbox" [(ngModel)]="novaMeta.enviarLembrete">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
             <div class="botoes">
+              
               <button class="salvar" (click)="salvarMeta()">Salvar</button>
               <button class="cancelar" (click)="fecharModal()">Cancelar</button>
             </div>
