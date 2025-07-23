@@ -1,0 +1,17 @@
+.detalhes-container{
+    margin-top: 6rem;
+    // border: 1px solid var(--primaria);
+
+    .detalhes-div{
+    border: 1px solid var(--primaria);
+    border-radius: 1rem;
+    background-color: var(--secundaria);
+    width: 90vw;
+
+        h2{
+            margin: 2rem;
+        }
+
+    }
+    
+}

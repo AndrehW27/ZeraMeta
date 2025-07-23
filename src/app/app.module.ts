@@ -11,6 +11,8 @@ import { ConfiguracoesComponent } from './pages/configuracoes/configuracoes.comp
 import { GamificacaoComponent } from './pages/gamificacao/gamificacao.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { RedefinirSenhaComponent } from './pages/redefinir-senha/redefinir-senha.component';
+import { DetalhesMetaComponent } from './pages/detalhes-meta/detalhes-meta.component';
+import { MiniMetasComponent } from './pages/mini-metas/mini-metas.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { RedefinirSenhaComponent } from './pages/redefinir-senha/redefinir-senha
     ConfiguracoesComponent,
     GamificacaoComponent,
     CadastroComponent,
-    RedefinirSenhaComponent
+    RedefinirSenhaComponent,
+    DetalhesMetaComponent,
+    MiniMetasComponent
   ],
   imports: [
     BrowserModule,

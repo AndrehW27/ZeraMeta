@@ -7,6 +7,8 @@ import { MetasComponent } from './pages/metas/metas.component';
 import { ConfiguracoesComponent } from './pages/configuracoes/configuracoes.component';
 import { GamificacaoComponent } from './pages/gamificacao/gamificacao.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
+import { DetalhesMetaComponent } from './pages/detalhes-meta/detalhes-meta.component';
+import { MiniMetasComponent } from './pages/mini-metas/mini-metas.component';
 import { RedefinirSenhaComponent } from './pages/redefinir-senha/redefinir-senha.component';
 
 const routes: Routes = [
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'configuracoes', component: ConfiguracoesComponent },
   { path: 'gamificacao', component: GamificacaoComponent },
   { path: 'cadastro', component: CadastroComponent },
+  { path: 'mini-metas', component: MiniMetasComponent },
+  { path: 'detalhes-meta', component: DetalhesMetaComponent },
   { path: 'redefinir-senha', component: RedefinirSenhaComponent }
 ,];
 

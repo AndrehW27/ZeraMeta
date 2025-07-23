@@ -1,16 +1,33 @@
 <div class="container">
 
-  <section>
-      <div class="voltar">
+  <!-- <section>
+    <div class="voltar">
       <svg routerLink="/boas-vindas" width="48" height="48" viewBox="0 0 48 48" fill="none">
-          <rect width="48" height="48" rx="24" fill=""/>
-          <path d="M30 12L18 24L30 36" stroke="#e9e9e9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect width="48" height="48" rx="24" fill=""/>
+        <path d="M30 12L18 24L30 36" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      </div>
+    </div>
+  </section> -->
+  
+  <section>
+    <div class="config">
+        <svg routerLink="/configuracoes" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+        </svg>
+    </div>
   </section>
 
   <section class="zera-meta">
-     <h1>ZeraMeta</h1>
+     <h1>Minhas Metas</h1>
+  </section>
+
+  <section class="filtros-container">
+    <!-- <label for="filtro-status" class="filtro-label">Filtrar por:</label> -->
+    <select id="filtro-status" class="filtro-select" 
+            [(ngModel)]="filtroStatusAtual" 
+            (ngModelChange)="filtrarPorStatus($event)">
+      <option *ngFor="let status of statusFiltroOptions" [value]="status">{{ status }}</option>
+    </select>
   </section>
 
   <section class="metas" style="width: 20rem;">
@@ -19,10 +36,23 @@
         <h3>Você ainda não tem metas! Que tal criar a primeira?</h3>
       </div>
     </ng-container>
-  
+
     <ng-template #metasExistentes>
-      <div class="meta" *ngFor="let meta of metas">
+      <!-- Itera sobre a lista filtrada -->
+      <div (click)="abrirModalDetalhes(meta)" class="meta" *ngFor="let meta of metasFiltradas">
         <h1 *ngIf="meta.titulo">{{ meta.titulo }}</h1>
+        <div class="div-status">
+          <p class="porcentagem">{{ meta.status }}</p>     
+          <div class="cor-status" [ngClass]="{
+            'status-novo': meta.status === 'Novo', 
+            'status-em-andamento': meta.status === 'Em andamento', 
+            'status-concluido': meta.status === 'Concluído',
+            'status-pausado': meta.status === 'Pausado'
+            }">
+          </div>
+          
+
+        </div>
         <div class="prog-ext" *ngIf="meta.titulo">
           <div class="prog-int" [style.width.%]="meta.progresso">
             <p class="porcentagem">{{ meta.progresso }}%</p>
@@ -94,11 +124,70 @@
             </div>
             <div class="botoes">
               
-              <button class="salvar" (click)="salvarMeta()">Salvar</button>
+              <button class="salvar" (click)="criarMeta()">Criar</button>
               <button class="cancelar" (click)="fecharModal()">Cancelar</button>
             </div>
           </div>
         </div>
       </div>
   </section>  
+
+    <section>
+      <div class="fundo-modal" *ngIf="showFundoModalDetalhes">
+        <div *ngIf="showModalDetalhes" class="modal">
+          <div class="modal-content">
+            <h2>Editar meta</h2>
+            <p>Título</p>
+            <input class="input" [(ngModel)]="metaSelecionada.titulo">
+            <p>Prazo</p>
+            <input class="input" [(ngModel)]="metaSelecionada.prazo">
+            <p>Categoria</p>
+            <select class="input" [(ngModel)]="metaSelecionada.categoria">
+              <option *ngFor="let categoria of categoriaOptions" [value]="categoria">{{ categoria }}</option>
+            </select>
+            <p>Prioridade</p>
+            <select class="input" [(ngModel)]="metaSelecionada.prioridade">
+              <option *ngFor="let prioridade of prioridadeOptions" [value]="prioridade">{{ prioridade }}</option>
+            </select>
+            <p>Status</p>
+            <select class="input" [(ngModel)]="metaSelecionada.status">
+              <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+            </select>
+            <p>Progresso</p>
+            <div class="progresso-container">
+              <input type="range" min="0" max="100" [(ngModel)]="metaSelecionada.progresso" class="progresso-slider" [ngStyle]="{'background': 'linear-gradient(to right, var(--primaria) ' + metaSelecionada.progresso + '%, #ddd ' + metaSelecionada.progresso + '%)'}">
+              <span class="progresso-valor">{{ metaSelecionada.progresso }}%</span>
+            </div>
+
+              <!-- <input type="range" min="0" max="100" value="10"> -->
+            
+            <p>Descrição</p>
+            <textarea class="input" [(ngModel)]="metaSelecionada.descricao" placeholder="Fazer academia 3x por semana e dieta para perder 3KG+ por mês."></textarea>
+            
+            <div class="toggles-container">
+              <div class="toggle-item">
+                <p>Criar mini-metas?</p>
+                <label class="toggle-switch">
+                  <input type="checkbox" [(ngModel)]="metaSelecionada.criarMiniMetas">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <div class="toggle-item">
+                <p>Enviar lembrete?</p>
+                <label class="toggle-switch">
+                  <input type="checkbox" [(ngModel)]="metaSelecionada.enviarLembrete">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+            <div class="botoes">
+              
+              <button class="salvar" (click)="salvarMeta()">Salvar</button>
+              <button class="cancelar" (click)="fecharModalDetalhes()">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>  
+
 </div>

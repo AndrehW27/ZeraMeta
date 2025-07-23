@@ -31,7 +31,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;  
-    background-color: var(--secundaria);
+    background-color: transparent;
+    border: 1px solid var(--secundaria);
     // width: 300px;
     border-radius: 1rem;
     padding: 1.5rem;
@@ -69,4 +70,104 @@
             // border: var(--primaria) 1px solid;
         }        
     }
+}
+
+@keyframes dropIn {
+  // Estado inicial da animação (invisível e um pouco acima)
+  from {
+    opacity: 0;
+    transform: translateY(-300px);
+  }
+
+  // Estado final da animação (totalmente visível na posição original)
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.icone-medalha {
+  // Aplica a animação ao ícone
+    opacity: 0;
+    animation: dropIn 1s ease-out 3s forwards;
+}
+
+@keyframes FadeInBemVindo {
+  // Estado inicial da animação (invisível e um pouco acima)
+  from {
+    opacity: 0;
+    // transform: translateY(-300px);
+  }
+
+  // Estado final da animação (totalmente visível na posição original)
+  to {
+    opacity: 1;
+    // transform: translateY(0);
+  }
+}
+
+.bem-vindo {
+  // Aplica a animação ao ícone
+    opacity: 0;
+    animation: FadeInBemVindo 2s ease-out 1s forwards;
+}
+
+@keyframes FadeInZeraMeta {
+  // Estado inicial da animação (invisível e um pouco acima)
+  from {
+    opacity: 0;
+    // transform: translateY(-300px);
+  }
+
+  // Estado final da animação (totalmente visível na posição original)
+  to {
+    opacity: 1;
+    // transform: translateY(0);
+  }
+}
+
+.zera-meta {
+  // Aplica a animação ao ícone
+    opacity: 0;
+    animation: FadeInZeraMeta 2s ease-out 2s forwards;
+}
+
+@keyframes FadeInDescricao {
+  // Estado inicial da animação (invisível e um pouco acima)
+  from {
+    opacity: 0;
+    // transform: translateY(-300px);
+  }
+
+  // Estado final da animação (totalmente visível na posição original)
+  to {
+    opacity: 1;
+    // transform: translateY(0);
+  }
+}
+
+.descricao {
+  // Aplica a animação ao ícone
+    opacity: 0;
+    animation: FadeInDescricao 2s ease-out 4s forwards;
+}
+
+@keyframes FadeInBotoes {
+  // Estado inicial da animação (invisível e um pouco acima)
+  from {
+    opacity: 0;
+    // transform: translateY(-300px);
+  }
+
+  // Estado final da animação (totalmente visível na posição original)
+  to {
+    opacity: 1;
+    // transform: translateY(0);
+  }
+}
+
+.botoes {
+  // Aplica a animação ao ícone
+    opacity: 0;
+    animation: FadeInBotoes 2s ease-out 5s forwards;
 }
