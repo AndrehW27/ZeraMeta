@@ -28,9 +28,9 @@
 
         .filtro-select {
             padding: 0.5rem;
-            border: 1px solid var(--primaria);
-            // background-color: var(--secundaria);
-            background-color: transparent;
+            // border: 1px solid var(--primaria);
+            background-color: var(--secundaria);
+            // background-color: transparent;
 
             color: var(--primaria);
             border-radius: 1rem;
@@ -54,7 +54,7 @@
             // background-color: rgba(207, 207, 207, 0.5);
             background-color: var(--secundaria);
 
-            border: 1px solid var(--primaria);
+            // border: 1px solid var(--primaria);
 
             .div-status{
                 display: flex;
@@ -124,7 +124,7 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-color: rgba(0, 0, 0, 0.75);
+        // background-color: rgba(0, 0, 0, 0.75);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -132,6 +132,9 @@
         .modal{
             width: 90vw;
             background-color: var(--secundaria);
+            // background-color: rgb(46, 97, 152);
+            // color: var(--secundaria);
+
             padding: 1.5rem;
             border-radius: 1rem;
 

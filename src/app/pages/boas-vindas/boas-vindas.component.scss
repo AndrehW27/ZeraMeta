@@ -89,7 +89,7 @@
 .icone-medalha {
   // Aplica a animação ao ícone
     opacity: 0;
-    animation: dropIn 1s ease-out 3s forwards;
+    animation: dropIn 1.2s ease-out 1s forwards;
 }
 
 @keyframes FadeInBemVindo {
@@ -109,7 +109,7 @@
 .bem-vindo {
   // Aplica a animação ao ícone
     opacity: 0;
-    animation: FadeInBemVindo 2s ease-out 1s forwards;
+    animation: FadeInBemVindo 2s ease-out 2s forwards;
 }
 
 @keyframes FadeInZeraMeta {
@@ -129,7 +129,7 @@
 .zera-meta {
   // Aplica a animação ao ícone
     opacity: 0;
-    animation: FadeInZeraMeta 2s ease-out 2s forwards;
+    animation: FadeInZeraMeta 2s ease-out 3s forwards;
 }
 
 @keyframes FadeInDescricao {

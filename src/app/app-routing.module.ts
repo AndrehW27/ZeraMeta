@@ -7,9 +7,9 @@ import { MetasComponent } from './pages/metas/metas.component';
 import { ConfiguracoesComponent } from './pages/configuracoes/configuracoes.component';
 import { GamificacaoComponent } from './pages/gamificacao/gamificacao.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
-import { DetalhesMetaComponent } from './pages/detalhes-meta/detalhes-meta.component';
 import { MiniMetasComponent } from './pages/mini-metas/mini-metas.component';
 import { RedefinirSenhaComponent } from './pages/redefinir-senha/redefinir-senha.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'boas-vindas', pathMatch: 'full' },
@@ -20,9 +20,9 @@ const routes: Routes = [
   { path: 'gamificacao', component: GamificacaoComponent },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'mini-metas', component: MiniMetasComponent },
-  { path: 'detalhes-meta', component: DetalhesMetaComponent },
-  { path: 'redefinir-senha', component: RedefinirSenhaComponent }
-,];
+  { path: 'redefinir-senha', component: RedefinirSenhaComponent },
+  { path: 'perfil', component: PerfilComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -11,8 +11,8 @@ import { ConfiguracoesComponent } from './pages/configuracoes/configuracoes.comp
 import { GamificacaoComponent } from './pages/gamificacao/gamificacao.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { RedefinirSenhaComponent } from './pages/redefinir-senha/redefinir-senha.component';
-import { DetalhesMetaComponent } from './pages/detalhes-meta/detalhes-meta.component';
 import { MiniMetasComponent } from './pages/mini-metas/mini-metas.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +24,8 @@ import { MiniMetasComponent } from './pages/mini-metas/mini-metas.component';
     GamificacaoComponent,
     CadastroComponent,
     RedefinirSenhaComponent,
-    DetalhesMetaComponent,
-    MiniMetasComponent
+    MiniMetasComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

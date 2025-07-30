@@ -1,0 +1,39 @@
+
+    .configuracoes{
+        margin-top: 6rem;
+        margin-bottom: 3rem;
+        font-size: 1.5rem;
+
+        h1{
+            font-size: 2rem;
+        }  
+    }
+
+
+    .itens-menu{          
+        h3{
+            width: 80vw;
+            font-size: 1.5rem;
+            padding: 1rem 0.2rem;
+            margin: 0;
+            cursor: pointer;
+            border-bottom: 1px solid var(--primaria);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--secundaria);
+            padding: 1rem;
+            border-radius: 1rem;
+
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            svg {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+    }
+    
