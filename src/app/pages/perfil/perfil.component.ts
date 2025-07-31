@@ -12,4 +12,14 @@ export class PerfilComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  abrirModalInfo = false
+
+  EditarInfo(){
+    this.abrirModalInfo = true;
+  }
+
+  FecharModal(){
+    this.abrirModalInfo = false;
+  }
+
 }
