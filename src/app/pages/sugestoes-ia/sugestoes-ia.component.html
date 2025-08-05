@@ -1,0 +1,73 @@
+<div class="container">
+
+  <section>
+    <div class="voltar">
+      <svg routerLink="/configuracoes" width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <rect width="48" height="48" rx="24" fill=""/>
+        <path d="M30 12L18 24L30 36" stroke="#e9e9e9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="sugestoes-ia">
+    <h1>Sugestões com IA</h1>
+    <!-- <p>Responda algumas perguntas e deixaremos a inteligência artificial criar metas personalizadas para você.</p> -->
+  </section>
+
+  <div class="chat-container">
+    <div class="mensagens">
+      <div *ngFor="let msg of conversa" class="mensagem" [ngClass]="'mensagem-' + msg.autor">
+        <p>{{ msg.texto }}</p>
+      </div>
+    </div>
+
+    <div *ngIf="perguntaAtualIndex < perguntas.length - 1" class="input-area">
+      <input
+        type="text"
+        [(ngModel)]="respostaUsuario"
+        (keyup.enter)="enviarResposta()"
+        placeholder="Digite sua resposta..."
+      >
+      <button (click)="enviarResposta()">Enviar</button>
+    </div>
+  </div>
+
+  <section *ngIf="gerandoMetas || metasSugeridas.length > 0" class="resultado-ia">
+    <h2>Sugestões de Metas</h2>
+    <div *ngIf="gerandoMetas" class="loader">
+      <p>Analisando suas respostas...</p>
+      <div class="spinner"></div>
+    </div>
+
+    <div *ngIf="!gerandoMetas && metasSugeridas.length > 0" class="lista-metas-sugeridas">
+      <div *ngFor="let meta of metasSugeridas" class="meta-sugerida">
+        <span>{{ meta }}</span>
+        <button (click)="adicionarMeta(meta)">+</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- <div class="container">
+  <h2>Ajuda da IA: Gerar Metas</h2>
+
+  <form (ngSubmit)="gerarSugestoes()">
+    <label>Qual área você quer melhorar?</label>
+    <select [(ngModel)]="form.area" name="area" required>
+      <option value="saúde">Saúde</option>
+      <option value="carreira">Carreira</option>
+      <option value="finanças">Finanças</option>
+      <option value="relacionamentos">Relacionamentos</option>
+    </select>
+
+    <label>Qual seu principal objetivo?</label>
+    <input [(ngModel)]="form.objetivo" name="objetivo" required />
+
+    <button type="submit">Gerar metas com IA</button>
+  </form>
+
+  <div *ngIf="respostaIa">
+    <h3>Metas sugeridas:</h3>
+    <pre>{{ respostaIa }}</pre>
+  </div>
+</div> -->

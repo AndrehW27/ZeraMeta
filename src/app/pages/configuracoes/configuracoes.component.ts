@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfiguracoesComponent implements OnInit {
 
-   modalTemaAberto = false;
+  modalTemaAberto = false;
+  modalNotiAberto = false;
   isTemaEscuro = false; // Você pode inicializar isso com base em uma preferência salva
 
   abrirModalTema(): void {
@@ -16,6 +17,14 @@ export class ConfiguracoesComponent implements OnInit {
 
   fecharModalTema(): void {
     this.modalTemaAberto = false;
+  }
+
+  abrirModalNoti(): void {
+    this.modalNotiAberto = true;
+  }
+
+  fecharModalNoti(): void {
+    this.modalNotiAberto = false;
   }
 
   constructor() { }

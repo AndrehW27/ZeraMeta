@@ -13,6 +13,7 @@ import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { RedefinirSenhaComponent } from './pages/redefinir-senha/redefinir-senha.component';
 import { MiniMetasComponent } from './pages/mini-metas/mini-metas.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { SugestoesIaComponent } from './pages/sugestoes-ia/sugestoes-ia.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
     CadastroComponent,
     RedefinirSenhaComponent,
     MiniMetasComponent,
-    PerfilComponent
+    PerfilComponent,
+    SugestoesIaComponent
   ],
   imports: [
     BrowserModule,

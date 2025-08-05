@@ -10,6 +10,7 @@ import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { MiniMetasComponent } from './pages/mini-metas/mini-metas.component';
 import { RedefinirSenhaComponent } from './pages/redefinir-senha/redefinir-senha.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { SugestoesIaComponent } from './pages/sugestoes-ia/sugestoes-ia.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'boas-vindas', pathMatch: 'full' },
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'cadastro', component: CadastroComponent },
   { path: 'mini-metas', component: MiniMetasComponent },
   { path: 'redefinir-senha', component: RedefinirSenhaComponent },
-  { path: 'perfil', component: PerfilComponent }
+  { path: 'perfil', component: PerfilComponent },
+  { path: 'sugestoes-ia', component: SugestoesIaComponent }
 ];
 
 @NgModule({
