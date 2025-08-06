@@ -22,6 +22,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
         }
 
         .info-perfil{
@@ -36,7 +37,8 @@
             justify-content: space-between;
             background-color: var(--secundaria);
             padding: 1rem;
-            border-radius: 1rem;            
+            border-radius: 1rem;    
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);        
 
             &:last-child {
                 border-bottom: none;

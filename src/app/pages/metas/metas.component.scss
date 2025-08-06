@@ -34,6 +34,8 @@
 
             color: var(--primaria);
             border-radius: 1rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+
             cursor: pointer;
             flex-grow: 1; /* Allows the select box to fill available space */
         }
@@ -53,6 +55,7 @@
             width: 20rem;
             // background-color: rgba(207, 207, 207, 0.5);
             background-color: var(--secundaria);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
 
             // border: 1px solid var(--primaria);
 
@@ -137,6 +140,8 @@
 
             padding: 1.5rem;
             border-radius: 1rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+
 
             .modal-content{
                 display: flex;
@@ -158,6 +163,7 @@
                     margin-top: 0.25rem;
                     border: none;
                     border-radius: 0.5rem;
+                    box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.5);
                 }
                 .progresso-container {
                     display: flex;
@@ -175,6 +181,8 @@
                     border-radius: 1rem;
                     outline: none;
                     transition: opacity .2s;
+                    
+
 
                     /* Estilo da bolinha (thumb) para Chrome, Safari, Edge */
                     &::-webkit-slider-thumb {
@@ -273,6 +281,7 @@
                     justify-content: center;
                     // margin-top: 1rem;
                     padding: 1rem;
+                    
 
                     .salvar, .cancelar{
                         background-color: var(--primaria);
@@ -284,6 +293,8 @@
                         font-size: 1rem;       
                         border-radius: 0.5rem;
                         cursor: pointer;
+                        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+
 
                         &:hover{
                             background-color: var(--secundaria);

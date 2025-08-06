@@ -11,6 +11,8 @@
     padding: 1.5rem;
     background-color: var(--secundaria);
     border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+
     // border: 1px solid var(--primaria);
 
     .input{
@@ -21,6 +23,8 @@
         border: none;
         // border: none;
         border-radius: 0.5rem;
+        box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.5);
+        
     }
 
     .redefinir-senha{
@@ -78,6 +82,8 @@
     font-size: 1.5rem;       
     border-radius: 0.5rem;
     cursor: pointer;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+
 
     &:hover{
         background-color: var(--secundaria);
