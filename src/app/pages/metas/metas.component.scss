@@ -59,6 +59,26 @@
 
             // border: 1px solid var(--primaria);
 
+            .titulo-meta{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                margin-bottom: 0.5rem;
+
+                h1{
+                    font-size: 1.2rem;
+                    color: var(--primaria);
+                }
+
+                svg{
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    color: var(--primaria);
+                    cursor: pointer;
+                }
+            }
+
             .div-status{
                 display: flex;
                 align-items: center;

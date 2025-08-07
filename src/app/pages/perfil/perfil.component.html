@@ -15,27 +15,31 @@
 
   <section class="itens-menu">
 
-    <div class="foto-perfil">
+    <div class="foto-perfil" [style.backgroundImage]="'url(' + usuario.fotoUrl + ')'">
+        <svg (click)="editarFoto()" class="edicao-foto" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="#e9e9e9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
     </div>
 
-    <div (click)="EditarInfo()" class="info-perfil">
-      <p><span style="font-weight: bold; font-size: 1rem; margin-right:0.5rem">Nome:</span> André Willian Gorgo de Carvalho</p>
+    <!-- Input de arquivo oculto para a seleção da imagem -->
+    <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)" accept="image/*">
+
+    <div (click)="editarInfo()" class="info-perfil">
+      <p><span style="font-weight: bold; font-size: 1rem; margin-right:0.5rem">Nome:</span> {{ usuario.nome }}</p>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
     </div>
-    <div class="info-perfil">
-      <p><span style="font-weight: bold; font-size: 1rem; margin-right:0.5rem">E-mail:</span> andre.gorgo&#64;email.com</p>
+    <div (click)="editarEmail()"  class="info-perfil">
+      <p><span style="font-weight: bold; font-size: 1rem; margin-right:0.5rem">E-mail:</span> {{ usuario.email }}</p>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
     </div>
-    <div class="info-perfil">
-      <p><span style="font-weight: bold; font-size: 1rem; margin-right:0.5rem">Senha:</span> ********</p>
+    <div (click)="editarSenha()" class="info-perfil">
+      <p><span style="font-weight: bold; font-size: 1rem; margin-right:0.5rem">Senha:</span> {{ usuario.senha }}</p>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
     </div>
-    <div class="info-perfil">
-      <p><span style="font-weight: bold; font-size: 1rem; margin-right:0.5rem">Telefone:</span> (51) 99999-9999</p>
+    <div (click)="editarTelefone()" class="info-perfil">
+      <p><span style="font-weight: bold; font-size: 1rem; margin-right:0.5rem">Telefone:</span> {{ usuario.telefone }}</p>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
     </div>
-    <div class="info-perfil">
-      <p><span style="font-weight: bold; font-size: 1rem; margin-right:0.5rem">Plano:</span>Plus 1+</p>
+    <div (click)="editarPlano()" class="info-perfil">
+      <p><span style="font-weight: bold; font-size: 1rem; margin-right:0.5rem">Plano:</span> {{ usuario.plano }}</p>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
     </div>
     <div routerLink="/login" class="info-perfil item-sair">
@@ -47,12 +51,78 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
     </div>
 
+    <!-- Modal de Edição Nome-->
+    <div class="fundo-modal" *ngIf="abrirModalInfo">
+      <div class="modal">
+        <div class="modal-content">
+          <h2>Alterar nome</h2>
+          <!-- <p>Insira seu nome completo</p> -->
+          <input class="input" [(ngModel)]="nomeEmEdicao" placeholder="Novo nome">
+          <div class="botoes">
+            <button class="salvar" (click)="salvarAlteracao()">Salvar</button>
+            <button class="cancelar" (click)="fecharModal()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>    
 
-    <div *ngIf="abrirModalInfo" class="modal-content">
-        <div><h1 (click)="FecharModal()">fechar</h1></div>
-        <div><h1>teste</h1></div>
-        
-        
+        <!-- Modal de Edição E-mail-->
+    <div class="fundo-modal" *ngIf="abrirModalEmail">
+      <div class="modal">
+        <div class="modal-content">
+          <h2>Alterar e-mail</h2>
+          <!-- <p>Insira seu nome completo</p> -->
+          <input class="input" [(ngModel)]="emailEmEdicao" placeholder="Novo e-mail">
+          <div class="botoes">
+            <button class="salvar" (click)="salvarAlteracaoEmail()">Salvar</button>
+            <button class="cancelar" (click)="fecharModalEmail()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>   
+
+    <!-- Modal de Edição Senha-->
+    <div class="fundo-modal" *ngIf="abrirModalSenha">
+      <div class="modal">
+        <div class="modal-content">
+          <h2>Alterar senha</h2>
+          <input class="input" type="password" [(ngModel)]="senhaEmEdicao" placeholder="Nova senha">
+          <div class="botoes">
+            <button class="salvar" (click)="salvarAlteracaoSenha()">Salvar</button>
+            <button class="cancelar" (click)="fecharModalSenha()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Edição Telefone-->
+    <div class="fundo-modal" *ngIf="abrirModalTelefone">
+      <div class="modal">
+        <div class="modal-content">
+          <h2>Alterar telefone</h2>
+          <input class="input" [(ngModel)]="telefoneEmEdicao" placeholder="Novo telefone">
+          <div class="botoes">
+            <button class="salvar" (click)="salvarAlteracaoTelefone()">Salvar</button>
+            <button class="cancelar" (click)="fecharModalTelefone()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Edição Plano-->
+    <div class="fundo-modal" *ngIf="abrirModalPlano">
+      <div class="modal">
+        <div class="modal-content">
+          <h2>Alterar plano</h2>
+          <select class="input" [(ngModel)]="planoEmEdicao">
+            <option *ngFor="let plano of planoOptions" [value]="plano">{{ plano }}</option>
+          </select>
+          <div class="botoes">
+            <button class="salvar" (click)="salvarAlteracaoPlano()">Salvar</button>
+            <button class="cancelar" (click)="fecharModalPlano()">Cancelar</button>
+          </div>
+        </div>
+      </div>
     </div>
 
   </section>

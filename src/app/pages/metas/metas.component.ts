@@ -9,8 +9,8 @@ export class MetasComponent implements OnInit {
   metas = [
     // Placeholder for when no metas exist
     { id: 0, titulo: '', prazo: '', categoria:'', prioridade:'', status:'', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false },
-    { id: 1, titulo: 'Perder 12% BF', prazo: '4 meses', categoria:'', prioridade:'', status:'Em andamento', descricao:'', progresso: 20, enviarLembrete: false, criarMiniMetas: false },
-    { id: 2, titulo: 'Fazer App Pós', prazo: '6 meses', categoria:'', prioridade:'Alta', status:'Em andamento', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false }
+    { id: 1, titulo: 'Perder 12% BF', prazo: '4 meses', categoria:'Saúde', prioridade:'Média', status:'Em andamento', descricao:'', progresso: 50, enviarLembrete: false, criarMiniMetas: false },
+    { id: 2, titulo: 'Fazer App Pós', prazo: '6 meses', categoria:'Educação', prioridade:'Alta', status:'Em andamento', descricao:'', progresso:30, enviarLembrete: false, criarMiniMetas: false }
   ];
   
   metasFiltradas: any[] = [];

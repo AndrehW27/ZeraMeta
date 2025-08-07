@@ -9,6 +9,19 @@
         }  
     }
 
+    .foto-perfil{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        // border: 1px solid var(--primaria);   
+        background-image: url('https://pt.quizur.com/_image?href=https://img.quizur.com/f/img64c609b3f0dc75.65980291.jpg?lastEdited=1690700315&w=600&h=600&f=webp');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+    }
+
 
    .nivel{
         // position: fixed;
