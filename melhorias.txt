@@ -1,4 +1,4 @@
-Adicionar tela de cadastro
+Adicionar tela de deletar conta
 Adicionar tela de esqueci minha senha
 Adicionar loading ao abri o app e talvez para abrir as metas
 Adicionar tela personalizada de 404

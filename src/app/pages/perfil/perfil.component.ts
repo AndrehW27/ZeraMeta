@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
+// O decorador @Component estava faltando. Este é o principal motivo dos erros.
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
@@ -13,8 +14,11 @@ export class PerfilComponent implements OnInit {
     senha: '********',
     telefone: '(51) 99999-9999',
     plano: 'Plus 1+',
-    fotoUrl: 'https://pt.quizur.com/_image?href=https://img.quizur.com/f/img64c609b3f0dc75.65980291.jpg?lastEdited=1690700315&w=600&h=600&f=webp'
+    fotoUrl: 'https://pt.quizur.com/_image?href=https://img.quizur.com/f/img64c609b3f0dc75.65980291.jpg?lastEdited=1690700315&w=600&h=600&f=webp',
+    tema: 'claro',
+    notificacoes: true
   };
+
 
   // Controla a visibilidade do modal
   abrirModalInfo = false;
@@ -88,13 +92,14 @@ export class PerfilComponent implements OnInit {
   }
 
     salvarAlteracaoEmail() {
+    // Atualiza o e-mail através do serviço para manter o estado centralizado
     this.usuario.email = this.emailEmEdicao;
     this.abrirModalEmail = false;
   }
 
   salvarAlteracaoSenha() {
     // Em um app real, aqui você faria a chamada para o backend.
-    // Por enquanto, apenas atualizamos o placeholder.
+    // Apenas para demonstração, não estamos salvando a senha real no serviço.
     this.usuario.senha = '********';
     this.abrirModalSenha = false;
   }

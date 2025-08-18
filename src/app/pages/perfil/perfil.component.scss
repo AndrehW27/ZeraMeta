@@ -28,41 +28,36 @@
                 position: absolute;
                 bottom: 5px;
                 right: 5px;
-                // width: 2.2rem;
-                // height: 2.2rem;
                 cursor: pointer;
                 background-color: var(--secundaria);
-                // border-radius: 50%;
-                // padding: 0.1rem;
-                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                border-radius: 50%;
+                padding: 0.3rem;
+                box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
         }
 
         .info-perfil{
             width: 80vw;
             font-size: 1rem;
-            padding: 1rem 0.2rem;
-            margin: 0;
+            margin-bottom: 1rem;
             cursor: pointer;
-            border-bottom: 1px solid var(--primaria);
             display: flex;
             align-items: center;
             justify-content: space-between;
             background-color: var(--secundaria);
             padding: 1rem;
             border-radius: 1rem;    
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);        
-
-            &:last-child {
-                border-bottom: none;
-            }
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
 
             p {
                 /* Regras para cortar o texto */
                 white-space: nowrap;     /* Impede a quebra de linha */
                 overflow: hidden;        /* Esconde o texto que transborda */
                 text-overflow: ellipsis; /* Adiciona "..." no final */
-                margin-right: 1rem;      /* Adiciona espaço entre o texto e o ícone */
+                margin: 0 1rem 0 0;      /* Limpa margens e adiciona espaço à direita */
             }
 
             svg {
@@ -76,12 +71,6 @@
             color: #e74c3c; // Cor de perigo/destrutiva
         }
     }
-
-
-
-.info-perfil {
-    cursor: pointer;
-}
 
 .fundo-modal {
     position: fixed;

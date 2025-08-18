@@ -9,7 +9,12 @@ export class ConfiguracoesComponent implements OnInit {
 
   modalTemaAberto = false;
   modalNotiAberto = false;
-  isTemaEscuro = false; // Você pode inicializar isso com base em uma preferência salva
+  isTemaEscuro = false;
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
   abrirModalTema(): void {
     this.modalTemaAberto = true;
@@ -26,10 +31,4 @@ export class ConfiguracoesComponent implements OnInit {
   fecharModalNoti(): void {
     this.modalNotiAberto = false;
   }
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }
