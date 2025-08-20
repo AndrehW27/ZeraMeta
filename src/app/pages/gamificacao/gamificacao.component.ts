@@ -12,4 +12,6 @@ export class GamificacaoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  compartilharConquista(){}
+
 }
