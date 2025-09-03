@@ -173,6 +173,61 @@
                 //     margin-bottom: 1rem;
                 // }
 
+                .div-deletar{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    // border: 1px solid var(--primaria);
+                    // margin-bottom: 1rem;
+                    
+
+                    .deletar-meta{
+                        // position: sticky;
+                        // width: 100%;
+                        // right: 0;  
+                        // margin-right: 2rem;
+                        color: rgb(160, 0, 0);
+                        border: 1px solid rgb(160, 0, 0);
+                        margin-top: 1rem;
+                        // width: 70vw;
+                        font-size: 1rem;
+                        margin-bottom: 1rem;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        background-color: var(--secundaria);
+                        padding: 1rem;
+                        border-radius: 0.5rem;   
+                        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                        // float: left;
+
+                        p {
+                            /* Regras para cortar o texto */
+                            white-space: nowrap;     /* Impede a quebra de linha */
+                            overflow: hidden;        /* Esconde o texto que transborda */
+                            text-overflow: ellipsis; /* Adiciona "..." no final */
+                            margin: 0 1rem 0 0;      /* Limpa margens e adiciona espaço à direita */
+                        }
+
+                        svg {
+                            width: 1.2rem;
+                            height: 1.2rem;
+                            flex-shrink: 0; /* Garante que o ícone não seja espremido */
+                        }
+                    }
+
+                    .deletar-meta:hover{
+                        background-color: rgb(160, 0, 0);
+                        color: var(--secundaria);
+                        border: var(--secundaria) 1px solid;
+                    }
+
+                }
+
+
+
                 p{
                     margin-top: 1rem;
                 }
@@ -300,13 +355,13 @@
                     align-items: center;
                     justify-content: center;
                     // margin-top: 1rem;
-                    padding: 1rem;
+                    padding: 1rem 1rem 0rem 1rem;
                     
 
-                    .salvar, .cancelar{
+                    .salvar, .cancelar, .deletar{
                         background-color: var(--primaria);
                         color: var(--secundaria);  
-                        border-radius: 1rem;
+                        // border-radius: 1rem;
                         border: none;
                         padding: 1rem 2rem;
                         // min-width: 16rem;
@@ -334,6 +389,23 @@
                             // border: var(--primaria) 1px solid;
                         }
                     }
+
+                    .deletar{
+                        margin-left: 1rem;
+                        background-color: rgb(160, 0, 0);
+                        color: var(--secundaria);
+                        border: var(--secundaria) 1px solid;  
+                        flex: 1;
+                        margin: 0rem 1.5rem 0rem 1.5rem;
+
+                        &:hover{
+                            background-color: rgb(120, 0, 0);
+                            color: var(--primaria);
+                            // border: var(--primaria) 1px solid;
+                        }
+                    }
+
+
                 }
             }
         }
