@@ -163,3 +163,66 @@
         }
     }
 }
+
+.modal-delete {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: var(--secundaria);
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 80vw;
+  max-width: 80vw;
+
+}
+
+
+.botoes-deletar{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    // margin-top: 1rem;
+    padding: 1rem 1rem 0rem 1rem;
+
+    .botao-nao, .botao-sim {
+    background-color: var(--primaria);
+    color: var(--secundaria);  
+    // border-radius: 1rem;
+    border: none;
+    padding: 1rem 2rem;
+    // min-width: 16rem;
+    font-size: 1rem;       
+    border-radius: 0.5rem;
+    cursor: pointer;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+
+
+    &:hover{
+        background-color: var(--secundaria);
+        color: var(--primaria);
+        border: var(--primaria) 1px solid;
+    } 
+    }
+
+    .botao-nao{
+        margin-left: 1rem;
+        background-color: var(--secundaria);
+        color: var(--primaria);
+        border: var(--primaria) 1px solid;  
+
+        &:hover{
+            background-color: var(--primaria);
+            color: var(--secundaria);
+            // border: var(--primaria) 1px solid;
+        }
+    }
+
+}
+

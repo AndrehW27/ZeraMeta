@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { UsuarioService } from 'src/app/services/usuario.service';  
+import { Router } from '@angular/router';
 
 // O decorador @Component estava faltando. Este é o principal motivo dos erros.
 @Component({
@@ -7,17 +9,45 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./perfil.component.scss']
 })
 export class PerfilComponent implements OnInit {
+
+  isLoading = false;
+  showModalDelete = false;
+  deletarContaVar = false;
+
+
   // Guarda os dados do usuário em um objeto para facilitar a manipulação
   usuario = {
-    nome: 'André Willian Gorgo de Carvalho',
-    email: 'andre.gorgo@email.com',
-    senha: '********',
-    telefone: '(51) 99999-9999',
-    plano: 'Plus 1+',
-    fotoUrl: 'https://pt.quizur.com/_image?href=https://img.quizur.com/f/img64c609b3f0dc75.65980291.jpg?lastEdited=1690700315&w=600&h=600&f=webp',
-    tema: 'claro',
+    nome: '',
+    email: '',
+    senha: '',
+    telefone: '',
+    plano: '',
+    fotoUrl: '',
+    tema: '',
     notificacoes: true
   };
+
+    // Funções para chamar modal de sucesso/erro podem ser adicionadas aqui
+  showModal = false;
+  modalType: 'success' | 'error' = 'success';
+  modalMessage = '';
+
+  openSuccess(modalType: any, modalMessage: string, showModal: boolean) {
+    this.modalType = modalType;
+    this.modalMessage = modalMessage;
+    this.showModal = showModal;
+  }
+
+  openError(modalType: any, modalMessage: string, showModal: boolean) {
+    this.modalType = modalType;
+    this.modalMessage = modalMessage;
+    this.showModal = showModal;
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
+ // final funções para chamar modal de sucesso/erro podem ser adicionadas aqui
 
 
   // Controla a visibilidade do modal
@@ -37,9 +67,25 @@ export class PerfilComponent implements OnInit {
   // Referência ao elemento de input de arquivo no template
   @ViewChild('fileInput') fileInput!: ElementRef;
 
-  constructor() { }
+  constructor(private usuarioService: UsuarioService, private router: Router) { }
+
+   userId = sessionStorage.getItem('userId');
 
   ngOnInit(): void {
+    console.log('Usuário ID:', this.userId);
+    this.carregarUsuario();
+  }
+
+  carregarUsuario(){
+    this.usuarioService.getUsuarioComDados(this.userId || '').subscribe(data => {
+    console.log("Usuário carregado: " + JSON.stringify(data)); // Exibe mensagem de sucesso    
+    this.usuario.nome = data.usuario.nome;
+    this.usuario.email = data.usuario.email;
+    // this.usuario.senha = data.usuario.senha;
+    this.usuario.telefone = data.usuario.telefone;
+    this.usuario.plano = data.usuario.plano;
+    // this.usuario.fotoUrl = data.usuario.fotoUrl;    
+    });
   }
 
   // Abre o modal e copia o nome atual para o campo de edição
@@ -48,7 +94,7 @@ export class PerfilComponent implements OnInit {
     this.abrirModalInfo = true;
   }
 
-    editarEmail() {
+  editarEmail() {
     this.emailEmEdicao = this.usuario.email;
     this.abrirModalEmail = true;
   }
@@ -86,32 +132,82 @@ export class PerfilComponent implements OnInit {
   }
 
   // Salva o novo nome e fecha o modal
-  salvarAlteracao() {
+  salvarAlteracaoNome() {
     this.usuario.nome = this.nomeEmEdicao;
     this.abrirModalInfo = false;
+    this.usuarioService.editarUsuario(this.usuario, this.userId).subscribe(() => {
+    });    
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+      this.openSuccess('success', 'Nome editado com sucesso!', true);
+    }, 1000);
+    setTimeout(() => {
+      this.closeModal();        
+    }, 2000);
   }
 
     salvarAlteracaoEmail() {
     // Atualiza o e-mail através do serviço para manter o estado centralizado
     this.usuario.email = this.emailEmEdicao;
     this.abrirModalEmail = false;
+    this.usuarioService.editarUsuario(this.usuario, this.userId).subscribe(() => {
+    });    
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+      this.openSuccess('success', 'E-mail editado com sucesso!', true);
+    }, 1000);
+    setTimeout(() => {
+      this.closeModal();        
+    }, 2000);
   }
 
   salvarAlteracaoSenha() {
     // Em um app real, aqui você faria a chamada para o backend.
     // Apenas para demonstração, não estamos salvando a senha real no serviço.
-    this.usuario.senha = '********';
+    this.usuario.senha = this.senhaEmEdicao;;
     this.abrirModalSenha = false;
+    this.usuarioService.editarUsuario(this.usuario, this.userId).subscribe(() => {
+    });    
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+      this.openSuccess('success', 'Senha editada com sucesso!', true);
+    }, 1000);
+    setTimeout(() => {
+      this.closeModal();        
+    }, 2000);
   }
 
   salvarAlteracaoTelefone() {
     this.usuario.telefone = this.telefoneEmEdicao;
     this.abrirModalTelefone = false;
+        this.usuarioService.editarUsuario(this.usuario, this.userId).subscribe(() => {
+    });    
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+      this.openSuccess('success', 'Telefone editado com sucesso!', true);
+    }, 1000);
+    setTimeout(() => {
+      this.closeModal();        
+    }, 2000);
   }
 
   salvarAlteracaoPlano() {
     this.usuario.plano = this.planoEmEdicao;
     this.abrirModalPlano = false;
+    this.usuarioService.editarUsuario(this.usuario, this.userId).subscribe(() => {
+    });    
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+      this.openSuccess('success', 'Plano editado com sucesso!', true);
+    }, 1000);
+    setTimeout(() => {
+      this.closeModal();        
+    }, 2000);
   }
 
   // Apenas fecha o modal, descartando alterações
@@ -134,4 +230,43 @@ export class PerfilComponent implements OnInit {
   fecharModalPlano() {
     this.abrirModalPlano = false;
   }
+
+  deletarConta(){
+    this.showModalDelete = true;
+  }
+
+  confirmarDelete(){
+    this.deletarContaVar = true;
+    this.showModalDelete = false;
+    // const confirmacao = confirm('Tem certeza que deseja deletar esta meta?');
+    if (this.deletarContaVar) {
+      this.usuarioService.deletarUsuario(this.userId || '').subscribe(() => {
+        // this.carregarMetas();  
+        // this.fecharModalDetalhes();
+      });
+
+    this.isLoading = true;
+      setTimeout(() => {
+        this.isLoading = false;
+        this.openSuccess('success', 'Usuário deletado com sucesso!', true);
+      }, 1000);
+
+      setTimeout(() => {
+        this.closeModal();
+        this.router.navigate(['/']);  
+        this.userId = '';
+        sessionStorage.removeItem('userId');
+        // this.carregarMetas(); 
+      }, 2000);
+
+      
+    
+    }
+  }
+
+  cancelarDelete(){
+    this.deletarContaVar = false;
+    this.showModalDelete = false;
+  }
+
 }

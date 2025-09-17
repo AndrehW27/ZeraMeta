@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MetaService } from '../../services/meta.service';
+import { log } from 'console';
 
 @Component({
   selector: 'app-metas',
@@ -7,13 +8,17 @@ import { MetaService } from '../../services/meta.service';
   styleUrls: ['./metas.component.scss']
 })
 export class MetasComponent implements OnInit {
-  metas = [
+
+  showModalDelete = false;
+  deletarMetaVar = false;
+  isLoading = false;
+  metas:any = [];
     // Placeholder for when no metas exist
-    { id: 0, titulo: '', prazo: '', categoria:'', prioridade:'', status:'', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false }
+    // { id: 0, titulo: '', prazo: '', categoria:'', prioridade:'', status:'', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false }
     // ,
     // { id: 1, titulo: 'Perder 12% BF', prazo: '4 meses', categoria:'Saúde', prioridade:'Média', status:'Em andamento', descricao:'', progresso: 50, enviarLembrete: false, criarMiniMetas: false },
     // { id: 2, titulo: 'Fazer App Pós', prazo: '6 meses', categoria:'Educação', prioridade:'Alta', status:'Em andamento', descricao:'', progresso:30, enviarLembrete: false, criarMiniMetas: false }
-  ];
+  // ];
   
   // metasFiltradas: any[] = [];
   // filtroStatusAtual: string = 'Todas';
@@ -25,32 +30,42 @@ export class MetasComponent implements OnInit {
 
   showFundoModal = false;
   showFundoModalDetalhes = false;
-  showModal = false;
+  showModalMeta = false;
   showModalDetalhes = false;
-  novaMeta = { id: 0, titulo: '', prazo: '', categoria:'', prioridade:'', status:'', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
+  novaMeta = { usuario_id: '', id: 0, titulo: '', prazo: '', categoria:'', prioridade:'', status:'', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
   metaSelecionada = { id: 0, titulo: '', prazo: '', categoria:'', prioridade:'', status:'', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
 
   constructor(private metaService: MetaService) { }
 
+  userId = sessionStorage.getItem('userId');
+
   ngOnInit(): void {
+
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1000);
     // this.filtrarPorStatus('Todas');
+   
+    console.log('Usuário ID:', this.userId);
     this.carregarMetas();
   }
 
   carregarMetas() {
-    this.metaService.getMetas().subscribe(data => {
+    this.metaService.listarMetasPorUsuario(this.userId || '123').subscribe(data => {
     this.metas = data;
     console.log('Metas carregadas: ' + JSON.stringify(this.metas)); // Exibe mensagem de sucesso      
     });
   }
 
   abrirModal() {
-    this.novaMeta = { id: Date.now(), titulo: '', prazo: '', categoria:'Outros', prioridade:'Baixa', status:'Novo', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
-    this.showModal = true;
+    this.novaMeta = { usuario_id: '', id: Date.now(), titulo: '', prazo: '', categoria:'Outros', prioridade:'Baixa', status:'Novo', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
+    this.showModalMeta = true;
     this.showFundoModal = true;
   }
 
   abrirModalDetalhes(meta: any) {
+      console.log('Meta antes de editar:', this.metaSelecionada);
     // this.novaMeta = { titulo: '', prazo: '', categoria:'Outros', prioridade:'Média', status:'Novo', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
     this.showModalDetalhes = true;
     this.showFundoModalDetalhes = true;
@@ -58,7 +73,7 @@ export class MetasComponent implements OnInit {
   }
 
   fecharModal() {
-    this.showModal = false;
+    this.showModalMeta = false;
     this.showFundoModal = false;
   }
 
@@ -66,50 +81,110 @@ export class MetasComponent implements OnInit {
     this.showModalDetalhes = false;
     this.showFundoModalDetalhes = false;
   }
+     
+  // Funções para chamar modal de sucesso/erro podem ser adicionadas aqui
+  showModal = false;
+  modalType: 'success' | 'error' = 'success';
+  modalMessage = '';
 
-  // criarMeta() {
-  //   if (this.novaMeta.titulo) {
-  //     // Se a única meta for o placeholder, substitui
-  //     if (this.metas.length === 1 && !this.metas[0].titulo) {
-  //       this.metas = [{ ...this.novaMeta }];
-  //     } else {
-  //       this.metas.push({ ...this.novaMeta });
-  //       // this.novaMeta = { titulo: '', descricao: '' }; // limpa formulário
+  openSuccess(modalType: any, modalMessage: string, showModal: boolean) {
+    this.modalType = modalType;
+    this.modalMessage = modalMessage;
+    this.showModal = showModal;
+  }
 
-  //     }
-  //     // this.filtrarPorStatus(this.filtroStatusAtual); // Re-aplica o filtro para atualizar a view
-  //     this.fecharModal();
-  //   } else {      
-  //     alert('Por favor, preencha Todas os campos.');
-  //   } 
-  // }
+  openError(modalType: any, modalMessage: string, showModal: boolean) {
+    this.modalType = modalType;
+    this.modalMessage = modalMessage;
+    this.showModal = showModal;
+  }
 
-  criarMeta() {
-    if (this.novaMeta.titulo) {
+  closeModal() {
+    this.showModal = false;
+  }
+ // final funções para chamar modal de sucesso/erro podem ser adicionadas aqui
+
+  criarMeta() {    
+    this.novaMeta.usuario_id = this.userId || '';    if (this.novaMeta.titulo) {
       this.metaService.criarMeta(this.novaMeta).subscribe(() => {
-        this.carregarMetas();
+        // this.carregarMetas();
         this.fecharModal();
       });
+
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+      this.openSuccess('success', 'Meta criada com sucesso!', true);
+    }, 1000);
+
+
+    setTimeout(() => {
+      this.closeModal();  
+      this.carregarMetas(); 
+    }, 2000);
+
     } else {      
       alert('Por favor, preencha Todas os campos.');
     } 
   }
 
   editarMeta() {   
+    console.log('Meta antes de editar:', this.metaSelecionada);
     this.metaService.editarMeta(this.metaSelecionada).subscribe(() => {
-      this.carregarMetas();  
-      this.fecharModalDetalhes();
+       
+    this.fecharModalDetalhes();
+
+   this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+      this.openSuccess('success', 'Meta editada com sucesso!', true);
+    }, 1000);
+
+
+    setTimeout(() => {
+      this.closeModal();  
+      this.carregarMetas(); 
+    }, 2000);     
+
     });
   }
 
-  deletarMeta() {
-    const confirmacao = confirm('Tem certeza que deseja deletar esta meta?');
-    if (confirmacao) {
+  confirmarDelete(){
+    this.deletarMetaVar = true;
+    this.showModalDelete = false;
+    console.log('Meta antes de deletar:', this.metaSelecionada);
+    // const confirmacao = confirm('Tem certeza que deseja deletar esta meta?');
+    if (this.deletarMetaVar) {
       this.metaService.deletarMeta(this.metaSelecionada).subscribe(() => {
-        this.carregarMetas();  
+        // this.carregarMetas();  
         this.fecharModalDetalhes();
       });
+
+    this.isLoading = true;
+      setTimeout(() => {
+        this.isLoading = false;
+        this.openSuccess('success', 'Meta deletada com sucesso!', true);
+      }, 1000);
+
+
+      setTimeout(() => {
+        this.closeModal();  
+        this.carregarMetas(); 
+      }, 2000);
+    
     }
+  }
+
+    cancelarDelete(){
+      this.deletarMetaVar = false;
+      this.showModalDelete = false;
+    }
+
+
+  deletarMeta() {
+    this.showModalDelete = true;
+    // this.deletarMetaVar = true;
+    
   }
 
   // filtrarPorStatus(status: string): void {

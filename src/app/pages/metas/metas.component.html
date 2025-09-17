@@ -1,5 +1,7 @@
 <div class="container">
 
+  <app-loading *ngIf="isLoading"></app-loading>
+
   <!-- <section>
     <div class="voltar">
       <svg routerLink="/boas-vindas" width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -80,7 +82,7 @@
 
   <section>
       <div class="fundo-modal" *ngIf="showFundoModal">
-        <div *ngIf="showModal" class="modal">
+        <div *ngIf="showModalMeta" class="modal">
           <div class="modal-content">
             <h2>Criar nova meta</h2>
             <p>Título</p>
@@ -111,13 +113,13 @@
             <textarea class="input" [(ngModel)]="novaMeta.descricao" placeholder="Fazer academia 3x por semana e dieta para perder 3KG+ por mês."></textarea>
             
             <div class="toggles-container">
-              <div class="toggle-item">
+              <!-- <div class="toggle-item">
                 <p>Criar mini-metas?</p>
                 <label class="toggle-switch">
                   <input type="checkbox" [(ngModel)]="novaMeta.criarMiniMetas">
                   <span class="slider round"></span>
                 </label>
-              </div>
+              </div> -->
               <div class="toggle-item">
                 <p>Enviar lembrete?</p>
                 <label class="toggle-switch">
@@ -136,7 +138,7 @@
       </div>
   </section>  
 
-    <section>
+  <section>
       <div class="fundo-modal" *ngIf="showFundoModalDetalhes">
         <div *ngIf="showModalDetalhes" class="modal">
           <div class="modal-content">
@@ -169,13 +171,13 @@
             <textarea class="input" [(ngModel)]="metaSelecionada.descricao" placeholder="Fazer academia 3x por semana e dieta para perder 3KG+ por mês."></textarea>
             
             <div class="toggles-container">
-              <div class="toggle-item">
+              <!-- <div class="toggle-item">
                 <p>Criar mini-metas?</p>
                 <label class="toggle-switch">
                   <input type="checkbox" [(ngModel)]="metaSelecionada.criarMiniMetas">
                   <span class="slider round"></span>
                 </label>
-              </div>
+              </div> -->
               <div class="toggle-item">
                 <p>Enviar lembrete?</p>
                 <label class="toggle-switch">
@@ -202,6 +204,33 @@
           </div>
         </div>
       </div>
-  </section>  
+  </section> 
+
+  <section>
+    <div class="modal-delete" *ngIf="showModalDelete">
+        <div class="modal">
+          <h3>
+            Tem certeza que deseja deletar esta meta?
+          </h3>
+          <!-- <p>{{ message }}</p> -->
+          <div class="botoes-deletar">
+              <button class="botao-sim" (click)="confirmarDelete()">Sim</button>
+              <button class="botao-nao" (click)="cancelarDelete()">Não</button>
+          </div>    
+        </div>
+    </div>
+  </section>
+  
+  <section>
+    <!-- <button (click)="openSuccess()">Show Success</button>
+    <button (click)="openError()">Show Error</button> -->
+
+    <app-modal-message
+      [type]="modalType"
+      [message]="modalMessage"
+      [show]="showModal"
+      (close)="closeModal()">
+    </app-modal-message>
+  </section> 
 
 </div>

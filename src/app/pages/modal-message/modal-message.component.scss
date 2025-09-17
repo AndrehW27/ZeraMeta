@@ -1,0 +1,26 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: var(--secundaria);
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 80vw;
+  max-width: 80vw;
+
+}
+
+.text-green {
+  color: green;
+  margin-bottom: 0.5rem;
+}
+.text-red {
+  color: red;
+  margin-bottom: 0.5rem;
+}

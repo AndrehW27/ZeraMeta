@@ -31,4 +31,10 @@ export class ConfiguracoesComponent implements OnInit {
   fecharModalNoti(): void {
     this.modalNotiAberto = false;
   }
+
+  sair(){
+      // this.userId = '';
+    sessionStorage.removeItem('userId');
+  }
+
 }

@@ -1,0 +1,9 @@
+<div class="modal-backdrop" *ngIf="show">
+  <div class="modal">
+    <h3 [ngClass]="{'text-green': type === 'success', 'text-red': type === 'error'}">
+      {{ type === 'success' ? 'Sucesso' : 'Erro' }}
+    </h3>
+    <p>{{ message }}</p>
+    <!-- <button (click)="onClose()">Close</button> -->
+  </div>
+</div>

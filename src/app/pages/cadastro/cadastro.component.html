@@ -18,13 +18,21 @@
     <div class="formulario">
       <form action="">
         <p>Nome</p>
-        <input class="input" type="name" placeholder="Digite seu nome" required>
+        <input (keyup)="verificaPreenchimentoNome()" class="input" [(ngModel)]="novaUsuario.nome" name="inputName" type="name" placeholder="Digite seu nome">
+        <p *ngIf="!nomeValido" style="margin-top: 0.25rem; color: red;font-size: 0.75rem;">nome inválido (apenas letras, mínimo 2 caracteres).</p>
+
         <p style="margin-top: 1rem;">E-mail</p>
-        <input class="input" type="email" placeholder="Digite seu e-mail" required>
+        <input (keyup)="verificaPreenchimentoEmail()" class="input" [(ngModel)]="novaUsuario.email" name="inputEmail" type="email" placeholder="Digite seu e-mail">
+        <p *ngIf="!emailValido" style="margin-top: 0.25rem; color: red;font-size: 0.75rem;">email inválido (deve conter @ e .com, exemplo@exemplo.com).</p>
+
         <p style="margin-top: 1rem;">Senha</p>
-        <input class="input" type="password" placeholder="Digite sua senha" required>
+        <input (keyup)="verificaPreenchimentoSenha()" class="input" [(ngModel)]="novaUsuario.senha" name="inputSenha" type="password" placeholder="Digite sua senha">
+        <p *ngIf="!senhaValida" style="margin-top: 0.25rem; color: red;font-size: 0.75rem;">senha inválida (mínimo 8 caracteres, 1 caractere especial, usar letras e números).</p>
+        
         <p style="margin-top: 1rem;">Repita a senha</p>
-        <input class="input" type="password" placeholder="Digite novamente a senha" required>
+        <input (keyup)="verificaSeSaoIguais()" class="input" [(ngModel)]="novaUsuario.repeteSenha" name="inputSenhaRepetida" type="password" placeholder="Digite novamente a senha">
+        <p *ngIf="!repeteSenhaValida" style="margin-top: 0.25rem; color: red;font-size: 0.75rem;">senha diferente</p>
+        
       </form>
         
         <div class="div-google-facebook">                    
@@ -41,8 +49,21 @@
   </section>
 
   <section>
-    <button class="botao" routerLink="/metas">
+    <button (click)="cadastrar()" class="botao">
       <p>Cadastrar</p>
     </button>
   </section>
+
+  <section>
+    <!-- <button (click)="openSuccess()">Show Success</button>
+    <button (click)="openError()">Show Error</button> -->
+
+    <app-modal-message
+      [type]="modalType"
+      [message]="modalMessage"
+      [show]="showModal"
+      (close)="closeModal()">
+    </app-modal-message>
+  </section>
+
 </div>

@@ -15,6 +15,8 @@ import { RedefinirSenhaComponent } from './pages/redefinir-senha/redefinir-senha
 import { MiniMetasComponent } from './pages/mini-metas/mini-metas.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { SugestoesIaComponent } from './pages/sugestoes-ia/sugestoes-ia.component';
+import { ModalMessageComponent } from './pages/modal-message/modal-message.component';
+import { LoadingComponent } from './pages/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { SugestoesIaComponent } from './pages/sugestoes-ia/sugestoes-ia.componen
     RedefinirSenhaComponent,
     MiniMetasComponent,
     PerfilComponent,
-    SugestoesIaComponent
+    SugestoesIaComponent,
+    ModalMessageComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
