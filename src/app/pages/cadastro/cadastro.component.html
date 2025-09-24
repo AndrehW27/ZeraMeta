@@ -1,12 +1,12 @@
 <div class="container">
-    <section>
+    <!-- <section>
         <div class="voltar">
         <svg routerLink="/boas-vindas" width="48" height="48" viewBox="0 0 48 48" fill="none">
             <rect width="48" height="48" rx="24" fill=""/>
             <path d="M30 12L18 24L30 36" stroke="#e9e9e9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         </div>
-    </section>
+    </section> -->
 
   <section>
     <div class="login">
@@ -32,6 +32,10 @@
         <p style="margin-top: 1rem;">Repita a senha</p>
         <input (keyup)="verificaSeSaoIguais()" class="input" [(ngModel)]="novaUsuario.repeteSenha" name="inputSenhaRepetida" type="password" placeholder="Digite novamente a senha">
         <p *ngIf="!repeteSenhaValida" style="margin-top: 0.25rem; color: red;font-size: 0.75rem;">senha diferente</p>
+
+        <div>
+          <button class="ir-login" routerLink="/login">Já possuo conta , fazer login</button>
+        </div>
         
       </form>
         

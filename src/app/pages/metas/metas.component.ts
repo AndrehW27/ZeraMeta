@@ -37,9 +37,12 @@ export class MetasComponent implements OnInit {
 
   constructor(private metaService: MetaService) { }
 
-  userId = sessionStorage.getItem('userId');
+  userId = localStorage.getItem('userId');
+  token = localStorage.getItem('token') || '';
 
   ngOnInit(): void {
+
+    this.token = localStorage.getItem('token') || '';
 
     this.isLoading = true;
     setTimeout(() => {
@@ -48,11 +51,12 @@ export class MetasComponent implements OnInit {
     // this.filtrarPorStatus('Todas');
    
     console.log('Usuário ID:', this.userId);
+    console.log('Token:', localStorage.getItem('token'));
     this.carregarMetas();
   }
 
-  carregarMetas() {
-    this.metaService.listarMetasPorUsuario(this.userId || '123').subscribe(data => {
+  carregarMetas() {    
+    this.metaService.listarMetasPorUsuario(this.userId || '123', this.token).subscribe(data => {
     this.metas = data;
     console.log('Metas carregadas: ' + JSON.stringify(this.metas)); // Exibe mensagem de sucesso      
     });
@@ -104,9 +108,12 @@ export class MetasComponent implements OnInit {
   }
  // final funções para chamar modal de sucesso/erro podem ser adicionadas aqui
 
-  criarMeta() {    
-    this.novaMeta.usuario_id = this.userId || '';    if (this.novaMeta.titulo) {
-      this.metaService.criarMeta(this.novaMeta).subscribe(() => {
+  criarMeta() {   
+    console.log('TENTANDO CRIAR META:', this.token);
+     
+    this.novaMeta.usuario_id = this.userId || '';    
+    if (this.novaMeta.titulo) {
+      this.metaService.criarMeta(this.novaMeta, this.token).subscribe(() => {
         // this.carregarMetas();
         this.fecharModal();
       });
@@ -130,7 +137,7 @@ export class MetasComponent implements OnInit {
 
   editarMeta() {   
     console.log('Meta antes de editar:', this.metaSelecionada);
-    this.metaService.editarMeta(this.metaSelecionada).subscribe(() => {
+    this.metaService.editarMeta(this.metaSelecionada, this.token).subscribe(() => {
        
     this.fecharModalDetalhes();
 
@@ -155,7 +162,7 @@ export class MetasComponent implements OnInit {
     console.log('Meta antes de deletar:', this.metaSelecionada);
     // const confirmacao = confirm('Tem certeza que deseja deletar esta meta?');
     if (this.deletarMetaVar) {
-      this.metaService.deletarMeta(this.metaSelecionada).subscribe(() => {
+      this.metaService.deletarMeta(this.metaSelecionada, this.token).subscribe(() => {
         // this.carregarMetas();  
         this.fecharModalDetalhes();
       });
@@ -175,10 +182,10 @@ export class MetasComponent implements OnInit {
     }
   }
 
-    cancelarDelete(){
-      this.deletarMetaVar = false;
-      this.showModalDelete = false;
-    }
+  cancelarDelete(){
+    this.deletarMetaVar = false;
+    this.showModalDelete = false;
+  }
 
 
   deletarMeta() {

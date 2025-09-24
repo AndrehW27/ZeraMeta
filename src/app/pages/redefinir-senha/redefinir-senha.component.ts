@@ -19,7 +19,7 @@ export class RedefinirSenhaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-    enviarEmail() {
+  enviarEmail() {
     this.http.post('http://localhost:3000/forgot-password', { email: this.email })
       .subscribe({
         next: (res: any) => {

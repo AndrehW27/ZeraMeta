@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';  
+import { AuthService } from 'src/app/services/auth.service';  
 import { Router } from '@angular/router';
 
 // O decorador @Component estava faltando. Este é o principal motivo dos erros.
@@ -9,6 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./perfil.component.scss']
 })
 export class PerfilComponent implements OnInit {
+
+  senhaValida = true; 
+  senhaLength = false;
 
   isLoading = false;
   showModalDelete = false;
@@ -27,7 +31,7 @@ export class PerfilComponent implements OnInit {
     notificacoes: true
   };
 
-    // Funções para chamar modal de sucesso/erro podem ser adicionadas aqui
+  // Funções para chamar modal de sucesso/erro podem ser adicionadas aqui
   showModal = false;
   modalType: 'success' | 'error' = 'success';
   modalMessage = '';
@@ -67,11 +71,13 @@ export class PerfilComponent implements OnInit {
   // Referência ao elemento de input de arquivo no template
   @ViewChild('fileInput') fileInput!: ElementRef;
 
-  constructor(private usuarioService: UsuarioService, private router: Router) { }
+  constructor(private usuarioService: UsuarioService, private router: Router, private authService: AuthService) { }
 
-   userId = sessionStorage.getItem('userId');
+   userId = localStorage.getItem('userId');
 
   ngOnInit(): void {
+    console.log('isLoggedIn: '+this.authService.isLoggedIn());
+    
     console.log('Usuário ID:', this.userId);
     this.carregarUsuario();
   }
@@ -164,21 +170,36 @@ export class PerfilComponent implements OnInit {
   }
 
   salvarAlteracaoSenha() {
-    // Em um app real, aqui você faria a chamada para o backend.
-    // Apenas para demonstração, não estamos salvando a senha real no serviço.
-    this.usuario.senha = this.senhaEmEdicao;;
-    this.abrirModalSenha = false;
-    this.usuarioService.editarUsuario(this.usuario, this.userId).subscribe(() => {
-    });    
-    this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = false;
-      this.openSuccess('success', 'Senha editada com sucesso!', true);
-    }, 1000);
-    setTimeout(() => {
-      this.closeModal();        
-    }, 2000);
+    if (this.senhaValida && this.senhaLength) {
+          this.usuario.senha = this.senhaEmEdicao;;
+        this.abrirModalSenha = false;
+        this.authService.redefinirSenha(this.usuario.email, this.usuario.senha).subscribe(() => {
+        });    
+        this.isLoading = true;
+        setTimeout(() => {
+          this.isLoading = false;
+          this.openSuccess('success', 'Senha editada com sucesso!', true);
+        }, 1000);
+        setTimeout(() => {
+          this.closeModal();        
+        }, 2000);
+    }
+
   }
+
+  verificaPreenchimentoSenha(){
+    const senha = this.senhaEmEdicao;
+    // Regex para validar: mínimo 8 caracteres, 1 letra, 1 número e 1 caractere especial.
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
+    if (senha.length === 0) {
+      this.senhaValida = true; // Não mostra erro se o campo estiver vazio
+      this.senhaLength = false; 
+    } else {
+      this.senhaLength = true;
+      this.senhaValida = passwordRegex.test(senha);
+    }
+ }
 
   salvarAlteracaoTelefone() {
     this.usuario.telefone = this.telefoneEmEdicao;
@@ -255,7 +276,7 @@ export class PerfilComponent implements OnInit {
         this.closeModal();
         this.router.navigate(['/']);  
         this.userId = '';
-        sessionStorage.removeItem('userId');
+        localStorage.removeItem('userId');
         // this.carregarMetas(); 
       }, 2000);
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,22 +14,24 @@ export class MetaService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  listarMetasPorUsuario(_id: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/${_id}`);
+  listarMetasPorUsuario(_id: string, token: string): Observable<any[]> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<any[]>(`${this.apiUrl}/${_id}`, { headers });
   }
 
-  criarMeta(meta: { titulo: string}): Observable<any> {
-    return this.http.post<any>(this.apiUrl, meta);
+  criarMeta(meta: { titulo: string}, token: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post<any>(this.apiUrl, meta, { headers });
   }
 
-  editarMeta(meta: any): Observable<any> {
-    // console.log('Editar Meta chamada com:', meta._id);
-    
-    return this.http.put<any>(`${this.apiUrl}/${meta._id}`, meta);
+  editarMeta(meta: any, token: string): Observable<any> {
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put<any>(`${this.apiUrl}/${meta._id}`, meta, { headers });
   }
 
-  deletarMeta(meta: any): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${meta._id}`, meta);
+  deletarMeta(meta: any, token: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete<any>(`${this.apiUrl}/${meta._id}`, { headers });
   }
 }
 
