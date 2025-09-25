@@ -66,7 +66,7 @@ export class PerfilComponent implements OnInit {
   senhaEmEdicao = '';
   telefoneEmEdicao = '';
   planoEmEdicao = '';
-  planoOptions = ['Plus 1+', 'Plus 2+', 'Plus 3+'];
+  planoOptions = ['Explorer', 'Achiever', 'Champion', 'Legend'];
 
   // Referência ao elemento de input de arquivo no template
   @ViewChild('fileInput') fileInput!: ElementRef;

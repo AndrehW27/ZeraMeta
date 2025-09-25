@@ -1,0 +1,39 @@
+<div class="container">
+
+  <section>
+    <div class="voltar">
+      <svg routerLink="/login" width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <rect width="48" height="48" rx="24" fill=""/>
+        <path d="M30 12L18 24L30 36" stroke="#e9e9e9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </section>
+
+<section>
+    <div class="fundo-modal" *ngIf="abrirModalSenha">
+      <div class="modal">
+        <div class="modal-content">
+          <h2 class="alterar-senha-titulo">Alterar senha</h2>
+          <input (keyup)="verificaPreenchimentoSenha()" class="input" type="password" [(ngModel)]="senhaEmEdicao" placeholder="Nova senha">
+           <p *ngIf="!senhaValida" style="margin-bottom: 1.5rem; color: red;font-size: 0.75rem;">senha inválida (mínimo 8 caracteres, 1 caractere especial, usar letras e números).</p>
+           <p *ngIf="isError" style="margin-bottom: 1.5rem; color: red;font-size: 0.75rem;">{{mensagem}}</p>
+
+          <div class="botoes">
+            <button class="salvar" (click)="salvarAlteracaoSenha()">Salvar</button>
+            <button class="cancelar" (click)="fecharModalSenha()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <app-modal-message
+      [type]="modalType"
+      [message]="modalMessage"
+      [show]="showModal"
+      (close)="closeModal()">
+    </app-modal-message>
+  </section>
+
+</div>

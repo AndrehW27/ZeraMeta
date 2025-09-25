@@ -11,6 +11,7 @@ import { MiniMetasComponent } from './pages/mini-metas/mini-metas.component';
 import { RedefinirSenhaComponent } from './pages/redefinir-senha/redefinir-senha.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { SugestoesIaComponent } from './pages/sugestoes-ia/sugestoes-ia.component';
+import { SenhaPorEmailComponent } from './pages/senha-por-email/senha-por-email.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'boas-vindas', pathMatch: 'full' },
@@ -22,12 +23,15 @@ const routes: Routes = [
   { path: 'cadastro', component: CadastroComponent },
   { path: 'mini-metas', component: MiniMetasComponent },
   { path: 'redefinir-senha', component: RedefinirSenhaComponent },
+  { path: 'senha-por-email', component: SenhaPorEmailComponent },
   { path: 'perfil', component: PerfilComponent },
   { path: 'sugestoes-ia', component: SugestoesIaComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  declarations: [
+  ]
 })
 export class AppRoutingModule { }

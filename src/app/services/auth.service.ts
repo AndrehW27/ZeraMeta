@@ -31,6 +31,11 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/redefinir-senha`, { email, novaSenha });
   }
 
+    // Redefinir Senha por email
+  redefinirSenhaPorEmail(email: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/redefinir-senha-email`, { email });
+  }
+
   // Logout
   logout(): void {
     localStorage.removeItem('token');
