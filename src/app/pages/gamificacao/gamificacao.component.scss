@@ -1,6 +1,6 @@
 
     .conquistas {
-        margin-top: 6rem;
+        margin-top: 4rem;
         margin-bottom: 2rem;
         font-size: 1.5rem;
 
@@ -24,7 +24,7 @@
 
 
    .nivel{
-        // position: fixed;
+    // position: fixed;
     // bottom: 2rem;
     // width: 100%;
     display: flex;
@@ -60,7 +60,31 @@
     // margin-bottom: 1rem;
     border-bottom: 1px solid var(--primaria);
     background-color: var(--secundaria);
-    padding: 0.5rem;
-    border-radius: 1rem;
+    padding: 0.75rem;
+    border-radius: 2rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
    }
+
+   .legenda{
+        border-bottom: 1px solid var(--primaria);
+        background-color: var(--secundaria);
+        padding: 0.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+        padding: 1rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+   .comprar-xp{
+    // margin-bottom: 1rem;
+    border-bottom: 1px solid var(--secundaria);
+    background-color: var(--primaria);
+    color: var(--secundaria);
+    padding: 0.75rem;
+    border-radius: 2rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+   }
+
+
+  

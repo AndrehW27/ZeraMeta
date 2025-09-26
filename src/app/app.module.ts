@@ -18,6 +18,7 @@ import { SugestoesIaComponent } from './pages/sugestoes-ia/sugestoes-ia.componen
 import { ModalMessageComponent } from './pages/modal-message/modal-message.component';
 import { LoadingComponent } from './pages/loading/loading.component';
 import { SenhaPorEmailComponent } from './pages/senha-por-email/senha-por-email.component';
+import { MenuComponent } from './pages/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SenhaPorEmailComponent } from './pages/senha-por-email/senha-por-email.
     SugestoesIaComponent,
     ModalMessageComponent,
     LoadingComponent,
-    SenhaPorEmailComponent
+    SenhaPorEmailComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

@@ -102,6 +102,7 @@ verificaPreenchimentoEmail(){
       console.log('response: ', response);
     
       localStorage.setItem('userId', response.user.id);
+      localStorage.setItem('userName', response.user.nome); 
       localStorage.setItem('token', response.token); 
     
       console.log('Usuário cadastrado com ID:', localStorage.getItem('userId'));

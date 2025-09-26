@@ -10,3 +10,4 @@ Ajustar responsividade para desktop
 Integrar notificaçõs com wpp
 Implementar logica de conquistas baseado no avanço das metas
 Melhorar sugestões da IA, e/ou Implementar de outra forma
+Inlcuir função compartilhar nas conquistas

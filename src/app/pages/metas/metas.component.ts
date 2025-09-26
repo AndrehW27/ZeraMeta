@@ -9,22 +9,14 @@ import { log } from 'console';
 })
 export class MetasComponent implements OnInit {
 
+  itensCarregados = false;
+
   showModalDelete = false;
   deletarMetaVar = false;
-  isLoading = false;
+  // isLoading = false;
   metas:any = [];
-    // Placeholder for when no metas exist
-    // { id: 0, titulo: '', prazo: '', categoria:'', prioridade:'', status:'', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false }
-    // ,
-    // { id: 1, titulo: 'Perder 12% BF', prazo: '4 meses', categoria:'Saúde', prioridade:'Média', status:'Em andamento', descricao:'', progresso: 50, enviarLembrete: false, criarMiniMetas: false },
-    // { id: 2, titulo: 'Fazer App Pós', prazo: '6 meses', categoria:'Educação', prioridade:'Alta', status:'Em andamento', descricao:'', progresso:30, enviarLembrete: false, criarMiniMetas: false }
-  // ];
-  
-  // metasFiltradas: any[] = [];
-  // filtroStatusAtual: string = 'Todas';
 
   statusOptions = ['Novo', 'Em andamento', 'Pausado', 'Concluído'];
-  // statusFiltroOptions = ['Todas', ...this.statusOptions];
   categoriaOptions = ["Outros", "Saúde", "Finanças", "Educação", "Pessoal", "Relacionamento", "Profissional", "Lazer", "Viagem", "Hobbie"];
   prioridadeOptions = ['Baixa', 'Média', 'Alta'];
 
@@ -44,10 +36,7 @@ export class MetasComponent implements OnInit {
 
     this.token = localStorage.getItem('token') || '';
 
-    this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 1000);
+  
     // this.filtrarPorStatus('Todas');
    
     console.log('Usuário ID:', this.userId);
@@ -55,10 +44,14 @@ export class MetasComponent implements OnInit {
     this.carregarMetas();
   }
 
-  carregarMetas() {    
+  carregarMetas() {  
+    this.itensCarregados = false;  
     this.metaService.listarMetasPorUsuario(this.userId || '123', this.token).subscribe(data => {
     this.metas = data;
-    console.log('Metas carregadas: ' + JSON.stringify(this.metas)); // Exibe mensagem de sucesso      
+    console.log('Metas carregadas: ' + JSON.stringify(this.metas));
+      setTimeout(() => {
+        this.itensCarregados = true;
+        }, 1000); // Exibe mensagem de sucesso      
     });
   }
 
@@ -118,16 +111,11 @@ export class MetasComponent implements OnInit {
         this.fecharModal();
       });
 
-    this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = false;
-      this.openSuccess('success', 'Meta criada com sucesso!', true);
-    }, 1000);
-
+    this.openSuccess('success', 'Meta criada com sucesso!', true);
 
     setTimeout(() => {
-      this.closeModal();  
-      this.carregarMetas(); 
+      this.closeModal(); 
+      this.carregarMetas();  
     }, 2000);
 
     } else {      
@@ -141,17 +129,12 @@ export class MetasComponent implements OnInit {
        
     this.fecharModalDetalhes();
 
-   this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = false;
-      this.openSuccess('success', 'Meta editada com sucesso!', true);
-    }, 1000);
-
+    this.openSuccess('success', 'Meta editada com sucesso!', true);
 
     setTimeout(() => {
-      this.closeModal();  
-      this.carregarMetas(); 
-    }, 2000);     
+      this.closeModal(); 
+      this.carregarMetas();  
+    }, 2000);   
 
     });
   }
@@ -167,17 +150,12 @@ export class MetasComponent implements OnInit {
         this.fecharModalDetalhes();
       });
 
-    this.isLoading = true;
-      setTimeout(() => {
-        this.isLoading = false;
-        this.openSuccess('success', 'Meta deletada com sucesso!', true);
-      }, 1000);
+    this.openSuccess('success', 'Meta deletada com sucesso!', true);
 
-
-      setTimeout(() => {
-        this.closeModal();  
-        this.carregarMetas(); 
-      }, 2000);
+    setTimeout(() => {
+      this.closeModal(); 
+      this.carregarMetas();  
+    }, 2000);
     
     }
   }
