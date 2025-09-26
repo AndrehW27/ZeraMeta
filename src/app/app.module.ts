@@ -17,6 +17,8 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { SugestoesIaComponent } from './pages/sugestoes-ia/sugestoes-ia.component';
 import { ModalMessageComponent } from './pages/modal-message/modal-message.component';
 import { LoadingComponent } from './pages/loading/loading.component';
+import { SenhaPorEmailComponent } from './pages/senha-por-email/senha-por-email.component';
+import { MenuComponent } from './pages/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { LoadingComponent } from './pages/loading/loading.component';
     PerfilComponent,
     SugestoesIaComponent,
     ModalMessageComponent,
-    LoadingComponent
+    LoadingComponent,
+    SenhaPorEmailComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

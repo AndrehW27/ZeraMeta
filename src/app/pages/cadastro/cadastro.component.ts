@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';  
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,12 +10,14 @@ import { Router } from '@angular/router';
 })
 export class CadastroComponent implements OnInit {
 
+  constructor(private usuarioService: UsuarioService, private router: Router, private authService: AuthService) { }
+
+
   ngOnInit(): void {
   }
 
   novaUsuario = { nome: '', email: '', senha: '', repeteSenha: ''};
 
-  constructor(private usuarioService: UsuarioService, private router: Router) { }
 
     // Funções para chamar modal de sucesso/erro podem ser adicionadas aqui
   showModal = false;
@@ -95,12 +98,15 @@ verificaPreenchimentoEmail(){
 
   cadastrar(){
     if(this.senhaValida && this.repeteSenhaValida){
-    this.usuarioService.criarUsuario(this.novaUsuario).subscribe((response: any) => {
-
-      // salvar id criado
-      sessionStorage.setItem('userId', response._id);
-      console.log('Usuário cadastrado com ID:', response._id);
-      console.log('Usuário cadastrado com ID:', response);      
+    this.authService.register(this.novaUsuario.nome, this.novaUsuario.email,this.novaUsuario.senha).subscribe((response: any) => {
+      console.log('response: ', response);
+    
+      localStorage.setItem('userId', response.user.id);
+      localStorage.setItem('userName', response.user.nome); 
+      localStorage.setItem('token', response.token); 
+    
+      console.log('Usuário cadastrado com ID:', localStorage.getItem('userId'));
+      console.log('Token:', localStorage.getItem('token'));      
 
       this.openSuccess();
       setTimeout(() => {

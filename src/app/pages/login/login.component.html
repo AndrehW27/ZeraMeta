@@ -26,9 +26,9 @@
     <div class="formulario">
       <form action="">
         <p>E-mail</p>
-        <input class="input" type="email" placeholder="Digite seu e-mail" required>
+        <input [(ngModel)]="email" name="email" class="input" type="email" placeholder="Digite seu e-mail" required>
         <p style="margin-top: 1rem;">Senha</p>
-        <input class="input" type="password" placeholder="Digite sua senha" required>
+        <input [(ngModel)]="senha" name="senha" (keyup.enter)="handleLogin(email, senha)" class="input" type="password" placeholder="Digite sua senha" required>
       </form>
       <div>
         <button class="redefinir-senha" routerLink="/redefinir-senha">Esqueci minha senha</button>
@@ -51,8 +51,21 @@
   </section>
 
   <section>
-    <button class="botao" routerLink="/metas">
+    <button (click)="handleLogin(email, senha)" class="botao">
       <p>Entrar</p>
     </button>
   </section>
+
+  <section>
+    <!-- <button (click)="openSuccess()">Show Success</button>
+    <button (click)="openError()">Show Error</button> -->
+
+    <app-modal-message
+      [type]="modalType"
+      [message]="modalMessage"
+      [show]="showModal"
+      (close)="closeModal()">
+    </app-modal-message>
+  </section> 
+
 </div>

@@ -1,4 +1,13 @@
-Adicionar tela de deletar conta
-Adicionar loading ao abri o app e talvez para abrir as metas
-Adicionar tela personalizada de 404
-Incluir div cinz piscante (carregamento de dados) na tela de metas
+talvez - Adicionar tela personalizada de 404
+talvez - Incluir div cinz piscante (carregamento de dados) na tela de metas
+
+IMPORTANTE - Fazer reset de senha por email
+Colocar foto de perfil no banco de dados e editar foto de perfil
+Colocar em algum lugar legenda dos beneficios dos planos
+Integrar pagamento
+Mudar tema
+Ajustar responsividade para desktop
+Integrar notificaçõs com wpp
+Implementar logica de conquistas baseado no avanço das metas
+Melhorar sugestões da IA, e/ou Implementar de outra forma
+Inlcuir função compartilhar nas conquistas
