@@ -68,9 +68,11 @@ export class ConfiguracoesComponent implements OnInit {
     this.sairContaVar = true;
     if (this.sairContaVar) {
       this.router.navigate(['/']); 
+      localStorage.removeItem('userName');
       localStorage.removeItem('userId');
       localStorage.removeItem('token');
       console.log('Usuário deslogado, userId e token removidos do localStorage');
+      console.log('userName: ', localStorage.getItem('userName'));
       console.log('userId: ', localStorage.getItem('userId'));
       console.log('token: ', localStorage.getItem('token'));
     }
