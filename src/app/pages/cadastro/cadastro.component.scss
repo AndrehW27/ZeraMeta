@@ -4,7 +4,7 @@
 
 .formulario{
     position: fixed;
-    bottom: 7rem;
+    bottom: 2rem;
     margin-top: 2rem;
     width: 80vw;
     padding: 1.5rem;
@@ -75,11 +75,8 @@
 }
 
 .botao{
-     position: fixed;
-    bottom: 2rem;
-        min-width: 12rem;
-
-    // margin-top: 3rem;
+    width: 100%;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
