@@ -49,8 +49,6 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userName', data.user.nome); 
         localStorage.setItem('token', data.token); 
         if (localStorage.getItem('token')) {
-      
-          // this.showModal = false;
 
           setTimeout(() => {
             this.openSuccess('success', 'Login realizado com sucesso!', true);  
@@ -61,6 +59,7 @@ export class LoginComponent implements OnInit {
             this.closeModal();    
             this.router.navigate(['/menu']); 
           }, 2000);
+          
         }
       },
       error => {

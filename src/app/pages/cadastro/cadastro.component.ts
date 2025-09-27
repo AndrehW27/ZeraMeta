@@ -16,6 +16,8 @@ export class CadastroComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isLoading = false;
+
   novaUsuario = { nome: '', email: '', senha: '', repeteSenha: ''};
 
 
@@ -97,6 +99,9 @@ verificaPreenchimentoEmail(){
 
 
   cadastrar(){
+    this.isLoading = true;  
+    console.log(this.senhaValida, this.repeteSenhaValida);
+
     if(this.senhaValida && this.repeteSenhaValida){
     this.authService.register(this.novaUsuario.nome, this.novaUsuario.email,this.novaUsuario.senha).subscribe((response: any) => {
       console.log('response: ', response);
@@ -106,27 +111,49 @@ verificaPreenchimentoEmail(){
       localStorage.setItem('token', response.token); 
     
       console.log('Usuário cadastrado com ID:', localStorage.getItem('userId'));
-      console.log('Token:', localStorage.getItem('token'));      
+      console.log('Token:', localStorage.getItem('token'));          
 
-      this.openSuccess();
-      setTimeout(() => {
-        this.closeModal();
-        this.router.navigate(['/metas']);
-      }, 1000);
+          setTimeout(() => {
+            this.isLoading = false;               
+            this.openSuccess;  
+          }, 1000); 
+          
+          setTimeout(() => {
+            this.closeModal();    
+            this.router.navigate(['/menu']); 
+          }, 2000);
+
       this.novaUsuario = { nome: '', email: '', senha: '', repeteSenha: ''}; // limpa formulário
 
     }, error => {
-      console.error('Erro ao cadastrar usuário:', error);
-      this.openError('error', 'Erro ao cadastrar usuário: '+JSON.stringify(error.error), true);
+      console.error('Erro ao cadastrar usuário:', error);     
+      
         setTimeout(() => {
-        this.closeModal();
-      }, 1000);
+          this.isLoading = false;               
+          this.openError('error', 'Erro ao cadastrar usuário: '+JSON.stringify(error.error), true);  
+        }, 1000); 
+        
+        setTimeout(() => {
+          this.closeModal();    
+        }, 2000);
+
       });
+
     }else{
-      this.openError('error', 'Erro ao cadastrar usuário: Verifique as senhas', true);
+      
       setTimeout(() => {
-        this.closeModal();
-      }, 1000);
+        this.openError('error', 'Erro ao cadastrar usuário: Verifique as senhas', true);  
+        this.isLoading = false;   
+      }, 1000); 
+      
+      setTimeout(() => {
+        this.closeModal();    
+      }, 2000); 
+
+      // setTimeout(() => {
+      //   this.isLoading = false;    
+      // }, 1000);   
+
     }
   } 
 }
