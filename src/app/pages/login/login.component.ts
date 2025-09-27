@@ -49,17 +49,18 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userName', data.user.nome); 
         localStorage.setItem('token', data.token); 
         if (localStorage.getItem('token')) {
-          this.isLoading = false;
-          this.showModal = false;
+      
+          // this.showModal = false;
 
           setTimeout(() => {
-          this.openSuccess('success', 'Login realizado com sucesso!', true);  
+            this.openSuccess('success', 'Login realizado com sucesso!', true);  
+            this.isLoading = false;    
           }, 1000); 
           
           setTimeout(() => {
             this.closeModal();    
             this.router.navigate(['/menu']); 
-          }, 2000);        
+          }, 2000);
         }
       },
       error => {
