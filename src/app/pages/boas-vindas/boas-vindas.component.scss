@@ -1,5 +1,6 @@
 .boas-vindas{
-    margin-top: 10rem;
+    position: fixed;
+    top: 6rem;
     margin-bottom: 2rem;
     font-size: 1.5rem;
 
@@ -14,9 +15,11 @@
 }
 
 .descricao{
+    position: fixed;
+    bottom: 14rem;
     max-width: 350px;
     // margin: 0 auto;
-    margin-top: 10rem;
+    margin-top: 3rem;
     margin-bottom: 2rem;
     text-align: center;
     font-size: 1.2rem;

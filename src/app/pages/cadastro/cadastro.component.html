@@ -8,14 +8,15 @@
         </div>
     </section> -->
 
-  <section>
+  <!-- <section>
     <div class="login">
       <h1>Criar conta</h1>
     </div>
-  </section>
+  </section> -->
 
   <section>
     <div class="formulario">
+      <h1 class="login">Criar conta</h1>
       <form action="">
         <p>Nome</p>
         <input (keyup)="verificaPreenchimentoNome()" class="input" [(ngModel)]="novaUsuario.nome" name="inputName" type="name" placeholder="Digite seu nome">
@@ -34,7 +35,7 @@
         <p *ngIf="!repeteSenhaValida" style="margin-top: 0.25rem; color: red;font-size: 0.75rem;">senha diferente</p>
 
         <div>
-          <button class="ir-login" routerLink="/login">Já possuo conta , fazer login</button>
+          <button class="ir-login" routerLink="/login">Já possuo conta? <span style="font-weight: bold;">Logue aqui</span></button>
         </div>
         
       </form>

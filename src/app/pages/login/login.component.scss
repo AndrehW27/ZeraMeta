@@ -1,38 +1,48 @@
 .login{
-    margin-top: 8rem;
+    margin-bottom: 1rem;
      h1{
         font-size: 2.5rem;
     }   
 }
 
 .formulario{
+    position: fixed;
+    bottom: 9rem;
     margin-top: 2rem;
-    width: 350px;
+    width: 80vw;
     padding: 1.5rem;
-    background-color: var(--secundaria);
+    background-color: rgba(255, 255, 255, 0.25);
+
     border-radius: 1rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.75);
+        // border-bottom: 1px solid var(--secundaria);
+
 
     // border: 1px solid var(--primaria);
 
     .input{
         width: 100%;
-        padding: 1rem;
-        margin-top: 0.5rem;
+        padding: 0.5rem;
+        margin-top: 0.25rem;
         // margin-bottom: 1rem;
-        border: none;
+        border-bottom: 1px solid var(--secundaria);
+
         // border: none;
-        border-radius: 0.5rem;
+        border-radius: 1rem;
         box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.5);
+        background-color: transparent;
         
     }
 
     .redefinir-senha{
        border: none;
        color: var(--primaria);
-        text-decoration: underline;
+        // text-decoration: underline;
         cursor: pointer; 
         margin-top: 0.75rem;
+        background-color: transparent;
+        font-weight: bold;
+
     }
 
     .div-google-facebook{
@@ -41,6 +51,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        
 
         .icone-google, .icone-facebook{
             width: 1.5rem;
@@ -61,6 +72,14 @@
             font-size: 1rem;
             color: var(--primaria);
             // background-color: white;
+                background-color: rgba(255, 255, 255, 0.25);
+
+            box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.5);
+
+            // &:hover{
+            //     background-color: var(--primaria);
+            //     color: var(--secundaria);
+            // }
         }
 
     }
@@ -68,7 +87,9 @@
 }
 
 .botao{
-    margin-top: 3rem;
+     position: fixed;
+    bottom: 3rem;
+    // margin-top: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,14 +97,14 @@
     background-color: var(--primaria);
     color: var(--secundaria);  
     border-radius: 1rem;
-    border: none;
+    // border-bottom: 1px solid var(--secundaria);
     padding: 1rem;
     min-width: 16rem;
     font-size: 1.5rem;       
     border-radius: 0.5rem;
     cursor: pointer;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+    color: var(--secundaria);
 
     &:hover{
         background-color: var(--secundaria);
