@@ -11,8 +11,10 @@ export class LoginComponent implements OnInit {
 
   constructor(private AuthService: AuthService, private router: Router) { }
 
-    email = "";
-    senha = "";
+  isLoading = false;
+
+  email = "";
+  senha = "";
 
   // Funções para chamar modal de sucesso/erro podem ser adicionadas aqui
   showModal = false;
@@ -40,14 +42,20 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin(email: any, senha: any){
+    this.isLoading = true;
     this.AuthService.login(email, senha).subscribe(
       data => {
         localStorage.setItem('userId', data.user.id); 
         localStorage.setItem('userName', data.user.nome); 
         localStorage.setItem('token', data.token); 
         if (localStorage.getItem('token')) {
+          this.isLoading = false;
           this.showModal = false;
-          this.openSuccess('success', 'Login realizado com sucesso!', true);
+
+          setTimeout(() => {
+          this.openSuccess('success', 'Login realizado com sucesso!', true);  
+          }, 1000); 
+          
           setTimeout(() => {
             this.closeModal();    
             this.router.navigate(['/menu']); 
@@ -58,19 +66,31 @@ export class LoginComponent implements OnInit {
         // Aqui você captura e loga o erro HTTP 400
         if (error.status === 400) {
           console.error('Erro 400 - Bad Request:', error);
-          this.openError('error', 'E-mail ou senha inválidos!', true);
+          
+          setTimeout(() => {
+          this.openError('error', 'E-mail ou senha inválidos!', true);   
+          }, 1000); 
+          
           setTimeout(() => {
           this.closeModal();    
           }, 2000);   
         } else {
           console.error('Erro durante o login:', error);
-          this.openError('error', 'Erro inesperado ao fazer login.', true);
+
+          setTimeout(() => {
+          this.openError('error', 'Erro inesperado ao fazer login.', true);  
+          }, 1000); 
+          
           setTimeout(() => {
           this.closeModal();    
           }, 2000); 
         }
+        setTimeout(() => {
+          this.isLoading = false;    
+        }, 1000);   
       }
     );
+    // this.isLoading = false;
   }
 
 }
