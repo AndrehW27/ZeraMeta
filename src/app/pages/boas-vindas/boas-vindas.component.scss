@@ -34,12 +34,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;  
-    background-color: transparent;
-    border: 1px solid var(--secundaria);
+    background-color: rgba(255, 255, 255, 0.25);
+    // border: 1px solid var(--secundaria);
     // width: 300px;
     border-radius: 1rem;
     padding: 1.5rem;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
 
     
     .botao-entrar, .botao-conta{   
@@ -47,7 +48,7 @@
         min-width: 16rem;
         padding: 1rem;
         font-size: 1.5rem;       
-        border: none;
+        // border: none;
         border-radius: 0.5rem;
         cursor: pointer;
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
@@ -58,6 +59,8 @@
         background-color: var(--primaria);
         color: var(--secundaria);   
         margin-bottom: 1rem;  
+            // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+
    
         &:hover{
             background-color: var(--secundaria);
