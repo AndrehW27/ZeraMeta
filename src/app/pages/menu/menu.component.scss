@@ -299,15 +299,15 @@
 
         .nova-meta{
             margin-top: 1rem;
-            border: 1px solid var(--primaria);
+            // border: 1px solid var(--secundaria);
             // background-color: rgba(255, 255, 255, 0.25);
-            color: var(--primaria);
+            color: var(--secundaria);
             font-weight: bold;
             padding: 1rem;
-            border-radius: 1rem;
+            border-radius: 0.5rem;
             cursor: pointer;
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-            background-color: rgba(255, 255, 255, 0.25);
+            background-color: var(--primaria);
 
         }
 
