@@ -12,7 +12,8 @@
     
 
         <div [ngClass]="itensCarregados ? 'nome' : 'carregandoNome'">
-            <h2 *ngIf="itensCarregados">Bem-vindo de volta, {{firstName}}!</h2>
+            <h2 *ngIf="itensCarregados">Bem-vindo de volta,</h2>
+            <h2 *ngIf="itensCarregados">{{firstName}}!</h2>
         </div>    
         
         <div [ngClass]="itensCarregados ? 'foto-perfil' : 'carregandoFoto'" routerLink="/perfil">
@@ -29,7 +30,7 @@
             </div>
             <div [ngClass]="itensCarregados ? 'card' : 'carregandoItensCard'" routerLink="/metas">
                 <h2 *ngIf="itensCarregados">Metas</h2>
-                <p *ngIf="itensCarregados">{{qtdMetas}} {{metas}}</p>       
+                <p *ngIf="itensCarregados">{{qtdMetas}} {{criadas}}</p>       
             </div>
         </div>
 
@@ -44,7 +45,7 @@
 
         <div class="progress-circle">
             <div class="progress-circle__content">
-                <div class="progress-circle__percentage">75%</div>
+                <div class="progress-circle__percentage">{{perCompleted}}%</div>
                 <!-- <div class="progress-circle__label">Completed</div> -->
             </div>
             <svg class="progress-circle__svg" viewBox="0 0 100 100">

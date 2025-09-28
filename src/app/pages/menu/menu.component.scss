@@ -48,9 +48,8 @@
         // }
 
         .nome{
-            margin-bottom: 2rem;
-            width: 70%;
-            height: 50px;
+            margin-bottom: 1rem;
+            // height: 50px;
         }
 
         .carregandoNome{
@@ -302,11 +301,14 @@
             margin-top: 1rem;
             border: 1px solid var(--primaria);
             // background-color: rgba(255, 255, 255, 0.25);
-            color: var(--secundaria);
+            color: var(--primaria);
+            font-weight: bold;
             padding: 1rem;
             border-radius: 1rem;
             cursor: pointer;
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+            background-color: rgba(255, 255, 255, 0.25);
+
         }
 
         .progress-circle {
@@ -347,7 +349,7 @@
             &__percentage {
                 font-size: 1rem;
                 font-weight: bold;
-                color: #333;
+                color: var(--secundaria);
                 line-height: 1;
             }
             

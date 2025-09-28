@@ -10,10 +10,11 @@ export class MenuComponent implements OnInit {
 
   constructor(private metaService: MetaService) { }
 
+  perCompleted = 0;
   usuarioLogado = '';
   firstName = '';
   qtdMetas = 0;
-  metas = 'metas';
+  criadas = 'criadas';
   itensCarregados = false;
 
   ngOnInit(): void {
@@ -37,8 +38,10 @@ export class MenuComponent implements OnInit {
       console.log('Metas carregadas: ' + JSON.stringify(data)); 
       this.qtdMetas = data.length; 
 
+      this.perCompleted = data.filter(meta => meta.status === 'Concluído').length / data.length * 100 || 0;
+
       if(this.qtdMetas == 1){
-        this.metas = 'meta';
+        this.criadas = 'criada';
       } 
     });
   }
