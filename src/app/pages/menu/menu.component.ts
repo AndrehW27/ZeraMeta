@@ -11,6 +11,7 @@ export class MenuComponent implements OnInit {
   constructor(private metaService: MetaService) { }
 
   usuarioLogado = '';
+  firstName = '';
   qtdMetas = 0;
   metas = 'metas';
   itensCarregados = false;
@@ -20,7 +21,8 @@ export class MenuComponent implements OnInit {
     console.log('userId: '+localStorage.getItem('userId'));
     console.log('token: '+localStorage.getItem('token'));
     this.usuarioLogado = localStorage.getItem('userName') || '';
-
+    this.usuarioLogado = 'André Willian Gorgo'
+    this.firstName = this.usuarioLogado.split(" ")[0];
     this.carregarMetas();
 
     

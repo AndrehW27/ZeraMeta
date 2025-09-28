@@ -10,11 +10,16 @@
   <section class="card-container">
 
      <div class="card-box">
-        <div class="card-vertical">
-             <div [ngClass]="itensCarregados ? 'bem-vindo' : 'carregandoItensUsuario'">
-                <h2 *ngIf="itensCarregados">Bem-vindo, {{usuarioLogado}}!</h2>       
-            </div>
+
+        <div [ngClass]="itensCarregados ? 'nome' : 'carregandoNome'">
+            <h2 *ngIf="itensCarregados">Bem-vindo de volta, {{firstName}}!</h2>
+        </div>    
+        
+        <div [ngClass]="itensCarregados ? 'foto-perfil' : 'carregandoFoto'" routerLink="/perfil">
+            <!-- <svg  class="edicao-foto" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="#e9e9e9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg> -->
         </div>
+        <h4 style="margin-bottom: 1rem;" *ngIf="itensCarregados">Pronto para zerar metas?</h4>  
+
        
         <div class="card-vertical">
             <div [ngClass]="itensCarregados ? 'card' : 'carregandoItensCard'" routerLink="/gamificacao">
@@ -28,15 +33,37 @@
             </div>
         </div>
 
-        <div class="card-vertical">
-            <!-- <div [ngClass]="itensCarregados ? 'card' : 'carregandoItens'" (click)="emBreve()">
-                <h2>Rotinas</h2>
-                <p>3 rotinas criadas</p>       
-            </div> -->
+        <!-- <div class="card-vertical">
+
             <div [ngClass]="itensCarregados ? 'card' : 'carregandoItensCard'" routerLink="/sugestoes-ia">
                 <h2 *ngIf="itensCarregados">IA</h2>
                 <p *ngIf="itensCarregados">crie</p>       
             </div>
+        </div> -->
+        <h3 style="margin-top: 1rem;">Metas completadas</h3>
+
+        <div class="progress-circle">
+            <div class="progress-circle__content">
+                <div class="progress-circle__percentage">75%</div>
+                <!-- <div class="progress-circle__label">Completed</div> -->
+            </div>
+            <svg class="progress-circle__svg" viewBox="0 0 100 100">
+                <circle class="progress-circle__bg" cx="50" cy="50" r="45"></circle>
+                <circle class="progress-circle__fill" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="70.75"></circle>
+            </svg>
+        </div>
+        
+
+        <!-- <div class="caixa-metas">
+            <div class="meta1">meta1</div>
+            <div class="meta2">meta2</div>
+            <div class="meta1">meta1</div>
+            <div class="meta2">meta2</div>
+            <div class="meta1">meta1</div>
+            <div class="meta2">meta2</div>
+        </div> -->
+        <div routerLink="/metas" class="nova-meta">
+            + Nova Meta
         </div>
         
     </div>  
