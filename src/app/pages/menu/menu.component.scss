@@ -1,24 +1,13 @@
 .card-container{
-margin-top: 4rem;
-// display: flex;
-// flex-direction: column;
-// align-items: center;
-// justify-content: center;
-// height: 95vh;   
-    
-    .card-box{
+
         position: fixed;
-        top: 5rem;
+        top: 4rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: start;  
-        background-color: rgba(255, 255, 255, 0.25);
-        border: 1px solid var(--secundaria);
-        border-radius: 1rem;
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-        padding: 1.5rem;
-        width: 80vw;
+        justify-content: center; 
+ 
+ 
 
         .foto-perfil{
             position: relative; // Necessário para posicionar o ícone de edição
@@ -60,7 +49,7 @@ margin-top: 4rem;
 
         .nome{
             margin-bottom: 2rem;
-            width: 95%;
+            width: 70%;
             height: 50px;
         }
 
@@ -176,7 +165,7 @@ margin-top: 4rem;
 
         .card-vertical{
             display: flex;
-            justify-content: start;
+            justify-content: center;
             width: 100%;
             // width: 70vw;
 
@@ -371,7 +360,7 @@ margin-top: 4rem;
 
     
 
-    }
+    
 
 }
 
