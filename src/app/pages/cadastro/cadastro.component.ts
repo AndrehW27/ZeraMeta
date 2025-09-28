@@ -114,8 +114,9 @@ verificaPreenchimentoEmail(){
       console.log('Token:', localStorage.getItem('token'));          
 
           setTimeout(() => {
+            this.openSuccess(); 
             this.isLoading = false;               
-            this.openSuccess;  
+            // this.openSuccess;  
           }, 1000); 
           
           setTimeout(() => {
