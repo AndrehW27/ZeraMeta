@@ -326,15 +326,16 @@
             
             &__bg {
                 fill: none;
-                stroke: var(--secundaria);
+                stroke: var(--primaria);
+                // stroke-linecap: round;
+                // stroke-dashoffset: inherit;
                 stroke-width: 8;
             }
             
             &__fill {
                 fill: none;
-                stroke: var(--primaria); // Green color for progress
+                stroke: var(--secundaria); // Green color for progress
                 stroke-width: 8;
-                stroke-linecap: round;
                 transition: stroke-dashoffset 0.5s ease-in-out;
             }
             
@@ -350,6 +351,7 @@
                 font-size: 1rem;
                 font-weight: bold;
                 color: var(--secundaria);
+                // stroke-linecap: round;
                 line-height: 1;
             }
             
@@ -358,7 +360,7 @@
                 color: #666;
                 margin-top: 5px;
             }
-            }
+        }
 
     
 

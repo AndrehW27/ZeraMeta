@@ -11,6 +11,7 @@ export class MenuComponent implements OnInit {
   constructor(private metaService: MetaService) { }
 
   perCompleted = 0;
+  diff = 0;
   usuarioLogado = '';
   firstName = '';
   qtdMetas = 0;
@@ -39,11 +40,18 @@ export class MenuComponent implements OnInit {
       this.qtdMetas = data.length; 
 
       this.perCompleted = data.filter(meta => meta.status === 'Concluído').length / data.length * 100 || 0;
-
+      
       if(this.qtdMetas == 1){
         this.criadas = 'criada';
       } 
     });
+  }
+  
+  get strokeDashOffset() {
+    // this.perCompleted = 95;
+    this.diff = 100 - this.perCompleted;
+    const circumference = 283;
+    return circumference - (circumference * this.diff / 100);
   }
 
   emBreve(){

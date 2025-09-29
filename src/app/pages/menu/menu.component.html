@@ -50,7 +50,9 @@
             </div>
             <svg class="progress-circle__svg" viewBox="0 0 100 100">
                 <circle class="progress-circle__bg" cx="50" cy="50" r="45"></circle>
-                <circle class="progress-circle__fill" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="70.75"></circle>
+                <!-- <circle class="progress-circle__fill" cx="50" cy="50" r="45" stroke-dasharray="283" [style.stroke-dashoffset]="283 - (283 * perCompleted / 100)"></circle> -->
+                <circle class="progress-circle__fill" cx="50" cy="50" r="45" stroke-dasharray="283" [style.stroke-dashoffset]="strokeDashOffset"></circle>
+                
             </svg>
         </div>
         
