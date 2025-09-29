@@ -1,21 +1,10 @@
 .sugestoes-ia {
-  margin-top: 4rem;
+  margin-top: 1rem;
   margin-bottom: 2rem;
-  text-align: center;
-
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
-
-  p {
-    font-size: 1rem;
-    color: var(--texto-secundario);
-  }
 }
 
 .chat-container {
-  background-color: var(--secundaria);
+  background-color: rgba(255, 255, 255, 0.25);
   border-radius: 1rem;
   padding: 1rem;
   margin-bottom: 2rem;

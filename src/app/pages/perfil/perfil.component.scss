@@ -1,11 +1,6 @@
 .perfil{
-        margin-top: 4rem;
-        margin-bottom: 3rem;
-        font-size: 1.5rem;
-
-        h1{
-            font-size: 2rem;
-        }  
+        margin-top: 1rem;
+        margin-bottom: 1rem;
     }
 
 
@@ -13,12 +8,14 @@
         
         .foto-perfil{
             position: relative; // Necessário para posicionar o ícone de edição
-            width: 150px;
-            height: 150px;
+            width: 8rem;
+            height: 8rem;
             border-radius: 50%;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             // border: 1px solid var(--primaria);   
             // A imagem de fundo agora é definida dinamicamente no HTML
+            background-image: url('../../../assets/avatares/avatar2.png');
+
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -41,15 +38,16 @@
 
         .info-perfil{
             width: 80vw;
-            font-size: 1rem;
-            margin-bottom: 1rem;
+            // font-size: 1rem;
+            // margin-bottom: 1rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: var(--secundaria);
-            padding: 1rem;
-            border-radius: 1rem;    
+            background-color: rgba(255, 255, 255, 0.25);
+            margin-bottom: 0.5rem;
+            padding: 0.75rem 0.75rem 0.75rem 1rem;
+            border-radius: 2rem;    
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
 
             p {
@@ -68,7 +66,9 @@
         }
 
         .item-deletar{
-            color: #e74c3c; // Cor de perigo/destrutiva
+                            color: var(--secundaria);
+ // Cor de perigo/destrutiva
+            
         }
     }
 

@@ -39,7 +39,7 @@ export class MenuComponent implements OnInit {
       console.log('Metas carregadas: ' + JSON.stringify(data)); 
       this.qtdMetas = data.length; 
 
-      this.perCompleted = data.filter(meta => meta.status === 'Concluído').length / data.length * 100 || 0;
+      this.perCompleted = Math.round(data.filter(meta => meta.status === 'Concluído').length / data.length * 100 || 0);
       
       if(this.qtdMetas == 1){
         this.criadas = 'criada';

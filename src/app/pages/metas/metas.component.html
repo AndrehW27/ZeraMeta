@@ -32,7 +32,7 @@
 
 
   <section class="zera-meta">
-     <h1>Minhas Metas</h1>
+     <h2>Minhas Metas</h2>
   </section>
 
   <!-- <section class="filtros-container">
@@ -43,11 +43,11 @@
     </select>
   </section> -->
 
-  <section class="metas" style="width: 20rem;">
+  <section class="metas">
     <ng-container *ngIf="metas.length === 0; else metasCriadas">
       <div class="meta">
-        <h3>Você ainda não tem metas!</h3>
-        <h3>Que tal criar a primeira?</h3>
+        <h4>Você ainda não tem metas!</h4>
+        <h4>Que tal criar a primeira?</h4>
       </div>
     </ng-container>
 
@@ -150,7 +150,7 @@
               <button class="salvar" (click)="criarMeta()">Criar</button>
               <button class="cancelar" (click)="fecharModal()">Cancelar</button>
             </div> -->
-            <div class="botoes">              
+            <div class="botoes-criar">              
               <button class="salvar" (click)="criarMeta()">Criar</button>
             </div>
 
@@ -215,6 +215,10 @@
               <button class="cancelar" (click)="fecharModalDetalhes()">Cancelar</button>
             </div> -->
 
+            <div class="botoes">              
+              <button class="salvar" (click)="editarMeta()">Salvar</button>
+            </div>
+
             <div class="div-deletar" (click)="deletarMeta()">
               <div class="deletar-meta">
                 <p><span style="font-weight: bold; font-size: 1rem">Deletar</span></p>
@@ -222,9 +226,7 @@
               </div>
             </div>
 
-            <div class="botoes">              
-              <button class="salvar" (click)="editarMeta()">Salvar</button>
-            </div>
+    
             
 
             <!-- <div class="botoes">              
@@ -237,14 +239,15 @@
 
   <section>
     <div class="modal-delete" *ngIf="showModalDelete">
-        <div class="modal">
+        <div class="modal-certeza">
           <h3>
             Tem certeza que deseja deletar esta meta?
           </h3>
           <!-- <p>{{ message }}</p> -->
           <div class="botoes-deletar">
-              <button class="botao-sim" (click)="confirmarDelete()">Sim</button>
               <button class="botao-nao" (click)="cancelarDelete()">Não</button>
+              <button class="botao-sim" (click)="confirmarDelete()">Sim</button>
+
           </div>    
         </div>
     </div>
