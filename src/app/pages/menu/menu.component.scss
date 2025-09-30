@@ -24,19 +24,19 @@
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
             cursor: pointer;
 
-            // .edicao-foto{
-            //     position: absolute;
-            //     bottom: 5px;
-            //     right: 5px;
-            //     cursor: pointer;
-            //     background-color: var(--secundaria);
-            //     border-radius: 50%;
-            //     padding: 0.3rem;
-            //     box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
-            //     display: flex;
-            //     align-items: center;
-            //     justify-content: center;
-            // }
+            .edicao-foto{
+                position: absolute;
+                bottom: 5px;
+                right: 5px;
+                cursor: pointer;
+                background-color: var(--secundaria);
+                border-radius: 50%;
+                padding: 0.3rem;
+                box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
         }
 
         // .carregandoNome{
