@@ -6,8 +6,162 @@
         flex-direction: column;
         align-items: center;
         justify-content: center; 
+
+
+        .fundo-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.75);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; // Garante que o modal fique na frente
+
+
+
+            .modal-content {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;  
+                width: 80vw;
+                max-width: 500px; // Limita a largura em telas maiores
+                background-color: var(--secundaria);
+                padding: 1.5rem;
+                border-radius: 1rem;
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+
+                    
+                    .titulo-fechar{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        width: 100%;
+                        margin-bottom: 2rem;
+                        font-size: 1rem;
+                        color: var(--primaria);
+
+                        h3{
+                            cursor: pointer;
+                        }
+                    }
+                    
+                    .avatar-linha{
+                        display: flex;
+                        width: 100%;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-evenly; 
+                        margin-bottom: 1rem;
+
+                        .foto-perfil-card1{
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                             background-image:url('../../../assets/avatares/avatar1.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                        }
+
+                        .foto-perfil-card2{
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                             background-image:url('../../../assets/avatares/avatar2.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                        }
+
+                        .foto-perfil-card3{
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                             background-image:url('../../../assets/avatares/avatar3.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                        }
+
+                        .foto-perfil-card4{
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                             background-image:url('../../../assets/avatares/avatar4.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                        }
+
+                        .foto-perfil-card5{
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                             background-image:url('../../../assets/avatares/avatar5.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                        }
+
+                        .foto-perfil-card6{
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                             background-image:url('../../../assets/avatares/avatar6.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                        }
+
+                    }
+
+                
+            }
+        }
  
- 
+            .foto-perfil-dinamica{
+                position: relative; // Necessário para posicionar o ícone de edição
+                width: 7rem;
+                height: 7rem;
+                border-radius: 50%;
+                // margin-bottom: 0.5rem;
+                // border: 1px solid var(--primaria);   
+                // A imagem de fundo agora é definida dinamicamente no HTML
+           
+                object-fit: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                cursor: pointer;
+            }
 
         .foto-perfil{
             position: relative; // Necessário para posicionar o ícone de edição
@@ -24,19 +178,18 @@
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
             cursor: pointer;
 
-            .edicao-foto{
-                position: absolute;
-                bottom: 5px;
-                right: 5px;
-                cursor: pointer;
-                background-color: var(--secundaria);
-                border-radius: 50%;
-                padding: 0.3rem;
-                box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
+
+        }
+        
+        .edicao-foto{
+
+            width: 2rem;
+            height: 2rem;
+            padding: 0.25rem;
+            margin-left: 6rem;
+            margin-bottom: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
         }
 
         // .carregandoNome{
@@ -112,12 +265,20 @@
         //     background-color: var(--secundaria);
         // }
 
+        .div-foto-perfil{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column; 
+        }
+
         .carregandoFoto{
  
             width: 7rem;
             height: 7rem;
             border-radius: 50%;
             margin-bottom: 3rem;
+            margin-top: 1rem;
             background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
             background-size: 200% 100%;
             // border-radius: 1rem;
@@ -363,7 +524,7 @@
             }
         }
 
-    
+
 
     
 

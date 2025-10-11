@@ -17,6 +17,14 @@ export class MenuComponent implements OnInit {
   qtdMetas = 0;
   criadas = 'criadas';
   itensCarregados = false;
+  abrirModalFoto = false;
+  avatar1 = '../../../assets/avatares/avatar1.png'; 
+  avatar2 = '../../../assets/avatares/avatar2.png'; 
+  avatar3 = '../../../assets/avatares/avatar3.png'; 
+  avatar4 = '../../../assets/avatares/avatar4.png'; 
+  avatar5 = '../../../assets/avatares/avatar5.png'; 
+  avatar6 = '../../../assets/avatares/avatar6.png'; 
+  userImage = ''; 
 
   ngOnInit(): void {
     console.log('userName: '+localStorage.getItem('userName'));
@@ -26,8 +34,6 @@ export class MenuComponent implements OnInit {
     // this.usuarioLogado = 'Wellington Willian Gorgo'
     this.firstName = this.usuarioLogado.split(" ")[0];
     this.carregarMetas();
-
-    
   }
 
     carregarMetas() { 
@@ -53,6 +59,40 @@ export class MenuComponent implements OnInit {
     const circumference = 283;
     return circumference - (circumference * this.diff / 100);
   }
+
+  mudarFoto(){
+    this.abrirModalFoto = true;
+  }
+
+  fecharModalDetalhes(){
+    this.abrirModalFoto = false;
+  }
+
+  selecionarAvatar1(){
+    this.userImage = this.avatar1; 
+    this.abrirModalFoto = false;
+  }
+  selecionarAvatar2(){
+      this.userImage = this.avatar2; 
+    this.abrirModalFoto = false;
+  } 
+  selecionarAvatar3(){
+      this.userImage = this.avatar3; 
+    this.abrirModalFoto = false;
+  } 
+  selecionarAvatar4(){
+      this.userImage = this.avatar4; 
+    this.abrirModalFoto = false;
+  } 
+  selecionarAvatar5(){
+      this.userImage = this.avatar5; 
+    this.abrirModalFoto = false;
+  }     
+  selecionarAvatar6(){
+      this.userImage = this.avatar6; 
+    this.abrirModalFoto = false;
+  } 
+  
 
   emBreve(){
     alert('Novidaes em breve!');
