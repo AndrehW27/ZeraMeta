@@ -70,27 +70,27 @@ export class MenuComponent implements OnInit {
 
   selecionarAvatar1(){
     this.userImage = this.avatar1; 
-    this.abrirModalFoto = false;
+    // this.abrirModalFoto = false;
   }
   selecionarAvatar2(){
       this.userImage = this.avatar2; 
-    this.abrirModalFoto = false;
+    // this.abrirModalFoto = false;
   } 
   selecionarAvatar3(){
       this.userImage = this.avatar3; 
-    this.abrirModalFoto = false;
+    // this.abrirModalFoto = false;
   } 
   selecionarAvatar4(){
       this.userImage = this.avatar4; 
-    this.abrirModalFoto = false;
+    // this.abrirModalFoto = false;
   } 
   selecionarAvatar5(){
       this.userImage = this.avatar5; 
-    this.abrirModalFoto = false;
+    // this.abrirModalFoto = false;
   }     
   selecionarAvatar6(){
       this.userImage = this.avatar6; 
-    this.abrirModalFoto = false;
+    // this.abrirModalFoto = false;
   } 
   
 
