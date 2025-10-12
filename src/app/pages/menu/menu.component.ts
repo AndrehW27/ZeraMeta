@@ -14,7 +14,6 @@ export class MenuComponent implements OnInit {
   usuario = {
     nome: '',
     email: '',
-    senha: '',
     telefone: '',
     plano: '',
     foto_perfil_url: '',
