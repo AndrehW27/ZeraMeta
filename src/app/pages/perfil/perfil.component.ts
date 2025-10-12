@@ -26,10 +26,20 @@ export class PerfilComponent implements OnInit {
     senha: '',
     telefone: '',
     plano: '',
-    fotoUrl: '',
+    foto_perfil_url: '',
     tema: '',
     notificacoes: true
   };
+
+  itensCarregados = true;
+  abrirModalFoto = false;
+  avatar1 = '../../../assets/avatares/avatar1.png'; 
+  avatar2 = '../../../assets/avatares/avatar2.png'; 
+  avatar3 = '../../../assets/avatares/avatar3.png'; 
+  avatar4 = '../../../assets/avatares/avatar4.png'; 
+  avatar5 = '../../../assets/avatares/avatar5.png'; 
+  avatar6 = '../../../assets/avatares/avatar6.png'; 
+  userImage = ''; 
 
   // Funções para chamar modal de sucesso/erro podem ser adicionadas aqui
   showModal = false;
@@ -131,7 +141,7 @@ export class PerfilComponent implements OnInit {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.usuario.fotoUrl = e.target.result; // Atualiza a URL da foto com a imagem em base64
+        this.usuario.foto_perfil_url = e.target.result; // Atualiza a URL da foto com a imagem em base64
       };
       reader.readAsDataURL(file);
     }
@@ -288,6 +298,51 @@ export class PerfilComponent implements OnInit {
   cancelarDelete(){
     this.deletarContaVar = false;
     this.showModalDelete = false;
+  }
+
+  mudarFoto(){
+    this.abrirModalFoto = true;
+  }
+
+  fecharModalDetalhes(){
+    this.abrirModalFoto = false;
+  }
+
+  selecionarAvatar1(){
+    this.userImage = this.avatar1; 
+    this.usuario.foto_perfil_url = this.userImage;
+  }
+  selecionarAvatar2(){
+      this.userImage = this.avatar2; 
+      this.usuario.foto_perfil_url = this.userImage;
+  } 
+  selecionarAvatar3(){
+      this.userImage = this.avatar3; 
+      this.usuario.foto_perfil_url = this.userImage;
+  } 
+  selecionarAvatar4(){
+      this.userImage = this.avatar4; 
+      this.usuario.foto_perfil_url = this.userImage;
+  } 
+  selecionarAvatar5(){
+      this.userImage = this.avatar5; 
+      this.usuario.foto_perfil_url = this.userImage;
+  }     
+  selecionarAvatar6(){
+      this.userImage = this.avatar6; 
+      this.usuario.foto_perfil_url = this.userImage;
+  } 
+
+  emBreve(){
+    alert('Novidaes em breve!');
+  } 
+
+  salvarFoto(){
+    this.usuarioService.editarUsuario(this.usuario, this.userId, localStorage.getItem('token') || '123').subscribe((data) => {
+      console.log("Usuário editado: " + JSON.stringify(data));
+    });
+    this.abrirModalFoto = false;
+
   }
 
 }

@@ -216,21 +216,21 @@
             }
         }
  
-            .foto-perfil-dinamica{
-                position: relative; // Necessário para posicionar o ícone de edição
-                width: 7rem;
-                height: 7rem;
-                border-radius: 50%;
-                // margin-bottom: 0.5rem;
-                // border: 1px solid var(--primaria);   
-                // A imagem de fundo agora é definida dinamicamente no HTML
-           
-                object-fit: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                cursor: pointer;
-            }
+        .foto-perfil-dinamica{
+            position: relative; // Necessário para posicionar o ícone de edição
+            width: 7rem;
+            height: 7rem;
+            border-radius: 50%;
+            // margin-bottom: 0.5rem;
+            // border: 1px solid var(--primaria);   
+            // A imagem de fundo agora é definida dinamicamente no HTML
+        
+            object-fit: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
 
         .foto-perfil{
             position: relative; // Necessário para posicionar o ícone de edição

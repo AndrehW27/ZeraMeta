@@ -24,9 +24,14 @@
 
   <section class="itens-menu">
 
-    <div class="foto-perfil">
-        <svg (click)="editarFoto()" class="edicao-foto" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="#e9e9e9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+    <div [ngClass]="itensCarregados ? 'div-foto-perfil' : 'carregandoFoto'">
+      <img *ngIf="itensCarregados" [src]="userImage || '../../../assets/avatares/avatar2.png'" class="foto-perfil-dinamica" alt="Profile Picture" />
+      <svg (click)="mudarFoto()" *ngIf="itensCarregados" class="edicao-foto" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 36" fill="#e9e9e9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
     </div>
+
+    <!-- <div class="foto-perfil">
+        <svg (click)="editarFoto()" class="edicao-foto" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="#e9e9e9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+    </div> -->
 
     <!-- Input de arquivo oculto para a seleção da imagem -->
     <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)" accept="image/*">
@@ -164,6 +169,38 @@
           </div>    
         </div>
     </div>
+  </section>
+
+  <section>
+    <div class="fundo-modal" *ngIf="abrirModalFoto">
+      <div class="modal-content">
+          
+          <div class="titulo-fechar">
+              <h2>Escolher avatar</h2>
+              <h3 (click)="fecharModalDetalhes()">X</h3>
+          </div> 
+          
+          <div class="avatar-linha">
+              <div class="foto-perfil-card1" (click)="selecionarAvatar1()"></div>
+              <div class="foto-perfil-card2" (click)="selecionarAvatar2()"></div>
+          </div>
+
+          <div class="avatar-linha">
+              <div class="foto-perfil-card3" (click)="selecionarAvatar3()"></div>
+              <div class="foto-perfil-card4" (click)="selecionarAvatar4()"></div>
+          </div>
+
+          <div class="avatar-linha">
+              <div class="foto-perfil-card5" (click)="selecionarAvatar5()"></div>
+              <div class="foto-perfil-card6" (click)="selecionarAvatar6()"></div>
+          </div>
+          
+          <div class="botoes">              
+              <button class="salvar" (click)="salvarFoto()">Confirmar</button>
+          </div>
+          
+      </div>
+    </div> 
   </section>
 
 </div>
