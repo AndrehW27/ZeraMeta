@@ -73,8 +73,9 @@
                             cursor: pointer;
 
                             &:hover{
-                                transform: scale(1.1);
+                                transform: scale(1.2);
                                 transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
                             }
                         }
 
@@ -92,8 +93,9 @@
                             cursor: pointer;
                             
                             &:hover{
-                                transform: scale(1.1);
+                                transform: scale(1.2);
                                 transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
                             }
                         }
 
@@ -111,8 +113,9 @@
                             cursor: pointer;
                                                         
                             &:hover{
-                                transform: scale(1.1);
+                                transform: scale(1.2);
                                 transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
                             }
                         }
 
@@ -130,8 +133,9 @@
                             cursor: pointer;
                                                         
                             &:hover{
-                                transform: scale(1.1);
+                                transform: scale(1.2);
                                 transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
                             }
                         }
 
@@ -149,8 +153,9 @@
                             cursor: pointer;
                                                         
                             &:hover{
-                                transform: scale(1.1);
+                                transform: scale(1.2);
                                 transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
                             }
                         }
 
@@ -168,13 +173,45 @@
                             cursor: pointer;
                                                         
                             &:hover{
-                                transform: scale(1.1);
+                                transform: scale(1.2);
                                 transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
                             }
                         }
 
                     }
 
+                    .botoes{
+                        display: flex;
+                        width: 100%;
+                        align-items: center;
+                        justify-content: center;
+                        // margin-bottom: 1rem;
+
+                        // margin-top: 1rem;
+                        // padding: 1rem 1rem 0rem 1rem;
+                        
+
+                        .salvar, .cancelar, .deletar{
+                            width: 100%;
+                            background-color: var(--primaria);
+                            color: var(--secundaria);  
+                            // border-radius: 1rem;
+                            border: none;
+                            padding: 1rem 2rem;
+                            // min-width: 16rem;
+                            font-size: 1rem;       
+                            border-radius: 0.5rem;
+                            cursor: pointer;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+
+                            &:hover{
+                                background-color: var(--secundaria);
+                                color: var(--primaria);
+                                border: var(--primaria) 1px solid;
+                            } 
+                        }
+                    }
                 
             }
         }

@@ -83,7 +83,7 @@ export class PerfilComponent implements OnInit {
   }
 
   carregarUsuario(){
-    this.usuarioService.getUsuarioComDados(this.userId || '').subscribe(data => {
+    this.usuarioService.getUsuarioComDados(this.userId || '', localStorage.getItem('token') || '123').subscribe(data => {
     console.log("Usuário carregado: " + JSON.stringify(data)); // Exibe mensagem de sucesso    
     this.usuario.nome = data.usuario.nome;
     this.usuario.email = data.usuario.email;
@@ -141,7 +141,7 @@ export class PerfilComponent implements OnInit {
   salvarAlteracaoNome() {
     this.usuario.nome = this.nomeEmEdicao;
     this.abrirModalInfo = false;
-    this.usuarioService.editarUsuario(this.usuario, this.userId).subscribe(() => {
+    this.usuarioService.editarUsuario(this.usuario, this.userId, localStorage.getItem('token') || '123').subscribe(() => {
     });    
     this.isLoading = true;
     setTimeout(() => {
@@ -157,7 +157,7 @@ export class PerfilComponent implements OnInit {
     // Atualiza o e-mail através do serviço para manter o estado centralizado
     this.usuario.email = this.emailEmEdicao;
     this.abrirModalEmail = false;
-    this.usuarioService.editarUsuario(this.usuario, this.userId).subscribe(() => {
+    this.usuarioService.editarUsuario(this.usuario, this.userId, localStorage.getItem('token') || '123').subscribe(() => {
     });    
     this.isLoading = true;
     setTimeout(() => {
@@ -204,7 +204,7 @@ export class PerfilComponent implements OnInit {
   salvarAlteracaoTelefone() {
     this.usuario.telefone = this.telefoneEmEdicao;
     this.abrirModalTelefone = false;
-        this.usuarioService.editarUsuario(this.usuario, this.userId).subscribe(() => {
+        this.usuarioService.editarUsuario(this.usuario, this.userId, localStorage.getItem('token') || '123').subscribe(() => {
     });    
     this.isLoading = true;
     setTimeout(() => {
@@ -219,7 +219,7 @@ export class PerfilComponent implements OnInit {
   salvarAlteracaoPlano() {
     this.usuario.plano = this.planoEmEdicao;
     this.abrirModalPlano = false;
-    this.usuarioService.editarUsuario(this.usuario, this.userId).subscribe(() => {
+    this.usuarioService.editarUsuario(this.usuario, this.userId, localStorage.getItem('token') || '123').subscribe(() => {
     });    
     this.isLoading = true;
     setTimeout(() => {
@@ -261,7 +261,7 @@ export class PerfilComponent implements OnInit {
     this.showModalDelete = false;
     // const confirmacao = confirm('Tem certeza que deseja deletar esta meta?');
     if (this.deletarContaVar) {
-      this.usuarioService.deletarUsuario(this.userId || '').subscribe(() => {
+      this.usuarioService.deletarUsuario(this.userId || '', localStorage.getItem('token') || '123').subscribe(() => {
         // this.carregarMetas();  
         // this.fecharModalDetalhes();
       });

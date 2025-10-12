@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MetaService } from 'src/app/services/meta.service';  
+import { UsuarioService } from 'src/app/services/usuario.service';  
 
 @Component({
   selector: 'app-menu',
@@ -8,7 +9,20 @@ import { MetaService } from 'src/app/services/meta.service';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private metaService: MetaService) { }
+  constructor(private metaService: MetaService, private usuarioService: UsuarioService) { }
+
+  usuario = {
+    nome: '',
+    email: '',
+    senha: '',
+    telefone: '',
+    plano: '',
+    foto_perfil_url: '',
+    tema: '',
+    notificacoes: true
+  };
+
+  userId = localStorage.getItem('userId');
 
   perCompleted = 0;
   diff = 0;
@@ -34,9 +48,10 @@ export class MenuComponent implements OnInit {
     // this.usuarioLogado = 'Wellington Willian Gorgo'
     this.firstName = this.usuarioLogado.split(" ")[0];
     this.carregarMetas();
+    this.carregarUsuario();
   }
 
-    carregarMetas() { 
+  carregarMetas() { 
       setTimeout(() => {
         this.itensCarregados = true;
         console.log('itensCarregados: '+this.itensCarregados);
@@ -52,7 +67,20 @@ export class MenuComponent implements OnInit {
       } 
     });
   }
-  
+
+  carregarUsuario(){
+    this.usuarioService.getUsuarioComDados(this.userId || '', localStorage.getItem('token') || '123').subscribe(data => {
+    console.log("Usuário carregado: " + JSON.stringify(data)); // Exibe mensagem de sucesso    
+    this.usuario.nome = data.usuario.nome;
+    this.usuario.email = data.usuario.email;
+    // this.usuario.senha = data.usuario.senha;
+    this.usuario.telefone = data.usuario.telefone;
+    this.usuario.plano = data.usuario.plano;
+    this.usuario.foto_perfil_url = data.usuario.foto_perfil_url;    
+    this.userImage = this.usuario.foto_perfil_url;    
+    });
+  }
+
   get strokeDashOffset() {
     // this.perCompleted = 95;
     this.diff = 100 - this.perCompleted;
@@ -70,31 +98,38 @@ export class MenuComponent implements OnInit {
 
   selecionarAvatar1(){
     this.userImage = this.avatar1; 
-    // this.abrirModalFoto = false;
+    this.usuario.foto_perfil_url = this.userImage;
   }
   selecionarAvatar2(){
       this.userImage = this.avatar2; 
-    // this.abrirModalFoto = false;
+      this.usuario.foto_perfil_url = this.userImage;
   } 
   selecionarAvatar3(){
       this.userImage = this.avatar3; 
-    // this.abrirModalFoto = false;
+      this.usuario.foto_perfil_url = this.userImage;
   } 
   selecionarAvatar4(){
       this.userImage = this.avatar4; 
-    // this.abrirModalFoto = false;
+      this.usuario.foto_perfil_url = this.userImage;
   } 
   selecionarAvatar5(){
       this.userImage = this.avatar5; 
-    // this.abrirModalFoto = false;
+      this.usuario.foto_perfil_url = this.userImage;
   }     
   selecionarAvatar6(){
       this.userImage = this.avatar6; 
-    // this.abrirModalFoto = false;
+      this.usuario.foto_perfil_url = this.userImage;
   } 
-  
 
   emBreve(){
     alert('Novidaes em breve!');
   } 
+
+  salvarFoto(){
+    this.usuarioService.editarUsuario(this.usuario, this.userId, localStorage.getItem('token') || '123').subscribe((data) => {
+      console.log("Usuário editado: " + JSON.stringify(data));
+    });
+    this.abrirModalFoto = false;
+
+  }
 }
