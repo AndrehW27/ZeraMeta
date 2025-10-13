@@ -37,6 +37,10 @@ export class MenuComponent implements OnInit {
   avatar4 = '../../../assets/avatares/avatar4.png'; 
   avatar5 = '../../../assets/avatares/avatar5.png'; 
   avatar6 = '../../../assets/avatares/avatar6.png'; 
+  avatar7 = '../../../assets/avatares/avatar7.png'; 
+  avatar8 = '../../../assets/avatares/avatar8.png'; 
+  avatar9 = '../../../assets/avatares/avatar9.png'; 
+  avatar10 = '../../../assets/avatares/avatar10.png'; 
   userImage = ''; 
 
   ngOnInit(): void {
@@ -119,6 +123,22 @@ export class MenuComponent implements OnInit {
       this.userImage = this.avatar6; 
       this.usuario.foto_perfil_url = this.userImage;
   } 
+  selecionarAvatar7(){
+      this.userImage = this.avatar7; 
+      this.usuario.foto_perfil_url = this.userImage;
+  }
+  selecionarAvatar8(){      
+      this.userImage = this.avatar8; 
+      this.usuario.foto_perfil_url = this.userImage;
+  }
+  selecionarAvatar9(){      
+      this.userImage = this.avatar9; 
+      this.usuario.foto_perfil_url = this.userImage;
+  }   
+  selecionarAvatar10(){      
+      this.userImage = this.avatar10; 
+      this.usuario.foto_perfil_url = this.userImage;
+  }   
 
   emBreve(){
     alert('Novidaes em breve!');

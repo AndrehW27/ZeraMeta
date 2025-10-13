@@ -97,10 +97,11 @@ export class PerfilComponent implements OnInit {
     console.log("Usuário carregado: " + JSON.stringify(data)); // Exibe mensagem de sucesso    
     this.usuario.nome = data.usuario.nome;
     this.usuario.email = data.usuario.email;
-    // this.usuario.senha = data.usuario.senha;
+    this.usuario.senha = data.usuario.senha;
     this.usuario.telefone = data.usuario.telefone;
     this.usuario.plano = data.usuario.plano;
-    // this.usuario.fotoUrl = data.usuario.fotoUrl;    
+    this.usuario.foto_perfil_url = data.usuario.foto_perfil_url;    
+    this.userImage = this.usuario.foto_perfil_url;     
     });
   }
 

@@ -26,7 +26,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
-                justify-content: center;  
+                justify-content: flex-start;  
                 width: 80vw;
                 max-width: 500px; // Limita a largura em telas maiores
                 background-color: var(--secundaria);
@@ -35,6 +35,7 @@
                 box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
                 overflow-y: scroll;
                 max-height: 80vh;
+
 
                     
                     .titulo-fechar{
@@ -179,6 +180,86 @@
                             }
                         }
 
+                        .foto-perfil-card7{
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                             background-image:url('../../../assets/avatares/avatar7.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                                                        
+                            &:hover{
+                                transform: scale(1.2);
+                                transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
+                            }
+                        }
+
+                        .foto-perfil-card8{
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                             background-image:url('../../../assets/avatares/avatar8.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                                                        
+                            &:hover{
+                                transform: scale(1.2);
+                                transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
+                            }
+                        }
+
+                        .foto-perfil-card9{
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                             background-image:url('../../../assets/avatares/avatar9.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                                                        
+                            &:hover{
+                                transform: scale(1.2);
+                                transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
+                            }
+                        }   
+
+                        .foto-perfil-card10{
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                             background-image:url('../../../assets/avatares/avatar10.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                                                        
+                            &:hover{
+                                transform: scale(1.2);
+                                transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
+                            }
+                        }   
+
                     }
 
                     .botoes{
@@ -251,14 +332,24 @@
         }
         
         .edicao-foto{
-
+            position: relative;
+            top: -2rem;
+            right: -2rem;
             width: 2rem;
             height: 2rem;
             padding: 0.25rem;
-            margin-left: 6rem;
-            margin-bottom: 2rem;
+            // margin-left: 6rem;
+            // margin-bottom: 2rem;
             border-radius: 1rem;
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+            background-color: rgba(255, 255, 255, 0.25);
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+
+            &:hover{
+                transform: scale(1.2);
+            }
+                
         }
 
         // .carregandoNome{
