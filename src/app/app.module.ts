@@ -19,6 +19,7 @@ import { ModalMessageComponent } from './pages/modal-message/modal-message.compo
 import { LoadingComponent } from './pages/loading/loading.component';
 import { SenhaPorEmailComponent } from './pages/senha-por-email/senha-por-email.component';
 import { MenuComponent } from './pages/menu/menu.component';
+import { MetaComponent } from './pages/meta/meta.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MenuComponent } from './pages/menu/menu.component';
     ModalMessageComponent,
     LoadingComponent,
     SenhaPorEmailComponent,
-    MenuComponent
+    MenuComponent,
+    MetaComponent
   ],
   imports: [
     BrowserModule,

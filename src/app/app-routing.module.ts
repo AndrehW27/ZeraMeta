@@ -13,6 +13,8 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { SugestoesIaComponent } from './pages/sugestoes-ia/sugestoes-ia.component';
 import { SenhaPorEmailComponent } from './pages/senha-por-email/senha-por-email.component';
 import { MenuComponent } from './pages/menu/menu.component';
+import { MetaComponent } from './pages/meta/meta.component';
+
 
 
 const routes: Routes = [
@@ -28,7 +30,8 @@ const routes: Routes = [
   { path: 'senha-por-email', component: SenhaPorEmailComponent },
   { path: 'perfil', component: PerfilComponent },
   { path: 'menu', component: MenuComponent },
-  { path: 'sugestoes-ia', component: SugestoesIaComponent }
+  { path: 'sugestoes-ia', component: SugestoesIaComponent },
+  { path: 'meta', component: MetaComponent }
 ];
 
 @NgModule({

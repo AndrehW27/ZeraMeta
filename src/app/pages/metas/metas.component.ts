@@ -62,7 +62,16 @@ export class MetasComponent implements OnInit {
   }
 
   abrirModalDetalhes(meta: any) {
-      console.log('Meta antes de editar:', this.metaSelecionada);
+      console.log('Meta antes de editar:', meta);
+      localStorage.setItem('meta-titulo', JSON.stringify(meta.titulo));
+      localStorage.setItem('meta-id', JSON.stringify(meta.id));
+      localStorage.setItem('meta-prazo', JSON.stringify(meta.prazo)); 
+      localStorage.setItem('meta-categoria', JSON.stringify(meta.categoria));
+      localStorage.setItem('meta-prioridade', JSON.stringify(meta.prioridade));
+      localStorage.setItem('meta-status', JSON.stringify(meta.status));
+      localStorage.setItem('meta-descricao', JSON.stringify(meta.descricao));
+      localStorage.setItem('meta-progresso', JSON.stringify(meta.progresso));
+      localStorage.setItem('meta-enviarLembrete', JSON.stringify(meta.enviarLembrete));
     // this.novaMeta = { titulo: '', prazo: '', categoria:'Outros', prioridade:'Média', status:'Novo', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
     this.showModalDetalhes = true;
     this.showFundoModalDetalhes = true;

@@ -53,7 +53,7 @@
 
     <ng-template #metasCriadas>
       <!-- Itera sobre a lista filtrada -->
-      <div (click)="abrirModalDetalhes(meta)" [ngClass]="itensCarregados ? 'meta' : 'carregandoMetas'" *ngFor="let meta of metas">
+      <div (click)="abrirModalDetalhes(meta)" [ngClass]="itensCarregados ? 'meta' : 'carregandoMetas'" *ngFor="let meta of metas" routerLink="/meta">
         <div *ngIf="itensCarregados">
             <div class="titulo-meta">
               <h1 *ngIf="meta.titulo">{{ meta.titulo }}</h1>

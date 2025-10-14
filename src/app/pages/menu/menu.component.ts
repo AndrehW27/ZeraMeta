@@ -149,6 +149,11 @@ export class MenuComponent implements OnInit {
       console.log("Usuário editado: " + JSON.stringify(data));
     });
     this.abrirModalFoto = false;
+    this.itensCarregados = false;
+    setTimeout(() => {
+      this.itensCarregados = true;
+      // console.log('itensCarregados: '+this.itensCarregados);
+    }, 1000);
 
   }
 }

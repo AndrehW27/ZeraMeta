@@ -174,7 +174,7 @@
                 border-radius: 50%;
                 margin-bottom: 3rem;
                 margin-top: 1rem;
-                background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+                background: linear-gradient(90deg, #909090 25%, #b0b0b0 50%, #909090 75%);
                 background-size: 200% 100%;
                 // border-radius: 1rem;
                 box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
@@ -320,7 +320,7 @@
                 align-items: center;
                 justify-content: space-between;
                 width: 100%;
-                margin-bottom: 2rem;
+                margin-bottom: 0.5rem;
                 font-size: 1rem;
                 color: var(--primaria);
 
@@ -328,136 +328,231 @@
                     cursor: pointer;
                 }
             }
-            
-            .avatar-linha{
+
+            .avatares{
                 display: flex;
                 width: 100%;
-                flex-direction: row;
+                flex-direction: column;
                 align-items: center;
-                justify-content: space-evenly; 
+                justify-content: flex-start; 
                 margin-bottom: 1rem;
+                overflow-y: scroll;
+                
 
-                .foto-perfil-card1{
-                    width: 6rem;
-                    height: 6rem;
-                    border-radius: 50%;
-                    // margin-left: 0.5rem;
+                .avatar-linha{
+                    display: flex;
+                    width: 100%;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-evenly; 
                     margin-bottom: 1rem;
-                        background-image:url('../../../assets/avatares/avatar1.png');
-                    background-size: cover;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                    cursor: pointer;
 
-                    &:hover{
-                        transform: scale(1.2);
-                        transition: all 0.3s ease-in-out;
-                        border: 1px solid var(--primaria);
+                        .foto-perfil-card1{
+                            margin-top: 1rem;
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                                background-image:url('../../../assets/avatares/avatar1.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+
+                            &:hover{
+                                transform: scale(1.2);
+                                transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
+                            }
+                        }
+
+                        .foto-perfil-card2{
+                            margin-top: 1rem;
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                                background-image:url('../../../assets/avatares/avatar2.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                            
+                            &:hover{
+                                transform: scale(1.2);
+                                transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
+                            }
+                        }
+
+                        .foto-perfil-card3{
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                                background-image:url('../../../assets/avatares/avatar3.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                                                        
+                            &:hover{
+                                transform: scale(1.2);
+                                transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
+                            }
+                        }
+
+                        .foto-perfil-card4{
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                                background-image:url('../../../assets/avatares/avatar4.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                                                        
+                            &:hover{
+                                transform: scale(1.2);
+                                transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
+                            }
+                        }
+
+                        .foto-perfil-card5{
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                                background-image:url('../../../assets/avatares/avatar5.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                                                        
+                            &:hover{
+                                transform: scale(1.2);
+                                transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
+                            }
+                        }
+
+                        .foto-perfil-card6{
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                                background-image:url('../../../assets/avatares/avatar6.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                                                        
+                            &:hover{
+                                transform: scale(1.2);
+                                transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
+                            }
+                        }
+                        .foto-perfil-card7{
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                             background-image:url('../../../assets/avatares/avatar7.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                                                        
+                            &:hover{
+                                transform: scale(1.2);
+                                transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
+                            }
+                        }
+
+                        .foto-perfil-card8{
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                             background-image:url('../../../assets/avatares/avatar8.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                                                        
+                            &:hover{
+                                transform: scale(1.2);
+                                transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
+                            }
+                        }
+
+                        .foto-perfil-card9{
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                             background-image:url('../../../assets/avatares/avatar9.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                                                        
+                            &:hover{
+                                transform: scale(1.2);
+                                transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
+                            }
+                        }   
+
+                        .foto-perfil-card10{
+                            width: 6rem;
+                            height: 6rem;
+                            border-radius: 50%;
+                            // margin-left: 0.5rem;
+                            margin-bottom: 1rem;
+                             background-image:url('../../../assets/avatares/avatar10.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                            cursor: pointer;
+                                                        
+                            &:hover{
+                                transform: scale(1.2);
+                                transition: all 0.3s ease-in-out;
+                                border: 1px solid var(--primaria);
+                            }
+                        }   
+
                     }
-                }
 
-                .foto-perfil-card2{
-                    width: 6rem;
-                    height: 6rem;
-                    border-radius: 50%;
-                    // margin-left: 0.5rem;
-                    margin-bottom: 1rem;
-                        background-image:url('../../../assets/avatares/avatar2.png');
-                    background-size: cover;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                    cursor: pointer;
-                    
-                    &:hover{
-                        transform: scale(1.2);
-                        transition: all 0.3s ease-in-out;
-                        border: 1px solid var(--primaria);
-                    }
                 }
+            
 
-                .foto-perfil-card3{
-                    width: 6rem;
-                    height: 6rem;
-                    border-radius: 50%;
-                    // margin-left: 0.5rem;
-                    margin-bottom: 1rem;
-                        background-image:url('../../../assets/avatares/avatar3.png');
-                    background-size: cover;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                    cursor: pointer;
-                                                
-                    &:hover{
-                        transform: scale(1.2);
-                        transition: all 0.3s ease-in-out;
-                        border: 1px solid var(--primaria);
-                    }
-                }
-
-                .foto-perfil-card4{
-                    width: 6rem;
-                    height: 6rem;
-                    border-radius: 50%;
-                    // margin-left: 0.5rem;
-                    margin-bottom: 1rem;
-                        background-image:url('../../../assets/avatares/avatar4.png');
-                    background-size: cover;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                    cursor: pointer;
-                                                
-                    &:hover{
-                        transform: scale(1.2);
-                        transition: all 0.3s ease-in-out;
-                        border: 1px solid var(--primaria);
-                    }
-                }
-
-                .foto-perfil-card5{
-                    width: 6rem;
-                    height: 6rem;
-                    border-radius: 50%;
-                    // margin-left: 0.5rem;
-                    margin-bottom: 1rem;
-                        background-image:url('../../../assets/avatares/avatar5.png');
-                    background-size: cover;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                    cursor: pointer;
-                                                
-                    &:hover{
-                        transform: scale(1.2);
-                        transition: all 0.3s ease-in-out;
-                        border: 1px solid var(--primaria);
-                    }
-                }
-
-                .foto-perfil-card6{
-                    width: 6rem;
-                    height: 6rem;
-                    border-radius: 50%;
-                    // margin-left: 0.5rem;
-                    margin-bottom: 1rem;
-                        background-image:url('../../../assets/avatares/avatar6.png');
-                    background-size: cover;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                    cursor: pointer;
-                                                
-                    &:hover{
-                        transform: scale(1.2);
-                        transition: all 0.3s ease-in-out;
-                        border: 1px solid var(--primaria);
-                    }
-                }
-
-            }
 
             .botoes{
                 display: flex;
