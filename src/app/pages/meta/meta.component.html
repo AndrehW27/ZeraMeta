@@ -2,6 +2,9 @@
 
     <!-- <app-loading *ngIf="isLoading"></app-loading> -->
 
+
+
+
     <section>
         <div class="icone-zera-meta">
             <svg routerLink="/menu" width="60" height="60" viewBox="0 0 48 48" fill="none">
@@ -22,14 +25,61 @@
     </section>
 
     <section class="meta">
-        <h2 class="titulo">{{titulo}}</h2>
-        <p><strong>Categoria:</strong> {{categoria}}</p>
-        <p><strong>Descrição:</strong> {{descricao}}</p>
-        <p><strong>Prazo:</strong> {{prazo}}</p>
-        <p><strong>Status:</strong> {{status}}</p>
-        <p><strong>Progresso:</strong> {{progresso}}%</p>   
-        
-        <h4 class="todas-metas" routerLink="/metas">todas metas</h4>
+
+        <section routerLink="/metas" class="voltar-metas-box">
+            <div class="voltar-metas">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                    <rect width="48" height="48" rx="24" fill="" />
+                    <path d="M30 12L18 24L30 36" stroke="#0e3553" stroke-width="4" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+            <div>
+                <p>metas</p>
+            </div>            
+        </section>
+
+        <div class="titulo-meta">
+            <h1 class="titulo">{{titulo}}</h1>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+            </svg>
+        </div>
+
+
+
+        <div class="progres-status-box">
+            <div class="progress-circle">
+                <div *ngIf="itensCarregados" class="progress-circle__content">
+                    <div class="progress-circle__percentage">{{perCompleted}}%</div>
+                    <!-- <div class="progress-circle__label">Completed</div> -->
+                </div>
+                <svg class="progress-circle__svg" viewBox="0 0 100 100">
+                    <circle class="progress-circle__bg" cx="50" cy="50" r="45"></circle>
+                    <!-- <circle class="progress-circle__fill" cx="50" cy="50" r="45" stroke-dasharray="283" [style.stroke-dashoffset]="283 - (283 * perCompleted / 100)"></circle> -->
+                    <circle class="progress-circle__fill" cx="50" cy="50" r="45" stroke-dasharray="283"
+                        [style.stroke-dashoffset]="strokeDashOffset"></circle>
+
+                </svg>
+            </div>
+            <div class="status">
+                <p>Status: {{status}}</p>
+            </div>
+        </div>
+
+        <!-- <div class="details">
+            <h3>Detalhes...</h3>
+        </div> -->
+
+
+        <p class="truncate">Categoria: {{categoria}}</p>
+        <p class="truncate">Prazo: {{prazo}}</p>
+        <p class="truncate">Descricao: {{descricao}}</p>
+
+
+        <!-- <h4 class="todas-metas" routerLink="/metas">todas metas</h4> -->
 
     </section>
 

@@ -37,23 +37,23 @@
     <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)" accept="image/*">
 
     <div (click)="editarInfo()" class="info-perfil">
-      <h4>Nome: {{ usuario.nome }}</h4>
+      <h4 class="truncate">Nome: {{ usuario.nome }}</h4>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
     </div>
     <div (click)="editarEmail()"  class="info-perfil">
-      <h4>E-mail: {{ usuario.email }}</h4>
+      <h4 class="truncate">E-mail: {{ usuario.email }}</h4>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
     </div>
     <div (click)="editarSenha()" class="info-perfil">
-      <h4>Senha: **********</h4>
+      <h4 class="truncate">Senha: **********</h4>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
     </div>
     <div (click)="editarTelefone()" class="info-perfil">
-      <h4>Telefone: {{ usuario.telefone }}</h4>
+      <h4 class="truncate">Telefone: {{ usuario.telefone }}</h4>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
     </div>
     <div (click)="editarPlano()" class="info-perfil">
-      <h4>Plano: {{ usuario.plano }}</h4>
+      <h4 class="truncate">Plano: {{ usuario.plano }}</h4>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
     </div>
     <!-- <div routerLink="/login" class="info-perfil item-sair">

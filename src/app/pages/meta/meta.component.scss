@@ -1,8 +1,132 @@
 .meta {
-    .titulo {
+    background-color: rgba(255, 255, 255, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    width: 80vw;
+    // height: 400px;
+    overflow-y: scroll;
+
+    .voltar-metas-box {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: row;
+        color: var(--primaria);
+        margin-bottom: 0.5rem;
+    }
+
+    .titulo-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 100%;
+        // margin-top: 0.5rem;
+        font-size: 1rem;
+        color: var(--primaria);
+
+        .titulo {
+            border-bottom: 1px solid var(--primaria);
+            max-width: calc(100% - 2.5rem);
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+    }
+
+
+    p {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    .truncate {
+        // margin-left: 1rem;
+        max-width: calc(100% - 2rem);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        
+    }
+
+
+
+    .progres-status-box {
+        display: flex;
+        width: 80%;
+        // flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
         margin-top: 1rem;
         margin-bottom: 2rem;
+
+        .progress-circle {
+
+            margin-top: 1rem;
+            position: relative;
+            width: 5rem;
+            height: 5rem;
+
+            &__svg {
+                width: 100%;
+                height: 100%;
+                transform: rotate(-90deg);
+            }
+
+            &__bg {
+                fill: none;
+                stroke: var(--primaria);
+                // stroke-linecap: round;
+                // stroke-dashoffset: inherit;
+                stroke-width: 8;
+            }
+
+            &__fill {
+                fill: none;
+                stroke: var(--secundaria); // Green color for progress
+                stroke-width: 8;
+                transition: stroke-dashoffset 0.5s ease-in-out;
+            }
+
+            &__content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+            }
+
+            &__percentage {
+                font-size: 1rem;
+                font-weight: bold;
+                color: var(--primaria);
+                // stroke-linecap: round;
+                line-height: 1;
+            }
+
+            &__label {
+                font-size: 0.9rem;
+                color: #666;
+                margin-top: 5px;
+            }
+        }
+
+        .status {
+            margin-left: 2rem;
+        }
+
     }
+
+    .details {
+        margin-top: 2rem;
+    }
+
 
     .todas-metas {
         margin-top: 0.5rem;
@@ -21,6 +145,7 @@
 
     h2 {
         margin-bottom: 1rem;
+        color: var(--secundaria);
     }
 
     .caixa-sub-metas {
@@ -30,8 +155,7 @@
         padding: 1rem;
         border-radius: 1rem;
         width: 80vw;
-        min-height: 300px;
-        max-height: 300px;
+        height: 200px;
         overflow-y: scroll;
 
         .linha-sub-meta {

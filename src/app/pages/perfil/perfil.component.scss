@@ -1,142 +1,156 @@
-.perfil{
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
+.perfil {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
 
 
-    .itens-menu{
+.itens-menu {
 
-        
-        .div-foto-perfil{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column; 
 
-            .edicao-foto{
-                position: relative;
-                top: -2rem;
-                right: -2rem;
-                width: 2rem;
-                height: 2rem;
-                padding: 0.25rem;
-                // margin-left: 6rem;
-                // margin-bottom: 2rem;
-                border-radius: 1rem;
-                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                background-color: rgba(255, 255, 255, 0.25);
-                cursor: pointer;
-                transition: all 0.3s ease-in-out;
+    .div-foto-perfil {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
 
-                &:hover{
-                    transform: scale(1.2);
-                }
-                    
-            }
-
-        }
-
-        .foto-perfil{
-            position: relative; // Necessário para posicionar o ícone de edição
-            width: 7rem;
-            height: 7rem;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-            // border: 1px solid var(--primaria);   
-            // A imagem de fundo agora é definida dinamicamente no HTML
-            background-image:url('../../../assets/avatares/avatar2.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+        .edicao-foto {
+            position: relative;
+            top: -2rem;
+            right: -2rem;
+            width: 2rem;
+            height: 2rem;
+            padding: 0.25rem;
+            // margin-left: 6rem;
+            // margin-bottom: 2rem;
+            border-radius: 1rem;
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-
-
-        }
-
-        .foto-perfil-dinamica{
-            position: relative; // Necessário para posicionar o ícone de edição
-            width: 7rem;
-            height: 7rem;
-            border-radius: 50%;
-            // margin-bottom: 0.5rem;
-            // border: 1px solid var(--primaria);   
-            // A imagem de fundo agora é definida dinamicamente no HTML
-
-            object-fit: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-        }
-
-
-
-
-        
-        // .foto-perfil{
-        //     position: relative; // Necessário para posicionar o ícone de edição
-        //     width: 8rem;
-        //     height: 8rem;
-        //     border-radius: 50%;
-        //     margin-bottom: 1.5rem;
-        //     // border: 1px solid var(--primaria);   
-        //     // A imagem de fundo agora é definida dinamicamente no HTML
-        //     background-image: url('../../../assets/avatares/avatar2.png');
-
-        //     background-size: cover;
-        //     background-position: center;
-        //     background-repeat: no-repeat;
-        //     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-
-        //     .edicao-foto{
-        //         position: absolute;
-        //         bottom: 5px;
-        //         right: 5px;
-        //         cursor: pointer;
-        //         background-color: var(--secundaria);
-        //         border-radius: 50%;
-        //         padding: 0.3rem;
-        //         box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
-        //         display: flex;
-        //         align-items: center;
-        //         justify-content: center;
-        //     }
-        // }
-
-        .info-perfil{
-            width: 80vw;
-            // font-size: 1rem;
-            // margin-bottom: 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
             background-color: rgba(255, 255, 255, 0.25);
-            margin-bottom: 0.5rem;
-            padding: 0.75rem 0.75rem 0.75rem 1rem;
-            border-radius: 2rem;    
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
 
-            p {
-                /* Regras para cortar o texto */
-                white-space: nowrap;     /* Impede a quebra de linha */
-                overflow: hidden;        /* Esconde o texto que transborda */
-                text-overflow: ellipsis; /* Adiciona "..." no final */
-                margin: 0 1rem 0 0;      /* Limpa margens e adiciona espaço à direita */
+            &:hover {
+                transform: scale(1.2);
             }
 
-            svg {
-                width: 1.2rem;
-                height: 1.2rem;
-                flex-shrink: 0; /* Garante que o ícone não seja espremido */
-            }
         }
 
-        .item-deletar{
-            color: rgb(183, 0, 0);
+    }
+
+    .foto-perfil {
+        position: relative; // Necessário para posicionar o ícone de edição
+        width: 7rem;
+        height: 7rem;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        // border: 1px solid var(--primaria);   
+        // A imagem de fundo agora é definida dinamicamente no HTML
+        background-image: url('../../../assets/avatares/avatar2.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+
+
+    }
+
+    .foto-perfil-dinamica {
+        position: relative; // Necessário para posicionar o ícone de edição
+        width: 7rem;
+        height: 7rem;
+        border-radius: 50%;
+        // margin-bottom: 0.5rem;
+        // border: 1px solid var(--primaria);   
+        // A imagem de fundo agora é definida dinamicamente no HTML
+
+        object-fit: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+    }
+
+
+
+
+
+    // .foto-perfil{
+    //     position: relative; // Necessário para posicionar o ícone de edição
+    //     width: 8rem;
+    //     height: 8rem;
+    //     border-radius: 50%;
+    //     margin-bottom: 1.5rem;
+    //     // border: 1px solid var(--primaria);   
+    //     // A imagem de fundo agora é definida dinamicamente no HTML
+    //     background-image: url('../../../assets/avatares/avatar2.png');
+
+    //     background-size: cover;
+    //     background-position: center;
+    //     background-repeat: no-repeat;
+    //     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+
+    //     .edicao-foto{
+    //         position: absolute;
+    //         bottom: 5px;
+    //         right: 5px;
+    //         cursor: pointer;
+    //         background-color: var(--secundaria);
+    //         border-radius: 50%;
+    //         padding: 0.3rem;
+    //         box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
+    //         display: flex;
+    //         align-items: center;
+    //         justify-content: center;
+    //     }
+    // }
+
+    .info-perfil {
+        width: 80vw;
+        // font-size: 1rem;
+        // margin-bottom: 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgba(255, 255, 255, 0.25);
+        margin-bottom: 0.5rem;
+        padding: 0.75rem 0.75rem 0.75rem 1rem;
+        border-radius: 2rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+
+        .truncate {
+            max-width: calc(100% - 3rem);
+            /* reserva espaço para o ícone/toggle */
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        p {
+            /* Regras para cortar o texto */
+            white-space: nowrap;
+            /* Impede a quebra de linha */
+            overflow: hidden;
+            /* Esconde o texto que transborda */
+            text-overflow: ellipsis;
+            /* Adiciona "..." no final */
+            margin: 0 1rem 0 0;
+            /* Limpa margens e adiciona espaço à direita */
+        }
+
+        svg {
+            width: 1.2rem;
+            height: 1.2rem;
+            flex-shrink: 0;
+            /* Garante que o ícone não seja espremido */
         }
     }
+
+    .item-deletar {
+        color: rgb(183, 0, 0);
+    }
+}
 
 .fundo-modal {
     position: fixed;
@@ -167,8 +181,8 @@
             justify-content: center;
 
 
-            .carregandoFoto{
-    
+            .carregandoFoto {
+
                 width: 7rem;
                 height: 7rem;
                 border-radius: 50%;
@@ -183,44 +197,45 @@
                 position: relative;
                 overflow: hidden;
                 animation: shimmer 1.5s infinite linear;
-                
+
                 /* Remove pointer cursor for skeleton state */
                 cursor: default;
 
                 &:last-child {
                     margin-top: 3rem;
-                    }
+                }
+            }
+
+            /* Shimmer animation */
+            @keyframes shimmer {
+                0% {
+                    background-position: -200% 0;
                 }
 
-                /* Shimmer animation */
-                @keyframes shimmer {
-                    0% {
-                        background-position: -200% 0;
-                    }
-                    100% {
-                        background-position: 200% 0;
-                    }
+                100% {
+                    background-position: 200% 0;
                 }
+            }
 
-                /* Optional: Add skeleton content inside */
-                .carregandoFoto::before {
-                    content: "";
-                    display: block;
-                    width: 80%;
-                    height: 12px;
-                    background: #d0d0d0;
-                    border-radius: 4px;
-                    margin-bottom: 10px;
-                }
+            /* Optional: Add skeleton content inside */
+            .carregandoFoto::before {
+                content: "";
+                display: block;
+                width: 80%;
+                height: 12px;
+                background: #d0d0d0;
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
 
-                .carregandoFoto::after {
-                    content: "";
-                    display: block;
-                    width: 40%;
-                    height: 10px;
-                    background: #d0d0d0;
-                    border-radius: 4px;
-                }
+            .carregandoFoto::after {
+                content: "";
+                display: block;
+                width: 40%;
+                height: 10px;
+                background: #d0d0d0;
+                border-radius: 4px;
+            }
 
 
 
@@ -305,7 +320,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        justify-content: center;  
+        justify-content: center;
         width: 80vw;
         max-width: 500px; // Limita a largura em telas maiores
         background-color: var(--secundaria);
@@ -315,298 +330,301 @@
         overflow-y: scroll;
         max-height: 80vh;
 
-            .titulo-fechar-avatar{
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 100%;
-                margin-bottom: 0.5rem;
-                font-size: 1rem;
-                color: var(--primaria);
+        .titulo-fechar-avatar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            color: var(--primaria);
 
-                h3{
+            h3 {
+                cursor: pointer;
+            }
+        }
+
+        .avatares {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 1rem;
+            overflow-y: scroll;
+
+
+            .avatar-linha {
+                display: flex;
+                width: 100%;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-evenly;
+                margin-bottom: 1rem;
+
+                .foto-perfil-card1 {
+                    margin-top: 1rem;
+                    width: 6rem;
+                    height: 6rem;
+                    border-radius: 50%;
+                    // margin-left: 0.5rem;
+                    margin-bottom: 1rem;
+                    background-image: url('../../../assets/avatares/avatar1.png');
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
                     cursor: pointer;
+
+                    &:hover {
+                        transform: scale(1.2);
+                        transition: all 0.3s ease-in-out;
+                        border: 1px solid var(--primaria);
+                    }
                 }
+
+                .foto-perfil-card2 {
+                    margin-top: 1rem;
+                    width: 6rem;
+                    height: 6rem;
+                    border-radius: 50%;
+                    // margin-left: 0.5rem;
+                    margin-bottom: 1rem;
+                    background-image: url('../../../assets/avatares/avatar2.png');
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(1.2);
+                        transition: all 0.3s ease-in-out;
+                        border: 1px solid var(--primaria);
+                    }
+                }
+
+                .foto-perfil-card3 {
+                    width: 6rem;
+                    height: 6rem;
+                    border-radius: 50%;
+                    // margin-left: 0.5rem;
+                    margin-bottom: 1rem;
+                    background-image: url('../../../assets/avatares/avatar3.png');
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(1.2);
+                        transition: all 0.3s ease-in-out;
+                        border: 1px solid var(--primaria);
+                    }
+                }
+
+                .foto-perfil-card4 {
+                    width: 6rem;
+                    height: 6rem;
+                    border-radius: 50%;
+                    // margin-left: 0.5rem;
+                    margin-bottom: 1rem;
+                    background-image: url('../../../assets/avatares/avatar4.png');
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(1.2);
+                        transition: all 0.3s ease-in-out;
+                        border: 1px solid var(--primaria);
+                    }
+                }
+
+                .foto-perfil-card5 {
+                    width: 6rem;
+                    height: 6rem;
+                    border-radius: 50%;
+                    // margin-left: 0.5rem;
+                    margin-bottom: 1rem;
+                    background-image: url('../../../assets/avatares/avatar5.png');
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(1.2);
+                        transition: all 0.3s ease-in-out;
+                        border: 1px solid var(--primaria);
+                    }
+                }
+
+                .foto-perfil-card6 {
+                    width: 6rem;
+                    height: 6rem;
+                    border-radius: 50%;
+                    // margin-left: 0.5rem;
+                    margin-bottom: 1rem;
+                    background-image: url('../../../assets/avatares/avatar6.png');
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(1.2);
+                        transition: all 0.3s ease-in-out;
+                        border: 1px solid var(--primaria);
+                    }
+                }
+
+                .foto-perfil-card7 {
+                    width: 6rem;
+                    height: 6rem;
+                    border-radius: 50%;
+                    // margin-left: 0.5rem;
+                    margin-bottom: 1rem;
+                    background-image: url('../../../assets/avatares/avatar7.png');
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(1.2);
+                        transition: all 0.3s ease-in-out;
+                        border: 1px solid var(--primaria);
+                    }
+                }
+
+                .foto-perfil-card8 {
+                    width: 6rem;
+                    height: 6rem;
+                    border-radius: 50%;
+                    // margin-left: 0.5rem;
+                    margin-bottom: 1rem;
+                    background-image: url('../../../assets/avatares/avatar8.png');
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(1.2);
+                        transition: all 0.3s ease-in-out;
+                        border: 1px solid var(--primaria);
+                    }
+                }
+
+                .foto-perfil-card9 {
+                    width: 6rem;
+                    height: 6rem;
+                    border-radius: 50%;
+                    // margin-left: 0.5rem;
+                    margin-bottom: 1rem;
+                    background-image: url('../../../assets/avatares/avatar9.png');
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(1.2);
+                        transition: all 0.3s ease-in-out;
+                        border: 1px solid var(--primaria);
+                    }
+                }
+
+                .foto-perfil-card10 {
+                    width: 6rem;
+                    height: 6rem;
+                    border-radius: 50%;
+                    // margin-left: 0.5rem;
+                    margin-bottom: 1rem;
+                    background-image: url('../../../assets/avatares/avatar10.png');
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(1.2);
+                        transition: all 0.3s ease-in-out;
+                        border: 1px solid var(--primaria);
+                    }
+                }
+
             }
 
-            .avatares{
-                display: flex;
+        }
+
+
+
+        .botoes {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            // margin-bottom: 1rem;
+
+            // margin-top: 1rem;
+            // padding: 1rem 1rem 0rem 1rem;
+
+
+            .salvar,
+            .cancelar,
+            .deletar {
                 width: 100%;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start; 
-                margin-bottom: 1rem;
-                overflow-y: scroll;
-                
+                background-color: var(--primaria);
+                color: var(--secundaria);
+                // border-radius: 1rem;
+                border: none;
+                padding: 1rem 2rem;
+                // min-width: 16rem;
+                font-size: 1rem;
+                border-radius: 0.5rem;
+                cursor: pointer;
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
 
-                .avatar-linha{
-                    display: flex;
-                    width: 100%;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: space-evenly; 
-                    margin-bottom: 1rem;
-
-                        .foto-perfil-card1{
-                            margin-top: 1rem;
-                            width: 6rem;
-                            height: 6rem;
-                            border-radius: 50%;
-                            // margin-left: 0.5rem;
-                            margin-bottom: 1rem;
-                                background-image:url('../../../assets/avatares/avatar1.png');
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                            cursor: pointer;
-
-                            &:hover{
-                                transform: scale(1.2);
-                                transition: all 0.3s ease-in-out;
-                                border: 1px solid var(--primaria);
-                            }
-                        }
-
-                        .foto-perfil-card2{
-                            margin-top: 1rem;
-                            width: 6rem;
-                            height: 6rem;
-                            border-radius: 50%;
-                            // margin-left: 0.5rem;
-                            margin-bottom: 1rem;
-                                background-image:url('../../../assets/avatares/avatar2.png');
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                            cursor: pointer;
-                            
-                            &:hover{
-                                transform: scale(1.2);
-                                transition: all 0.3s ease-in-out;
-                                border: 1px solid var(--primaria);
-                            }
-                        }
-
-                        .foto-perfil-card3{
-                            width: 6rem;
-                            height: 6rem;
-                            border-radius: 50%;
-                            // margin-left: 0.5rem;
-                            margin-bottom: 1rem;
-                                background-image:url('../../../assets/avatares/avatar3.png');
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                            cursor: pointer;
-                                                        
-                            &:hover{
-                                transform: scale(1.2);
-                                transition: all 0.3s ease-in-out;
-                                border: 1px solid var(--primaria);
-                            }
-                        }
-
-                        .foto-perfil-card4{
-                            width: 6rem;
-                            height: 6rem;
-                            border-radius: 50%;
-                            // margin-left: 0.5rem;
-                            margin-bottom: 1rem;
-                                background-image:url('../../../assets/avatares/avatar4.png');
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                            cursor: pointer;
-                                                        
-                            &:hover{
-                                transform: scale(1.2);
-                                transition: all 0.3s ease-in-out;
-                                border: 1px solid var(--primaria);
-                            }
-                        }
-
-                        .foto-perfil-card5{
-                            width: 6rem;
-                            height: 6rem;
-                            border-radius: 50%;
-                            // margin-left: 0.5rem;
-                            margin-bottom: 1rem;
-                                background-image:url('../../../assets/avatares/avatar5.png');
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                            cursor: pointer;
-                                                        
-                            &:hover{
-                                transform: scale(1.2);
-                                transition: all 0.3s ease-in-out;
-                                border: 1px solid var(--primaria);
-                            }
-                        }
-
-                        .foto-perfil-card6{
-                            width: 6rem;
-                            height: 6rem;
-                            border-radius: 50%;
-                            // margin-left: 0.5rem;
-                            margin-bottom: 1rem;
-                                background-image:url('../../../assets/avatares/avatar6.png');
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                            cursor: pointer;
-                                                        
-                            &:hover{
-                                transform: scale(1.2);
-                                transition: all 0.3s ease-in-out;
-                                border: 1px solid var(--primaria);
-                            }
-                        }
-                        .foto-perfil-card7{
-                            width: 6rem;
-                            height: 6rem;
-                            border-radius: 50%;
-                            // margin-left: 0.5rem;
-                            margin-bottom: 1rem;
-                             background-image:url('../../../assets/avatares/avatar7.png');
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                            cursor: pointer;
-                                                        
-                            &:hover{
-                                transform: scale(1.2);
-                                transition: all 0.3s ease-in-out;
-                                border: 1px solid var(--primaria);
-                            }
-                        }
-
-                        .foto-perfil-card8{
-                            width: 6rem;
-                            height: 6rem;
-                            border-radius: 50%;
-                            // margin-left: 0.5rem;
-                            margin-bottom: 1rem;
-                             background-image:url('../../../assets/avatares/avatar8.png');
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                            cursor: pointer;
-                                                        
-                            &:hover{
-                                transform: scale(1.2);
-                                transition: all 0.3s ease-in-out;
-                                border: 1px solid var(--primaria);
-                            }
-                        }
-
-                        .foto-perfil-card9{
-                            width: 6rem;
-                            height: 6rem;
-                            border-radius: 50%;
-                            // margin-left: 0.5rem;
-                            margin-bottom: 1rem;
-                             background-image:url('../../../assets/avatares/avatar9.png');
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                            cursor: pointer;
-                                                        
-                            &:hover{
-                                transform: scale(1.2);
-                                transition: all 0.3s ease-in-out;
-                                border: 1px solid var(--primaria);
-                            }
-                        }   
-
-                        .foto-perfil-card10{
-                            width: 6rem;
-                            height: 6rem;
-                            border-radius: 50%;
-                            // margin-left: 0.5rem;
-                            margin-bottom: 1rem;
-                             background-image:url('../../../assets/avatares/avatar10.png');
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                            cursor: pointer;
-                                                        
-                            &:hover{
-                                transform: scale(1.2);
-                                transition: all 0.3s ease-in-out;
-                                border: 1px solid var(--primaria);
-                            }
-                        }   
-
-                    }
-
-                }
-            
-
-
-            .botoes{
-                display: flex;
-                width: 100%;
-                align-items: center;
-                justify-content: center;
-                // margin-bottom: 1rem;
-
-                // margin-top: 1rem;
-                // padding: 1rem 1rem 0rem 1rem;
-                
-
-                .salvar, .cancelar, .deletar{
-                    width: 100%;
-                    background-color: var(--primaria);
-                    color: var(--secundaria);  
-                    // border-radius: 1rem;
-                    border: none;
-                    padding: 1rem 2rem;
-                    // min-width: 16rem;
-                    font-size: 1rem;       
-                    border-radius: 0.5rem;
-                    cursor: pointer;
-                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-
-                    &:hover{
-                        background-color: var(--secundaria);
-                        color: var(--primaria);
-                        border: var(--primaria) 1px solid;
-                    } 
+                &:hover {
+                    background-color: var(--secundaria);
+                    color: var(--primaria);
+                    border: var(--primaria) 1px solid;
                 }
             }
         }
+    }
 }
 
 .modal-delete {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal {
-  background: var(--secundaria);
-  padding: 20px;
-  border-radius: 10px;
-  min-width: 80vw;
-  max-width: 80vw;
+    background: var(--secundaria);
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 80vw;
+    max-width: 80vw;
 
 }
 
-.botoes-deletar{
+.botoes-deletar {
     display: flex;
     width: 100%;
     align-items: center;
@@ -614,33 +632,34 @@
     // margin-top: 1rem;
     padding: 1rem 1rem 0rem 1rem;
 
-    .botao-nao, .botao-sim {
-    background-color: var(--primaria);
-    color: var(--secundaria);  
-    // border-radius: 1rem;
-    border: none;
-    padding: 1rem 2rem;
-    // min-width: 16rem;
-    font-size: 1rem;       
-    border-radius: 0.5rem;
-    cursor: pointer;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+    .botao-nao,
+    .botao-sim {
+        background-color: var(--primaria);
+        color: var(--secundaria);
+        // border-radius: 1rem;
+        border: none;
+        padding: 1rem 2rem;
+        // min-width: 16rem;
+        font-size: 1rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
 
 
-    &:hover{
-        background-color: var(--secundaria);
-        color: var(--primaria);
-        border: var(--primaria) 1px solid;
-    } 
+        &:hover {
+            background-color: var(--secundaria);
+            color: var(--primaria);
+            border: var(--primaria) 1px solid;
+        }
     }
 
-    .botao-nao{
+    .botao-nao {
         margin-left: 1rem;
         background-color: var(--secundaria);
         color: var(--primaria);
-        border: var(--primaria) 1px solid;  
+        border: var(--primaria) 1px solid;
 
-        &:hover{
+        &:hover {
             background-color: var(--primaria);
             color: var(--secundaria);
             // border: var(--primaria) 1px solid;
@@ -648,4 +667,3 @@
     }
 
 }
-
