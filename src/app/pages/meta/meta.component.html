@@ -22,6 +22,14 @@
     <section *ngIf="!showModal" class="meta">
 
         <section routerLink="/metas" class="voltar-metas-box">
+            <div>
+                <p class="cor-status" [ngClass]="{
+                'status-novo': status === 'Novo', 
+                'status-em-andamento': status === 'Em andamento', 
+                'status-concluido': status === 'Concluído',
+                'status-pausado': status === 'Pausado'
+                }">{{status}}</p>
+            </div>
             <div class="voltar-metas">
                 <div>
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -34,19 +42,10 @@
                     <p>metas</p>
                 </div>
             </div>
-
-            <div>
-                <p class="cor-status" [ngClass]="{
-                'status-novo': status === 'Novo', 
-                'status-em-andamento': status === 'Em andamento', 
-                'status-concluido': status === 'Concluído',
-                'status-pausado': status === 'Pausado'
-                }">{{status}}</p>
-            </div>
         </section>
 
         <div class="titulo-meta">
-            <h1 class="titulo">{{titulo}}</h1>
+            <h2 class="titulo">{{titulo}}</h2>
 
             <svg (click)="editGoal()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -81,6 +80,11 @@
                 </div> -->
                 <li>{{categoria}}</li>
                 <li>{{prazo}}</li>
+                <p class="prioridade" [ngClass]="{
+                'prioridade-baixa': prioridade === 'Baixa', 
+                'prioridade-media': prioridade === 'Média', 
+                'prioridade-alta': prioridade === 'Alta'
+                }">{{prioridade}}</p>
             </div>
         </div>
 
@@ -109,7 +113,7 @@
                     </label>
                 </div>
                 <h4 class="texto-sub-meta">{{ mini.titulo }}</h4>
-                <svg (click)="editMiniGoal(inputNewMiniGoalModel)" xmlns="http://www.w3.org/2000/svg" width="24"
+                <svg (click)="editMiniGoal(minigoals[i])" xmlns="http://www.w3.org/2000/svg" width="24"
                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
                     <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
@@ -157,12 +161,11 @@
             <!-- <input type="range" min="0" max="100" value="10"> -->
 
             <p>Descrição</p>
-            <textarea [(ngModel)]="descricao" class="input"
-                placeholder="Fazer academia 3x por semana e dieta para perder 3KG+ por mês."></textarea>
+            <textarea [(ngModel)]="descricao" class="input" placeholder=""></textarea>
 
             <div class="botoes-editar-submeta">
                 <button (click)="closeModal()" class="botao-excluir">Excluir meta</button>
-                <button class="botao-salvar">Salvar</button>
+                <button (click)="salvarEdicaoMeta()" class="botao-salvar">Salvar</button>
             </div>
             <!-- <div class="div-excluir">
                 <button (click)="closeModal()" class="botao-excluir">Excluir meta</button>
@@ -176,7 +179,11 @@
         <div>
             <h2>Editar sub-meta!</h2>
             <button (click)="closeMiniModal()" class="botao-fechar-mini">X</button>
-            <p>{{inputNewMiniGoalModel}}</p>
+            <input type="text" placeholder="Editar sub-meta" class="input-editar-submeta" [(ngModel)]="minigoalToEdit.titulo">
+            <div class="botoes-editar-submeta">
+                <button (click)="closeMiniModal()" class="botao-cancelar">Cancelar</button>
+                <button (click)="salvarEdicaoMiniGoal()" class="botao-salvar">Salvar</button>
+            </div>
         </div>
     </section>
 

@@ -3,22 +3,23 @@
   <!-- <app-loading *ngIf="isLoading"></app-loading> -->
 
   <section>
-      <div class="icone-zera-meta">
-        <svg routerLink="/menu" width="60" height="60" viewBox="0 0 48 48" fill="none">
-          <circle cx="24" cy="32" r="10" fill="#0e3553"/>
-          <circle cx="24" cy="32" r="7" fill="#e9e9e9"/>
-          <polygon points="24,8 18,24 30,24" fill="#0e3553"/>
-        </svg>
-      </div>
+    <div class="icone-zera-meta">
+      <svg routerLink="/menu" width="60" height="60" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="32" r="10" fill="#0e3553" />
+        <circle cx="24" cy="32" r="7" fill="#e9e9e9" />
+        <polygon points="24,8 18,24 30,24" fill="#0e3553" />
+      </svg>
+    </div>
   </section>
 
-    <section>
-        <div class="config">
-            <svg routerLink="/configuracoes" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#e9e9e9">
-            <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
-            </svg>
-        </div>
-    </section>
+  <section>
+    <div class="config">
+      <svg routerLink="/configuracoes" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#e9e9e9">
+        <path
+          d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+      </svg>
+    </div>
+  </section>
 
   <!-- <section>
     <div class="voltar">
@@ -28,11 +29,11 @@
       </svg>
     </div>
   </section> -->
-  
+
 
 
   <section class="zera-meta">
-     <h2>Minhas Metas</h2>
+    <h2>Minhas Metas</h2>
   </section>
 
   <!-- <section class="filtros-container">
@@ -53,30 +54,71 @@
 
     <ng-template #metasCriadas>
       <!-- Itera sobre a lista filtrada -->
-      <div (click)="abrirModalDetalhes(meta)" [ngClass]="itensCarregados ? 'meta' : 'carregandoMetas'" *ngFor="let meta of metas" routerLink="/meta">
-        <div *ngIf="itensCarregados">
-            <div class="titulo-meta">
-              <h1 *ngIf="meta.titulo">{{ meta.titulo }}</h1>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+      <div (click)="abrirModalDetalhes(meta)" [ngClass]="{
+       'meta': true,
+       'meta-novo': meta.status === 'Novo',
+       'meta-andamento': meta.status === 'Em andamento',
+       'meta-concluido': meta.status === 'Concluído',
+       'meta-pausado': meta.status === 'Pausado'
+     }" *ngFor="let meta of metas" routerLink="/meta">
+        <div class="itensCarregados" *ngIf="itensCarregados">
+          <div class="progress-bar-box">
+            <div class="progress-circle">
+              <div *ngIf="itensCarregados" class="progress-circle__content">
+                <div class="progress-circle__percentage">{{meta.progresso}}%</div>
+                <!-- <div class="progress-circle__label">Completed</div> -->
+              </div>
+              <svg class="progress-circle__svg" viewBox="0 0 100 100">
+                <circle class="progress-circle__bg" [ngClass]="{
+                'status-novo': meta.status === 'Novo', 
+                'status-em-andamento': meta.status === 'Em andamento', 
+                'status-concluido': meta.status === 'Concluído',
+                'status-pausado': meta.status === 'Pausado'
+                }" cx="50" cy="50" r="45"></circle>
+                <!-- <circle class="progress-circle__fill" cx="50" cy="50" r="45" stroke-dasharray="283" [style.stroke-dashoffset]="283 - (283 * perCompleted / 100)"></circle> -->
+                <circle class="progress-circle__fill" cx="50" cy="50" r="45" stroke-dasharray="283"
+                  [style.stroke-dashoffset]="meta.progresso*2.83"></circle>
+
+              </svg>
             </div>
+          </div>
+
+          <div class="titulo-meta">
+
+            <h1 *ngIf="meta.titulo">{{ meta.titulo }}</h1>
+
             <div>
-              <p>{{ meta.categoria }} | {{ meta.prioridade }}</p>
+              <p class="cor-status" [ngClass]="{
+                'status-novo': meta.status === 'Novo', 
+                'status-em-andamento': meta.status === 'Em andamento', 
+                'status-concluido': meta.status === 'Concluído',
+                'status-pausado': meta.status === 'Pausado'
+                }">{{meta.status}}</p>
             </div>
-            <div class="div-status">
-              <p class="porcentagem">{{ meta.status }}</p>     
-              <div class="cor-status" [ngClass]="{
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+            </svg> -->
+          </div>
+
+
+          <!-- <div class="div-status">
+            <p class="porcentagem">{{ meta.status }}</p>
+            <div class="cor-status" [ngClass]="{
                 'status-novo': meta.status === 'Novo', 
                 'status-em-andamento': meta.status === 'Em andamento', 
                 'status-concluido': meta.status === 'Concluído',
                 'status-pausado': meta.status === 'Pausado'
                 }">
-              </div>
             </div>
-            <div class="prog-ext" *ngIf="meta.titulo">
-              <div class="prog-int" [style.width.%]="meta.progresso">
-                <p class="porcentagem">{{ meta.progresso }}%</p>
-              </div>
+          </div> -->
+
+          <!-- <div class="prog-ext" *ngIf="meta.titulo">
+            <div class="prog-int" [style.width.%]="meta.progresso">
+              <p class="porcentagem">{{ meta.progresso }}%</p>
             </div>
+          </div> -->
+
         </div>
 
       </div>
@@ -84,185 +126,191 @@
   </section>
 
   <section>
-      <div class="criar-meta">
-        <button (click)="abrirModal()">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="#none">
-            <rect width="48" height="48" rx="24" fill="#e9e9e9"/>
-            <line x1="24" y1="14" x2="24" y2="34" stroke="#0e3553" stroke-width="4" stroke-linecap="round"/>
-            <line x1="14" y1="24" x2="34" y2="24" stroke="#0e3553" stroke-width="4" stroke-linecap="round"/>
-          </svg>
-        </button>
-      </div>
-  </section> 
+    <div class="criar-meta">
+      <button (click)="abrirModal()">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="#none">
+          <rect width="48" height="48" rx="24" fill="#e9e9e9" />
+          <line x1="24" y1="14" x2="24" y2="34" stroke="#0e3553" stroke-width="4" stroke-linecap="round" />
+          <line x1="14" y1="24" x2="34" y2="24" stroke="#0e3553" stroke-width="4" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </section>
 
   <section>
-      <div class="fundo-modal" *ngIf="showFundoModal">
-        <div *ngIf="showModalMeta" class="modal">
-          <div class="modal-content">
-            <div class="titulo-meta2">
-              <h2>Criar nova meta</h2>
-              <h3 (click)="fecharModal()">X</h3>
-            </div>       
-            <p>Título</p>
-            <input class="input" [(ngModel)]="novaMeta.titulo" placeholder="Perder 10Kg">
-            <p>Prazo</p>
-            <input class="input" [(ngModel)]="novaMeta.prazo" placeholder="3 meses">
-            <p>Categoria</p>
-            <select class="input" [(ngModel)]="novaMeta.categoria">
-              <option *ngFor="let categoria of categoriaOptions" [value]="categoria">{{ categoria }}</option>
-            </select>
-            <p>Prioridade</p>
-            <select class="input" [(ngModel)]="novaMeta.prioridade">
-              <option *ngFor="let prioridade of prioridadeOptions" [value]="prioridade">{{ prioridade }}</option>
-            </select>
-            <p>Status</p>
-            <select class="input" [(ngModel)]="novaMeta.status">
-              <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
-            </select>
-            <p>Progresso</p>
-            <div class="progresso-container">
-              <input type="range" min="0" max="100" [(ngModel)]="novaMeta.progresso" class="progresso-slider" [ngStyle]="{'background': 'linear-gradient(to right, var(--primaria) ' + novaMeta.progresso + '%, #ddd ' + novaMeta.progresso + '%)'}">
-              <span class="progresso-valor">{{ novaMeta.progresso }}%</span>
-            </div>
+    <div class="fundo-modal" *ngIf="showFundoModal">
+      <div *ngIf="showModalMeta" class="modal">
+        <div class="modal-content">
+          <div class="titulo-meta2">
+            <h2>Criar nova meta</h2>
+            <h3 (click)="fecharModal()">X</h3>
+          </div>
+          <p>Título</p>
+          <input class="input" [(ngModel)]="novaMeta.titulo" placeholder="Perder 10Kg">
+          <p>Prazo</p>
+          <input class="input" [(ngModel)]="novaMeta.prazo" placeholder="3 meses">
+          <p>Categoria</p>
+          <select class="input" [(ngModel)]="novaMeta.categoria">
+            <option *ngFor="let categoria of categoriaOptions" [value]="categoria">{{ categoria }}</option>
+          </select>
+          <p>Prioridade</p>
+          <select class="input" [(ngModel)]="novaMeta.prioridade">
+            <option *ngFor="let prioridade of prioridadeOptions" [value]="prioridade">{{ prioridade }}</option>
+          </select>
+          <p>Status</p>
+          <select class="input" [(ngModel)]="novaMeta.status">
+            <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+          </select>
+          <p>Progresso</p>
+          <div class="progresso-container">
+            <input type="range" min="0" max="100" [(ngModel)]="novaMeta.progresso" class="progresso-slider"
+              [ngStyle]="{'background': 'linear-gradient(to right, var(--primaria) ' + novaMeta.progresso + '%, #ddd ' + novaMeta.progresso + '%)'}">
+            <span class="progresso-valor">{{ novaMeta.progresso }}%</span>
+          </div>
 
-              <!-- <input type="range" min="0" max="100" value="10"> -->
-            
-            <p>Descrição</p>
-            <textarea class="input" [(ngModel)]="novaMeta.descricao" placeholder="Fazer academia 3x por semana e dieta para perder 3KG+ por mês."></textarea>
-            
-            <div class="toggles-container">
-              <!-- <div class="toggle-item">
+          <!-- <input type="range" min="0" max="100" value="10"> -->
+
+          <p>Descrição</p>
+          <textarea class="input" [(ngModel)]="novaMeta.descricao"
+            placeholder="Fazer academia 3x por semana e dieta para perder 3KG+ por mês."></textarea>
+
+          <div class="toggles-container">
+            <!-- <div class="toggle-item">
                 <p>Criar mini-metas?</p>
                 <label class="toggle-switch">
                   <input type="checkbox" [(ngModel)]="novaMeta.criarMiniMetas">
                   <span class="slider round"></span>
                 </label>
               </div> -->
-              <div class="toggle-box">
-                <p>Enviar lembrete?</p>
-                <label class="toggle-switch">
-                  <input type="checkbox" [(ngModel)]="novaMeta.enviarLembrete">
-                  <span class="slider round"></span>
-                </label>
-              </div>
+            <div class="toggle-box">
+              <p>Enviar lembrete?</p>
+              <label class="toggle-switch">
+                <input type="checkbox" [(ngModel)]="novaMeta.enviarLembrete">
+                <span class="slider round"></span>
+              </label>
             </div>
-            <!-- <div class="botoes">              
+          </div>
+          <!-- <div class="botoes">              
               <button class="salvar" (click)="criarMeta()">Criar</button>
               <button class="cancelar" (click)="fecharModal()">Cancelar</button>
             </div> -->
-            <div class="botoes-criar">              
-              <button class="salvar" (click)="criarMeta()">Criar</button>
-            </div>
-
+          <div class="botoes-criar">
+            <button class="salvar" (click)="criarMeta()">Criar</button>
           </div>
+
         </div>
       </div>
-  </section>  
+    </div>
+  </section>
 
   <section>
-      <div class="fundo-modal" *ngIf="showFundoModalDetalhes">
-        <div *ngIf="showModalDetalhes" class="modal">
-          <div class="modal-content">
-            <div class="titulo-meta2">
-              <h2>Editar meta</h2>
-              <h3 (click)="fecharModalDetalhes()">X</h3>
-            </div> 
-            <p>Título</p>
-            <input class="input" [(ngModel)]="metaSelecionada.titulo">
-            <p>Prazo</p>
-            <input class="input" [(ngModel)]="metaSelecionada.prazo">
-            <p>Categoria</p>
-            <select class="input" [(ngModel)]="metaSelecionada.categoria">
-              <option *ngFor="let categoria of categoriaOptions" [value]="categoria">{{ categoria }}</option>
-            </select>
-            <p>Prioridade</p>
-            <select class="input" [(ngModel)]="metaSelecionada.prioridade">
-              <option *ngFor="let prioridade of prioridadeOptions" [value]="prioridade">{{ prioridade }}</option>
-            </select>
-            <p>Status</p>
-            <select class="input" [(ngModel)]="metaSelecionada.status">
-              <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
-            </select>
-            <p>Progresso</p>
-            <div class="progresso-container">
-              <input type="range" min="0" max="100" [(ngModel)]="metaSelecionada.progresso" class="progresso-slider" [ngStyle]="{'background': 'linear-gradient(to right, var(--primaria) ' + metaSelecionada.progresso + '%, #ddd ' + metaSelecionada.progresso + '%)'}">
-              <span class="progresso-valor">{{ metaSelecionada.progresso }}%</span>
-            </div>
+    <div class="fundo-modal" *ngIf="showFundoModalDetalhes">
+      <div *ngIf="showModalDetalhes" class="modal">
+        <div class="modal-content">
+          <div class="titulo-meta2">
+            <h2>Editar meta</h2>
+            <h3 (click)="fecharModalDetalhes()">X</h3>
+          </div>
+          <p>Título</p>
+          <input class="input" [(ngModel)]="metaSelecionada.titulo">
+          <p>Prazo</p>
+          <input class="input" [(ngModel)]="metaSelecionada.prazo">
+          <p>Categoria</p>
+          <select class="input" [(ngModel)]="metaSelecionada.categoria">
+            <option *ngFor="let categoria of categoriaOptions" [value]="categoria">{{ categoria }}</option>
+          </select>
+          <p>Prioridade</p>
+          <select class="input" [(ngModel)]="metaSelecionada.prioridade">
+            <option *ngFor="let prioridade of prioridadeOptions" [value]="prioridade">{{ prioridade }}</option>
+          </select>
+          <p>Status</p>
+          <select class="input" [(ngModel)]="metaSelecionada.status">
+            <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+          </select>
+          <p>Progresso</p>
+          <div class="progresso-container">
+            <input type="range" min="0" max="100" [(ngModel)]="metaSelecionada.progresso" class="progresso-slider"
+              [ngStyle]="{'background': 'linear-gradient(to right, var(--primaria) ' + metaSelecionada.progresso + '%, #ddd ' + metaSelecionada.progresso + '%)'}">
+            <span class="progresso-valor">{{ metaSelecionada.progresso }}%</span>
+          </div>
 
-              <!-- <input type="range" min="0" max="100" value="10"> -->
-            
-            <p>Descrição</p>
-            <textarea class="input" [(ngModel)]="metaSelecionada.descricao" placeholder="Fazer academia 3x por semana e dieta para perder 3KG+ por mês."></textarea>
-            
-            <div class="toggles-container">
-              <!-- <div class="toggle-item">
+          <!-- <input type="range" min="0" max="100" value="10"> -->
+
+          <p>Descrição</p>
+          <textarea class="input" [(ngModel)]="metaSelecionada.descricao"
+            placeholder="Fazer academia 3x por semana e dieta para perder 3KG+ por mês."></textarea>
+
+          <div class="toggles-container">
+            <!-- <div class="toggle-item">
                 <p>Criar mini-metas?</p>
                 <label class="toggle-switch">
                   <input type="checkbox" [(ngModel)]="metaSelecionada.criarMiniMetas">
                   <span class="slider round"></span>
                 </label>
               </div> -->
-              <div class="toggle-item">
-                <p>Enviar lembrete?</p>
-                <label class="toggle-switch">
-                  <input type="checkbox" [(ngModel)]="metaSelecionada.enviarLembrete">
-                  <span class="slider round"></span>
-                </label>
-              </div>
+            <div class="toggle-item">
+              <p>Enviar lembrete?</p>
+              <label class="toggle-switch">
+                <input type="checkbox" [(ngModel)]="metaSelecionada.enviarLembrete">
+                <span class="slider round"></span>
+              </label>
             </div>
-            <!-- <div class="botoes">              
+          </div>
+          <!-- <div class="botoes">              
               <button class="salvar" (click)="editarMeta()">Salvar</button>
               <button class="cancelar" (click)="fecharModalDetalhes()">Cancelar</button>
             </div> -->
 
-            <div class="botoes">              
-              <button class="salvar" (click)="editarMeta()">Salvar</button>
+          <div class="botoes">
+            <button class="salvar" (click)="editarMeta()">Salvar</button>
+          </div>
+
+          <div class="div-deletar" (click)="deletarMeta()">
+            <div class="deletar-meta">
+              <p><span style="font-weight: bold; font-size: 1rem">Deletar</span></p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                <line x1="10" y1="11" x2="10" y2="17"></line>
+                <line x1="14" y1="11" x2="14" y2="17"></line>
+              </svg>
             </div>
+          </div>
 
-            <div class="div-deletar" (click)="deletarMeta()">
-              <div class="deletar-meta">
-                <p><span style="font-weight: bold; font-size: 1rem">Deletar</span></p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-              </div>
-            </div>
 
-    
-            
 
-            <!-- <div class="botoes">              
+
+          <!-- <div class="botoes">              
               <button class="deletar" (click)="deletarMeta()">Deletar</button>
             </div> -->
-          </div>
         </div>
       </div>
-  </section> 
+    </div>
+  </section>
 
   <section>
     <div class="modal-delete" *ngIf="showModalDelete">
-        <div class="modal-certeza">
-          <h3>
-            Tem certeza que deseja deletar esta meta?
-          </h3>
-          <!-- <p>{{ message }}</p> -->
-          <div class="botoes-deletar">
-              <button class="botao-nao" (click)="cancelarDelete()">Não</button>
-              <button class="botao-sim" (click)="confirmarDelete()">Sim</button>
+      <div class="modal-certeza">
+        <h3>
+          Tem certeza que deseja deletar esta meta?
+        </h3>
+        <!-- <p>{{ message }}</p> -->
+        <div class="botoes-deletar">
+          <button class="botao-nao" (click)="cancelarDelete()">Não</button>
+          <button class="botao-sim" (click)="confirmarDelete()">Sim</button>
 
-          </div>    
         </div>
+      </div>
     </div>
   </section>
-  
+
   <section>
     <!-- <button (click)="openSuccess()">Show Success</button>
     <button (click)="openError()">Show Error</button> -->
 
-    <app-modal-message
-      [type]="modalType"
-      [message]="modalMessage"
-      [show]="showModal"
-      (close)="closeModal()">
+    <app-modal-message [type]="modalType" [message]="modalMessage" [show]="showModal" (close)="closeModal()">
     </app-modal-message>
-  </section> 
+  </section>
 
 </div>

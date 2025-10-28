@@ -9,12 +9,15 @@ import { log } from 'console';
 })
 export class MetasComponent implements OnInit {
 
+  perCompleted = 0;
+  diff = 0;
+
   itensCarregados = false;
 
   showModalDelete = false;
   deletarMetaVar = false;
   // isLoading = false;
-  metas:any = [];
+  metas: any = [];
 
   statusOptions = ['Novo', 'Em andamento', 'Pausado', 'Concluído'];
   categoriaOptions = ["Outros", "Saúde", "Finanças", "Educação", "Pessoal", "Relacionamento", "Profissional", "Lazer", "Viagem", "Hobbie"];
@@ -24,8 +27,8 @@ export class MetasComponent implements OnInit {
   showFundoModalDetalhes = false;
   showModalMeta = false;
   showModalDetalhes = false;
-  novaMeta = { usuario_id: '', id: 0, titulo: '', prazo: '', categoria:'', prioridade:'', status:'', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
-  metaSelecionada = { id: 0, titulo: '', prazo: '', categoria:'', prioridade:'', status:'', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
+  novaMeta = { usuario_id: '', id: 0, titulo: '', prazo: '', categoria: '', prioridade: '', status: '', descricao: '', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
+  metaSelecionada = { id: 0, titulo: '', prazo: '', categoria: '', prioridade: '', status: '', descricao: '', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
 
   constructor(private metaService: MetaService) { }
 
@@ -36,42 +39,42 @@ export class MetasComponent implements OnInit {
 
     this.token = localStorage.getItem('token') || '';
 
-  
+
     // this.filtrarPorStatus('Todas');
-   
+
     console.log('Usuário ID:', this.userId);
     console.log('Token:', localStorage.getItem('token'));
     this.carregarMetas();
   }
 
-  carregarMetas() {  
-    this.itensCarregados = false;  
+  carregarMetas() {
+    this.itensCarregados = false;
     this.metaService.listarMetasPorUsuario(this.userId || '123', this.token).subscribe(data => {
-    this.metas = data;
-    console.log('Metas carregadas: ' + JSON.stringify(this.metas));
+      this.metas = data;
+      console.log('Metas carregadas: ' + JSON.stringify(this.metas));
       setTimeout(() => {
         this.itensCarregados = true;
-        }, 1000); // Exibe mensagem de sucesso      
+      }, 1000); // Exibe mensagem de sucesso      
     });
   }
 
   abrirModal() {
-    this.novaMeta = { usuario_id: '', id: Date.now(), titulo: '', prazo: '', categoria:'Outros', prioridade:'Baixa', status:'Novo', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
+    this.novaMeta = { usuario_id: '', id: Date.now(), titulo: '', prazo: '', categoria: 'Outros', prioridade: 'Baixa', status: 'Novo', descricao: '', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
     this.showModalMeta = true;
     this.showFundoModal = true;
   }
 
   abrirModalDetalhes(meta: any) {
-      console.log('Meta antes de editar:', meta);
-      localStorage.setItem('meta-titulo', JSON.stringify(meta.titulo));
-      localStorage.setItem('meta-id', JSON.stringify(meta.id));
-      localStorage.setItem('meta-prazo', JSON.stringify(meta.prazo)); 
-      localStorage.setItem('meta-categoria', JSON.stringify(meta.categoria));
-      localStorage.setItem('meta-prioridade', JSON.stringify(meta.prioridade));
-      localStorage.setItem('meta-status', JSON.stringify(meta.status));
-      localStorage.setItem('meta-descricao', JSON.stringify(meta.descricao));
-      localStorage.setItem('meta-progresso', JSON.stringify(meta.progresso));
-      localStorage.setItem('meta-enviarLembrete', JSON.stringify(meta.enviarLembrete));
+    console.log('Comp. METAS - Meta antes de editar:', meta);
+    localStorage.setItem('meta-titulo', JSON.stringify(meta.titulo));
+    localStorage.setItem('meta-id', JSON.stringify(meta._id));
+    localStorage.setItem('meta-prazo', JSON.stringify(meta.prazo));
+    localStorage.setItem('meta-categoria', JSON.stringify(meta.categoria));
+    localStorage.setItem('meta-prioridade', JSON.stringify(meta.prioridade));
+    localStorage.setItem('meta-status', JSON.stringify(meta.status));
+    localStorage.setItem('meta-descricao', JSON.stringify(meta.descricao));
+    localStorage.setItem('meta-progresso', JSON.stringify(meta.progresso));
+    localStorage.setItem('meta-enviarLembrete', JSON.stringify(meta.enviarLembrete));
     // this.novaMeta = { titulo: '', prazo: '', categoria:'Outros', prioridade:'Média', status:'Novo', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
     this.showModalDetalhes = true;
     this.showFundoModalDetalhes = true;
@@ -87,7 +90,7 @@ export class MetasComponent implements OnInit {
     this.showModalDetalhes = false;
     this.showFundoModalDetalhes = false;
   }
-     
+
   // Funções para chamar modal de sucesso/erro podem ser adicionadas aqui
   showModal = false;
   modalType: 'success' | 'error' = 'success';
@@ -108,47 +111,47 @@ export class MetasComponent implements OnInit {
   closeModal() {
     this.showModal = false;
   }
- // final funções para chamar modal de sucesso/erro podem ser adicionadas aqui
+  // final funções para chamar modal de sucesso/erro podem ser adicionadas aqui
 
-  criarMeta() {   
+  criarMeta() {
     console.log('TENTANDO CRIAR META:', this.token);
-     
-    this.novaMeta.usuario_id = this.userId || '';    
+
+    this.novaMeta.usuario_id = this.userId || '';
     if (this.novaMeta.titulo) {
       this.metaService.criarMeta(this.novaMeta, this.token).subscribe(() => {
         // this.carregarMetas();
         this.fecharModal();
       });
 
-    this.openSuccess('success', 'Meta criada com sucesso!', true);
+      this.openSuccess('success', 'Meta criada com sucesso!', true);
 
-    setTimeout(() => {
-      this.closeModal(); 
-      this.carregarMetas();  
-    }, 2000);
+      setTimeout(() => {
+        this.closeModal();
+        this.carregarMetas();
+      }, 2000);
 
-    } else {      
+    } else {
       alert('Por favor, preencha Todas os campos.');
-    } 
+    }
   }
 
-  editarMeta() {   
+  editarMeta() {
     console.log('Meta antes de editar:', this.metaSelecionada);
     this.metaService.editarMeta(this.metaSelecionada, this.token).subscribe(() => {
-       
-    this.fecharModalDetalhes();
 
-    this.openSuccess('success', 'Meta editada com sucesso!', true);
+      this.fecharModalDetalhes();
 
-    setTimeout(() => {
-      this.closeModal(); 
-      this.carregarMetas();  
-    }, 2000);   
+      this.openSuccess('success', 'Meta editada com sucesso!', true);
+
+      setTimeout(() => {
+        this.closeModal();
+        this.carregarMetas();
+      }, 2000);
 
     });
   }
 
-  confirmarDelete(){
+  confirmarDelete() {
     this.deletarMetaVar = true;
     this.showModalDelete = false;
     console.log('Meta antes de deletar:', this.metaSelecionada);
@@ -159,17 +162,17 @@ export class MetasComponent implements OnInit {
         this.fecharModalDetalhes();
       });
 
-    this.openSuccess('success', 'Meta deletada com sucesso!', true);
+      this.openSuccess('success', 'Meta deletada com sucesso!', true);
 
-    setTimeout(() => {
-      this.closeModal(); 
-      this.carregarMetas();  
-    }, 2000);
-    
+      setTimeout(() => {
+        this.closeModal();
+        this.carregarMetas();
+      }, 2000);
+
     }
   }
 
-  cancelarDelete(){
+  cancelarDelete() {
     this.deletarMetaVar = false;
     this.showModalDelete = false;
   }
@@ -178,7 +181,14 @@ export class MetasComponent implements OnInit {
   deletarMeta() {
     this.showModalDelete = true;
     // this.deletarMetaVar = true;
-    
+
+  }
+
+  get strokeDashOffset() {
+    // this.perCompleted = 95;
+    this.diff = 100 - this.perCompleted;
+    const circumference = 283;
+    return circumference - (circumference * this.diff / 100);
   }
 
   // filtrarPorStatus(status: string): void {

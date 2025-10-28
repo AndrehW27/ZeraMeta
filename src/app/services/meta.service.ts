@@ -27,6 +27,8 @@ export class MetaService {
 
   editarMeta(meta: any, token: string): Observable<any> {
   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  console.log('SERVICE Editar Meta - Meta Data:', meta, meta._id);
+  
     return this.http.put<any>(`${this.apiUrl}/${meta._id}`, meta, { headers });
   }
 
