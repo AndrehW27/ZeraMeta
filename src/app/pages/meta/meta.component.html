@@ -1,10 +1,5 @@
 <div class="container">
 
-    <!-- <app-loading *ngIf="isLoading"></app-loading> -->
-
-
-
-
     <section>
         <div class="icone-zera-meta">
             <svg routerLink="/menu" width="60" height="60" viewBox="0 0 48 48" fill="none">
@@ -24,26 +19,37 @@
         </div>
     </section>
 
-    <section class="meta">
+    <section *ngIf="!showModal" class="meta">
 
         <section routerLink="/metas" class="voltar-metas-box">
             <div class="voltar-metas">
-                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                    <rect width="48" height="48" rx="24" fill="" />
-                    <path d="M30 12L18 24L30 36" stroke="#0e3553" stroke-width="4" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                </svg>
+                <div>
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <rect width="48" height="48" rx="24" fill="" />
+                        <path d="M30 12L18 24L30 36" stroke="#0e3553" stroke-width="4" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div>
+                    <p>metas</p>
+                </div>
             </div>
+
             <div>
-                <p>metas</p>
-            </div>            
+                <p class="cor-status" [ngClass]="{
+                'status-novo': status === 'Novo', 
+                'status-em-andamento': status === 'Em andamento', 
+                'status-concluido': status === 'Concluído',
+                'status-pausado': status === 'Pausado'
+                }">{{status}}</p>
+            </div>
         </section>
 
         <div class="titulo-meta">
             <h1 class="titulo">{{titulo}}</h1>
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg (click)="editGoal()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
             </svg>
         </div>
@@ -65,7 +71,16 @@
                 </svg>
             </div>
             <div class="status">
-                <p>Status: {{status}}</p>
+
+                <!-- <div class="cor-status" [ngClass]="{
+                'status-novo': status === 'Novo', 
+                'status-em-andamento': status === 'Em andamento', 
+                'status-concluido': status === 'Concluído',
+                'status-pausado': status === 'Pausado'
+                }">
+                </div> -->
+                <li>{{categoria}}</li>
+                <li>{{prazo}}</li>
             </div>
         </div>
 
@@ -74,8 +89,8 @@
         </div> -->
 
 
-        <p class="truncate">Categoria: {{categoria}}</p>
-        <p class="truncate">Prazo: {{prazo}}</p>
+        <!-- <p class="truncate">Categoria: {{categoria}}</p>
+        <p class="truncate">Prazo: {{prazo}}</p> -->
         <p class="truncate">Descricao: {{descricao}}</p>
 
 
@@ -83,91 +98,108 @@
 
     </section>
 
-    <section class="sub-metas">
+    <section *ngIf="!showModal" class="sub-metas">
         <h2>Sub-metas</h2>
         <div class="caixa-sub-metas">
-            <div class="linha-sub-meta">
-                <h4 class="texto-sub-meta">Abrir conta em corretora</h4>
+            <div class="linha-sub-meta" *ngFor="let mini of minigoals; let i = index">
                 <div class="toggle-box">
                     <label class="toggle-switch">
-                        <input type="checkbox">
+                        <input type="checkbox" [(ngModel)]="minigoals[i].concluido" />
                         <span class="slider round"></span>
                     </label>
                 </div>
+                <h4 class="texto-sub-meta">{{ mini.titulo }}</h4>
+                <svg (click)="editMiniGoal(inputNewMiniGoalModel)" xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                </svg>
             </div>
-            <div class="linha-sub-meta">
-                <h4 class="texto-sub-meta">Estudar curso do youtube</h4>
-                <div class="toggle-box">
-                    <label class="toggle-switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
+        </div>
+
+        <div class="new-input-box">
+            <input [(ngModel)]="inputNewMiniGoalModel" type="text" placeholder="nova sub-meta"
+                class="input-nova-submeta">
+            <p (click)="addMinigoal(inputNewMiniGoalModel)" class="criar-submeta">criar</p>
+        </div>
+        <p (click)="aiSuggestion()" class="ia">Sugestão IA</p>
+    </section>
+
+    <section *ngIf="showModal" class="modal-content">
+        <div>
+            <div class="titulo-meta">
+                <h2>Editar meta</h2>
+                <h3 (click)="closeModal()">X</h3>
             </div>
-            <div class="linha-sub-meta">
-                <h4 class="texto-sub-meta">Fazer primeiro investimento</h4>
-                <div class="toggle-box">
-                    <label class="toggle-switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
+            <p>Título</p>
+            <input [(ngModel)]="titulo" class="input" value="{{ titulo }}">
+            <p>Prazo</p>
+            <input [(ngModel)]="prazo" class="input" value="{{ prazo }}">
+            <p>Categoria</p>
+            <select [(ngModel)]="categoria" class="input">
+                <option *ngFor="let categoria of categoriaOptions" [value]="categoria">{{ categoria }}</option>
+            </select>
+            <p>Prioridade</p>
+            <select [(ngModel)]="prioridade" class="input">
+                <option *ngFor="let prioridade of prioridadeOptions" [value]="prioridade">{{ prioridade }}</option>
+            </select>
+            <p>Status</p>
+            <select [(ngModel)]="status" class="input">
+                <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+            </select>
+            <p>Progresso</p>
+            <div class="progresso-container">
+                <input [(ngModel)]="progresso" type="range" min="0" max="100" class="progresso-slider"
+                    [ngStyle]="{'background': 'linear-gradient(to right, var(--primaria) ' + progresso + '%, #ddd ' + progresso + '%)'}">
+                <span class="progresso-valor">{{ progresso }}%</span>
             </div>
-            <div class="linha-sub-meta">
-                <h4 class="texto-sub-meta">Montar carteira</h4>
-                <div class="toggle-box">
-                    <label class="toggle-switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
+
+            <!-- <input type="range" min="0" max="100" value="10"> -->
+
+            <p>Descrição</p>
+            <textarea [(ngModel)]="descricao" class="input"
+                placeholder="Fazer academia 3x por semana e dieta para perder 3KG+ por mês."></textarea>
+
+            <div class="botoes-editar-submeta">
+                <button (click)="closeModal()" class="botao-excluir">Excluir meta</button>
+                <button class="botao-salvar">Salvar</button>
             </div>
-            <div class="linha-sub-meta">
-                <h4 class="texto-sub-meta">Comprar ações</h4>
-                <div class="toggle-box">
-                    <label class="toggle-switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-            </div>
-            <div class="linha-sub-meta">
-                <h4 class="texto-sub-meta">Poupar 20% salário</h4>
-                <div class="toggle-box">
-                    <label class="toggle-switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-            </div>
-            <div class="linha-sub-meta">
-                <h4 class="texto-sub-meta">Abrir conta em corretora</h4>
-                <div class="toggle-box">
-                    <label class="toggle-switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-            </div>
-            <div class="linha-sub-meta">
-                <h4 class="texto-sub-meta">Abrir conta em corretora</h4>
-                <div class="toggle-box">
-                    <label class="toggle-switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-            </div>
-            <div class="linha-sub-meta">
-                <h4 class="texto-sub-meta">Abrir conta em corretora</h4>
-                <div class="toggle-box">
-                    <label class="toggle-switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
+            <!-- <div class="div-excluir">
+                <button (click)="closeModal()" class="botao-excluir">Excluir meta</button>
+
+            </div> -->
+
+        </div>
+    </section>
+
+    <section *ngIf="showModalMini" class="mini">
+        <div>
+            <h2>Editar sub-meta!</h2>
+            <button (click)="closeMiniModal()" class="botao-fechar-mini">X</button>
+            <p>{{inputNewMiniGoalModel}}</p>
+        </div>
+    </section>
+
+    <section *ngIf="showAi" class="ai">
+        <div>
+            <h2>Em breve!</h2>
+            <p>Deixe a inteligência artificial sugerir sub-metas para você!</p>
+            <button (click)="closeAiSuggestion()" class="botao-fechar-ai">X</button>
+        </div>
+    </section>
+
+
+
+    <!-- <section *ngIf="showModal" class="modal-background">
+        <div>
+            <div *ngIf="showModal" class="modal-content">
+                <h2>Editar sub-meta</h2>
+                <input type="text" placeholder="Editar sub-meta" class="input-editar-submeta">
+                <div class="botoes-editar-submeta">
+                    <button (click)="closeModal()" class="botao-cancelar">Cancelar</button>
+                    <button class="botao-salvar">Salvar</button>
                 </div>
             </div>
         </div>
-        <h4 class="criar-submeta">criar +</h4>
-    </section>
+    </section> -->
 </div>

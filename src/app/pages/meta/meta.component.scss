@@ -7,16 +7,54 @@
     padding: 1.5rem;
     border-radius: 1rem;
     width: 80vw;
-    // height: 400px;
+    // height: 1000px;
     overflow-y: scroll;
 
     .voltar-metas-box {
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: space-between;
         flex-direction: row;
         color: var(--primaria);
         margin-bottom: 0.5rem;
+        width: 100%;
+
+        .voltar-metas {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+
+        }
+
+        .cor-status {
+            background-color: var(--primaria);
+            color: var(--secundaria);
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+
+            &.status-novo {
+                background-color: #e74c3c;
+                /* Vermelho */
+            }
+
+            &.status-em-andamento {
+                background-color: #f1c40f;
+                /* Amarelo */
+            }
+
+            &.status-concluido {
+                background-color: #2ecc71;
+                /* Verde */
+            }
+
+            &.status-pausado {
+                background-color: #95a5a6;
+                /* Cinza */
+            }
+        }
     }
 
     .titulo-meta {
@@ -43,17 +81,9 @@
 
     p {
         font-weight: bold;
-        margin-bottom: 0.5rem;
     }
 
-    .truncate {
-        // margin-left: 1rem;
-        max-width: calc(100% - 2rem);
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        
-    }
+
 
 
 
@@ -64,7 +94,8 @@
         align-items: center;
         justify-content: flex-start;
         margin-top: 1rem;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
+        height: auto;
 
         .progress-circle {
 
@@ -119,8 +150,48 @@
 
         .status {
             margin-left: 2rem;
+
+            // .cor-status {
+            //     background-color: var(--primaria);
+            //     color: var(--secundaria);
+            //     padding: 0.25rem 0.75rem;
+            //     border-radius: 0.5rem;
+            //     font-weight: bold;
+            //     margin-bottom: 0.5rem;               
+
+            //     &.status-novo {
+            //         background-color: #e74c3c;
+            //         /* Vermelho */
+            //     }
+
+            //     &.status-em-andamento {
+            //         background-color: #f1c40f;
+            //         /* Amarelo */
+            //     }
+
+            //     &.status-concluido {
+            //         background-color: #2ecc71;
+            //         /* Verde */
+            //     }
+
+            //     &.status-pausado {
+            //         background-color: #95a5a6;
+            //         /* Cinza */
+            //     }
+            // }
+
         }
 
+    }
+
+    .truncate {
+        // margin-left: 1rem;
+        max-width: calc(100% - 2rem);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-bottom: 0.5rem;
+        font-weight: normal;
     }
 
     .details {
@@ -141,11 +212,15 @@
 }
 
 .sub-metas {
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
     margin-top: 2rem;
 
     h2 {
         margin-bottom: 1rem;
-        color: var(--secundaria);
+        color: var(--primaria);
     }
 
     .caixa-sub-metas {
@@ -155,7 +230,7 @@
         padding: 1rem;
         border-radius: 1rem;
         width: 80vw;
-        height: 200px;
+        height: 150px;
         overflow-y: scroll;
 
         .linha-sub-meta {
@@ -165,7 +240,7 @@
             margin-bottom: 1rem;
 
             .texto-sub-meta {
-                max-width: 75%; // ou ajuste conforme necessário
+                max-width: 65%; // ou ajuste conforme necessário
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
@@ -182,7 +257,7 @@
                 position: relative;
                 display: inline-block;
                 width: 40px;
-                height: 21px;
+                height: 22px;
 
                 input {
                     opacity: 0;
@@ -197,7 +272,7 @@
                     left: 0;
                     right: 0;
                     bottom: 0;
-                    background-color: #848484;
+                    background-color: var(--secundaria);
                     /* Cor do toggle desligado */
                     transition: .4s;
                     border-radius: 10px;
@@ -211,7 +286,7 @@
                     width: 16px;
                     left: 3px;
                     bottom: 3px;
-                    background-color: white;
+                    background-color: var(--primaria);
                     /* Cor da bolinha */
                     transition: .4s;
                     border-radius: 50%;
@@ -224,20 +299,298 @@
 
                 input:checked+.slider:before {
                     transform: translateX(18px);
+                    background-color: var(--secundaria);
+
                 }
             }
         }
 
     }
 
-    .criar-submeta {
-        margin-top: 0.5rem;
+    .new-input-box {
+
+        margin-top: 1rem;
+        display: flex;
+        width: 100%;
+        // font-weight: bold;
+        cursor: pointer;
+
+        .input-nova-submeta {
+            padding: 0.5rem;
+            border-radius: 0.5rem 0 0 0.5rem;
+            // font-weight: bold;
+            border: 1px solid var(--primaria);
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: var(--primaria);
+
+            &::placeholder {
+                color: var(--primaria);
+            }
+        }
+
+        .criar-submeta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secundaria);
+            background-color: var(--primaria);
+            // border: 1px solid var(--secundaria);
+            border-radius: 0 .5rem 0.5rem 0;
+            width: 5rem;
+        }
+
+    }
+
+    .ia {
+        font-weight: bold;
+        margin-top: 1rem;
         color: var(--secundaria);
         cursor: pointer;
-        border-radius: 2rem;
-        background-color: var(--primaria);
-        color: var(--secundaria);
-        border: 1px solid var(--secundaria);
-        padding: 0.25rem 0.75rem;
     }
+
 }
+
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    width: 80vw;
+    // height: 1000px;
+    overflow-y: scroll;
+
+    .titulo-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        color: var(--primaria);
+
+        h3 {
+            cursor: pointer;
+        }
+    }
+
+    .input {
+        background-color: rgba(255, 255, 255, 0.15);
+        width: 65vw;
+        padding: 0.5rem;
+        border-radius: 1rem;
+        border: 1px solid var(--primaria);
+        margin-bottom: 1rem;
+    }
+
+    .input-editar-submeta {
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        border: 1px solid var(--primaria);
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .progresso-container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .progresso-slider {
+        // Esta é a barra do slider
+        -webkit-appearance: none;
+        /* Remove estilos padrão para aplicar os nossos */
+        appearance: none;
+        flex: 1;
+        // width: 100%; /* Largura total do slider */
+        margin-right: 1rem;
+        height: 0.5rem;
+        /* Altura da barra */
+        border-radius: 1rem;
+        outline: none;
+        transition: opacity .2s;
+
+
+
+        /* Estilo da bolinha (thumb) para Chrome, Safari, Edge */
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            /* Largura da bolinha */
+            height: 20px;
+            /* Altura da bolinha */
+            border-radius: 50%;
+            /* Deixa a bolinha redonda */
+            background: var(--primaria);
+            /* Cor da bolinha */
+            cursor: pointer;
+        }
+
+        /* Estilo da bolinha (thumb) para Firefox */
+        &::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primaria);
+            cursor: pointer;
+            border: none;
+        }
+    }
+
+    .botoes-editar-submeta {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-evenly;
+
+        .botao-excluir,
+        .botao-salvar {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .botao-salvar {
+            background-color: var(--primaria);
+            color: var(--secundaria);
+        }
+
+        .botao-excluir {
+            background-color: #e74c3c;
+            color: var(--secundaria);
+        }
+    }
+
+    .div-excluir {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+
+        .botao-excluir {
+            background-color: #e74c3c;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            color: var(--secundaria);
+            margin-top: 1rem;
+        }
+    }
+
+
+}
+
+.mini {
+    position: fixed;
+    top: 20rem;
+    background-color: var(--secundaria);
+    width: 80vw;
+    // height: 20vh;
+    border-radius: 1rem;
+    padding: 1rem;
+
+    .botao-fechar-mini {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: transparent;
+        color: var(--primaria);
+        border: none;
+        // border-radius: 0.5rem;
+        // padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+}
+
+.ai {
+    position: fixed;
+    top: 20rem;
+    background-color: var(--secundaria);
+    width: 80vw;
+    // height: 20vh;
+    border-radius: 1rem;
+    padding: 1rem;
+
+    .botao-fechar-ai {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: transparent;
+        color: var(--primaria);
+        border: none;
+        // border-radius: 0.5rem;
+        // padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+}
+
+// .modal-background{
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100vw;
+//     height: 100vh;
+//     // background-color: rgba(0, 0, 0, 0.5);
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-start;
+//     z-index: 1000;
+
+//     .modal-content {
+//             background-color: rgba(255, 255, 255, 0.25);
+// ;
+//         padding: 2rem;
+//         border-radius: 1rem;
+//         width: 80vw;
+//         max-width: 400px;
+//         color: var(--primaria);
+//         position: relative;
+
+//         .input-editar-submeta {
+//             width: 100%;
+//             padding: 0.5rem;
+//             border-radius: 0.5rem;
+//             border: 1px solid var(--primaria);
+//             margin-top: 1rem;
+//             margin-bottom: 1rem;
+//         }
+
+//         .botoes-editar-submeta {
+//             display: flex;
+//             justify-content: flex-end;
+
+//             .botao-cancelar, .botao-salvar {
+//                 padding: 0.5rem 1rem;
+//                 border-radius: 0.5rem;
+//                 border: none;
+//                 cursor: pointer;
+//                 margin-left: 1rem;
+//             }
+
+//             .botao-cancelar {
+//                 background-color: var(--primaria);
+//                 color: var(--secundaria);
+//             }
+
+//             .botao-salvar {
+//                 background-color: var(--secundaria);
+//                 color: var(--primaria);
+//                 border: 1px solid var(--primaria);
+//             }
+//         }
+//     }
+// }

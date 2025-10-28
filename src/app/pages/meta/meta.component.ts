@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { log } from 'console';
 
 @Component({
   selector: 'app-meta',
@@ -8,6 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class MetaComponent implements OnInit {
 
   constructor() { }
+
+  showModal = false;
+  showModalMini = false;
+  showAi = false;
+
+  minigoals: { titulo: string; concluido: boolean }[] = [{ titulo: 'stringggggggggggggggggggggggggg', concluido: true }, { titulo: 'fasdfa', concluido: false }];
+  inputNewMiniGoalModel = '';
+
+  statusOptions = ['Novo', 'Em andamento', 'Pausado', 'Concluído'];
+  categoriaOptions = ["Outros", "Saúde", "Finanças", "Educação", "Pessoal", "Relacionamento", "Profissional", "Lazer", "Viagem", "Hobbie"];
+  prioridadeOptions = ['Baixa', 'Média', 'Alta'];
 
   titulo = '';
   prioridade = '';
@@ -24,6 +36,9 @@ export class MetaComponent implements OnInit {
   diff = 0;
 
   ngOnInit(): void {
+    console.log('INITIAL this.showModal: ' + this.showModal);
+
+
     const rawTitulo = localStorage.getItem('meta-titulo') || '';
     this.titulo = rawTitulo.replace(/^"(.*)"$/, '$1');
     const rawStatus = localStorage.getItem('meta-status') || '';
@@ -62,6 +77,38 @@ export class MetaComponent implements OnInit {
     this.diff = 100 - this.perCompleted;
     const circumference = 283;
     return circumference - (circumference * this.diff / 100);
+  }
+
+  addMinigoal(inputNewMiniGoalModel: any) {
+    this.minigoals.push({ titulo: this.inputNewMiniGoalModel, concluido: false });
+    this.inputNewMiniGoalModel = '';
+    console.log('Minigoals:', this.minigoals);
+  }
+
+  editGoal() {
+    this.showModal = true;
+    // console.log('this.showModal: '+this.showModal);
+  }
+
+  closeModal() {
+    this.showModal = false;
+    // console.log('this.showModal: '+this.showModal);
+  }
+
+  aiSuggestion() {
+    this.showAi = true;
+  }
+
+  closeAiSuggestion() {
+    this.showAi = false;
+  }
+
+  editMiniGoal(inputNewMiniGoalModel: any) {
+    this.showModalMini = true;
+  }
+
+  closeMiniModal() {
+    this.showModalMini = false;
   }
 
 }
