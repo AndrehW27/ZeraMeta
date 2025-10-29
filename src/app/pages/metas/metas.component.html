@@ -2,7 +2,7 @@
 
   <!-- <app-loading *ngIf="isLoading"></app-loading> -->
 
-  <section>
+  <!-- <section>
     <div class="icone-zera-meta">
       <svg routerLink="/menu" width="60" height="60" viewBox="0 0 48 48" fill="none">
         <circle cx="24" cy="32" r="10" fill="#0e3553" />
@@ -10,7 +10,7 @@
         <polygon points="24,8 18,24 30,24" fill="#0e3553" />
       </svg>
     </div>
-  </section>
+  </section> -->
 
   <section>
     <div class="config">
@@ -54,7 +54,8 @@
 
     <ng-template #metasCriadas>
       <!-- Itera sobre a lista filtrada -->
-      <div (click)="abrirModalDetalhes(meta)" [ngClass]="[itensCarregados ? 'meta' : 'carregandoMetas']" *ngFor="let meta of metas">
+      <div (click)="abrirModalDetalhes(meta)" [ngClass]="[itensCarregados ? 'meta' : 'carregandoMetas']"
+        *ngFor="let meta of metas">
         <div class="itensCarregados" *ngIf="itensCarregados">
           <div class="progress-bar-box">
             <div class="progress-circle">
@@ -81,14 +82,18 @@
 
             <h1 *ngIf="meta.titulo">{{ meta.titulo }}</h1>
 
-            <div>
+            <div class="status-box">
               <p class="cor-status" [ngClass]="{
                 'status-novo': meta.status === 'Novo', 
                 'status-em-andamento': meta.status === 'Em andamento', 
                 'status-concluido': meta.status === 'Concluído',
                 'status-pausado': meta.status === 'Pausado'
                 }">{{meta.status}}</p>
+              <div *ngIf="meta.status === 'Concluído'" class="trophy-icon">
+                ⭐
+              </div>
             </div>
+
             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
@@ -128,6 +133,12 @@
           <line x1="14" y1="24" x2="34" y2="24" stroke="#0e3553" stroke-width="4" stroke-linecap="round" />
         </svg>
       </button>
+    </div>
+  </section>
+
+  <section>
+    <div class="criar-meta-IA">
+      <p>IA</p>
     </div>
   </section>
 

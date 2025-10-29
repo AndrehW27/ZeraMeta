@@ -1,6 +1,6 @@
 <div class="container">
 
-    <section>
+    <!-- <section>
         <div class="icone-zera-meta">
             <svg routerLink="/menu" width="60" height="60" viewBox="0 0 48 48" fill="none">
                 <circle cx="24" cy="32" r="10" fill="#0e3553" />
@@ -8,7 +8,7 @@
                 <polygon points="24,8 18,24 30,24" fill="#0e3553" />
             </svg>
         </div>
-    </section>
+    </section> -->
 
     <section>
         <div class="config">
@@ -202,13 +202,14 @@
         </div>
     </section>
 
-    <section *ngIf="showModalDeleteGoal" class="mini">
+    <section *ngIf="showModalDeleteGoal" class="miniDelete">
 
         <h4 style="margin-bottom: 2rem; margin-right: 2rem;">Tem certeza que deseja deletar esta meta?</h4>
         <button (click)="closeMiniModalDelete()" class="botao-fechar-mini">X</button>
         <div class="botoes-editar-submeta">
-            <button (click)="closeMiniModalDelete()" class="botao-cancelar">Não</button>
-            <button (click)="excluirMeta()" class="botao-salvar">sim</button>
+            <button (click)="closeMiniModalDelete()" class="botao-nao">Não</button>
+            <button (click)="excluirMeta()" class="botao-salvar">Sim</button>
+            <!-- <p class="botao-nao">Não</p> -->
         </div>
 
     </section>

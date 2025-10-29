@@ -52,7 +52,7 @@ export class MetasComponent implements OnInit {
     this.itensCarregados = false;
     this.metaService.listarMetasPorUsuario(this.userId || '123', this.token).subscribe(data => {
       this.metas = data;
-      console.log('Metas carregadas: ' + JSON.stringify(this.metas));
+      // console.log('Metas carregadas: ' + JSON.stringify(this.metas));
       setTimeout(() => {
         this.itensCarregados = true;
       }, 1000); // Exibe mensagem de sucesso      

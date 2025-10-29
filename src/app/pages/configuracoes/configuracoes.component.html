@@ -9,7 +9,7 @@
     </div>
   </section> -->
 
-  <section>
+  <!-- <section>
     <div class="icone-zera-meta">
       <svg routerLink="/menu" width="60" height="60" viewBox="0 0 48 48" fill="none">
         <circle cx="24" cy="32" r="10" fill="#0e3553" />
@@ -17,7 +17,7 @@
         <polygon points="24,8 18,24 30,24" fill="#0e3553" />
       </svg>
     </div>
-  </section>
+  </section> -->
 
   <section class="configuracoes">
     <h2>Configurações</h2>
@@ -29,6 +29,10 @@
       <span>Home</span>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
     </h4> -->
+    <h4 routerLink="/menu">
+      <span>Home</span>
+      <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg> -->
+    </h4>
     <h4 routerLink="/perfil">
       <span>Perfil</span>
       <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg> -->
@@ -124,7 +128,7 @@
   </div>
 
   <section>
-    <div class="modal-sair" *ngIf="!showModalSair">
+    <div class="modal-sair" *ngIf="showModalSair">
       <div class="modal">
         <h4>
           Tem certeza que deseja sair da conta?
