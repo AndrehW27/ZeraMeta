@@ -144,20 +144,37 @@ export class MetaComponent implements OnInit {
     return circumference - (circumference * this.diff / 100);
   }
 
-  addMinigoal(inputNewMiniGoalModel: any) {
-    if (!inputNewMiniGoalModel || !inputNewMiniGoalModel.trim()) {
-      return; // Não adiciona se o título estiver vazio
-    }
-    this.miniGoals.push({ titulo: inputNewMiniGoalModel, concluido: false });
-    this.inputNewMiniGoalModel = '';
-    console.log('miniGoals:', this.miniGoals);
-    this.metaSelecionada.miniGoals = this.miniGoals;
-    console.log('this.metaSelecionada: ' + JSON.stringify(this.metaSelecionada));
-    this.metaService.editarMeta(this.metaSelecionada, this.token).subscribe(() => {
-    });
-    localStorage.setItem('meta-miniGoals', JSON.stringify(this.metaSelecionada.miniGoals));
+  // ...existing code...
+addMinigoal() {
+  const title = (this.inputNewMiniGoalModel ?? '').toString().trim();
+  if (!title) return;
 
-  }
+  const newMini = { titulo: title, concluido: false };
+  // atualiza local (optimistic update)
+  this.miniGoals.push(newMini);
+
+  // assegura a propriedade com o nome esperado pelo backend (ex: minigoals)
+  if (!this.metaSelecionada) this.metaSelecionada = {} as any;
+  this.metaSelecionada.miniGoals = this.miniGoals;
+
+  const token = localStorage.getItem('token') || '';
+  console.log('PUT payload (antes da requisição):', this.metaSelecionada);
+
+  this.metaService.editarMeta(this.metaSelecionada, token).subscribe({
+    next: res => {
+      console.log('Editar meta resposta:', res);
+      this.inputNewMiniGoalModel = '';
+      // opcional: atualizar miniGoals com o que veio do servidor
+      if (res?.minigoals) this.miniGoals = res.minigoals;
+    },
+    error: err => {
+      console.error('Erro ao salvar sub-meta:', err);
+      // rollback se necessário
+      this.miniGoals = this.miniGoals.filter(m => m !== newMini);
+      this.metaSelecionada.miniGoals = [...this.miniGoals];
+    }
+  });
+}
 
 
 

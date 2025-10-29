@@ -535,7 +535,7 @@
         align-items: center;
         justify-content: space-evenly;
 
-        
+
         .botao-excluir,
         .botao-salvar {
             padding: 0.75rem 1.5rem;
@@ -558,24 +558,100 @@
 
     }
 
-    .div-excluir {
+
+
+
+
+
+
+}
+
+.mini {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: fixed;
+    top: 20rem;
+    background-color: var(--secundaria);
+    box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.5);
+
+    width: 80vw;
+    // height: 20vh;
+    border-radius: 1rem;
+    padding: 1.5rem;
+
+
+
+    .botao-fechar-mini {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        background-color: transparent;
+        color: var(--primaria);
+        border: none;
+        // border-radius: 0.5rem;
+        // padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .input-editar-submeta {
+        margin-bottom: 2rem;
+        width: 100%;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 1rem;
+        box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.5);
+        font-size: 1rem;
+    }
+
+    .botoes-editar-submeta {
         display: flex;
         width: 100%;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
+
+
+        .botao-excluir,
+        .botao-salvar {
+            padding: 0.75rem 1.5rem;
+            border-radius: 1.5rem;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .botao-salvar {
+            background-color: var(--primaria);
+            color: var(--secundaria);
+        }
 
         .botao-excluir {
             background-color: #e74c3c;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            border: none;
-            cursor: pointer;
             color: var(--secundaria);
-            margin-top: 1rem;
         }
+
+
     }
 
+    // .div-excluir {
+    //     display: flex;
+    //     width: 100%;
+    //     align-items: center;
+    //     justify-content: center;
 
+    //     .botao-excluir {
+    //         background-color: #e74c3c;
+    //         padding: 0.75rem 1.5rem;
+    //         border-radius: 0.5rem;
+    //         border: none;
+    //         cursor: pointer;
+    //         color: var(--secundaria);
+    //         margin-top: 1rem;
+    //     }
+    // }
 }
 
 .miniDelete {
