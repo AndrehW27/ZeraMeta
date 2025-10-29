@@ -54,7 +54,7 @@
 
     <ng-template #metasCriadas>
       <!-- Itera sobre a lista filtrada -->
-      <div (click)="abrirModalDetalhes(meta)" [ngClass]="[itensCarregados ? 'meta' : 'carregandoMetas']" *ngFor="let meta of metas" routerLink="/meta">
+      <div (click)="abrirModalDetalhes(meta)" [ngClass]="[itensCarregados ? 'meta' : 'carregandoMetas']" *ngFor="let meta of metas">
         <div class="itensCarregados" *ngIf="itensCarregados">
           <div class="progress-bar-box">
             <div class="progress-circle">

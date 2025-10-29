@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MetaService } from '../../services/meta.service';
 import { log } from 'console';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-metas',
@@ -30,7 +31,7 @@ export class MetasComponent implements OnInit {
   novaMeta = { usuario_id: '', id: 0, titulo: '', prazo: '', categoria: '', prioridade: '', status: '', descricao: '', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
   metaSelecionada = { id: 0, titulo: '', prazo: '', categoria: '', prioridade: '', status: '', descricao: '', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
 
-  constructor(private metaService: MetaService) { }
+  constructor(private metaService: MetaService, private router: Router) { }
 
   userId = localStorage.getItem('userId');
   token = localStorage.getItem('token') || '';
@@ -79,7 +80,8 @@ export class MetasComponent implements OnInit {
     // this.novaMeta = { titulo: '', prazo: '', categoria:'Outros', prioridade:'Média', status:'Novo', descricao:'', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
     this.showModalDetalhes = true;
     this.showFundoModalDetalhes = true;
-    this.metaSelecionada = { ...meta }; // Cria uma cópia da meta selecionada   
+    this.metaSelecionada = { ...meta };
+    this.router.navigate(['/meta']); // Cria uma cópia da meta selecionada   
   }
 
   fecharModal() {
