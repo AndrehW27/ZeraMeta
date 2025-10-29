@@ -59,8 +59,12 @@ export class MetaComponent implements OnInit {
       this.metaSelecionada.titulo = this.titulo;
 
       const rawMiniGoals = localStorage.getItem('meta-miniGoals') || '';
+      console.log('rawMiniGoals:', rawMiniGoals);
+      
       this.miniGoals = rawMiniGoals !== null ? JSON.parse(rawMiniGoals) : [];
+      console.log('this.miniGoals:', this.miniGoals);
       this.metaSelecionada.miniGoals = this.miniGoals;
+      console.log('this.metaSelecionada.miniGoals:', this.metaSelecionada.miniGoals);
 
       const rawStatus = localStorage.getItem('meta-status') || '';
       this.status = rawStatus !== null ? JSON.parse(rawStatus) : '';
@@ -87,9 +91,9 @@ export class MetaComponent implements OnInit {
       this.perCompleted = this.progresso;
       this.metaSelecionada.progresso = this.progresso;
 
-      const rawEnviarLembrete = localStorage.getItem('meta-enviarLembrete') || 'false';
-      this.enviarLembrete = rawEnviarLembrete.replace(/^"(.*)"$/, '$1') === 'true';
-      this.metaSelecionada.enviarLembrete = this.enviarLembrete;
+      // const rawEnviarLembrete = localStorage.getItem('meta-enviarLembrete') || 'false';
+      // this.enviarLembrete = rawEnviarLembrete.replace(/^"(.*)"$/, '$1') === 'true';
+      // this.metaSelecionada.enviarLembrete = this.enviarLembrete;
     } catch (err) {
       console.error('Erro ao ler meta do localStorage:', err);
       // fallback seguro
