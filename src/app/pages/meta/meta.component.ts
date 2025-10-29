@@ -21,8 +21,8 @@ export class MetaComponent implements OnInit {
 
   // miniGoals: { titulo: string; concluido: boolean }[] = [{ titulo: 'Primeira mini meta', concluido: true }, { titulo: 'Segunda mini metaaaaa', concluido: false }];
   miniGoals: { titulo: string; concluido: boolean }[] = [];
-  minigoalToEdit: any;
-  inputNewMiniGoalModel = '';
+  miniGoalToEdit: any;
+  inputNewminiGoalModel = '';
 
   statusOptions = ['Novo', 'Em andamento', 'Pausado', 'Concluído'];
   categoriaOptions = ["Outros", "Saúde", "Finanças", "Educação", "Pessoal", "Relacionamento", "Profissional", "Lazer", "Viagem", "Hobbie"];
@@ -66,9 +66,9 @@ export class MetaComponent implements OnInit {
       console.log('this.metaSelecionada.miniGoals:', this.metaSelecionada.miniGoals);
       // --<<
 
-      // const rawMiniGoals = localStorage.getItem('meta-miniGoals') || '';
-      // console.log('rawMiniGoals:', rawMiniGoals);
-      // this.miniGoals = rawMiniGoals !== null ? JSON.parse(rawMiniGoals) : [];
+      // const rawminiGoals = localStorage.getItem('meta-miniGoals') || '';
+      // console.log('rawminiGoals:', rawminiGoals);
+      // this.miniGoals = rawminiGoals !== null ? JSON.parse(rawminiGoals) : [];
       // console.log('this.miniGoals:', this.miniGoals);
       // this.metaSelecionada.miniGoals = this.miniGoals;
       // console.log('this.metaSelecionada.miniGoals:', this.metaSelecionada.miniGoals);
@@ -145,15 +145,15 @@ export class MetaComponent implements OnInit {
   }
 
   // ...existing code...
-addMinigoal() {
-  const title = (this.inputNewMiniGoalModel ?? '').toString().trim();
+addminiGoal() {
+  const title = (this.inputNewminiGoalModel ?? '').toString().trim();
   if (!title) return;
 
   const newMini = { titulo: title, concluido: false };
   // atualiza local (optimistic update)
   this.miniGoals.push(newMini);
 
-  // assegura a propriedade com o nome esperado pelo backend (ex: minigoals)
+  // assegura a propriedade com o nome esperado pelo backend (ex: miniGoals)
   if (!this.metaSelecionada) this.metaSelecionada = {} as any;
   this.metaSelecionada.miniGoals = this.miniGoals;
 
@@ -163,9 +163,9 @@ addMinigoal() {
   this.metaService.editarMeta(this.metaSelecionada, token).subscribe({
     next: res => {
       console.log('Editar meta resposta:', res);
-      this.inputNewMiniGoalModel = '';
+      this.inputNewminiGoalModel = '';
       // opcional: atualizar miniGoals com o que veio do servidor
-      if (res?.minigoals) this.miniGoals = res.minigoals;
+      if (res?.miniGoals) this.miniGoals = res.miniGoals;
     },
     error: err => {
       console.error('Erro ao salvar sub-meta:', err);
@@ -196,23 +196,23 @@ addMinigoal() {
     this.showAi = false;
   }
 
-  editMiniGoal(mini: any) {
+  editminiGoal(mini: any) {
     this.showModalMini = true;
-    // console.log('inputNewMiniGoalModel: ' + JSON.stringify(mini));
+    // console.log('inputNewminiGoalModel: ' + JSON.stringify(mini));
     // console.log('this.miniGoals: ' + JSON.stringify(this.miniGoals));
-    this.minigoalToEdit = { ...mini };
-    localStorage.setItem('index-minigoal-to-edit', this.miniGoals.indexOf(mini).toString());
-    console.log('Indice:', localStorage.getItem('index-minigoal-to-edit'));
+    this.miniGoalToEdit = { ...mini };
+    localStorage.setItem('index-miniGoal-to-edit', this.miniGoals.indexOf(mini).toString());
+    console.log('Indice:', localStorage.getItem('index-miniGoal-to-edit'));
 
-    console.log('this.minigoalToEdit: ' + JSON.stringify(this.minigoalToEdit));
+    console.log('this.miniGoalToEdit: ' + JSON.stringify(this.miniGoalToEdit));
 
     // this.metaSelecionada.miniGoals = this.miniGoals;
 
   }
 
-  salvarEdicaoMiniGoal() {
-    const index = parseInt(localStorage.getItem('index-minigoal-to-edit') || '0', 10);
-    this.miniGoals[index] = this.minigoalToEdit;
+  salvarEdicaominiGoal() {
+    const index = parseInt(localStorage.getItem('index-miniGoal-to-edit') || '0', 10);
+    this.miniGoals[index] = this.miniGoalToEdit;
     console.log('Mini Goals após edição:', this.miniGoals);
     this.metaSelecionada.miniGoals = this.miniGoals;
     console.log('this.metaSelecionada após edição:', JSON.stringify(this.metaSelecionada));
@@ -254,7 +254,7 @@ addMinigoal() {
   }
 
   // ...existing code...
-  onToggleMiniGoal(mini: any, index: number) {
+  onToggleminiGoal(mini: any, index: number) {
     // mini.concluido já foi atualizado pelo ngModel (atualização otimista)
     const updatedMini = { ...mini };
 
@@ -267,7 +267,7 @@ addMinigoal() {
     //Atualize o localStorage
     localStorage.setItem('meta-miniGoals', JSON.stringify(this.metaSelecionada.miniGoals));
 
-    // Chame o serviço para salvar — ajuste para sua API (ex.: editarMiniGoal, editarMeta, etc.)
+    // Chame o serviço para salvar — ajuste para sua API (ex.: editarminiGoal, editarMeta, etc.)
     this.metaService.editarMeta(this.metaSelecionada, this.token).subscribe({
       next: () => {
         console.log('mini-goal salvo', updatedMini);
@@ -306,7 +306,7 @@ addMinigoal() {
 
   excluirSubmeta() {
     
-    const index = parseInt(localStorage.getItem('index-minigoal-to-edit') || '0', 10);
+    const index = parseInt(localStorage.getItem('index-miniGoal-to-edit') || '0', 10);
     this.miniGoals.splice(index, 1);
     console.log('Mini Goals após exclusão:', this.miniGoals);
     this.metaSelecionada.miniGoals = this.miniGoals;
