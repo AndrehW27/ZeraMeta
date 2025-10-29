@@ -56,8 +56,8 @@
             // background-color: rgba(207, 207, 207, 0.5);
             background-color: rgba(255, 255, 255, 0.25);
 
-            // box-shadow: 0 0.5rem 1rem rgba(247, 44, 44, 0.5);
-            border-left: 2px solid var(--primaria);
+            // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+            // border-left: 2px solid var(--primaria);
             transition: all 0.3s ease-in-out;
 
 
@@ -309,7 +309,7 @@
     }
 
     .carregandoMetas {
-        height: 9rem;
+        height: 2rem;
         width: 20rem;
         background: linear-gradient(90deg, #909090 25%, #b0b0b0 50%, #909090 75%);
         background-size: 200% 100%;

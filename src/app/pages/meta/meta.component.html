@@ -22,14 +22,20 @@
     <section *ngIf="!showModal" class="meta">
 
         <section routerLink="/metas" class="voltar-metas-box">
-            <div>
+            <div class="status-box">
                 <p class="cor-status" [ngClass]="{
                 'status-novo': status === 'Novo', 
                 'status-em-andamento': status === 'Em andamento', 
                 'status-concluido': status === 'Concluído',
                 'status-pausado': status === 'Pausado'
                 }">{{status}}</p>
+
+                <div *ngIf="status === 'Concluído'" class="trophy-icon">
+                    ⭐
+                </div>
             </div>
+
+
             <div class="voltar-metas">
                 <div>
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -38,9 +44,9 @@
                             stroke-linejoin="round" />
                     </svg>
                 </div>
-                <div>
+                <!-- <div>
                     <p>metas</p>
-                </div>
+                </div> -->
             </div>
         </section>
 
@@ -105,17 +111,20 @@
     <section *ngIf="!showModal" class="sub-metas">
         <h2>Sub-metas</h2>
         <div class="caixa-sub-metas">
-            <div class="linha-sub-meta" *ngFor="let mini of minigoals; let i = index">
+            <div *ngIf="miniGoals.length === 0">
+                <h4>Nenhuma sub-meta ainda! Que tal, criar a primeira?</h4>
+            </div>
+            <div class="linha-sub-meta" *ngFor="let mini of miniGoals; let i = index">
                 <div class="toggle-box">
                     <label class="toggle-switch">
-                        <input type="checkbox" [(ngModel)]="minigoals[i].concluido" />
+                        <input (change)="onToggleMiniGoal(mini, i)" type="checkbox" [(ngModel)]="miniGoals[i].concluido" />
                         <span class="slider round"></span>
                     </label>
                 </div>
-                <h4 class="texto-sub-meta">{{ mini.titulo }}</h4>
-                <svg (click)="editMiniGoal(minigoals[i])" xmlns="http://www.w3.org/2000/svg" width="24"
-                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
+                <h4 class="texto-sub-meta" [ngClass]="{'texto-sub-meta-check-true': mini.concluido}">{{ mini.titulo }}</h4>
+                <svg (click)="editMiniGoal(miniGoals[i])" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
                     <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
                 </svg>
             </div>
@@ -177,9 +186,10 @@
 
     <section *ngIf="showModalMini" class="mini">
         <div>
-            <h2>Editar sub-meta!</h2>
+            <h2 style="margin-bottom: 1rem;">Editar sub-meta</h2>
             <button (click)="closeMiniModal()" class="botao-fechar-mini">X</button>
-            <input type="text" placeholder="Editar sub-meta" class="input-editar-submeta" [(ngModel)]="minigoalToEdit.titulo">
+            <input type="text" placeholder="sub-meta" class="input-editar-submeta"
+                [(ngModel)]="minigoalToEdit.titulo">
             <div class="botoes-editar-submeta">
                 <button (click)="closeMiniModal()" class="botao-cancelar">Cancelar</button>
                 <button (click)="salvarEdicaoMiniGoal()" class="botao-salvar">Salvar</button>

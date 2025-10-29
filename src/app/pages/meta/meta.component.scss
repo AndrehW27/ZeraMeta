@@ -31,35 +31,49 @@
 
         }
 
-        .cor-status {
-            background-color: var(--primaria);
-            color: var(--secundaria);
-            padding: 0.25rem 0.75rem;
-            border-radius: 0.5rem;
-            font-weight: bold;
-        
+        .status-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 0.5rem;
 
-            &.status-novo {
-                background-color: #e74c3c;
-                /* Vermelho */
+            .cor-status {
+                background-color: var(--primaria);
+                color: var(--secundaria);
+                padding: 0.25rem 0.75rem;
+                border-radius: 1rem;
+                font-weight: bold;
+                margin-right: 0.25rem;
+
+
+
+                &.status-novo {
+                    background-color: #e74c3c;
+                    /* Vermelho */
+                }
+
+                &.status-em-andamento {
+                    background-color: #f1c40f;
+                    /* Amarelo */
+                }
+
+                &.status-concluido {
+                    background-color: #2ecc71;
+                    /* Verde */
+                }
+
+                &.status-pausado {
+                    background-color: #95a5a6;
+                    /* Cinza */
+                }
             }
 
-            &.status-em-andamento {
-                background-color: #f1c40f;
-                /* Amarelo */
+            .trophy-icon {
+                font-size: 1.5rem;
             }
 
-            &.status-concluido {
-                background-color: #2ecc71;
-                /* Verde */
-            }
-
-            &.status-pausado {
-                background-color: #95a5a6;
-                /* Cinza */
-            }
         }
+
     }
 
     .titulo-meta {
@@ -166,7 +180,7 @@
                 background-color: var(--primaria);
                 color: var(--secundaria);
                 padding: 0.25rem 0.75rem;
-                border-radius: 0.5rem;
+                border-radius: 1rem;
                 // font-weight: normal;
                 margin-top: 0.5rem;
                 width: fit-content;
@@ -288,10 +302,11 @@
         background-color: rgba(255, 255, 255, 0.25);
         display: flex;
         flex-direction: column;
-        padding: 1rem;
+        padding: 1.5rem;
         border-radius: 1rem;
         width: 80vw;
-        height: 120px;
+        max-height: 120px;
+        height: fit-content;
         overflow-y: scroll;
 
         .linha-sub-meta {
@@ -305,7 +320,15 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
+
+                &.texto-sub-meta-check-true {
+                    text-decoration-line: line-through;
+                    text-decoration-color: currentColor;
+                    text-decoration-thickness: 3px;
+                    color: var(--secundaria);
+                }
             }
+
         }
 
         .toggle-box {
@@ -551,18 +574,34 @@
 }
 
 .mini {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     position: fixed;
     top: 20rem;
     background-color: var(--secundaria);
+    box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.5);
+
     width: 80vw;
     // height: 20vh;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 1.5rem;
+
+    .input-editar-submeta {
+        margin-bottom: 2rem;
+        width: 100%;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 1rem;
+        box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.5);
+        font-size: 1rem;
+    }
 
     .botao-fechar-mini {
         position: absolute;
-        top: 1rem;
-        right: 1rem;
+        top: 1.5rem;
+        right: 1.5rem;
         background-color: transparent;
         color: var(--primaria);
         border: none;
@@ -571,6 +610,34 @@
         cursor: pointer;
         font-weight: bold;
         font-size: 1.5rem;
+    }
+
+    .botoes-editar-submeta {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-evenly;
+
+        .botao-cancelar,
+        .botao-salvar {
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            border: none;
+            cursor: pointer;
+        font-weight: bold;
+
+        }
+
+        .botao-salvar {
+            background-color: var(--primaria);
+            color: var(--secundaria);
+        }
+
+        .botao-cancelar {
+            background-color: var(--secundaria);
+            color: var(--primaria);
+            border: 1px solid var(--primaria);
+        }
     }
 
 }

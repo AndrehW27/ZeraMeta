@@ -67,6 +67,7 @@ export class MetasComponent implements OnInit {
   abrirModalDetalhes(meta: any) {
     console.log('Comp. METAS - Meta antes de editar:', meta);
     localStorage.setItem('meta-titulo', JSON.stringify(meta.titulo));
+    localStorage.setItem('meta-miniGoals', JSON.stringify(meta.miniGoals));
     localStorage.setItem('meta-id', JSON.stringify(meta._id));
     localStorage.setItem('meta-prazo', JSON.stringify(meta.prazo));
     localStorage.setItem('meta-categoria', JSON.stringify(meta.categoria));
