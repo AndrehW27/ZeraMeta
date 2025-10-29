@@ -58,13 +58,19 @@ export class MetaComponent implements OnInit {
       this.titulo = rawTitulo !== null ? JSON.parse(rawTitulo) : '';
       this.metaSelecionada.titulo = this.titulo;
 
-      const rawMiniGoals = localStorage.getItem('meta-miniGoals') || '';
-      console.log('rawMiniGoals:', rawMiniGoals);
-      
-      this.miniGoals = rawMiniGoals !== null ? JSON.parse(rawMiniGoals) : [];
+      // <<-- CHANGED: use safe parser for miniGoals
+      this.miniGoals = this.parseLocalStorage<{ titulo: string; concluido: boolean }[]>('meta-miniGoals', []);
       console.log('this.miniGoals:', this.miniGoals);
       this.metaSelecionada.miniGoals = this.miniGoals;
       console.log('this.metaSelecionada.miniGoals:', this.metaSelecionada.miniGoals);
+      // --<<
+
+      // const rawMiniGoals = localStorage.getItem('meta-miniGoals') || '';
+      // console.log('rawMiniGoals:', rawMiniGoals);
+      // this.miniGoals = rawMiniGoals !== null ? JSON.parse(rawMiniGoals) : [];
+      // console.log('this.miniGoals:', this.miniGoals);
+      // this.metaSelecionada.miniGoals = this.miniGoals;
+      // console.log('this.metaSelecionada.miniGoals:', this.metaSelecionada.miniGoals);
 
       const rawStatus = localStorage.getItem('meta-status') || '';
       this.status = rawStatus !== null ? JSON.parse(rawStatus) : '';
@@ -106,6 +112,19 @@ export class MetaComponent implements OnInit {
 
     this.careregarItens();
 
+  }
+
+  private parseLocalStorage<T>(key: string, fallback: T): T {
+    const raw = localStorage.getItem(key);
+    if (!raw) {
+      return fallback;
+    }
+    try {
+      return JSON.parse(raw) as T;
+    } catch (err) {
+      console.warn(`Failed to parse localStorage.${key}:`, err);
+      return fallback;
+    }
   }
 
 
