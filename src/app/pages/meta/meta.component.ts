@@ -36,7 +36,7 @@ export class MetaComponent implements OnInit {
   progresso = 0;
   enviarLembrete = false;
   criarMiniMetas = false;
-  id = '';
+  id: string | null = null;
   itensCarregados = false;
   perCompleted = 0;
   diff = 0;
@@ -50,42 +50,39 @@ export class MetaComponent implements OnInit {
 
 
     const rawId = localStorage.getItem('meta-id') || '';
-    this.id = rawId.replace(/^"(.*)"$/, '$1');
+    this.id = rawId !== null ? JSON.parse(rawId) : null;
     this.metaSelecionada._id = this.id;
 
     const rawTitulo = localStorage.getItem('meta-titulo') || '';
-    this.titulo = rawTitulo.replace(/^"(.*)"$/, '$1');
+    this.titulo = rawTitulo !== null ? JSON.parse(rawTitulo) : '';
     this.metaSelecionada.titulo = this.titulo;
 
     const rawMiniGoals = localStorage.getItem('meta-miniGoals') || '';
-    console.log('RAW MINI GOALS:', rawMiniGoals);
-    this.miniGoals = JSON.parse(rawMiniGoals || '[]');
-    console.log('PARSED MINI GOALS:', this.miniGoals);
-    // this.miniGoals = rawMiniGoals.replace(/^"(.*)"$/, '$1');
+    this.miniGoals = rawMiniGoals !== null ? JSON.parse(rawMiniGoals) : [];
     this.metaSelecionada.miniGoals = this.miniGoals;
 
     const rawStatus = localStorage.getItem('meta-status') || '';
-    this.status = rawStatus.replace(/^"(.*)"$/, '$1');
+    this.status = rawStatus !== null ? JSON.parse(rawStatus) : '';
     this.metaSelecionada.status = this.status;
 
     const rawCategoria = localStorage.getItem('meta-categoria') || 'teste';
-    this.categoria = rawCategoria.replace(/^"(.*)"$/, '$1');
+    this.categoria = rawCategoria !== null ? JSON.parse(rawCategoria) : '';
     this.metaSelecionada.categoria = this.categoria;
 
     const rawPrioridade = localStorage.getItem('meta-prioridade') || '';
-    this.prioridade = rawPrioridade.replace(/^"(.*)"$/, '$1');
+    this.prioridade = rawPrioridade !== null ? JSON.parse(rawPrioridade) : '';
     this.metaSelecionada.prioridade = this.prioridade;
 
     const rawDescricao = localStorage.getItem('meta-descricao') || '';
-    this.descricao = rawDescricao.replace(/^"(.*)"$/, '$1');
+    this.descricao = rawDescricao !== null ? JSON.parse(rawDescricao) : '';
     this.metaSelecionada.descricao = this.descricao;
 
     const rawPrazo = localStorage.getItem('meta-prazo') || '';
-    this.prazo = rawPrazo.replace(/^"(.*)"$/, '$1');
+    this.prazo = rawPrazo !== null ? JSON.parse(rawPrazo) : '';
     this.metaSelecionada.prazo = this.prazo;
 
     const rawProgresso = localStorage.getItem('meta-progresso') || '0';
-    this.progresso = parseInt(rawProgresso.replace(/^"(.*)"$/, '$1'), 10);
+    this.progresso = rawProgresso !== null ? JSON.parse(rawProgresso) : 0;
     this.perCompleted = this.progresso;
     this.metaSelecionada.progresso = this.progresso;
 
