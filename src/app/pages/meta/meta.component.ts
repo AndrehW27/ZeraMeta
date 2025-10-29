@@ -49,46 +49,56 @@ export class MetaComponent implements OnInit {
     console.log('LOCAL STORAGE Meta Titulo:', localStorage.getItem('meta-titulo'));
 
 
-    const rawId = localStorage.getItem('meta-id') || '';
-    this.id = rawId !== null ? JSON.parse(rawId) : null;
-    this.metaSelecionada._id = this.id;
+    try {
+      const rawId = localStorage.getItem('meta-id') || '';
+      this.id = rawId !== null ? JSON.parse(rawId) : null;
+      this.metaSelecionada._id = this.id;
 
-    const rawTitulo = localStorage.getItem('meta-titulo') || '';
-    this.titulo = rawTitulo !== null ? JSON.parse(rawTitulo) : '';
-    this.metaSelecionada.titulo = this.titulo;
+      const rawTitulo = localStorage.getItem('meta-titulo') || '';
+      this.titulo = rawTitulo !== null ? JSON.parse(rawTitulo) : '';
+      this.metaSelecionada.titulo = this.titulo;
 
-    const rawMiniGoals = localStorage.getItem('meta-miniGoals') || '';
-    this.miniGoals = rawMiniGoals !== null ? JSON.parse(rawMiniGoals) : [];
-    this.metaSelecionada.miniGoals = this.miniGoals;
+      const rawMiniGoals = localStorage.getItem('meta-miniGoals') || '';
+      this.miniGoals = rawMiniGoals !== null ? JSON.parse(rawMiniGoals) : [];
+      this.metaSelecionada.miniGoals = this.miniGoals;
 
-    const rawStatus = localStorage.getItem('meta-status') || '';
-    this.status = rawStatus !== null ? JSON.parse(rawStatus) : '';
-    this.metaSelecionada.status = this.status;
+      const rawStatus = localStorage.getItem('meta-status') || '';
+      this.status = rawStatus !== null ? JSON.parse(rawStatus) : '';
+      this.metaSelecionada.status = this.status;
 
-    const rawCategoria = localStorage.getItem('meta-categoria') || 'teste';
-    this.categoria = rawCategoria !== null ? JSON.parse(rawCategoria) : '';
-    this.metaSelecionada.categoria = this.categoria;
+      const rawCategoria = localStorage.getItem('meta-categoria') || 'teste';
+      this.categoria = rawCategoria !== null ? JSON.parse(rawCategoria) : '';
+      this.metaSelecionada.categoria = this.categoria;
 
-    const rawPrioridade = localStorage.getItem('meta-prioridade') || '';
-    this.prioridade = rawPrioridade !== null ? JSON.parse(rawPrioridade) : '';
-    this.metaSelecionada.prioridade = this.prioridade;
+      const rawPrioridade = localStorage.getItem('meta-prioridade') || '';
+      this.prioridade = rawPrioridade !== null ? JSON.parse(rawPrioridade) : '';
+      this.metaSelecionada.prioridade = this.prioridade;
 
-    const rawDescricao = localStorage.getItem('meta-descricao') || '';
-    this.descricao = rawDescricao !== null ? JSON.parse(rawDescricao) : '';
-    this.metaSelecionada.descricao = this.descricao;
+      const rawDescricao = localStorage.getItem('meta-descricao') || '';
+      this.descricao = rawDescricao !== null ? JSON.parse(rawDescricao) : '';
+      this.metaSelecionada.descricao = this.descricao;
 
-    const rawPrazo = localStorage.getItem('meta-prazo') || '';
-    this.prazo = rawPrazo !== null ? JSON.parse(rawPrazo) : '';
-    this.metaSelecionada.prazo = this.prazo;
+      const rawPrazo = localStorage.getItem('meta-prazo') || '';
+      this.prazo = rawPrazo !== null ? JSON.parse(rawPrazo) : '';
+      this.metaSelecionada.prazo = this.prazo;
 
-    const rawProgresso = localStorage.getItem('meta-progresso') || '0';
-    this.progresso = rawProgresso !== null ? JSON.parse(rawProgresso) : 0;
-    this.perCompleted = this.progresso;
-    this.metaSelecionada.progresso = this.progresso;
+      const rawProgresso = localStorage.getItem('meta-progresso') || '0';
+      this.progresso = rawProgresso !== null ? JSON.parse(rawProgresso) : 0;
+      this.perCompleted = this.progresso;
+      this.metaSelecionada.progresso = this.progresso;
 
-    const rawEnviarLembrete = localStorage.getItem('meta-enviarLembrete') || 'false';
-    this.enviarLembrete = rawEnviarLembrete.replace(/^"(.*)"$/, '$1') === 'true';
-    this.metaSelecionada.enviarLembrete = this.enviarLembrete;
+      const rawEnviarLembrete = localStorage.getItem('meta-enviarLembrete') || 'false';
+      this.enviarLembrete = rawEnviarLembrete.replace(/^"(.*)"$/, '$1') === 'true';
+      this.metaSelecionada.enviarLembrete = this.enviarLembrete;
+    } catch (err) {
+      console.error('Erro ao ler meta do localStorage:', err);
+      // fallback seguro
+      this.titulo = '';
+      this.miniGoals = [];
+      this.id = null;
+      this.prazo = this.categoria = this.prioridade = this.status = this.descricao = '';
+      this.progresso = 0;
+    }
 
     this.careregarItens();
 
