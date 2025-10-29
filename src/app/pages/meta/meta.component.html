@@ -110,7 +110,7 @@
 
     <section *ngIf="!showModal" class="sub-metas">
         <div class="caixa-sub-metas">
-        <h2 style="text-align: center;">Sub-metas</h2>
+            <h2 style="text-align: center;">Sub-metas</h2>
 
             <div *ngIf="miniGoals.length === 0">
                 <h4>Nenhuma sub-meta ainda! Que tal, criar a primeira?</h4>
@@ -118,11 +118,13 @@
             <div class="linha-sub-meta" *ngFor="let mini of miniGoals; let i = index">
                 <div class="toggle-box">
                     <label class="toggle-switch">
-                        <input (change)="onToggleMiniGoal(mini, i)" type="checkbox" [(ngModel)]="miniGoals[i].concluido" />
+                        <input (change)="onToggleMiniGoal(mini, i)" type="checkbox"
+                            [(ngModel)]="miniGoals[i].concluido" />
                         <span class="slider round"></span>
                     </label>
                 </div>
-                <h4 class="texto-sub-meta" [ngClass]="{'texto-sub-meta-check-true': mini.concluido}">{{ mini.titulo }}</h4>
+                <h4 class="texto-sub-meta" [ngClass]="{'texto-sub-meta-check-true': mini.concluido}">{{ mini.titulo }}
+                </h4>
                 <svg (click)="editMiniGoal(miniGoals[i])" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
@@ -174,7 +176,7 @@
             <textarea [(ngModel)]="descricao" class="input" placeholder=""></textarea>
 
             <div class="botoes-editar-submeta">
-                <button (click)="closeModal()" class="botao-excluir">Excluir meta</button>
+                <button (click)="desejaExcluirMeta()" class="botao-excluir">Excluir meta</button>
                 <button (click)="salvarEdicaoMeta()" class="botao-salvar">Salvar</button>
             </div>
             <!-- <div class="div-excluir">
@@ -189,13 +191,26 @@
         <div>
             <h2 style="margin-bottom: 1rem;">Editar sub-meta</h2>
             <button (click)="closeMiniModal()" class="botao-fechar-mini">X</button>
-            <input type="text" placeholder="sub-meta" class="input-editar-submeta"
-                [(ngModel)]="minigoalToEdit.titulo">
+            <input type="text" placeholder="sub-meta" class="input-editar-submeta" [(ngModel)]="minigoalToEdit.titulo">
             <div class="botoes-editar-submeta">
-                <button (click)="closeMiniModal()" class="botao-cancelar">Cancelar</button>
+                <button (click)="excluirSubmeta()" class="botao-excluir">Excluir</button>
+
                 <button (click)="salvarEdicaoMiniGoal()" class="botao-salvar">Salvar</button>
+
             </div>
+
         </div>
+    </section>
+
+    <section *ngIf="showModalDeleteGoal" class="mini">
+
+        <h4 style="margin-bottom: 2rem; margin-right: 2rem;">Tem certeza que deseja deletar esta meta?</h4>
+        <button (click)="closeMiniModalDelete()" class="botao-fechar-mini">X</button>
+        <div class="botoes-editar-submeta">
+            <button (click)="closeMiniModalDelete()" class="botao-cancelar">Não</button>
+            <button (click)="excluirMeta()" class="botao-salvar">sim</button>
+        </div>
+
     </section>
 
     <section *ngIf="showAi" class="ai">

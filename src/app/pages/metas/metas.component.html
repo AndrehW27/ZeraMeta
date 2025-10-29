@@ -45,7 +45,7 @@
   </section> -->
 
   <section class="metas">
-    <ng-container *ngIf="metas.length === 0; else metasCriadas">
+    <ng-container *ngIf="metas.length === 0 && itensCarregados; else metasCriadas">
       <div class="meta">
         <h4>Você ainda não tem metas!</h4>
         <h4>Que tal criar a primeira?</h4>

@@ -305,7 +305,7 @@
         padding: 1.5rem;
         border-radius: 1rem;
         width: 80vw;
-        max-height: 120px;
+        max-height: 160px;
         height: fit-content;
         overflow-y: scroll;
 
@@ -537,9 +537,10 @@
         .botao-excluir,
         .botao-salvar {
             padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
+            border-radius: 1.5rem;
             border: none;
             cursor: pointer;
+            font-weight: bold;
         }
 
         .botao-salvar {
@@ -618,7 +619,7 @@
         align-items: center;
         justify-content: space-evenly;
 
-        .botao-cancelar,
+        .botao-excluir,
         .botao-salvar {
             padding: 0.75rem 1.5rem;
             border-radius: 2rem;
@@ -633,10 +634,9 @@
             color: var(--secundaria);
         }
 
-        .botao-cancelar {
-            background-color: var(--secundaria);
-            color: var(--primaria);
-            border: 1px solid var(--primaria);
+        .botao-excluir {
+            background-color: #e74c3c;
+            color: var(--secundaria);
         }
     }
 

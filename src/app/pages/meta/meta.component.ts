@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { log } from 'console';
+import { Router } from '@angular/router';
 import { MetaService } from 'src/app/services/meta.service';
 
 @Component({
@@ -9,12 +9,13 @@ import { MetaService } from 'src/app/services/meta.service';
 })
 export class MetaComponent implements OnInit {
 
-  constructor(private metaService: MetaService) { }
+  constructor(private metaService: MetaService, private router: Router) { }
 
   userId = localStorage.getItem('userId');
   token = localStorage.getItem('token') || '';
 
   showModal = false;
+  showModalDeleteGoal = false;
   showModalMini = false;
   showAi = false;
 
@@ -261,6 +262,53 @@ export class MetaComponent implements OnInit {
       }
     });
   }
+
+  desejaExcluirMeta() {
+    this.showModalDeleteGoal = true;
+  }
+
+  closeMiniModalDelete() {
+    this.showModalDeleteGoal = false;
+  }
+
+  excluirMeta() {
+    console.log('Tentando excluir essa meta:', this.metaSelecionada);
+    if (this.metaSelecionada) {
+      this.metaService.deletarMeta(this.metaSelecionada, this.token).subscribe(() => {
+        console.log('Meta excluída com sucesso');
+        // Redirecionar para a página de metas após exclusão
+        this.closeModal();
+        this.router.navigate(['/metas']);
+      }, (error) => {
+        console.error('Erro ao excluir meta:', error);
+      });
+    } else {
+      console.error('ID da meta não encontrado. Não é possível excluir.');
+    }
+  }
+
+  excluirSubmeta() {
+    
+    const index = parseInt(localStorage.getItem('index-minigoal-to-edit') || '0', 10);
+    this.miniGoals.splice(index, 1);
+    console.log('Mini Goals após exclusão:', this.miniGoals);
+    this.metaSelecionada.miniGoals = this.miniGoals;
+    console.log('this.metaSelecionada após exclusão:', JSON.stringify(this.metaSelecionada));
+
+     localStorage.setItem('meta-miniGoals', JSON.stringify(this.metaSelecionada.miniGoals));
+
+
+
+    this.metaService.editarMeta(this.metaSelecionada, this.token).subscribe(() => {
+      // this.openSuccess('success', 'Meta editada com sucesso!', true);
+      // setTimeout(() => {
+      //   this.closeModal();
+      // }, 2000);
+    });
+    this.closeMiniModal();
+  }
+
+
 
 
 }
