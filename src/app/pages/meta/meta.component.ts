@@ -324,7 +324,16 @@ export class MetaComponent implements OnInit {
         console.log('Meta excluída com sucesso');
         // Redirecionar para a página de metas após exclusão
         this.closeModal();
-        this.router.navigate(['/metas']);
+        this.isLoading = true;
+        setTimeout(() => {
+          this.isLoading = false;
+          this.openSuccess('success', 'Meta deletada com sucesso!', true);
+          setTimeout(() => {
+            this.showModalComponent = false;
+            this.router.navigate(['/metas']);
+          }, 1000);
+        }, 1000);
+
       }, (error) => {
         console.error('Erro ao excluir meta:', error);
       });

@@ -25,7 +25,13 @@
 
     .zera-meta {
         margin-top: 1rem;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
+        // background-color: rgba(255, 255, 255, 0.25);
+        background-color: var(--primaria);
+        color: var(--secundaria);
+        border-radius: 1rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+        padding: 0.75rem 1.5rem;
     }
 
     .filtros-container {
@@ -60,6 +66,7 @@
         align-items: flex-start;
         justify-content: flex-start;
         overflow-y: auto;
+        padding: 1rem;
 
         .meta {
             word-wrap: break-word;
@@ -73,7 +80,7 @@
             // background-color: rgba(207, 207, 207, 0.5);
             background-color: rgba(255, 255, 255, 0.25);
 
-            // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
             // border-left: 2px solid var(--primaria);
             transition: all 0.3s ease-in-out;
 
@@ -118,6 +125,7 @@
 
                 .trophy-icon {
                     font-size: 1rem;
+                    margin-left: 0.25rem;
                 }
             }
 
@@ -836,7 +844,7 @@
     }
 
     .modal-content {
-        margin-top: 3rem;
+        margin-top: 4rem;
         background-color: rgba(255, 255, 255, 0.25);
         display: flex;
         flex-direction: column;
@@ -847,6 +855,100 @@
         width: 80vw;
         // height: 1000px;
         overflow-y: scroll;
+
+        .botao {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+
+            .button {
+                width: fit-content;
+                padding: 0.75rem 1.5rem;
+                border-radius: 2rem;
+                cursor: pointer;
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+                border: none;
+                font-size: 0.75rem;
+                background-color: var(--primaria);
+                color: var(--secundaria);
+                // margin-top: 1rem;
+                align-items: center;
+            }
+
+
+
+        }
+
+        .toggles-container {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: flex-start;
+            width: 100%;
+            // margin-top: 1rem;
+            /* Adiciona espaço acima */
+        }
+
+        .toggle-box {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: flex-start;
+            // margin-right: 1rem;
+
+
+            .toggle-switch {
+                position: relative;
+                display: inline-block;
+                width: 60px;
+                height: 34px;
+                margin-bottom: 1rem;
+                /* Espaçamento antes dos botões */
+
+                input {
+                    opacity: 0;
+                    width: 0;
+                    height: 0;
+                }
+
+                .slider {
+                    position: absolute;
+                    cursor: pointer;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: #ccc;
+                    /* Cor do toggle desligado */
+                    transition: .4s;
+                    border-radius: 34px;
+                }
+
+                .slider:before {
+                    position: absolute;
+                    content: "";
+                    height: 26px;
+                    width: 26px;
+                    left: 4px;
+                    bottom: 4px;
+                    background-color: white;
+                    /* Cor da bolinha */
+                    transition: .4s;
+                    border-radius: 50%;
+                }
+
+                input:checked+.slider {
+                    background-color: var(--primaria);
+                    /* Cor do toggle ligado */
+                }
+
+                input:checked+.slider:before {
+                    transform: translateX(26px);
+                }
+            }
+
+        }
 
         .titulo-meta {
             display: flex;
@@ -893,6 +995,7 @@
             appearance: none;
             flex: 1;
             // width: 100%; /* Largura total do slider */
+            margin-top: 0.5rem;
             margin-right: 1rem;
             margin-bottom: 1rem;
             height: 0.5rem;

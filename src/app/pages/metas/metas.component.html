@@ -1,6 +1,6 @@
 <div class="container">
 
-  <!-- <app-loading *ngIf="isLoading"></app-loading> -->
+  <app-loading *ngIf="isLoading"></app-loading>
 
   <!-- <section>
     <div class="icone-zera-meta">
@@ -124,7 +124,7 @@
     </ng-template>
   </section>
 
-  <section>
+  <section *ngIf="!showCriarNovaMeta">
     <div class="criar-meta">
       <button (click)="abrirModalNovaMeta()">
         <svg width="48" height="48" viewBox="0 0 48 48" fill="#none">
@@ -136,7 +136,7 @@
     </div>
   </section>
 
-  <section>
+  <section *ngIf="!showCriarNovaMeta">
     <div (click)="openAiSuggestion()" class="criar-meta-IA">
       <p>IA</p>
     </div>
@@ -146,7 +146,7 @@
     <div>
       <div class="titulo-meta">
         <h2>Criar meta</h2>
-        <h3 (click)="closeModal()">X</h3>
+        <h3 (click)="fecharModalNovaMeta()">X</h3>
       </div>
       <p>Título</p>
       <input class="input" [(ngModel)]="novaMeta.titulo" placeholder="Perder 10Kg">
@@ -177,14 +177,7 @@
       <textarea class="input" [(ngModel)]="novaMeta.descricao"
         placeholder="Fazer academia 3x por semana e dieta para perder 3KG+ por mês."></textarea>
 
-      <div class="toggles-container">
-        <!-- <div class="toggle-item">
-                <p>Criar mini-metas?</p>
-                <label class="toggle-switch">
-                  <input type="checkbox" [(ngModel)]="novaMeta.criarMiniMetas">
-                  <span class="slider round"></span>
-                </label>
-              </div> -->
+      <!-- <div class="toggles-container">
         <div class="toggle-box">
           <p>Enviar lembrete?</p>
           <label class="toggle-switch">
@@ -192,25 +185,28 @@
             <span class="slider round"></span>
           </label>
         </div>
+      </div> -->
+
+      <div class="botao">
+        <button (click)="criarMeta()" class="button">
+          <h2>Criar</h2>
+        </button>
       </div>
-      <!-- <div class="botoes">              
-              <button class="salvar" (click)="criarMeta()">Criar</button>
-              <button class="cancelar" (click)="fecharModal()">Cancelar</button>
-            </div> -->
-      <div class="botoes-criar">
+
+      <!-- <div class="botoes-criar">
         <button class="salvar" (click)="criarMeta()">Criar</button>
-      </div>
+      </div> -->
 
     </div>
   </section>
 
-  <section>
+  <!-- <section>
     <div class="fundo-modal">
-      <div *ngIf="showModalMeta" class="modal">
+      <div *ngIf="showCriarNovaMeta" class="modal">
         <div class="modal-content">
           <div class="titulo-meta2">
             <h2>Criar nova meta</h2>
-            <h3 (click)="fecharModal()">X</h3>
+            <h3 (click)="fecharModalNovaMeta()">X</h3>
           </div>
           <p>Título</p>
           <input class="input" [(ngModel)]="novaMeta.titulo" placeholder="Perder 10Kg">
@@ -235,20 +231,12 @@
             <span class="progresso-valor">{{ novaMeta.progresso }}%</span>
           </div>
 
-          <!-- <input type="range" min="0" max="100" value="10"> -->
-
           <p>Descrição</p>
           <textarea class="input" [(ngModel)]="novaMeta.descricao"
             placeholder="Fazer academia 3x por semana e dieta para perder 3KG+ por mês."></textarea>
 
           <div class="toggles-container">
-            <!-- <div class="toggle-item">
-                <p>Criar mini-metas?</p>
-                <label class="toggle-switch">
-                  <input type="checkbox" [(ngModel)]="novaMeta.criarMiniMetas">
-                  <span class="slider round"></span>
-                </label>
-              </div> -->
+
             <div class="toggle-box">
               <p>Enviar lembrete?</p>
               <label class="toggle-switch">
@@ -257,10 +245,7 @@
               </label>
             </div>
           </div>
-          <!-- <div class="botoes">              
-              <button class="salvar" (click)="criarMeta()">Criar</button>
-              <button class="cancelar" (click)="fecharModal()">Cancelar</button>
-            </div> -->
+
           <div class="botoes-criar">
             <button class="salvar" (click)="criarMeta()">Criar</button>
           </div>
@@ -268,9 +253,9 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
-  <section>
+  <!-- <section>
     <div class="fundo-modal" *ngIf="showFundoModalDetalhes">
       <div *ngIf="showModalDetalhes" class="modal">
         <div class="modal-content">
@@ -301,20 +286,14 @@
             <span class="progresso-valor">{{ metaSelecionada.progresso }}%</span>
           </div>
 
-          <!-- <input type="range" min="0" max="100" value="10"> -->
+       
 
           <p>Descrição</p>
           <textarea class="input" [(ngModel)]="metaSelecionada.descricao"
             placeholder="Fazer academia 3x por semana e dieta para perder 3KG+ por mês."></textarea>
 
           <div class="toggles-container">
-            <!-- <div class="toggle-item">
-                <p>Criar mini-metas?</p>
-                <label class="toggle-switch">
-                  <input type="checkbox" [(ngModel)]="metaSelecionada.criarMiniMetas">
-                  <span class="slider round"></span>
-                </label>
-              </div> -->
+ 
             <div class="toggle-item">
               <p>Enviar lembrete?</p>
               <label class="toggle-switch">
@@ -323,10 +302,7 @@
               </label>
             </div>
           </div>
-          <!-- <div class="botoes">              
-              <button class="salvar" (click)="editarMeta()">Salvar</button>
-              <button class="cancelar" (click)="fecharModalDetalhes()">Cancelar</button>
-            </div> -->
+ 
 
           <div class="botoes">
             <button class="salvar" (click)="editarMeta()">Salvar</button>
@@ -348,13 +324,10 @@
 
 
 
-          <!-- <div class="botoes">              
-              <button class="deletar" (click)="deletarMeta()">Deletar</button>
-            </div> -->
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <section>
     <div class="modal-delete" *ngIf="showModalDelete">
@@ -382,9 +355,17 @@
 
   <section *ngIf="showAi" class="ai">
     <div>
-      <h2>Em breve!</h2>
+      <h3>Em breve!</h3>
       <p>Deixe a inteligência artificial sugerir metas para você!</p>
       <button (click)="closeAiSuggestion()" class="botao-fechar-ai">X</button>
+    </div>
+  </section>
+
+  <section *ngIf="showTitulo" class="ai">
+    <div>
+      <h3>Atenção!</h3>
+      <p>Digite pelo menos o título, antes de criar!</p>
+      <button (click)="closeShowTitulo()" class="botao-fechar-ai">X</button>
     </div>
   </section>
 

@@ -383,10 +383,15 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-
-        margin-top: 2rem;
+        // background-color: rgba(255, 255, 255, 0.25);
+        background-color: var(--primaria);
+        color: var(--secundaria);
+        border-radius: 1rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+        padding: 0.75rem 1.5rem;
+        margin-top: 1rem;
         margin-bottom: 2rem;
-        max-width: 90vw;
+        max-width: 60vw;
 
 
         .truncate {
@@ -398,20 +403,34 @@
         }
     }
 
+    .pronto {
+        margin-top: 2rem;
+    }
+
+    .zeradas {
+        margin-top: 1rem;
+        color: var(--secundaria);
+        // background-color: rgba(255, 255, 255, 0.25);
+        // border: 1px solid var(--secundaria);
+        // border-radius: 1rem;
+        // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+        // padding: 0.5rem 1rem;
+    }
+
     .carregandoNome {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
         // margin-bottom: 2rem;
-        width: 95%;
-        height: 70px;
+        width: 180px;
+        height: 100px;
         background: linear-gradient(90deg, #909090 25%, #b0b0b0 50%, #909090 75%);
         background-size: 200% 100%;
         border-radius: 1rem;
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
         padding: 1.5rem;
-        margin-top: 3rem;
+        margin-top: 1rem;
         position: relative;
         overflow: hidden;
         animation: shimmer 1.5s infinite linear;

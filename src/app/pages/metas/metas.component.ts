@@ -14,12 +14,13 @@ export class MetasComponent implements OnInit {
   diff = 0;
 
   showAi = false;
+  showTitulo = false;
 
   itensCarregados = false;
 
   showModalDelete = false;
   deletarMetaVar = false;
-  // isLoading = false;
+  isLoading = false;
   metas: any = [];
 
   statusOptions = ['Novo', 'Em andamento', 'Pausado', 'Concluído'];
@@ -64,6 +65,14 @@ export class MetasComponent implements OnInit {
     });
   }
 
+  showTituloFunction() {
+    this.showTitulo = true;
+  }
+
+  closeShowTitulo() {
+    this.showTitulo = false;
+  }
+
   openAiSuggestion() {
     this.showAi = true;
   }
@@ -74,10 +83,14 @@ export class MetasComponent implements OnInit {
   }
 
   abrirModalNovaMeta() {
-    console.log('abrirModalNovaMeta: '+this.showCriarNovaMeta);
-    
+    console.log('abrirModalNovaMeta: ' + this.showCriarNovaMeta);
+
     this.novaMeta = { usuario_id: '', id: Date.now(), titulo: '', prazo: '', categoria: 'Outros', prioridade: 'Baixa', status: 'Novo', descricao: '', progresso: 0, enviarLembrete: false, criarMiniMetas: false, miniGoals: [] };
     this.showCriarNovaMeta = true;
+  }
+
+  fecharModalNovaMeta() {
+    this.showCriarNovaMeta = false;
   }
 
   abrirModalDetalhes(meta: any) {
@@ -141,15 +154,28 @@ export class MetasComponent implements OnInit {
         this.fecharModal();
       });
 
-      this.openSuccess('success', 'Meta criada com sucesso!', true);
-
+      this.isLoading = true;
       setTimeout(() => {
-        this.closeModal();
-        this.carregarMetas();
-      }, 2000);
+        this.isLoading = false;
+        this.openSuccess('success', 'Meta criada com sucesso!', true);
+        setTimeout(() => {
+          this.fecharModalNovaMeta();
+          this.closeModal();
+          this.carregarMetas();
+        }, 1000);
+      }, 1000);
+
+      // this.openSuccess('success', 'Meta criada com sucesso!', true);
+
+      // setTimeout(() => {
+      //   this.fecharModalNovaMeta();
+      //   this.closeModal();
+
+      //   this.carregarMetas();
+      // }, 2000);
 
     } else {
-      alert('Por favor, preencha Todas os campos.');
+      this.showTituloFunction();
     }
   }
 

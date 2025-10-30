@@ -12,7 +12,7 @@
     <section class="card-container">
 
         <div [ngClass]="itensCarregados ? 'nome' : 'carregandoNome'">
-            <h2 *ngIf="itensCarregados">Bem-vindo de volta,</h2>
+            <h2 *ngIf="itensCarregados">Bem-vindo,</h2>
             <h2 *ngIf="itensCarregados" class="truncate">{{firstName}}!</h2>
         </div>
 
@@ -27,7 +27,7 @@
                 <svg (click)="mudarFoto()" *ngIf="itensCarregados" class="edicao-foto" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 36" fill="#e9e9e9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
             </div> -->
 
-        <h4 [ngClass]="itensCarregados ? 'nome' : 'carregandoNome'" style="margin-bottom: 1rem;"
+        <h4 [ngClass]="itensCarregados ? 'pronto' : 'carregandoNome'" style="margin-bottom: 1rem;"
             *ngIf="itensCarregados">Pronto para zerar metas?</h4>
 
 
@@ -56,7 +56,7 @@
                     <p *ngIf="itensCarregados">crie</p>       
                 </div>
             </div> -->
-        <h2 *ngIf="itensCarregados" style="margin-top: 2rem;">Metas zeradas</h2>
+        <h2 *ngIf="itensCarregados" class="zeradas">Metas zeradas</h2>
 
         <div [ngClass]="itensCarregados ? 'progress-circle' : 'carregandoFoto'">
             <div *ngIf="itensCarregados" class="progress-circle__content">
