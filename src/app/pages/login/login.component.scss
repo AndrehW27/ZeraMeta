@@ -84,32 +84,30 @@
 
 }
 
-.botao{
-    //  position: fixed;
-    // bottom: 2rem;
-                width: 100%;
-
-
-    margin-top: 1rem;
+.botao {
     display: flex;
-    flex-direction: column;
+    width: 100%;
     align-items: center;
-    justify-content: center;  
-    background-color: var(--primaria);
-    color: var(--secundaria);  
-    border-radius: 1rem;
-    // border-bottom: 1px solid var(--secundaria);
-       padding: 1rem 2rem 1rem 2rem;
-       
-    border-radius: 0.5rem;
-    cursor: pointer;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-    // color: var(--secundaria);
+    justify-content: center;
 
-    &:hover{
-        background-color: var(--secundaria);
-        color: var(--primaria);
-        border: var(--primaria) 1px solid;
-    }   
-    
+    .button {
+        width: fit-content;
+        padding: 1rem 2rem;
+        border-radius: 2rem;
+        cursor: pointer;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+        border: none;
+        font-size: 0.75rem;
+        background-color: var(--primaria);
+        color: var(--secundaria);
+        margin-top: 1rem;
+        align-items: center;
+    }
+
+    // &:hover {
+    //     background-color: var(--secundaria);
+    //     color: var(--primaria);
+    //     border: var(--primaria) 1px solid;
+    // }
+
 }

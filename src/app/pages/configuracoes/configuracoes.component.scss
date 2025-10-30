@@ -185,6 +185,7 @@ input:checked+.slider:before {
     border: none;
     cursor: pointer;
     font-weight: bold;
+    font-size: 1rem;
     border: var(--primaria) 1px solid;
 
 
@@ -207,5 +208,26 @@ input:checked+.slider:before {
       // border: var(--primaria) 1px solid;
     }
   }
+
+}
+
+
+.cobranca-box {
+     position: fixed;
+     top: 16rem;
+     border-bottom: 1px solid var(--primaria);
+     background-color: var(--secundaria);
+     padding: 1.5rem;
+     border-radius: 0.5rem;
+     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+     width: 50vw;
+
+     .fechar-cobranca {
+          position: absolute;
+          top: 1.5rem;
+          right: 1.5rem;
+          cursor: pointer;
+          font-weight: bold;
+     }
 
 }

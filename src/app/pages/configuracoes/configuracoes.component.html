@@ -70,7 +70,7 @@
       <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg> -->
     </h4>
 
-    <h4>
+    <h4 (click)="abrirModalCobr()">
       <span>Cobrança</span>
       <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg> -->
     </h4>
@@ -111,7 +111,7 @@
   <div *ngIf="modalNotiAberto" class="modal-overlay" (click)="fecharModalNoti()">
     <div class="modal-content" (click)="$event.stopPropagation()">
       <div class="modal-header">
-        <h4>Notificações</h4>
+        <h3>Notificações</h3>
         <button class="fechar-modal" (click)="fecharModalNoti()">&times;</button>
       </div>
       <div class="modal-body">
@@ -140,6 +140,13 @@
           <button class="botao-sim" (click)="confirmarSair()">Sim</button>
         </div>
       </div>
+    </div>
+  </section>
+
+    <section *ngIf="emBreve">
+    <div class="cobranca-box">
+      <h3 class="fechar-cobranca" (click)="closeEmBreve()">X</h3>
+      <h3>Em breve!</h3>
     </div>
   </section>
 

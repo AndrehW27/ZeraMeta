@@ -32,7 +32,7 @@
 
 
 
-  <section class="zera-meta">
+  <section *ngIf="!showCriarNovaMeta" class="zera-meta">
     <h2>Minhas Metas</h2>
   </section>
 
@@ -44,7 +44,7 @@
     </select>
   </section> -->
 
-  <section class="metas">
+  <section *ngIf="!showCriarNovaMeta" class="metas">
     <ng-container *ngIf="metas.length === 0 && itensCarregados; else metasCriadas">
       <div class="meta">
         <h4>Você ainda não tem metas!</h4>
@@ -126,7 +126,7 @@
 
   <section>
     <div class="criar-meta">
-      <button (click)="abrirModal()">
+      <button (click)="abrirModalNovaMeta()">
         <svg width="48" height="48" viewBox="0 0 48 48" fill="#none">
           <rect width="48" height="48" rx="24" fill="#e9e9e9" />
           <line x1="24" y1="14" x2="24" y2="34" stroke="#0e3553" stroke-width="4" stroke-linecap="round" />
@@ -137,13 +137,75 @@
   </section>
 
   <section>
-    <div class="criar-meta-IA">
+    <div (click)="openAiSuggestion()" class="criar-meta-IA">
       <p>IA</p>
     </div>
   </section>
 
+  <section *ngIf="showCriarNovaMeta" class="modal-content">
+    <div>
+      <div class="titulo-meta">
+        <h2>Criar meta</h2>
+        <h3 (click)="closeModal()">X</h3>
+      </div>
+      <p>Título</p>
+      <input class="input" [(ngModel)]="novaMeta.titulo" placeholder="Perder 10Kg">
+      <p>Prazo</p>
+      <input class="input" [(ngModel)]="novaMeta.prazo" placeholder="3 meses">
+      <p>Categoria</p>
+      <select class="input" [(ngModel)]="novaMeta.categoria">
+        <option *ngFor="let categoria of categoriaOptions" [value]="categoria">{{ categoria }}</option>
+      </select>
+      <p>Prioridade</p>
+      <select class="input" [(ngModel)]="novaMeta.prioridade">
+        <option *ngFor="let prioridade of prioridadeOptions" [value]="prioridade">{{ prioridade }}</option>
+      </select>
+      <p>Status</p>
+      <select class="input" [(ngModel)]="novaMeta.status">
+        <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+      </select>
+      <p>Progresso</p>
+      <div class="progresso-container">
+        <input type="range" min="0" max="100" [(ngModel)]="novaMeta.progresso" class="progresso-slider"
+          [ngStyle]="{'background': 'linear-gradient(to right, var(--primaria) ' + novaMeta.progresso + '%, #ddd ' + novaMeta.progresso + '%)'}">
+        <span class="progresso-valor">{{ novaMeta.progresso }}%</span>
+      </div>
+
+      <!-- <input type="range" min="0" max="100" value="10"> -->
+
+      <p>Descrição</p>
+      <textarea class="input" [(ngModel)]="novaMeta.descricao"
+        placeholder="Fazer academia 3x por semana e dieta para perder 3KG+ por mês."></textarea>
+
+      <div class="toggles-container">
+        <!-- <div class="toggle-item">
+                <p>Criar mini-metas?</p>
+                <label class="toggle-switch">
+                  <input type="checkbox" [(ngModel)]="novaMeta.criarMiniMetas">
+                  <span class="slider round"></span>
+                </label>
+              </div> -->
+        <div class="toggle-box">
+          <p>Enviar lembrete?</p>
+          <label class="toggle-switch">
+            <input type="checkbox" [(ngModel)]="novaMeta.enviarLembrete">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+      <!-- <div class="botoes">              
+              <button class="salvar" (click)="criarMeta()">Criar</button>
+              <button class="cancelar" (click)="fecharModal()">Cancelar</button>
+            </div> -->
+      <div class="botoes-criar">
+        <button class="salvar" (click)="criarMeta()">Criar</button>
+      </div>
+
+    </div>
+  </section>
+
   <section>
-    <div class="fundo-modal" *ngIf="showFundoModal">
+    <div class="fundo-modal">
       <div *ngIf="showModalMeta" class="modal">
         <div class="modal-content">
           <div class="titulo-meta2">
@@ -316,6 +378,14 @@
 
     <app-modal-message [type]="modalType" [message]="modalMessage" [show]="showModal" (close)="closeModal()">
     </app-modal-message>
+  </section>
+
+  <section *ngIf="showAi" class="ai">
+    <div>
+      <h2>Em breve!</h2>
+      <p>Deixe a inteligência artificial sugerir metas para você!</p>
+      <button (click)="closeAiSuggestion()" class="botao-fechar-ai">X</button>
+    </div>
   </section>
 
 </div>

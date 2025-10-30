@@ -26,14 +26,15 @@
   </section> -->
 
   <section>
-    
-    <div class="formulario">      
+
+    <div class="formulario">
       <h2 class="login">Login</h2>
       <form action="">
         <p>E-mail</p>
         <input [(ngModel)]="email" name="email" class="input" type="email" placeholder="Digite seu e-mail" required>
         <p style="margin-top: 1rem;">Senha</p>
-        <input [(ngModel)]="senha" name="senha" (keyup.enter)="handleLogin(email, senha)" class="input" type="password" placeholder="Digite sua senha" required>
+        <input [(ngModel)]="senha" name="senha" (keyup.enter)="handleLogin(email, senha)" class="input" type="password"
+          placeholder="Digite sua senha" required>
       </form>
       <div>
         <button class="redefinir-senha" routerLink="/redefinir-senha">Esqueci minha senha</button>
@@ -41,7 +42,7 @@
       <div>
         <button class="redefinir-senha" routerLink="/cadastro">Criar conta</button>
       </div>
-      
+
       <!-- <div class="div-google-facebook">                    
         <button class="google">
           <img class="icone-google" src="/assets/icone-google.png" alt="Ícone Google">
@@ -52,13 +53,15 @@
             Entre com o Facebook
         </button>   
       </div> -->
-      
-      <button (click)="handleLogin(email, senha)" class="botao">
-        <h2>Entrar</h2>
-      </button>
+      <div class="botao">
+        <button (click)="handleLogin(email, senha)" class="button">
+          <h2>Entrar</h2>
+        </button>
+      </div>
+
     </div>
   </section>
-<!-- 
+  <!-- 
   <section>
     <button (click)="handleLogin(email, senha)" class="botao">
       <h2>Entrar</h2>
@@ -69,12 +72,8 @@
     <!-- <button (click)="openSuccess()">Show Success</button>
     <button (click)="openError()">Show Error</button> -->
 
-    <app-modal-message
-      [type]="modalType"
-      [message]="modalMessage"
-      [show]="showModal"
-      (close)="closeModal()">
+    <app-modal-message [type]="modalType" [message]="modalMessage" [show]="showModal" (close)="closeModal()">
     </app-modal-message>
-  </section> 
+  </section>
 
 </div>

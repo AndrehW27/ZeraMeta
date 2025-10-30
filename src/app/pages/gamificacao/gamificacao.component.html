@@ -10,64 +10,88 @@
       </div>
   </section> -->
 
-    <section>
-        <div class="config">
-            <svg routerLink="/configuracoes" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#e9e9e9">
-            <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
-            </svg>
-        </div>
-    </section>
+  <section>
+    <div class="config">
+      <svg routerLink="/configuracoes" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#e9e9e9">
+        <path
+          d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+      </svg>
+    </div>
+  </section>
 
 
-    <section class="conquistas">
-      <h2>Conquistas</h2>
-    </section>
+  <section class="conquistas">
+    <h2>Conquistas</h2>
+  </section>
 
-    <!-- <div class="foto-perfil">
+  <!-- <div class="foto-perfil">
     </div> -->
 
-    <section>       
-        <div class="nivel">
-          <h2>Nível 1</h2>
-          <p>🏅 Novato</p>
-          <p>100 XP</p>        
-        </div>
-    </section>
+  <section>
+    <div class="nivel">
+      <h2 style="margin-bottom: 0.5rem;">Nível {{level}}</h2>
+      <p style="margin-bottom: 0.25rem;">
+        <span *ngIf="titulo === 'Novato'">🏅</span> 
+        <span *ngIf="titulo === 'Focado'">⭐</span> 
+        <span *ngIf="titulo === 'Confiante'">🔥</span> 
+        <span *ngIf="titulo === 'Determinado'">💪</span> 
+        {{titulo}}</p>
+      <p>{{totalXp}} XP</p>
+    </div>
+  </section>
 
-    <button class="button-compartilhar" (click)="compartilharConquista()">
-      <section class="compartilhar">
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0e3553" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="18" cy="5" r="3"></circle>
-      <circle cx="6" cy="12" r="3"></circle>
-      <circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+  <button class="button-compartilhar" (click)="showBuyXpAction()">
+    <section class="compartilhar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0e3553"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="18" cy="5" r="3"></circle>
+        <circle cx="6" cy="12" r="3"></circle>
+        <circle cx="18" cy="19" r="3"></circle>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
       </svg>
-      </section>
-    </button>
-
-    <section>
-        <ul>
-          <li><h4>⭐ Focado  - 1.000 XP</h4></li>
-          <li><h4>🔥 Confiante  - 5.000 XP</h4></li>
-          <li><h4>💪 Determinado  - 15.000 XP</h4></li>
-        </ul>
     </section>
+  </button>
 
-    <section>
-      <h4 style="color: var(--secundaria);">Regras de XP?</h4>
-    </section>
+  <section>
+    <ul>
+      <li>
+        <h4>⭐ Focado - 1.000 XP</h4>
+      </li>
+      <li>
+        <h4>🔥 Confiante - 5.000 XP</h4>
+      </li>
+      <li>
+        <h4>💪 Determinado - 15.000 XP</h4>
+      </li>
+    </ul>
+  </section>
 
-    <!-- <section>
-      <div class="legenda">
-        <p>Criar meta = 100 XP</p>
-        <p>Atingir 25% = 250 XP</p>
-        <p>Atingir 50% = 500 XP</p>
-        <p>Atingir 75% = 750 XP</p>
-        <p>Completar meta = 1000 XP</p>
-        <p style="font-weight: bold;">100 XP = 1 nivel</p>
-      </div>
-    </section> -->
+  <section>
+    <h4 (click)="showRulesAction()" style="color: var(--secundaria);">Regras de XP?</h4>
+  </section>
 
-    <!-- <section>
+  <section *ngIf="showRules">
+    <div class="legenda">
+      <h3 class="fechar-legenda" (click)="closeRulesAction()">X</h3>
+      <h3 style="margin-bottom: 1rem;">Regras de XP</h3>
+      <p>Criar meta = 100 XP</p>
+      <p>Atingir 25% = 250 XP</p>
+      <p>Atingir 50% = 500 XP</p>
+      <p>Atingir 75% = 750 XP</p>
+      <p>Completar meta = 1000 XP</p>
+      <p style="font-weight: bold;">100 XP = 1 nivel</p>
+    </div>
+  </section>
+
+  <section *ngIf="showBuyXp">
+    <div class="comprar-xp-box">
+      <h3 class="fechar-comprar-xp" (click)="closeBuyXp()">X</h3>
+      <h3>Em breve!</h3>
+    </div>
+  </section>
+
+  <!-- <section>
         <h3>Metas</h3>
         <ul>
           <li>Baixa - 5.000 XP</li>
@@ -76,9 +100,9 @@
         </ul>
     </section> -->
 
-    <button class="comprar-xp">
-      Comprar XP
-    </button>
+  <button (click)="showBuyXpAction()" class="comprar-xp">
+    <h2>Comprar XP</h2>
 
-  </div>
-  
+  </button>
+
+</div>

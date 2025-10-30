@@ -24,6 +24,27 @@
                 align-items: flex-start;
                 justify-content: center;
 
+                .titulo-componente {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    width: 100%;
+                    margin-bottom: 0.5rem;
+                    font-size: 1rem;
+                    color: var(--primaria);
+
+                    .titulo {
+                        // border-bottom: 1px solid var(--primaria);
+                        max-width: calc(100% - 2.5rem);
+                        display: block;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+
+                }
+
                 .alterar-senha-titulo {
                     width: 100%;
                     text-align: center;
@@ -36,14 +57,17 @@
                 }
 
                 .input {
-                    width: 100%;
-                    padding: 0.75rem;
+                    width: 60vw;
+                    padding: 0.5rem;
                     margin-top: 0.25rem;
-                    margin-bottom: 1.5rem;
-                    border: none;
-                    border-radius: 0.5rem;
+                    // margin-bottom: 1rem;
+                    border-bottom: 1px solid var(--secundaria);
+
+                    // border: none;
+                    border-radius: 1rem;
                     box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.5);
-                    font-size: 1rem;
+                    background-color: transparent;
+
                 }
 
                 // .input-senha {
@@ -62,40 +86,41 @@
                     width: 100%;
                     align-items: center;
                     justify-content: center;
-                    gap: 1rem; // Adiciona espaço entre os botões
+                    margin-top: 1rem;
+                    padding: 1rem 1rem 0rem 1rem;
 
-                    .salvar,
-                    .cancelar {
-                        flex-grow: 1; // Faz os botões ocuparem o espaço disponível
-                        color: var(--secundaria);
-                        border-radius: 1rem;
+                    .botao-cancelar,
+                    .botao-salvar {
+                        padding: 0.75rem 1.5rem;
+                        border-radius: 1.5rem;
                         border: none;
-                        padding: 1rem 2rem;
-                        font-size: 1rem;
-                        border-radius: 0.5rem;
                         cursor: pointer;
-                        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-                        transition: all 0.2s ease-in-out;
-                    }
+                        font-weight: bold;
+                        font-size: 1rem;
 
-                    .salvar {
-                        background-color: var(--primaria);
+                        border: var(--primaria) 1px solid;
+
+
 
                         &:hover {
-                            opacity: 0.9;
+                            background-color: var(--secundaria);
+                            color: var(--primaria);
+                            border: var(--primaria) 1px solid;
                         }
                     }
 
-                    .cancelar {
-                        background-color: var(--secundaria);
-                        color: var(--primaria);
-                        border: var(--primaria) 1px solid;
+                    .botao-salvar {
+                        margin-left: 1rem;
+                        background-color: var(--primaria);
+                        color: var(--secundaria);
 
                         &:hover {
                             background-color: var(--primaria);
                             color: var(--secundaria);
+                            // border: var(--primaria) 1px solid;
                         }
                     }
+
                 }
             }
         }

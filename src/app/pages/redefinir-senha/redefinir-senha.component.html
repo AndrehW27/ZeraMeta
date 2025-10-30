@@ -1,19 +1,41 @@
 <div class="container">
 
-  <section>
+  <!-- <section>
     <div class="voltar">
       <svg routerLink="/login" width="48" height="48" viewBox="0 0 48 48" fill="none">
-        <rect width="48" height="48" rx="24" fill=""/>
-        <path d="M30 12L18 24L30 36" stroke="#e9e9e9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect width="48" height="48" rx="24" fill="" />
+        <path d="M30 12L18 24L30 36" stroke="#e9e9e9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
     </div>
-  </section>
+  </section> -->
 
-  <section>
-    <h2 class="titulo-componente">Esqueci minha senha</h2>
+  <section class="redefinir-box">
+    <div class="titulo-componente">
+      <h2 class="titulo">Redefinir senha</h2>
+
+      <div routerLink="/login" class="voltar-metas">
+        <div>
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect width="48" height="48" rx="24" fill="" />
+            <path d="M30 12L18 24L30 36" stroke="#0e3553" stroke-width="4" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+        <!-- <div>
+                    <p>metas</p>
+                </div> -->
+      </div>
+    </div>
+    <!-- <h2 class="titulo-componente">Redefinir senha</h2> -->
     <form (ngSubmit)="enviarEmail()">
       <input class="input" [(ngModel)]="email" name="email" placeholder="Digite seu e-mail" required />
-      <button class="reset" type="submit">Enviar link de reset</button>
+      <!-- <button class="reset" type="submit">Enviar link de reset</button>
+        -->
+      <div class="botao">
+        <button class="button">
+          Enviar link
+        </button>
+      </div>
     </form>
     <p *ngIf="mensagem" [ngClass]="{ 'mensagem-sucesso': !isError, 'mensagem-erro': isError }">{{ mensagem }}</p>
   </section>

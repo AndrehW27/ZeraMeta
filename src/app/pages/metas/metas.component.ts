@@ -13,6 +13,8 @@ export class MetasComponent implements OnInit {
   perCompleted = 0;
   diff = 0;
 
+  showAi = false;
+
   itensCarregados = false;
 
   showModalDelete = false;
@@ -24,12 +26,15 @@ export class MetasComponent implements OnInit {
   categoriaOptions = ["Outros", "Saúde", "Finanças", "Educação", "Pessoal", "Relacionamento", "Profissional", "Lazer", "Viagem", "Hobbie"];
   prioridadeOptions = ['Baixa', 'Média', 'Alta'];
 
+  showCriarNovaMeta = false;
+  miniGoals: { titulo: string; concluido: boolean }[] = [];
+
   showFundoModal = false;
   showFundoModalDetalhes = false;
   showModalMeta = false;
   showModalDetalhes = false;
-  novaMeta = { usuario_id: '', id: 0, titulo: '', prazo: '', categoria: '', prioridade: '', status: '', descricao: '', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
-  metaSelecionada = { id: 0, titulo: '', prazo: '', categoria: '', prioridade: '', status: '', descricao: '', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
+  novaMeta = { usuario_id: '', id: 0, titulo: '', prazo: '', categoria: '', prioridade: '', status: '', descricao: '', progresso: 0, enviarLembrete: false, criarMiniMetas: false, miniGoals: [] };
+  metaSelecionada = { id: 0, titulo: '', prazo: '', categoria: '', prioridade: '', status: '', descricao: '', progresso: 0, enviarLembrete: false, criarMiniMetas: false, miniGoals: [] };
 
   constructor(private metaService: MetaService, private router: Router) { }
 
@@ -59,10 +64,20 @@ export class MetasComponent implements OnInit {
     });
   }
 
-  abrirModal() {
-    this.novaMeta = { usuario_id: '', id: Date.now(), titulo: '', prazo: '', categoria: 'Outros', prioridade: 'Baixa', status: 'Novo', descricao: '', progresso: 0, enviarLembrete: false, criarMiniMetas: false };
-    this.showModalMeta = true;
-    this.showFundoModal = true;
+  openAiSuggestion() {
+    this.showAi = true;
+  }
+
+
+  closeAiSuggestion() {
+    this.showAi = false;
+  }
+
+  abrirModalNovaMeta() {
+    console.log('abrirModalNovaMeta: '+this.showCriarNovaMeta);
+    
+    this.novaMeta = { usuario_id: '', id: Date.now(), titulo: '', prazo: '', categoria: 'Outros', prioridade: 'Baixa', status: 'Novo', descricao: '', progresso: 0, enviarLembrete: false, criarMiniMetas: false, miniGoals: [] };
+    this.showCriarNovaMeta = true;
   }
 
   abrirModalDetalhes(meta: any) {

@@ -1,8 +1,8 @@
-.login{
-    margin-bottom: 0.5rem; 
+.login {
+    margin-bottom: 0.5rem;
 }
 
-.formulario{
+.formulario {
     position: fixed;
     top: 3rem;
     width: 80vw;
@@ -12,7 +12,7 @@
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
 
 
-    .input{
+    .input {
         width: 100%;
         padding: 0.5rem;
         margin-top: 0.25rem;
@@ -23,35 +23,37 @@
         border-radius: 01rem;
         box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.5);
         background-color: transparent;
-        
+
 
     }
 
-    .ir-login{
-       border: none;
-       color: var(--primaria);
+    .ir-login {
+        border: none;
+        color: var(--primaria);
         // text-decoration: underline;
-        cursor: pointer; 
+        cursor: pointer;
         margin-top: 0.75rem;
         background-color: transparent;
         // font-weight: bold;
 
     }
 
-    .div-google-facebook{
+    .div-google-facebook {
         margin-top: 1rem;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
 
-        .icone-google, .icone-facebook{
+        .icone-google,
+        .icone-facebook {
             width: 1.5rem;
             height: 1.5rem;
             margin-right: 0.5rem;
         }
-        
-        .google, .facebook{
+
+        .google,
+        .facebook {
             background-color: rgba(255, 255, 255, 0.25);
 
 
@@ -73,30 +75,30 @@
 
 }
 
-.botao{
-    width: 100%;
-    margin-top: 1rem;
+.botao {
     display: flex;
-    flex-direction: column;
+    width: 100%;
     align-items: center;
-    justify-content: center;  
-    background-color: var(--primaria);
-    color: var(--secundaria);  
-    border-radius: 1rem;
-    // border-bottom: 1px solid var(--secundaria);
-    padding: 1rem 2rem 1rem 2rem;
-    // min-width: 10rem;
-    // font-size: 1.5rem;       
-    border-radius: 0.5rem;
-    cursor: pointer;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-    color: var(--secundaria);
+    justify-content: center;
 
+    .button {
+        width: fit-content;
+        padding: 1rem 2rem;
+        border-radius: 2rem;
+        cursor: pointer;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+        border: none;
+        font-size: 0.75rem;
+        background-color: var(--primaria);
+        color: var(--secundaria);
+        margin-top: 1rem;
+        align-items: center;
+    }
 
-    &:hover{
-        background-color: var(--secundaria);
-        color: var(--primaria);
-        border: var(--primaria) 1px solid;
-    }   
-    
+    // &:hover {
+    //     background-color: var(--secundaria);
+    //     color: var(--primaria);
+    //     border: var(--primaria) 1px solid;
+    // }
+
 }

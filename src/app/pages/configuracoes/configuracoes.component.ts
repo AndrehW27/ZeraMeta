@@ -9,6 +9,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class ConfiguracoesComponent implements OnInit {
 
+  emBreve = false;
   isLoading = false;
   showModalSair = false;
   sairContaVar = false;
@@ -42,6 +43,14 @@ export class ConfiguracoesComponent implements OnInit {
  // final funções para chamar modal de sucesso/erro podem ser adicionadas aqui
 
   ngOnInit(): void {
+  }
+
+  abrirModalCobr() {
+    this.emBreve = true;
+  }
+
+   closeEmBreve() {
+    this.emBreve = false;
   }
 
   abrirModalTema(): void {

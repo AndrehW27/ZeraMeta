@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { UsuarioService } from 'src/app/services/usuario.service';  
-import { AuthService } from 'src/app/services/auth.service';  
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 // O decorador @Component estava faltando. Este é o principal motivo dos erros.
@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
 })
 export class PerfilComponent implements OnInit {
 
-  senhaValida = true; 
+  
+
+  senhaValida = true;
   senhaLength = false;
 
   isLoading = false;
@@ -33,17 +35,17 @@ export class PerfilComponent implements OnInit {
 
   itensCarregados = true;
   abrirModalFoto = false;
-  avatar1 = '../../../assets/avatares/avatar1.png'; 
-  avatar2 = '../../../assets/avatares/avatar2.png'; 
-  avatar3 = '../../../assets/avatares/avatar3.png'; 
-  avatar4 = '../../../assets/avatares/avatar4.png'; 
-  avatar5 = '../../../assets/avatares/avatar5.png'; 
-  avatar6 = '../../../assets/avatares/avatar6.png'; 
-  avatar7 = '../../../assets/avatares/avatar7.png'; 
-  avatar8 = '../../../assets/avatares/avatar8.png'; 
-  avatar9 = '../../../assets/avatares/avatar9.png'; 
-  avatar10 = '../../../assets/avatares/avatar10.png'; 
-  userImage = ''; 
+  avatar1 = '../../../assets/avatares/avatar1.png';
+  avatar2 = '../../../assets/avatares/avatar2.png';
+  avatar3 = '../../../assets/avatares/avatar3.png';
+  avatar4 = '../../../assets/avatares/avatar4.png';
+  avatar5 = '../../../assets/avatares/avatar5.png';
+  avatar6 = '../../../assets/avatares/avatar6.png';
+  avatar7 = '../../../assets/avatares/avatar7.png';
+  avatar8 = '../../../assets/avatares/avatar8.png';
+  avatar9 = '../../../assets/avatares/avatar9.png';
+  avatar10 = '../../../assets/avatares/avatar10.png';
+  userImage = '';
 
   // Funções para chamar modal de sucesso/erro podem ser adicionadas aqui
   showModal = false;
@@ -65,7 +67,7 @@ export class PerfilComponent implements OnInit {
   closeModal() {
     this.showModal = false;
   }
- // final funções para chamar modal de sucesso/erro podem ser adicionadas aqui
+  // final funções para chamar modal de sucesso/erro podem ser adicionadas aqui
 
 
   // Controla a visibilidade do modal
@@ -78,6 +80,8 @@ export class PerfilComponent implements OnInit {
   nomeEmEdicao = '';
   emailEmEdicao = '';
   senhaEmEdicao = '';
+  repeteSenha: string = '';
+  repeteSenhaValida = true;
   telefoneEmEdicao = '';
   planoEmEdicao = '';
   planoOptions = ['Explorer', 'Achiever', 'Champion', 'Legend'];
@@ -87,27 +91,30 @@ export class PerfilComponent implements OnInit {
 
   constructor(private usuarioService: UsuarioService, private router: Router, private authService: AuthService) { }
 
-   userId = localStorage.getItem('userId');
+  userId = localStorage.getItem('userId');
 
   ngOnInit(): void {
-    console.log('isLoggedIn: '+this.authService.isLoggedIn());
-    
+    console.log('isLoggedIn: ' + this.authService.isLoggedIn());
+
     console.log('Usuário ID:', this.userId);
     this.carregarUsuario();
   }
 
-  carregarUsuario(){
+  carregarUsuario() {
     this.usuarioService.getUsuarioComDados(this.userId || '', localStorage.getItem('token') || '123').subscribe(data => {
-    console.log("Usuário carregado: " + JSON.stringify(data)); // Exibe mensagem de sucesso    
-    this.usuario.nome = data.usuario.nome;
-    this.usuario.email = data.usuario.email;
-    this.usuario.senha = data.usuario.senha;
-    this.usuario.telefone = data.usuario.telefone;
-    this.usuario.plano = data.usuario.plano;
-    this.usuario.foto_perfil_url = data.usuario.foto_perfil_url;    
-    this.userImage = this.usuario.foto_perfil_url;     
+      console.log("Usuário carregado: " + JSON.stringify(data)); // Exibe mensagem de sucesso    
+      this.usuario.nome = data.usuario.nome;
+      this.usuario.email = data.usuario.email;
+      this.usuario.senha = data.usuario.senha;
+      this.usuario.telefone = data.usuario.telefone;
+      this.usuario.plano = data.usuario.plano;
+      this.usuario.foto_perfil_url = data.usuario.foto_perfil_url;
+      this.userImage = this.usuario.foto_perfil_url;
     });
   }
+
+ 
+
 
   // Abre o modal e copia o nome atual para o campo de edição
   editarInfo() {
@@ -152,82 +159,90 @@ export class PerfilComponent implements OnInit {
     }
   }
 
+  verificaSeSaoIguais() {
+    if (this.repeteSenha.length === 0) {
+      this.repeteSenhaValida = false; // Não mostra erro se o campo estiver vazio
+    } else {
+      this.repeteSenhaValida = this.senhaEmEdicao === this.repeteSenha;
+    }
+  }
+
   // Salva o novo nome e fecha o modal
   salvarAlteracaoNome() {
     this.usuario.nome = this.nomeEmEdicao;
     this.abrirModalInfo = false;
     this.usuarioService.editarUsuario(this.usuario, this.userId, localStorage.getItem('token') || '123').subscribe(() => {
-    });    
+    });
     this.isLoading = true;
     setTimeout(() => {
       this.isLoading = false;
       this.openSuccess('success', 'Nome editado com sucesso!', true);
     }, 1000);
     setTimeout(() => {
-      this.closeModal();        
+      this.closeModal();
     }, 2000);
   }
 
-    salvarAlteracaoEmail() {
+  salvarAlteracaoEmail() {
     // Atualiza o e-mail através do serviço para manter o estado centralizado
     this.usuario.email = this.emailEmEdicao;
     this.abrirModalEmail = false;
     this.usuarioService.editarUsuario(this.usuario, this.userId, localStorage.getItem('token') || '123').subscribe(() => {
-    });    
+    });
     this.isLoading = true;
     setTimeout(() => {
       this.isLoading = false;
       this.openSuccess('success', 'E-mail editado com sucesso!', true);
     }, 1000);
     setTimeout(() => {
-      this.closeModal();        
+      this.closeModal();
     }, 2000);
   }
 
   salvarAlteracaoSenha() {
     if (this.senhaValida && this.senhaLength) {
-          this.usuario.senha = this.senhaEmEdicao;;
-        this.abrirModalSenha = false;
-        this.authService.redefinirSenha(this.usuario.email, this.usuario.senha).subscribe(() => {
-        });    
-        this.isLoading = true;
-        setTimeout(() => {
-          this.isLoading = false;
-          this.openSuccess('success', 'Senha editada com sucesso!', true);
-        }, 1000);
-        setTimeout(() => {
-          this.closeModal();        
-        }, 2000);
+      this.usuario.senha = this.senhaEmEdicao;;
+      this.abrirModalSenha = false;
+      this.authService.redefinirSenha(this.usuario.email, this.usuario.senha).subscribe(() => {
+      });
+      this.isLoading = true;
+      setTimeout(() => {
+        this.isLoading = false;
+        this.openSuccess('success', 'Senha editada com sucesso!', true);
+      }, 1000);
+      setTimeout(() => {
+        this.closeModal();
+      }, 2000);
     }
 
   }
 
-  verificaPreenchimentoSenha(){
+  verificaPreenchimentoSenha() {
     const senha = this.senhaEmEdicao;
     // Regex para validar: mínimo 8 caracteres, 1 letra, 1 número e 1 caractere especial.
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
     if (senha.length === 0) {
       this.senhaValida = true; // Não mostra erro se o campo estiver vazio
-      this.senhaLength = false; 
+      this.senhaLength = false;
     } else {
       this.senhaLength = true;
       this.senhaValida = passwordRegex.test(senha);
     }
- }
+  }
 
   salvarAlteracaoTelefone() {
     this.usuario.telefone = this.telefoneEmEdicao;
     this.abrirModalTelefone = false;
-        this.usuarioService.editarUsuario(this.usuario, this.userId, localStorage.getItem('token') || '123').subscribe(() => {
-    });    
+    this.usuarioService.editarUsuario(this.usuario, this.userId, localStorage.getItem('token') || '123').subscribe(() => {
+    });
     this.isLoading = true;
     setTimeout(() => {
       this.isLoading = false;
       this.openSuccess('success', 'Telefone editado com sucesso!', true);
     }, 1000);
     setTimeout(() => {
-      this.closeModal();        
+      this.closeModal();
     }, 2000);
   }
 
@@ -235,14 +250,14 @@ export class PerfilComponent implements OnInit {
     this.usuario.plano = this.planoEmEdicao;
     this.abrirModalPlano = false;
     this.usuarioService.editarUsuario(this.usuario, this.userId, localStorage.getItem('token') || '123').subscribe(() => {
-    });    
+    });
     this.isLoading = true;
     setTimeout(() => {
       this.isLoading = false;
       this.openSuccess('success', 'Plano editado com sucesso!', true);
     }, 1000);
     setTimeout(() => {
-      this.closeModal();        
+      this.closeModal();
     }, 2000);
   }
 
@@ -267,11 +282,11 @@ export class PerfilComponent implements OnInit {
     this.abrirModalPlano = false;
   }
 
-  deletarConta(){
+  deletarConta() {
     this.showModalDelete = true;
   }
 
-  confirmarDelete(){
+  confirmarDelete() {
     this.deletarContaVar = true;
     this.showModalDelete = false;
     // const confirmacao = confirm('Tem certeza que deseja deletar esta meta?');
@@ -281,7 +296,7 @@ export class PerfilComponent implements OnInit {
         // this.fecharModalDetalhes();
       });
 
-    this.isLoading = true;
+      this.isLoading = true;
       setTimeout(() => {
         this.isLoading = false;
         this.openSuccess('success', 'Usuário deletado com sucesso!', true);
@@ -289,76 +304,72 @@ export class PerfilComponent implements OnInit {
 
       setTimeout(() => {
         this.closeModal();
-        this.router.navigate(['/']);  
+        this.router.navigate(['/']);
         this.userId = '';
         localStorage.removeItem('userId');
         // this.carregarMetas(); 
       }, 2000);
 
-      
-    
+
+
     }
   }
 
-  cancelarDelete(){
+  cancelarDelete() {
     this.deletarContaVar = false;
     this.showModalDelete = false;
   }
 
-  mudarFoto(){
+  mudarFoto() {
     this.abrirModalFoto = true;
   }
 
-  fecharModalDetalhes(){
+  fecharModalDetalhes() {
     this.abrirModalFoto = false;
   }
 
-  selecionarAvatar1(){
-    this.userImage = this.avatar1; 
+  selecionarAvatar1() {
+    this.userImage = this.avatar1;
     this.usuario.foto_perfil_url = this.userImage;
   }
-  selecionarAvatar2(){
-      this.userImage = this.avatar2; 
-      this.usuario.foto_perfil_url = this.userImage;
-  } 
-  selecionarAvatar3(){
-      this.userImage = this.avatar3; 
-      this.usuario.foto_perfil_url = this.userImage;
-  } 
-  selecionarAvatar4(){
-      this.userImage = this.avatar4; 
-      this.usuario.foto_perfil_url = this.userImage;
-  } 
-  selecionarAvatar5(){
-      this.userImage = this.avatar5; 
-      this.usuario.foto_perfil_url = this.userImage;
-  }     
-  selecionarAvatar6(){
-      this.userImage = this.avatar6; 
-      this.usuario.foto_perfil_url = this.userImage;
-  } 
-  selecionarAvatar7(){
-      this.userImage = this.avatar7; 
-      this.usuario.foto_perfil_url = this.userImage;
+  selecionarAvatar2() {
+    this.userImage = this.avatar2;
+    this.usuario.foto_perfil_url = this.userImage;
   }
-  selecionarAvatar8(){      
-      this.userImage = this.avatar8; 
-      this.usuario.foto_perfil_url = this.userImage;
+  selecionarAvatar3() {
+    this.userImage = this.avatar3;
+    this.usuario.foto_perfil_url = this.userImage;
   }
-  selecionarAvatar9(){      
-      this.userImage = this.avatar9; 
-      this.usuario.foto_perfil_url = this.userImage;
-  }   
-  selecionarAvatar10(){      
-      this.userImage = this.avatar10; 
-      this.usuario.foto_perfil_url = this.userImage;
-  }   
+  selecionarAvatar4() {
+    this.userImage = this.avatar4;
+    this.usuario.foto_perfil_url = this.userImage;
+  }
+  selecionarAvatar5() {
+    this.userImage = this.avatar5;
+    this.usuario.foto_perfil_url = this.userImage;
+  }
+  selecionarAvatar6() {
+    this.userImage = this.avatar6;
+    this.usuario.foto_perfil_url = this.userImage;
+  }
+  selecionarAvatar7() {
+    this.userImage = this.avatar7;
+    this.usuario.foto_perfil_url = this.userImage;
+  }
+  selecionarAvatar8() {
+    this.userImage = this.avatar8;
+    this.usuario.foto_perfil_url = this.userImage;
+  }
+  selecionarAvatar9() {
+    this.userImage = this.avatar9;
+    this.usuario.foto_perfil_url = this.userImage;
+  }
+  selecionarAvatar10() {
+    this.userImage = this.avatar10;
+    this.usuario.foto_perfil_url = this.userImage;
+  }
 
-  emBreve(){
-    alert('Novidaes em breve!');
-  } 
-
-  salvarFoto(){
+  salvarFoto() {
     this.usuarioService.editarUsuario(this.usuario, this.userId, localStorage.getItem('token') || '123').subscribe((data) => {
       console.log("Usuário editado: " + JSON.stringify(data));
     });
@@ -370,7 +381,7 @@ export class PerfilComponent implements OnInit {
       this.openSuccess('success', 'Avatar editado com sucesso!', true);
     }, 1000);
     setTimeout(() => {
-      this.closeModal();        
+      this.closeModal();
     }, 2000);
 
   }

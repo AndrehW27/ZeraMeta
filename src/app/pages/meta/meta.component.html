@@ -1,5 +1,8 @@
 <div class="container">
 
+  <app-loading *ngIf="isLoading"></app-loading>
+
+
     <!-- <section>
         <div class="icone-zera-meta">
             <svg routerLink="/menu" width="60" height="60" viewBox="0 0 48 48" fill="none">
@@ -175,8 +178,8 @@
             <p>Descrição</p>
             <textarea [(ngModel)]="descricao" class="input" placeholder=""></textarea>
 
-            <div class="botoes-editar-submeta">
-                <button (click)="desejaExcluirMeta()" class="botao-excluir">Excluir meta</button>
+            <div class="botoes-editar-meta">
+                <button (click)="desejaExcluirMeta()" class="botao-excluir">Excluir</button>
                 <button (click)="salvarEdicaoMeta()" class="botao-salvar">Salvar</button>
             </div>
             <!-- <div class="div-excluir">
@@ -208,7 +211,7 @@
         <button (click)="closeMiniModalDelete()" class="botao-fechar-mini">X</button>
         <div class="botoes-editar-submeta">
             <button (click)="closeMiniModalDelete()" class="botao-nao">Não</button>
-            <button (click)="excluirMeta()" class="botao-salvar">Sim</button>
+            <button (click)="excluirMeta()" class="botao-sim">Sim</button>
             <!-- <p class="botao-nao">Não</p> -->
         </div>
 
@@ -223,17 +226,8 @@
     </section>
 
 
-
-    <!-- <section *ngIf="showModal" class="modal-background">
-        <div>
-            <div *ngIf="showModal" class="modal-content">
-                <h2>Editar sub-meta</h2>
-                <input type="text" placeholder="Editar sub-meta" class="input-editar-submeta">
-                <div class="botoes-editar-submeta">
-                    <button (click)="closeModal()" class="botao-cancelar">Cancelar</button>
-                    <button class="botao-salvar">Salvar</button>
-                </div>
-            </div>
-        </div>
-    </section> -->
+  <section>
+    <app-modal-message [type]="modalType" [message]="modalMessage" [show]="showModalComponent" (close)="closeModal()">
+    </app-modal-message>
+  </section>
 </div>

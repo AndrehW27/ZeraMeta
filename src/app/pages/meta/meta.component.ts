@@ -11,6 +11,8 @@ export class MetaComponent implements OnInit {
 
   constructor(private metaService: MetaService, private router: Router) { }
 
+  isLoading = false;
+
   userId = localStorage.getItem('userId');
   token = localStorage.getItem('token') || '';
 
@@ -44,6 +46,27 @@ export class MetaComponent implements OnInit {
 
   metaSelecionada = { _id: this.id, titulo: this.titulo, prazo: this.prazo, categoria: this.categoria, prioridade: this.prioridade, status: this.status, descricao: this.descricao, progresso: this.progresso, enviarLembrete: this.enviarLembrete, criarMiniMetas: this.criarMiniMetas, miniGoals: this.miniGoals };
 
+  // Funções para chamar modal de sucesso/erro podem ser adicionadas aqui
+  showModalComponent = false;
+  modalType: 'success' | 'error' = 'success';
+  modalMessage = '';
+
+  openSuccess(modalType: any, modalMessage: string, showModalComponent: boolean) {
+    this.modalType = modalType;
+    this.modalMessage = modalMessage;
+    this.showModalComponent = showModalComponent;
+  }
+
+  openError(modalType: any, modalMessage: string, showModalComponent: boolean) {
+    this.modalType = modalType;
+    this.modalMessage = modalMessage;
+    this.showModalComponent = showModalComponent;
+  }
+
+  closeModalComponent() {
+    this.showModalComponent = false;
+  }
+  // final funções para chamar modal de sucesso/erro podem ser adicionadas aqui
 
   ngOnInit(): void {
     console.log('LOCAL STORAGE Meta ID:', localStorage.getItem('meta-id'));
@@ -145,36 +168,36 @@ export class MetaComponent implements OnInit {
   }
 
   // ...existing code...
-addminiGoal() {
-  const title = (this.inputNewminiGoalModel ?? '').toString().trim();
-  if (!title) return;
+  addminiGoal() {
+    const title = (this.inputNewminiGoalModel ?? '').toString().trim();
+    if (!title) return;
 
-  const newMini = { titulo: title, concluido: false };
-  // atualiza local (optimistic update)
-  this.miniGoals.push(newMini);
+    const newMini = { titulo: title, concluido: false };
+    // atualiza local (optimistic update)
+    this.miniGoals.push(newMini);
 
-  // assegura a propriedade com o nome esperado pelo backend (ex: miniGoals)
-  if (!this.metaSelecionada) this.metaSelecionada = {} as any;
-  this.metaSelecionada.miniGoals = this.miniGoals;
+    // assegura a propriedade com o nome esperado pelo backend (ex: miniGoals)
+    if (!this.metaSelecionada) this.metaSelecionada = {} as any;
+    this.metaSelecionada.miniGoals = this.miniGoals;
 
-  const token = localStorage.getItem('token') || '';
-  console.log('PUT payload (antes da requisição):', this.metaSelecionada);
+    const token = localStorage.getItem('token') || '';
+    console.log('PUT payload (antes da requisição):', this.metaSelecionada);
 
-  this.metaService.editarMeta(this.metaSelecionada, token).subscribe({
-    next: res => {
-      console.log('Editar meta resposta:', res);
-      this.inputNewminiGoalModel = '';
-      // opcional: atualizar miniGoals com o que veio do servidor
-      if (res?.miniGoals) this.miniGoals = res.miniGoals;
-    },
-    error: err => {
-      console.error('Erro ao salvar sub-meta:', err);
-      // rollback se necessário
-      this.miniGoals = this.miniGoals.filter(m => m !== newMini);
-      this.metaSelecionada.miniGoals = [...this.miniGoals];
-    }
-  });
-}
+    this.metaService.editarMeta(this.metaSelecionada, token).subscribe({
+      next: res => {
+        console.log('Editar meta resposta:', res);
+        this.inputNewminiGoalModel = '';
+        // opcional: atualizar miniGoals com o que veio do servidor
+        if (res?.miniGoals) this.miniGoals = res.miniGoals;
+      },
+      error: err => {
+        console.error('Erro ao salvar sub-meta:', err);
+        // rollback se necessário
+        this.miniGoals = this.miniGoals.filter(m => m !== newMini);
+        this.metaSelecionada.miniGoals = [...this.miniGoals];
+      }
+    });
+  }
 
 
 
@@ -247,9 +270,15 @@ addminiGoal() {
 
     this.metaService.editarMeta(this.metaSelecionada, this.token).subscribe(() => {
       // this.openSuccess('success', 'Meta editada com sucesso!', true);
+      this.closeModal();
+      this.isLoading = true;
       setTimeout(() => {
-        this.closeModal();
-      }, 2000);
+        this.isLoading = false;
+        this.openSuccess('success', 'Meta editada com sucesso!', true);
+        setTimeout(() => {
+          this.showModalComponent = false;
+        }, 1000);
+      }, 1000);
     });
   }
 
@@ -305,14 +334,14 @@ addminiGoal() {
   }
 
   excluirSubmeta() {
-    
+
     const index = parseInt(localStorage.getItem('index-miniGoal-to-edit') || '0', 10);
     this.miniGoals.splice(index, 1);
     console.log('Mini Goals após exclusão:', this.miniGoals);
     this.metaSelecionada.miniGoals = this.miniGoals;
     console.log('this.metaSelecionada após exclusão:', JSON.stringify(this.metaSelecionada));
 
-     localStorage.setItem('meta-miniGoals', JSON.stringify(this.metaSelecionada.miniGoals));
+    localStorage.setItem('meta-miniGoals', JSON.stringify(this.metaSelecionada.miniGoals));
 
 
 

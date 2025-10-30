@@ -3,110 +3,120 @@
     <section>
         <div class="config">
             <svg routerLink="/configuracoes" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#e9e9e9">
-            <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+                <path
+                    d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
             </svg>
         </div>
     </section>
 
-    <section class="card-container">        
+    <section class="card-container">
 
-            <div [ngClass]="itensCarregados ? 'nome' : 'carregandoNome'">
-                <h2 *ngIf="itensCarregados">Bem-vindo de volta,</h2>
-                <h2 *ngIf="itensCarregados">{{firstName}}!</h2>
-            </div>   
-            
+        <div [ngClass]="itensCarregados ? 'nome' : 'carregandoNome'">
+            <h2 *ngIf="itensCarregados">Bem-vindo de volta,</h2>
+            <h2 *ngIf="itensCarregados" class="truncate">{{firstName}}!</h2>
+        </div>
 
-            <div [ngClass]="itensCarregados ? 'div-foto-perfil' : 'carregandoFoto'" routerLink="/perfil">
-                <img *ngIf="itensCarregados" [src]="userImage || '../../../assets/avatares/avatar5.png'" class="foto-perfil-dinamica" alt="Profile Picture" />
-                <!-- <svg (click)="mudarFoto()" *ngIf="itensCarregados" class="edicao-foto" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 36" fill="#e9e9e9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg> -->
-            </div>
-            
-            <!-- <div [ngClass]="itensCarregados ? 'foto-perfil' : 'carregandoFoto'">
+
+        <div [ngClass]="itensCarregados ? 'div-foto-perfil' : 'carregandoFoto'" routerLink="/perfil">
+            <img *ngIf="itensCarregados" [src]="userImage || '../../../assets/avatares/avatar5.png'"
+                class="foto-perfil-dinamica" alt="Profile Picture" />
+            <!-- <svg (click)="mudarFoto()" *ngIf="itensCarregados" class="edicao-foto" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 36" fill="#e9e9e9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg> -->
+        </div>
+
+        <!-- <div [ngClass]="itensCarregados ? 'foto-perfil' : 'carregandoFoto'">
                 <svg (click)="mudarFoto()" *ngIf="itensCarregados" class="edicao-foto" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 36" fill="#e9e9e9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
             </div> -->
 
-            <h4 [ngClass]="itensCarregados ? 'nome' : 'carregandoNome'" style="margin-bottom: 1rem;" *ngIf="itensCarregados">Pronto para zerar metas?</h4>  
+        <h4 [ngClass]="itensCarregados ? 'nome' : 'carregandoNome'" style="margin-bottom: 1rem;"
+            *ngIf="itensCarregados">Pronto para zerar metas?</h4>
 
-        
-            <div class="card-vertical">
-                <div [ngClass]="itensCarregados ? 'card' : 'carregandoItensCard'" routerLink="/gamificacao">
-                    <h2 *ngIf="itensCarregados">Nível 1</h2>
-                    <!-- <p>100 XP</p> -->
-                    <p *ngIf="itensCarregados">🏅Novato</p>
-                </div>
-                <div [ngClass]="itensCarregados ? 'card' : 'carregandoItensCard'" routerLink="/metas">
-                    <h2 *ngIf="itensCarregados">Metas</h2>
-                    <p *ngIf="itensCarregados">{{qtdMetas}} {{criadas}}</p>       
-                </div>
+
+        <div class="card-vertical">
+            <div [ngClass]="itensCarregados ? 'card' : 'carregandoItensCard'" routerLink="/gamificacao">
+                <h2 *ngIf="itensCarregados">Nível {{level}}</h2>
+                <!-- <p>100 XP</p> -->
+                <p *ngIf="itensCarregados">
+                    <span *ngIf="titulo === 'Novato'">🏅</span>
+                    <span *ngIf="titulo === 'Focado'">⭐</span>
+                    <span *ngIf="titulo === 'Confiante'">🔥</span>
+                    <span *ngIf="titulo === 'Determinado'">💪</span>
+                    {{titulo}}
+                </p>
             </div>
+            <div [ngClass]="itensCarregados ? 'card' : 'carregandoItensCard'" routerLink="/metas">
+                <h2 *ngIf="itensCarregados">Metas</h2>
+                <p *ngIf="itensCarregados">{{qtdMetas}} {{criadas}}</p>
+            </div>
+        </div>
 
-            <!-- <div class="card-vertical">
+        <!-- <div class="card-vertical">
 
                 <div [ngClass]="itensCarregados ? 'card' : 'carregandoItensCard'" routerLink="/sugestoes-ia">
                     <h2 *ngIf="itensCarregados">IA</h2>
                     <p *ngIf="itensCarregados">crie</p>       
                 </div>
             </div> -->
-            <h2  *ngIf="itensCarregados" style="margin-top: 2rem;">Metas zeradas</h2>
+        <h2 *ngIf="itensCarregados" style="margin-top: 2rem;">Metas zeradas</h2>
 
-            <div [ngClass]="itensCarregados ? 'progress-circle' : 'carregandoFoto'">
-                <div *ngIf="itensCarregados" class="progress-circle__content">
-                    <div class="progress-circle__percentage">{{perCompleted}}%</div>
-                    <!-- <div class="progress-circle__label">Completed</div> -->
-                </div>
-                <svg *ngIf="itensCarregados" class="progress-circle__svg" viewBox="0 0 100 100">
-                    <circle class="progress-circle__bg" cx="50" cy="50" r="45"></circle>
-                    <!-- <circle class="progress-circle__fill" cx="50" cy="50" r="45" stroke-dasharray="283" [style.stroke-dashoffset]="283 - (283 * perCompleted / 100)"></circle> -->
-                    <circle class="progress-circle__fill" cx="50" cy="50" r="45" stroke-dasharray="283" [style.stroke-dashoffset]="strokeDashOffset"></circle>
-                    
-                </svg>
+        <div [ngClass]="itensCarregados ? 'progress-circle' : 'carregandoFoto'">
+            <div *ngIf="itensCarregados" class="progress-circle__content">
+                <div class="progress-circle__percentage">{{perCompleted}}%</div>
+                <!-- <div class="progress-circle__label">Completed</div> -->
             </div>
-             
-            <div class="fundo-modal" *ngIf="abrirModalFoto">
-                <div class="modal-content">
-                    
-                    <div class="titulo-fechar">
-                        <h2>Escolher avatar</h2>
-                        <h3 (click)="fecharModalDetalhes()">X</h3>
-                    </div> 
+            <svg *ngIf="itensCarregados" class="progress-circle__svg" viewBox="0 0 100 100">
+                <circle class="progress-circle__bg" cx="50" cy="50" r="45"></circle>
+                <!-- <circle class="progress-circle__fill" cx="50" cy="50" r="45" stroke-dasharray="283" [style.stroke-dashoffset]="283 - (283 * perCompleted / 100)"></circle> -->
+                <circle class="progress-circle__fill" cx="50" cy="50" r="45" stroke-dasharray="283"
+                    [style.stroke-dashoffset]="strokeDashOffset"></circle>
 
-                    <div class="avatares">
-                        <div class="avatar-linha">
-                            <div class="foto-perfil-card1" (click)="selecionarAvatar1()"></div>
-                            <div class="foto-perfil-card2" (click)="selecionarAvatar2()"></div>
-                        </div>
+            </svg>
+        </div>
 
-                        <div class="avatar-linha">
-                            <div class="foto-perfil-card3" (click)="selecionarAvatar3()"></div>
-                            <div class="foto-perfil-card4" (click)="selecionarAvatar4()"></div>
-                        </div>
+        <div class="fundo-modal" *ngIf="abrirModalFoto">
+            <div class="modal-content">
 
-                        <div class="avatar-linha">
-                            <div class="foto-perfil-card5" (click)="selecionarAvatar5()"></div>
-                            <div class="foto-perfil-card6" (click)="selecionarAvatar6()"></div>
-                        </div>
-                        
-                        <div class="avatar-linha">
-                            <div class="foto-perfil-card7" (click)="selecionarAvatar7()"></div>
-                            <div class="foto-perfil-card8" (click)="selecionarAvatar8()"></div>
-                        </div>
-
-                        <div class="avatar-linha">
-                            <div class="foto-perfil-card9" (click)="selecionarAvatar9()"></div>
-                            <div class="foto-perfil-card10" (click)="selecionarAvatar10()"></div>
-                        </div>
-
-                    </div>
-                    
-                    
-                    
-                    <div class="botoes">              
-                        <button class="salvar" (click)="salvarFoto()">Confirmar</button>
-                    </div>
-                    
+                <div class="titulo-fechar">
+                    <h2>Escolher avatar</h2>
+                    <h3 (click)="fecharModalDetalhes()">X</h3>
                 </div>
-            </div> 
 
-    </section>  
+                <div class="avatares">
+                    <div class="avatar-linha">
+                        <div class="foto-perfil-card1" (click)="selecionarAvatar1()"></div>
+                        <div class="foto-perfil-card2" (click)="selecionarAvatar2()"></div>
+                    </div>
+
+                    <div class="avatar-linha">
+                        <div class="foto-perfil-card3" (click)="selecionarAvatar3()"></div>
+                        <div class="foto-perfil-card4" (click)="selecionarAvatar4()"></div>
+                    </div>
+
+                    <div class="avatar-linha">
+                        <div class="foto-perfil-card5" (click)="selecionarAvatar5()"></div>
+                        <div class="foto-perfil-card6" (click)="selecionarAvatar6()"></div>
+                    </div>
+
+                    <div class="avatar-linha">
+                        <div class="foto-perfil-card7" (click)="selecionarAvatar7()"></div>
+                        <div class="foto-perfil-card8" (click)="selecionarAvatar8()"></div>
+                    </div>
+
+                    <div class="avatar-linha">
+                        <div class="foto-perfil-card9" (click)="selecionarAvatar9()"></div>
+                        <div class="foto-perfil-card10" (click)="selecionarAvatar10()"></div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="botoes">
+                    <button class="salvar" (click)="salvarFoto()">Confirmar</button>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
 
 </div>

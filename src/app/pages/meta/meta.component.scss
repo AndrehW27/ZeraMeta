@@ -529,11 +529,12 @@
         }
     }
 
-    .botoes-editar-submeta {
+    .botoes-editar-meta {
         display: flex;
         width: 100%;
         align-items: center;
         justify-content: space-evenly;
+
 
 
         .botao-excluir,
@@ -543,6 +544,7 @@
             border: none;
             cursor: pointer;
             font-weight: bold;
+            font-size: 1rem;
         }
 
         .botao-salvar {
@@ -572,7 +574,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     position: fixed;
-    top: 20rem;
+    top: 16rem;
     background-color: var(--secundaria);
     box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.5);
 
@@ -621,6 +623,7 @@
             border: none;
             cursor: pointer;
             font-weight: bold;
+            font-size: 1rem;
         }
 
         .botao-salvar {
@@ -650,7 +653,7 @@
     //         cursor: pointer;
     //         color: var(--secundaria);
     //         margin-top: 1rem;
-    //     }
+    //     }1
     // }
 }
 
@@ -660,7 +663,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     position: fixed;
-    top: 20rem;
+    top: 16rem;
     background-color: var(--secundaria);
     box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.5);
 
@@ -700,16 +703,17 @@
         justify-content: space-evenly;
 
         .botao-nao,
-        .botao-salvar {
+        .botao-sim {
             padding: 0.75rem 1.5rem;
             border-radius: 2rem;
             border: none;
             cursor: pointer;
             font-weight: bold;
+            font-size: 1rem;
 
         }
 
-        .botao-salvar {
+        .botao-sim {
             background-color: var(--primaria);
             color: var(--secundaria);
         }
