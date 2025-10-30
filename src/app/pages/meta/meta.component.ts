@@ -89,13 +89,6 @@ export class MetaComponent implements OnInit {
       console.log('this.metaSelecionada.miniGoals:', this.metaSelecionada.miniGoals);
       // --<<
 
-      // const rawminiGoals = localStorage.getItem('meta-miniGoals') || '';
-      // console.log('rawminiGoals:', rawminiGoals);
-      // this.miniGoals = rawminiGoals !== null ? JSON.parse(rawminiGoals) : [];
-      // console.log('this.miniGoals:', this.miniGoals);
-      // this.metaSelecionada.miniGoals = this.miniGoals;
-      // console.log('this.metaSelecionada.miniGoals:', this.metaSelecionada.miniGoals);
-
       const rawStatus = localStorage.getItem('meta-status') || '';
       this.status = rawStatus !== null ? JSON.parse(rawStatus) : '';
       this.metaSelecionada.status = this.status;
@@ -187,6 +180,8 @@ export class MetaComponent implements OnInit {
 
     this.metaService.editarMeta(this.metaSelecionada, token).subscribe({
       next: res => {
+    localStorage.setItem('meta-miniGoals', JSON.stringify(this.miniGoals));
+
         console.log('Editar meta resposta:', res);
         this.inputNewminiGoalModel = '';
         // opcional: atualizar miniGoals com o que veio do servidor
