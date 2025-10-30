@@ -1,6 +1,6 @@
 <div class="container">
 
-  <app-loading *ngIf="isLoading"></app-loading>
+    <app-loading *ngIf="isLoading"></app-loading>
 
 
     <!-- <section>
@@ -112,8 +112,9 @@
     </section>
 
     <section *ngIf="!showModal" class="sub-metas">
+        <h2 style="text-align: center;">Sub-metas</h2>
+
         <div class="caixa-sub-metas">
-            <h2 style="text-align: center;">Sub-metas</h2>
 
             <div *ngIf="miniGoals.length === 0">
                 <h4>Nenhuma sub-meta ainda! Que tal, criar a primeira?</h4>
@@ -137,7 +138,7 @@
         </div>
 
         <div class="new-input-box">
-            <input [(ngModel)]="inputNewminiGoalModel" type="text" placeholder="nova sub-meta"
+            <input [(ngModel)]="inputNewminiGoalModel" type="text" placeholder=" inclua uma nova sub-meta"
                 class="input-nova-submeta">
             <p (click)="addminiGoal()" class="criar-submeta">criar</p>
         </div>
@@ -226,8 +227,9 @@
     </section>
 
 
-  <section>
-    <app-modal-message [type]="modalType" [message]="modalMessage" [show]="showModalComponent" (close)="closeModal()">
-    </app-modal-message>
-  </section>
+    <section>
+        <app-modal-message [type]="modalType" [message]="modalMessage" [show]="showModalComponent"
+            (close)="closeModal()">
+        </app-modal-message>
+    </section>
 </div>
