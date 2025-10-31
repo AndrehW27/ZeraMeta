@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
+import { lastValueFrom } from 'rxjs';
+
 
 @Component({
   selector: 'app-redefinir-senha',
@@ -26,50 +28,26 @@ export class RedefinirSenhaComponent implements OnInit {
 
   }
 
-  enviarEmail() {
+  async enviarEmail(): Promise<void> {
     this.isLoading = true;
-    this.authService.redefinirSenhaPorEmail(this.email).subscribe({
-      next: () => {
-        this.mensagem = 'Link de redefinição de senha enviado para: ' + this.email;
-        localStorage.setItem('emailForPasswordReset', this.email);
-        this.isError = false;
-        this.email = ''; // Limpa o campo de email após o envio
-      },
-      error: (err) => {
-        if (err.status === 404) {
-          this.mensagem = 'E-mail não encontrado em nossa base de dados.';
-        } else {
-          this.mensagem = 'Ocorreu um erro ao tentar enviar o e-mail. Tente novamente mais tarde.';
-          console.log('ERRO : ' + err);
-          console.log('ERRO MSG: ' + err.message);
-
-        }
-        this.isError = true;
+    try {
+      await lastValueFrom(this.authService.redefinirSenhaPorEmail(this.email));
+      this.mensagem = 'Link de redefinição de senha enviado para: ' + this.email;
+      localStorage.setItem('emailForPasswordReset', this.email);
+      this.isError = false;
+      this.email = ''; // Limpa o campo de email após o envio
+    } catch (err: any) {
+      if (err && err.status === 404) {
+        this.mensagem = 'E-mail não encontrado em nossa base de dados.';
+      } else {
+        this.mensagem = 'Ocorreu um erro ao tentar enviar o e-mail. Tente novamente mais tarde.';
+        console.log('ERRO : ', err);
+        console.log('ERRO MSG: ', err?.message);
       }
-    });
-
-    setTimeout(() => {
+      this.isError = true;
+    } finally {
       this.isLoading = false;
-    }, 1000);
-
-
-    // this.http.post('http://localhost:3000/forgot-password', { email: this.email })
-    //   .subscribe({
-    //     next: (res: any) => {
-    //       this.mensagem = res.message;
-    //       this.isError = false;
-    //       this.abrirModalSenha = true;
-    //     },
-    //     error: err => {
-    //       this.mensagem = err.error.message;
-    //       this.isError = true;
-    //     }
-    //   });
-    //   //Enquanto não tiver o backend, vamos simular o envio de email
-    //   this.mensagem = 'Link de redefinição de senha enviado para: ' + this.email;
-    //   this.isError = false;
-    //   this.email = ''; // Limpa o campo de email após o envio
-    //   this.scrollToTop();
+    }
   }
 
   scrollToTop() {
