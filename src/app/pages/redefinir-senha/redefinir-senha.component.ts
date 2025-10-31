@@ -12,20 +12,22 @@ export class RedefinirSenhaComponent implements OnInit {
   email = '';
   mensagem = '';
   isError = false;
+  isLoading = false;
 
   constructor(public http: HttpClient, private authService: AuthService) {
-    
-   }
+
+  }
 
   ngOnInit(): void {
     console.log('userId: ');
     console.log(localStorage.getItem('userId'));
     console.log('token: ');
     console.log(localStorage.getItem('token'));
-    
+
   }
 
   enviarEmail() {
+    this.isLoading = true;
     this.authService.redefinirSenhaPorEmail(this.email).subscribe({
       next: () => {
         this.mensagem = 'Link de redefinição de senha enviado para: ' + this.email;
@@ -38,10 +40,18 @@ export class RedefinirSenhaComponent implements OnInit {
           this.mensagem = 'E-mail não encontrado em nossa base de dados.';
         } else {
           this.mensagem = 'Ocorreu um erro ao tentar enviar o e-mail. Tente novamente mais tarde.';
+          console.log('ERRO : ' + err);
+          console.log('ERRO MSG: ' + err.message);
+
         }
         this.isError = true;
       }
     });
+
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1000);
+
 
     // this.http.post('http://localhost:3000/forgot-password', { email: this.email })
     //   .subscribe({
