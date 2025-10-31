@@ -76,8 +76,57 @@ export class SugestoesIaComponent {
   // }
 
   userIdea = '';
-  result: any[] = [];
-  resultFetched = false;
+  result: any[] = [
+	{
+		"title": "Perder 30 kg de forma saudável",
+		"deadline": "em 12 meses",
+		"description": "Alcançar uma perda total de 30 kg com foco em hábitos sustentáveis, progresso gradual e acompanhamento profissional quando possível.",
+		"miniGoals": [
+			{
+				"title": "Perder 2-4 kg por mês (média de 0,5-1 kg/semana)"
+			},
+			{
+				"title": "Agendar consulta com nutricionista e/ou médico"
+			},
+			{
+				"title": "Registrar peso, medidas e fotos 1x por semana"
+			}
+		]
+	},
+	{
+		"title": "Estruturar alimentação equilibrada em déficit",
+		"deadline": "nas próximas 8 semanas",
+		"description": "Implementar um plano alimentar com déficit calórico moderado, priorizando proteínas, fibras, verduras e hidratação.",
+		"miniGoals": [
+			{
+				"title": "Planejar cardápio e lista de compras toda semana"
+			},
+			{
+				"title": "Preparar marmitas 2x por semana"
+			},
+			{
+				"title": "Beber 2 litros de água por dia"
+			}
+		]
+	},
+	{
+		"title": "Aumentar atividade física e força",
+		"deadline": "nas próximas 12 semanas",
+		"description": "Alcançar 150-300 minutos semanais de atividade aeróbica e 2-3 treinos de força para preservar massa magra.",
+		"miniGoals": [
+			{
+				"title": "Caminhar 30-45 minutos, 5x por semana"
+			},
+			{
+				"title": "Fazer treino de força de corpo inteiro 2-3x/semana"
+			},
+			{
+				"title": "Atingir 8-10 mil passos por dia"
+			}
+		]
+	}
+];
+  resultFetched = true;
   Goal1 = {};
   Goal2 = {};
   Goal3 = {};
