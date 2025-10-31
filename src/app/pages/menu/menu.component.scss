@@ -320,6 +320,8 @@
         height: 7rem;
         border-radius: 50%;
         // margin-bottom: 0.5rem;
+        border: 1px solid var(--primaria);
+
         // border: 1px solid var(--primaria);   
         // A imagem de fundo agora é definida dinamicamente no HTML
 
@@ -385,29 +387,34 @@
         flex-direction: column;
         // background-color: rgba(255, 255, 255, 0.25);
         // background-color: var(--primaria);
-               background-color: rgba(255, 255, 255, 0.25);
+        // background-color: rgba(255, 255, 255, 0.25);
         color: var(--primaria);
         border-radius: 1rem;
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+        // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
         border-radius: 1rem;
         // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
         padding: 0.75rem 1.5rem;
-        margin-top: 1rem;
-        margin-bottom: 2rem;
-        max-width: 60vw;
+        // margin-top: 1rem;
+        // margin-bottom: 2rem;
+        width: 80vw;
 
+        .bem-vindo {
+            color: var(--secundaria);
+            font-size: 1.5rem;
+        }
 
         .truncate {
             max-width: calc(100% - 2rem);
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
-
+            color: var(--primaria);
+            font-size: 2rem;
         }
     }
 
     .pronto {
-        margin-top: 2rem;
+        margin-top: 1rem;
     }
 
     .zeradas {
@@ -486,6 +493,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        // margin-top: 2rem;
     }
 
     .carregandoFoto {

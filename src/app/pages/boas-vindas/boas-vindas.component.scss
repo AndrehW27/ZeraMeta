@@ -1,86 +1,88 @@
-.boas-vindas{
-    position: fixed;
-    top: 6rem;
-    margin-bottom: 2rem;
-    font-size: 1.5rem;
+.boas-vindas {
+  position: fixed;
+  top: 6rem;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
 
-    h1{
-        font-size: 3rem;
-    }   
-    
-    .icone-medalha svg{
-        width: 8rem;
-        height: 8rem;
-    }
+  h1 {
+    // font-size: 3rem;
+  }
+
+  .icone-medalha svg {
+    width: 8rem;
+    height: 8rem;
+  }
 }
 
-.descricao{
-    position: fixed;
-    bottom: 14rem;
-    max-width: 200px;
-    // margin: 0 auto;
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    font-size: 1.2rem;
+.descricao {
+  position: fixed;
+  bottom: 12rem;
+  max-width: 250px;
+  // margin: 0 auto;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 1.2rem;
 
 }
 
-.botoes{
-    position: fixed;
-    bottom: 2rem;
-    // width: 80vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;  
-    background-color: rgba(255, 255, 255, 0.25);
-    // border: 1px solid var(--secundaria);
-    // width: 300px;
-    border-radius: 1rem;
-    padding: 1.5rem;
+.botoes {
+  position: fixed;
+  bottom: 2rem;
+  // width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.25);
+  // border: 1px solid var(--secundaria);
+  // width: 300px;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+
+
+  .botao-entrar,
+  .botao-conta {
+    width: 14rem;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
     cursor: pointer;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+    border: none;
+    font-size: 0.75rem
+  }
 
-    
-    .botao-entrar, .botao-conta{   
-        width: 14rem;
-        padding: 1rem 2rem;
-        border-radius: 2rem;
-        cursor: pointer;
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-        border: none;
-        font-size: 0.75rem
+  .botao-entrar {
+    background-color: var(--primaria);
+    color: var(--secundaria);
+    margin-bottom: 1rem;
+    // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+
+
+    &:hover {
+      background-color: var(--secundaria);
+      color: var(--primaria);
+      border: var(--primaria) 1px solid;
     }
+  }
 
-    .botao-entrar{
-        background-color: var(--primaria);
-        color: var(--secundaria);   
-        margin-bottom: 1rem;  
-            // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  .botao-conta {
+    background-color: var(--secundaria);
+    color: var(--primaria);
+    border: var(--primaria) 1px solid;
 
-   
-        &:hover{
-            background-color: var(--secundaria);
-            color: var(--primaria);
-            border: var(--primaria) 1px solid;
-        }   
+    &:hover {
+      background-color: var(--primaria);
+      color: var(--secundaria);
+      // border: var(--primaria) 1px solid;
     }
-
-    .botao-conta{
-        background-color: var(--secundaria);
-        color: var(--primaria);
-        border: var(--primaria) 1px solid;  
-
-        &:hover{
-            background-color: var(--primaria);
-            color: var(--secundaria);
-            // border: var(--primaria) 1px solid;
-        }        
-    }
+  }
 }
 
 @keyframes dropIn {
+
   // Estado inicial da animação (invisível e um pouco acima)
   from {
     opacity: 0;
@@ -96,11 +98,12 @@
 
 .icone-medalha {
   // Aplica a animação ao ícone
-    opacity: 0;
-    animation: dropIn 1.2s ease-out 1s forwards;
+  opacity: 0;
+  animation: dropIn 1.2s ease-out 1s forwards;
 }
 
 @keyframes FadeInBemVindo {
+
   // Estado inicial da animação (invisível e um pouco acima)
   from {
     opacity: 0;
@@ -116,11 +119,13 @@
 
 .bem-vindo {
   // Aplica a animação ao ícone
-    opacity: 0;
-    animation: FadeInBemVindo 2s ease-out 2s forwards;
+  opacity: 0;
+  font-size: 1.5rem;
+  animation: FadeInBemVindo 2s ease-out 2s forwards;
 }
 
 @keyframes FadeInZeraMeta {
+
   // Estado inicial da animação (invisível e um pouco acima)
   from {
     opacity: 0;
@@ -136,11 +141,13 @@
 
 .zera-meta {
   // Aplica a animação ao ícone
-    opacity: 0;
-    animation: FadeInZeraMeta 2s ease-out 3s forwards;
+  font-size: 2.5rem;
+  opacity: 0;
+  animation: FadeInZeraMeta 2s ease-out 3s forwards;
 }
 
 @keyframes FadeInDescricao {
+
   // Estado inicial da animação (invisível e um pouco acima)
   from {
     opacity: 0;
@@ -156,11 +163,12 @@
 
 .descricao {
   // Aplica a animação ao ícone
-    opacity: 0;
-    animation: FadeInDescricao 2s ease-out 4s forwards;
+  opacity: 0;
+  animation: FadeInDescricao 2s ease-out 4s forwards;
 }
 
 @keyframes FadeInBotoes {
+
   // Estado inicial da animação (invisível e um pouco acima)
   from {
     opacity: 0;
@@ -176,6 +184,6 @@
 
 .botoes {
   // Aplica a animação ao ícone
-    opacity: 0;
-    animation: FadeInBotoes 2s ease-out 5s forwards;
+  opacity: 0;
+  animation: FadeInBotoes 2s ease-out 5s forwards;
 }

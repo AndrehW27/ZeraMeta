@@ -1,13 +1,18 @@
 .sugestoes-ia {
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  background-color: rgba(255, 255, 255, 0.25);
   color: var(--primaria);
-  border-radius: 1rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-  border-radius: 1rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+
   padding: 0.75rem 1.5rem;
+  font-weight: bold;
+
+  .sugestoes {
+    font-size: 1.5rem;
+    color: var(--secundaria);
+  }
+
+  .artificial {
+    font-size: 2.5rem;
+    color: var(--primaria);
+  }
 }
 
 .chat-container {
@@ -193,30 +198,30 @@
     padding: 1rem;
     overflow-y: scroll;
 
-    h2 {
-      color: var(--primaria);
-    }
+    // h2 {
+    //   color: var(--primaria);
+    // }
 
 
 
-    h2 {
-      margin-top: 1rem;
-      margin-bottom: 0.25rem;
-      background-color: rgba(255, 255, 255, 0.25);
-      padding: 0.5rem 1rem;
-      border-radius: 1rem;
-      box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.5);
+    // h2 {
+    //   margin-top: 1rem;
+    //   margin-bottom: 0.25rem;
+    //   background-color: rgba(255, 255, 255, 0.25);
+    //   padding: 0.5rem 1rem;
+    //   border-radius: 1rem;
+    //   box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.5);
 
-    }
+    // }
 
     .pre {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: flex-start;
       flex-direction: column;
 
       background-color: rgba(255, 255, 255, 0.25);
-      padding: 1rem;
+      padding: 1.5rem;
       border-radius: 1rem;
       box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.5);
       color: var(--primaria);
@@ -227,7 +232,7 @@
     }
 
     .botao-meta {
-      margin-top: 0.5rem;
+      margin-top: 1rem;
       text-align: center;
       background-color: var(--primaria);
       color: var(--secundaria);

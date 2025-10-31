@@ -169,18 +169,18 @@ export class SugestoesIaComponent {
   }
 
   generate() {
-    this.loading = true;
+    this.isLoading = true;
     this.goalAI.getSuggestions(this.userIdea).subscribe({
       next: (res) => {
         console.log('RES: ' + JSON.stringify(res));
 
         this.resultFetched = true;
         this.result = res;
-        this.loading = false;
+        this.isLoading = false;
       },
       error: (err) => {
         console.error(err);
-        this.loading = false;
+        this.isLoading = false;
       }
     });
   }

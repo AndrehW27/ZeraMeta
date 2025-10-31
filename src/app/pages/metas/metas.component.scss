@@ -24,15 +24,25 @@
     }
 
     .zera-meta {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+
         // background-color: rgba(255, 255, 255, 0.25);
         // background-color: var(--primaria);
-        background-color: rgba(255, 255, 255, 0.25);
+        // background-color: rgba(255, 255, 255, 0.25);
         color: var(--primaria);
         border-radius: 1rem;
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+        // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
         padding: 0.75rem 1.5rem;
+        font-weight: bold;
+
+        .minhas {
+            font-size: 1.5rem;
+            color: var(--secundaria);
+        }
+
+        .metas-texto {
+            font-size: 2rem;
+            color: var(--primaria);
+        }
     }
 
     .filtros-container {

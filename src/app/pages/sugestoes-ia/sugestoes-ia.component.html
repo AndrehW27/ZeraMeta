@@ -12,47 +12,52 @@
   </section>
 
   <section class="sugestoes-ia">
-    <h2>Sugestões IA</h2>
+    <p class="sugestoes">Sugestões</p>
+    <p class="artificial">IA</p>
   </section>
 
   <div class="ai-container">
     <!-- <h2>AI Goal Generator</h2> -->
     <textarea [(ngModel)]="userIdea" placeholder="Descreva o que você quer alcançar."></textarea>
     <button (click)="generate()" [disabled]="loading">
-      {{ loading ? 'Gerando...' : 'Gerar' }}
+      {{ loading ? 'Zerando...' : 'Gerar' }}
     </button>
 
     <div class="results" *ngIf="resultFetched">
-      <h2>Sugestão 1</h2>
       <pre class="pre">
+        <h2 style="margin-bottom: 1rem;">Sugestão 1</h2>
         <p><span style="font-weight: bold;">Título: </span>{{result[0].title}} </p>
         <p><span style="font-weight: bold;">Prazo: </span>{{result[0].deadline}} </p>
         <p style="border-top: 1px solid var(--primaria); margin-top: 0.5rem; padding-top: 0.5rem;"><span style="font-weight: bold;">Submeta 1: </span>{{result[0].miniGoals[0].title}}</p>
         <p style="border-top: 1px solid var(--primaria); margin-top: 0.5rem; padding-top: 0.5rem;"><span style="font-weight: bold;">Submeta 2: </span>{{result[0].miniGoals[1].title}}</p>
         <p style="border-top: 1px solid var(--primaria); margin-top: 0.5rem; padding-top: 0.5rem;"><span style="font-weight: bold;">Submeta 3: </span>{{result[0].miniGoals[2].title}}</p>
-      </pre>
       <button (click)="addsuggest1()" class="botao-meta">Criar meta 1</button>
+      
+      </pre>
 
-      <h2 style="margin-top: 4rem;">Sugestão 2</h2>
-      <pre class="pre">
+
+      <pre style="margin-top: 4rem;" class="pre">
+        <h2 style="margin-bottom: 1rem;">Sugestão 2</h2>
         <p><span style="font-weight: bold;">Título: </span>{{result[1].title}} </p>
         <p><span style="font-weight: bold;">Prazo: </span>{{result[1].deadline}} </p>
         <p style="border-top: 1px solid var(--primaria); margin-top: 0.5rem; padding-top: 0.5rem;"><span style="font-weight: bold;">Submeta 1: </span>{{result[1].miniGoals[0].title}}</p>
         <p style="border-top: 1px solid var(--primaria); margin-top: 0.5rem; padding-top: 0.5rem;"><span style="font-weight: bold;">Submeta 2: </span>{{result[1].miniGoals[1].title}}</p>
         <p style="border-top: 1px solid var(--primaria); margin-top: 0.5rem; padding-top: 0.5rem;"><span style="font-weight: bold;">Submeta 3: </span>{{result[1].miniGoals[2].title}}</p>
+        <button (click)="addsuggest2()" class="botao-meta">Criar meta 2</button>
       </pre>
-      <button (click)="addsuggest2()" class="botao-meta">Criar meta 2</button>
 
 
-      <h2 style="margin-top: 4rem;">Sugestão 3</h2>
-      <pre class="pre">
+
+      <pre style="margin-top: 4rem;" class="pre">
+        <h2 style="margin-bottom: 1rem;">Sugestão 3</h2>
         <p><span style="font-weight: bold;">Título: </span>{{result[2].title}} </p>
         <p><span style="font-weight: bold;">Prazo: </span>{{result[2].deadline}} </p>
         <p style="border-top: 1px solid var(--primaria); margin-top: 0.5rem; padding-top: 0.5rem;"><span style="font-weight: bold;">Submeta 1: </span>{{result[2].miniGoals[0].title}}</p>
         <p style="border-top: 1px solid var(--primaria); margin-top: 0.5rem; padding-top: 0.5rem;"><span style="font-weight: bold;">Submeta 2: </span>{{result[2].miniGoals[1].title}}</p>
         <p style="border-top: 1px solid var(--primaria); margin-top: 0.5rem; padding-top: 0.5rem;"><span style="font-weight: bold;">Submeta 3: </span>{{result[2].miniGoals[2].title}}</p>
+        <button (click)="addsuggest3()" class="botao-meta">Criar meta 3</button>
+      
       </pre>
-      <button (click)="addsuggest3()" class="botao-meta">Criar meta 3</button>
 
     </div>
 

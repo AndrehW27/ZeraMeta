@@ -1,13 +1,23 @@
-.conquistas {
-     margin-top: 1rem;
-     margin-bottom: 2rem;
-       background-color: rgba(255, 255, 255, 0.25);
-        color: var(--primaria);
-        border-radius: 1rem;
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-        border-radius: 1rem;
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-        padding: 0.75rem 1.5rem;
+.conquistas-box {
+     // margin-top: 1rem;
+     margin-bottom: 1rem;
+     // background-color: rgba(255, 255, 255, 0.25);
+     color: var(--primaria);
+     border-radius: 1rem;
+     // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+     border-radius: 1rem;
+     padding: 0.75rem 1.5rem;
+     font-weight: bold;
+
+     .minhas {
+          font-size: 1.5rem;
+          color: var(--secundaria);
+     }
+
+     .conquistas {
+          font-size: 2rem;
+          color: var(--primaria);
+     }
 }
 
 .foto-perfil {
@@ -34,7 +44,7 @@
      justify-content: center;
      background-color: rgba(255, 255, 255, 0.25);
      border: 1px solid var(--secundaria);
-     width: fit-content;
+     // width: 50vw;
      border-radius: 1rem;
      padding: 1.5rem;
      // margin-top: 1rem;
@@ -44,14 +54,13 @@
 }
 
 .button-compartilhar {
-     background-color: rgba(255, 255, 255, 0.25);
+     // background-color: rgba(255, 255, 255, 0.25);
      border: none;
      border-radius: 50%;
      padding: 0.5rem;
      cursor: pointer;
-     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-     margin-bottom: 1rem;
-
+     // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+     margin-top: 1rem;
 }
 
 li {

@@ -67,6 +67,7 @@ export class MenuComponent implements OnInit {
 
     this.carregarMetas();
     this.carregarUsuario();
+    this.caculateTotalXpAndLevel() 
   }
 
   carregarMetas() {
