@@ -1,5 +1,5 @@
 .meta {
-    margin-top: 4rem;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -9,7 +9,7 @@
     width: 80vw;
     background-color: rgba(255, 255, 255, 0.25);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-
+    border: 1px solid var(--secundaria);
     overflow-y: scroll;
 
     .voltar-metas-box {
@@ -304,13 +304,13 @@
     .caixa-sub-metas {
         background-color: rgba(255, 255, 255, 0.25);
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-
+        border: 1px solid var(--secundaria);
         display: flex;
         flex-direction: column;
         padding: 1.5rem;
         border-radius: 1rem;
         width: 80vw;
-        max-height: 120px;
+        max-height: 180px;
         height: fit-content;
         overflow-y: scroll;
 
@@ -321,7 +321,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
 
             .texto-sub-meta {
                 max-width: 65%; // ou ajuste conforme necessário
@@ -411,10 +411,14 @@
             padding: 0.5rem;
             border-radius: 0.5rem 0 0 0.5rem;
             // font-weight: bold;
-            border: 1px solid var(--primaria);
+            // border: 1px solid var(--primaria);
+            border: 1px solid var(--secundaria);
+
             width: 100%;
             background-color: rgba(255, 255, 255, 0.15);
             color: var(--secundaria);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+
 
             &::placeholder {
                 color: var(--secundaria);
@@ -450,7 +454,7 @@
 }
 
 .modal-content {
-    margin-top: 4rem;
+    margin-top: 1rem;
     background-color: rgba(255, 255, 255, 0.25);
     display: flex;
     flex-direction: column;
@@ -459,7 +463,8 @@
     padding: 1.5rem;
     border-radius: 1rem;
     width: 80vw;
-    // height: 1000px;
+    border: 1px solid var(--secundaria);
+
     overflow-y: scroll;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
 
@@ -561,6 +566,8 @@
             cursor: pointer;
             font-weight: bold;
             font-size: 1rem;
+            border: 1px solid var(--secundaria);
+
         }
 
         .botao-salvar {
@@ -598,6 +605,8 @@
     // height: 20vh;
     border-radius: 1rem;
     padding: 1.5rem;
+    border: 1px solid var(--secundaria);
+
 
 
 
@@ -617,12 +626,15 @@
 
     .input-editar-submeta {
         margin-bottom: 2rem;
-        width: 100%;
+        width: 60vw;
+        // height: 6rem;
         padding: 0.5rem;
         border: none;
         border-radius: 1rem;
         box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.5);
         font-size: 1rem;
+        text-wrap: wrap;
+        word-wrap: wrap;
     }
 
     .botoes-editar-submeta {
@@ -640,6 +652,8 @@
             cursor: pointer;
             font-weight: bold;
             font-size: 1rem;
+            border: 1px solid var(--secundaria);
+
         }
 
         .botao-salvar {

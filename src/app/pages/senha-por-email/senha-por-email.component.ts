@@ -12,12 +12,14 @@ export class SenhaPorEmailComponent implements OnInit {
 
   mensagem = '';
   isError = false;
-  
+
   abrirModalSenha = true;
   senhaValida = true;
   senhaLength = false;
   senhaEmEdicao = '';
   isLoading = false;
+  repeteSenha: string = '';
+  repeteSenhaValida = true;
 
 
   constructor(public http: HttpClient, private authService: AuthService, private router: Router) { }
@@ -49,51 +51,61 @@ export class SenhaPorEmailComponent implements OnInit {
   closeModal() {
     this.showModal = false;
   }
- // final funções para chamar modal de sucesso/erro podem ser adicionadas aqui
+  // final funções para chamar modal de sucesso/erro podem ser adicionadas aqui
 
-  verificaPreenchimentoSenha(){
+  verificaPreenchimentoSenha() {
     const senha = this.senhaEmEdicao;
     // Regex para validar: mínimo 8 caracteres, 1 letra, 1 número e 1 caractere especial.
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
     if (senha.length === 0) {
       this.senhaValida = true; // Não mostra erro se o campo estiver vazio
-      this.senhaLength = false; 
+      this.senhaLength = false;
     } else {
       this.senhaLength = true;
       this.senhaValida = passwordRegex.test(senha);
     }
- }
+  }
 
- salvarAlteracaoSenha() {   
-    if (this.senhaValida && this.senhaLength) {
-        this.abrirModalSenha = false;        
-        this.authService.redefinirSenha(localStorage.getItem('emailForPasswordReset') || '', this.senhaEmEdicao).subscribe({
+  salvarAlteracaoSenha() {
+    this.isLoading = true;
+    if (this.senhaValida && this.senhaLength && this.repeteSenhaValida) {
+      this.abrirModalSenha = false;
+      this.authService.redefinirSenha(localStorage.getItem('emailForPasswordReset') || '', this.senhaEmEdicao).subscribe({
         next: () => {
-          this.isLoading = true;
           setTimeout(() => {
-          this.isLoading = false;
-          this.openSuccess('success', 'Senha alterada com sucesso!', true);
+            this.isLoading = false;
+            this.openSuccess('success', 'Senha alterada com sucesso!', true);
           }, 1000);
           setTimeout(() => {
-          this.closeModal();  
-          this.router.navigate(['/login']);      
+            this.closeModal();
+            this.router.navigate(['/login']);
           }, 2000);
         },
         error: (err) => {
           this.mensagem = 'Ocorreu um erro ao tentar enviar o e-mail. Tente novamente mais tarde.';
-          this.isError = true;          
-        }
-          
-        });   
+          this.isError = true;
+          this.isLoading = false;
 
-        localStorage.removeItem('emailForPasswordReset');
+        }
+
+      });
+
+      localStorage.removeItem('emailForPasswordReset');
 
     }
   }
 
-  fecharModalSenha(){
+  fecharModalSenha() {
     this.abrirModalSenha = false;
+  }
+
+  verificaSeSaoIguais() {
+    if (this.repeteSenha.length === 0) {
+      this.repeteSenhaValida = false; // Não mostra erro se o campo estiver vazio
+    } else {
+      this.repeteSenhaValida = this.senhaEmEdicao === this.repeteSenha;
+    }
   }
 
 }

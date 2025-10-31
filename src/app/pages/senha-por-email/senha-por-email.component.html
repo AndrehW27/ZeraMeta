@@ -9,6 +9,8 @@
     </div>
   </section> -->
 
+  <app-loading *ngIf="isLoading"></app-loading>
+
   <section>
     <div class="fundo-modal" *ngIf="abrirModalSenha">
       <div class="modal">
@@ -34,6 +36,11 @@
           <p *ngIf="!senhaValida" style="margin-bottom: 1.5rem; color: red;font-size: 0.75rem;">senha inválida (mínimo 8
             caracteres, 1 caractere especial, usar letras e números).</p>
           <p *ngIf="isError" style="margin-bottom: 1.5rem; color: red;font-size: 0.75rem;">{{mensagem}}</p>
+
+          <p style="margin-top: 1rem;">Repita a senha</p>
+          <input (keyup)="verificaSeSaoIguais()" class="input" [(ngModel)]="repeteSenha" name="inputSenhaRepetida"
+            type="password" placeholder="Digite novamente a senha">
+          <p *ngIf="!repeteSenhaValida" style="margin-top: 0.25rem; color: red;font-size: 0.75rem;">senha diferente</p>
 
           <div class="botoes">
             <button class="botao-cancelar" (click)="fecharModalSenha()">Cancelar</button>

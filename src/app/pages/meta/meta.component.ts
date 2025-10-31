@@ -18,6 +18,7 @@ export class MetaComponent implements OnInit {
 
   showModal = false;
   showModalDeleteGoal = false;
+  showModalDeleteMiniGoal = false;
   showModalMini = false;
   showAi = false;
 
@@ -180,7 +181,7 @@ export class MetaComponent implements OnInit {
 
     this.metaService.editarMeta(this.metaSelecionada, token).subscribe({
       next: res => {
-    localStorage.setItem('meta-miniGoals', JSON.stringify(this.miniGoals));
+        localStorage.setItem('meta-miniGoals', JSON.stringify(this.miniGoals));
 
         console.log('Editar meta resposta:', res);
         this.inputNewminiGoalModel = '';
@@ -254,6 +255,10 @@ export class MetaComponent implements OnInit {
 
     setTimeout(() => {
       this.isLoading = false;
+      this.openSuccess('success', 'Sub-meta editada com sucesso!', true);
+      setTimeout(() => {
+        this.showModalComponent = false;
+      }, 1000);
     }, 1000);
   }
 
@@ -356,6 +361,15 @@ export class MetaComponent implements OnInit {
     }
   }
 
+  desejaExcluirSubmeta() {
+    this.showModalDeleteMiniGoal = true;
+  }
+
+    naoDesejaExcluirSubmeta() {
+    this.showModalDeleteMiniGoal = false;
+  }
+
+
   excluirSubmeta() {
     this.isLoading = true;
 
@@ -368,9 +382,14 @@ export class MetaComponent implements OnInit {
     this.metaService.editarMeta(this.metaSelecionada, this.token).subscribe(() => {
     });
     this.closeMiniModal();
+    this.showModalDeleteMiniGoal = false;
 
     setTimeout(() => {
       this.isLoading = false;
+      this.openSuccess('success', 'Sub-meta deletada com sucesso!', true);
+      setTimeout(() => {
+        this.showModalComponent = false;
+      }, 1000);
     }, 1000);
 
   }
