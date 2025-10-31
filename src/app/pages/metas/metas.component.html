@@ -137,7 +137,8 @@
   </section>
 
   <section *ngIf="!showCriarNovaMeta">
-    <div (click)="openAiSuggestion()" class="criar-meta-IA">
+    <!-- <div (click)="openAiSuggestion()" class="criar-meta-IA"> -->
+    <div routerLink="/sugestoes-ia" class="criar-meta-IA">
       <p>IA</p>
     </div>
   </section>

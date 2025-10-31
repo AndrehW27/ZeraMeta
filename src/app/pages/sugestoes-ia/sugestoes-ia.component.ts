@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-// import { MetaService } from '../../services/meta.service';
+import { MetaService } from '../../services/meta.service';
 import { GoalAiService } from '../../services/openai.service';
 
-interface Mensagem {
-  texto: string;
-  autor: 'ia' | 'usuario';
-}
+// interface Mensagem {
+//   texto: string;
+//   autor: 'ia' | 'usuario';
+// }
 
 @Component({
   selector: 'app-sugestoes-ia',
@@ -75,72 +75,97 @@ export class SugestoesIaComponent {
   //   alert(`Meta "${meta}" adicionada! (implementação pendente)`);
   // }
 
+  token = '';
+  usuarioid = '';
+  isLoading = false;
+
   userIdea = '';
-  result: any[] = [
-	{
-		"title": "Perder 30 kg de forma saudável",
-		"deadline": "em 12 meses",
-		"description": "Alcançar uma perda total de 30 kg com foco em hábitos sustentáveis, progresso gradual e acompanhamento profissional quando possível.",
-		"miniGoals": [
-			{
-				"title": "Perder 2-4 kg por mês (média de 0,5-1 kg/semana)"
-			},
-			{
-				"title": "Agendar consulta com nutricionista e/ou médico"
-			},
-			{
-				"title": "Registrar peso, medidas e fotos 1x por semana"
-			}
-		]
-	},
-	{
-		"title": "Estruturar alimentação equilibrada em déficit",
-		"deadline": "nas próximas 8 semanas",
-		"description": "Implementar um plano alimentar com déficit calórico moderado, priorizando proteínas, fibras, verduras e hidratação.",
-		"miniGoals": [
-			{
-				"title": "Planejar cardápio e lista de compras toda semana"
-			},
-			{
-				"title": "Preparar marmitas 2x por semana"
-			},
-			{
-				"title": "Beber 2 litros de água por dia"
-			}
-		]
-	},
-	{
-		"title": "Aumentar atividade física e força",
-		"deadline": "nas próximas 12 semanas",
-		"description": "Alcançar 150-300 minutos semanais de atividade aeróbica e 2-3 treinos de força para preservar massa magra.",
-		"miniGoals": [
-			{
-				"title": "Caminhar 30-45 minutos, 5x por semana"
-			},
-			{
-				"title": "Fazer treino de força de corpo inteiro 2-3x/semana"
-			},
-			{
-				"title": "Atingir 8-10 mil passos por dia"
-			}
-		]
-	}
-];
-  resultFetched = true;
+  // result: any[] = [
+  //   {
+  //     "title": "Perder 30 kg de forma saudável",
+  //     "deadline": "em 12 meses",
+  //     "description": "Alcançar uma perda total de 30 kg com foco em hábitos sustentáveis, progresso gradual e acompanhamento profissional quando possível.",
+  //     "miniGoals": [
+  //       {
+  //         "title": "Perder 2-4 kg por mês (média de 0,5-1 kg/semana)"
+  //       },
+  //       {
+  //         "title": "Agendar consulta com nutricionista e/ou médico"
+  //       },
+  //       {
+  //         "title": "Registrar peso, medidas e fotos 1x por semana"
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     "title": "Estruturar alimentação equilibrada em déficit",
+  //     "deadline": "nas próximas 8 semanas",
+  //     "description": "Implementar um plano alimentar com déficit calórico moderado, priorizando proteínas, fibras, verduras e hidratação.",
+  //     "miniGoals": [
+  //       {
+  //         "title": "Planejar cardápio e lista de compras toda semana"
+  //       },
+  //       {
+  //         "title": "Preparar marmitas 2x por semana"
+  //       },
+  //       {
+  //         "title": "Beber 2 litros de água por dia"
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     "title": "Aumentar atividade física e força",
+  //     "deadline": "nas próximas 12 semanas",
+  //     "description": "Alcançar 150-300 minutos semanais de atividade aeróbica e 2-3 treinos de força para preservar massa magra.",
+  //     "miniGoals": [
+  //       {
+  //         "title": "Caminhar 30-45 minutos, 5x por semana"
+  //       },
+  //       {
+  //         "title": "Fazer treino de força de corpo inteiro 2-3x/semana"
+  //       },
+  //       {
+  //         "title": "Atingir 8-10 mil passos por dia"
+  //       }
+  //     ]
+  //   }
+  // ];
+  result: any[] = [];
+  resultFetched = false;
   Goal1 = {};
   Goal2 = {};
   Goal3 = {};
-  // result = "[\n  {\n    \"objetivo\": \"Organizar o orçamento e reduzir gastos discricionários em 15% em 90 dias\",\n    \"mini_objetivos\": [\n      {\n        \"descricao\": \"Rastrear todas as despesas por 30 dias com app ou planilha\",\n        \"prazo\": \"30 dias\",\n        \"medida_de_sucesso\": \"100% das transações categorizadas\"\n      },\n      {\n        \"descricao\": \"Definir orçamento mensal por categorias (ex.: 50/30/20) e configurar alertas\",\n        \"prazo\": \"7 dias após o rastreamento\",\n        \"medida_de_sucesso\": \"Limites definidos para 100% das categorias\"\n      },\n      {\n        \"descricao\": \"Cortar ou renegociar ao menos 3 despesas recorrentes (telefonia, streaming, seguro, tarifas)\",\n        \"prazo\": \"45 dias\",\n        \"medida_de_sucesso\": \"Economia mensal mínima de R$200 ou 15% vs. base\"\n      }\n    ]\n  },\n  {\n    \"objetivo\": \"Formar uma reserva de emergência de 3 meses do custo de vida em 12 meses\",\n    \"mini_objetivos\": [\n      {\n        \"descricao\": \"Calcular custo de vida mensal e a meta total da reserva\",\n        \"prazo\": \"7 dias\",\n        \"medida_de_sucesso\": \"Meta definida (R$) = 3 x custo mensal\"\n      },\n      {\n        \"descricao\": \"Escolher aplicação de alta liquidez (ex.: conta remunerada/CDB-D+) e ativar aporte automático\",\n        \"prazo\": \"14 dias\",\n        \"medida_de_sucesso\": \"Débito automático de R$X no dia do salário\"\n      },\n      {\n        \"descricao\": \"Aportar pelo menos 10% da renda mensal até atingir a meta\",\n        \"prazo\": \"Mensal (12 meses)\",\n        \"medida_de_sucesso\": \"25% da meta em 3 meses, 60% em 6 meses, 100% em 12 meses\"\n      }\n    ]\n  },\n  {\n    \"objetivo\": \"Quitar dívidas caras e melhorar a saúde de crédito em 6–9 meses\",\n    \"mini_objetivos\": [\n      {\n        \"descricao\": \"Listar todas as dívidas (saldo, taxa, vencimento) e priorizar por juros (método avalanche)\",\n        \"prazo\": \"7 dias\",\n        \"medida_de_sucesso\": \"Planilha com 100% das dívidas e ordem de pagamento\"\n      },\n      {\n        \"descricao\": \"Negociar redução de juros/parcelamento ou portabilidade; consolidar apenas se a taxa efetiva for menor\",\n        \"prazo\": \"30 dias\",\n        \"medida_de_sucesso\": \"Taxa média reduzida em ≥20% ou cronograma fechado\"\n      },\n      {\n        \"descricao\": \"Automatizar pagamentos e direcionar excedente à dívida prioritária; manter uso do cartão <30% do limite\",\n        \"prazo\": \"Mensal\",\n        \"medida_de_sucesso\": \"Atrasos = 0; saldo total cai ≥3% ao mês\"\n      }\n    ]\n  }\n]";
   loading = false;
-  // qtdSugestoes = this.result.split('},').length;
+  goalToBeCreated = { usuario_id: '', titulo: '', prazo: '', descricao: '', miniGoals: [] };
 
-  constructor(private goalAI: GoalAiService) { }
+  // Funções para chamar modal de sucesso/erro podem ser adicionadas aqui
+  showModal = false;
+  modalType: 'success' | 'error' = 'success';
+  modalMessage = '';
+
+  openSuccess(modalType: any, modalMessage: string, showModal: boolean) {
+    this.modalType = modalType;
+    this.modalMessage = modalMessage;
+    this.showModal = showModal;
+  }
+
+  openError(modalType: any, modalMessage: string, showModal: boolean) {
+    this.modalType = modalType;
+    this.modalMessage = modalMessage;
+    this.showModal = showModal;
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
+  // final funções para chamar modal de sucesso/erro podem ser adicionadas aqui
+
+
+  constructor(private goalAI: GoalAiService, private metaService: MetaService) { }
 
   ngOnInit(): void {
-    // console.log('Quantidade de sugestões: ' + this.qtdSugestoes);
-    console.log('result: ' + this.result);
-    // console.log('result[0]: ' + JSON.stringify(this.result[2]));
-
+    this.token = localStorage.getItem('token') || '';
+    this.usuarioid = localStorage.getItem('userId') || '';
   }
 
   generate() {
@@ -148,7 +173,7 @@ export class SugestoesIaComponent {
     this.goalAI.getSuggestions(this.userIdea).subscribe({
       next: (res) => {
         console.log('RES: ' + JSON.stringify(res));
-  
+
         this.resultFetched = true;
         this.result = res;
         this.loading = false;
@@ -159,6 +184,107 @@ export class SugestoesIaComponent {
       }
     });
   }
+
+
+  addsuggest1() {
+    this.goalToBeCreated = this.result[0];
+    this.goalToBeCreated.usuario_id = this.usuarioid;
+    // console.log('goalToBeCreated: ' + JSON.stringify(this.goalToBeCreated));
+    const r: any = this.result[0] ?? {};
+    this.goalToBeCreated = {
+      usuario_id: this.usuarioid,
+      titulo: r.title ?? r.titulo ?? '',
+      prazo: r.deadline ?? r.prazo ?? '',
+      descricao: r.description ?? r.descricao ?? '',
+      miniGoals: Array.isArray(r.miniGoals)
+        ? r.miniGoals.map((m: any) => ({
+          titulo: m.title ?? m.titulo ?? '',
+          concluido: !!m.concluido
+        }))
+        : []
+    };
+    console.log('goalToBeCreated:', JSON.stringify(this.goalToBeCreated));
+    this.metaService.criarMeta(this.goalToBeCreated, this.token).subscribe((res) => {
+      console.log('Meta criada com sucesso: ', res);
+
+      this.isLoading = true;
+      setTimeout(() => {
+        this.isLoading = false;
+        this.openSuccess('success', 'Meta criada com sucesso!', true);
+        setTimeout(() => {
+          this.closeModal();
+        }, 1000);
+      }, 1000);
+
+    });
+  }
+
+  addsuggest2() {
+    this.goalToBeCreated = this.result[1];
+    this.goalToBeCreated.usuario_id = this.usuarioid;
+    // console.log('goalToBeCreated: ' + JSON.stringify(this.goalToBeCreated));
+    const r: any = this.result[1] ?? {};
+    this.goalToBeCreated = {
+      usuario_id: this.usuarioid,
+      titulo: r.title ?? r.titulo ?? '',
+      prazo: r.deadline ?? r.prazo ?? '',
+      descricao: r.description ?? r.descricao ?? '',
+      miniGoals: Array.isArray(r.miniGoals)
+        ? r.miniGoals.map((m: any) => ({
+          titulo: m.title ?? m.titulo ?? '',
+          concluido: !!m.concluido
+        }))
+        : []
+    };
+    console.log('goalToBeCreated:', JSON.stringify(this.goalToBeCreated));
+    this.metaService.criarMeta(this.goalToBeCreated, this.token).subscribe((res) => {
+      console.log('Meta criada com sucesso: ', res);
+
+      this.isLoading = true;
+      setTimeout(() => {
+        this.isLoading = false;
+        this.openSuccess('success', 'Meta criada com sucesso!', true);
+        setTimeout(() => {
+          this.closeModal();
+        }, 1000);
+      }, 1000);
+
+    });
+  }
+  addsuggest3() {
+    this.goalToBeCreated = this.result[2];
+    this.goalToBeCreated.usuario_id = this.usuarioid;
+    // console.log('goalToBeCreated: ' + JSON.stringify(this.goalToBeCreated));
+    const r: any = this.result[2] ?? {};
+    this.goalToBeCreated = {
+      usuario_id: this.usuarioid,
+      titulo: r.title ?? r.titulo ?? '',
+      prazo: r.deadline ?? r.prazo ?? '',
+      descricao: r.description ?? r.descricao ?? '',
+      miniGoals: Array.isArray(r.miniGoals)
+        ? r.miniGoals.map((m: any) => ({
+          titulo: m.title ?? m.titulo ?? '',
+          concluido: !!m.concluido
+        }))
+        : []
+    };
+    console.log('goalToBeCreated:', JSON.stringify(this.goalToBeCreated));
+    this.metaService.criarMeta(this.goalToBeCreated, this.token).subscribe((res) => {
+      console.log('Meta criada com sucesso: ', res);
+
+      this.isLoading = true;
+      setTimeout(() => {
+        this.isLoading = false;
+        this.openSuccess('success', 'Meta criada com sucesso!', true);
+        setTimeout(() => {
+          this.closeModal();
+        }, 1000);
+      }, 1000);
+
+    });
+  }
+
+
 
 }
 
