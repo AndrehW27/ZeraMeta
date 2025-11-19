@@ -13,7 +13,7 @@
   --primaria-clara: #fff;
   --secundaria-clara: #333333;
   --sol: #fee4c4;
-  
+
 }
 
 /* Remove decoração de links */
@@ -23,7 +23,8 @@ a {
 }
 
 /* Remove lista padrão */
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -48,7 +49,7 @@ body {
   // background-repeat: no-repeat;
 }
 
-section{
+section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,32 +66,46 @@ section{
 
 // Exemplos de media queries padrão
 
-// Dispositivos pequenos (celulares)
-@media (max-width: 600px) {
-  /* Estilos para telas pequenas */
-  .container{
+@media (max-width: 2768px) {
+  body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    // justify-content: center;
+    background-image: url('assets/Prototipos/fundo-ZeraMeta2.png');
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+  }
+}
+
+// Dispositivos pequenos (celulares)
+@media (max-width: 600px) {
+
+  /* Estilos para telas pequenas */
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 100dvh;
-    padding: 1rem;
+    width: 100dvw;
+    // padding: 1rem;
     font-size: 1rem;
     color: var(--primaria);
 
     background-image: url('assets/Prototipos/fundo-ZeraMeta2.png');
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 
-    .icone-zera-meta svg{
+    .icone-zera-meta svg {
       // position: fixed;
       // top: 1rem;
       width: 5rem;
       height: 5rem;
     }
 
-    .voltar svg{
+    .voltar svg {
       position: fixed;
       top: 1rem;
       left: 1rem;
@@ -98,13 +113,13 @@ section{
       height: 3rem;
     }
 
-    .voltar-metas svg{
+    .voltar-metas svg {
       position: relative;
       width: 2rem;
       height: 2rem;
     }
 
-    .config svg{
+    .config svg {
       position: fixed;
       top: 1rem;
       right: 1rem;
