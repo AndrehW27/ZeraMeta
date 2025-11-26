@@ -246,3 +246,44 @@
   }
 
 }
+
+@media (min-width: 1200px) {
+
+  h1 {
+    font-size: 3rem !important;
+  }
+
+  h2 {
+    font-size: 2.5rem !important;
+  }
+
+  h3 {
+    font-size: 2rem !important;
+  }
+
+  h4 {
+    font-size: 1.5rem !important;
+  }
+
+  h5 {
+    font-size: 1.5rem !important;
+  }
+
+  p {
+    font-size: 1rem !important;
+  }
+
+  textarea {
+    width: 40vw !important;
+    height: 20vh !important;
+  }
+
+  .pre {
+    width: 40vw !important;
+  }
+
+  .results {
+    height: 35rem !important;
+  }
+
+}

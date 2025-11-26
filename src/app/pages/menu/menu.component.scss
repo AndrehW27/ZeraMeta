@@ -752,8 +752,53 @@
         }
     }
 
-
-
-
-
 }
+
+
+@media (min-width: 1200px) {
+    .card-container {
+        h1 {
+            font-size: 3rem !important;
+        }
+
+        h2 {
+            font-size: 2.5rem !important;
+        }
+
+        h3 {
+            font-size: 2rem !important;
+        }
+
+        h4 {
+            font-size: 1.5rem !important;
+        }
+
+        h5 {
+            font-size: 1.5rem !important;
+        }
+
+        p {
+            font-size: 1rem !important;
+        }
+
+        .foto-perfil-dinamica {
+            width: 9rem;
+            height: 9rem;
+        }
+
+        .card {
+            width: 10rem !important;
+            height: 10rem !important;
+        }
+
+        .progress-circle {
+            width: 10rem !important;
+            height: 10rem !important;
+
+            &__percentage {
+                font-size: 2rem;
+            }
+        }
+    }
+}
+

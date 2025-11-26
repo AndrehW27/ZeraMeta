@@ -2,7 +2,7 @@
   position: fixed;
   top: 6rem;
   margin-bottom: 2rem;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
 
   h1 {
     // font-size: 3rem;
@@ -11,73 +11,6 @@
   .icone-medalha svg {
     width: 8rem;
     height: 8rem;
-  }
-}
-
-.descricao {
-  position: fixed;
-  bottom: 12rem;
-  max-width: 250px;
-  // margin: 0 auto;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
-  text-align: center;
-  font-size: 1.2rem;
-
-}
-
-.botoes {
-  position: fixed;
-  bottom: 2rem;
-  // width: 80vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.25);
-  border: 1px solid var(--secundaria);
-  // width: 300px;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  cursor: pointer;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-
-
-  .botao-entrar,
-  .botao-conta {
-    width: 14rem;
-    padding: 1rem 2rem;
-    border-radius: 2rem;
-    cursor: pointer;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-    border: none;
-    font-size: 0.75rem
-  }
-
-  .botao-entrar {
-    background-color: var(--primaria);
-    color: var(--secundaria);
-    margin-bottom: 1rem;
-    // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-
-
-    &:hover {
-      background-color: var(--secundaria);
-      color: var(--primaria);
-      border: var(--primaria) 1px solid;
-    }
-  }
-
-  .botao-conta {
-    background-color: var(--secundaria);
-    color: var(--primaria);
-    border: var(--primaria) 1px solid;
-
-    &:hover {
-      background-color: var(--primaria);
-      color: var(--secundaria);
-      // border: var(--primaria) 1px solid;
-    }
   }
 }
 
@@ -162,6 +95,15 @@
 }
 
 .descricao {
+  position: fixed;
+  bottom: 12rem;
+  max-width: 250px;
+  // margin: 0 auto;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 1.2rem;
+
   // Aplica a animação ao ícone
   opacity: 0;
   animation: FadeInDescricao 2s ease-out 4s forwards;
@@ -183,7 +125,83 @@
 }
 
 .botoes {
+  position: fixed;
+  bottom: 2rem;
+  // width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--secundaria);
+  // width: 300px;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+
   // Aplica a animação ao ícone
   opacity: 0;
   animation: FadeInBotoes 2s ease-out 5s forwards;
+
+  .botao-entrar,
+  .botao-conta {
+    width: 14rem;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+    border: none;
+    font-size: 0.75rem
+  }
+
+  .botao-entrar {
+    background-color: var(--primaria);
+    color: var(--secundaria);
+    margin-bottom: 1rem;
+
+    &:hover {
+      background-color: var(--secundaria);
+      color: var(--primaria);
+      border: var(--primaria) 1px solid;
+    }
+  }
+
+  .botao-conta {
+    background-color: var(--secundaria);
+    color: var(--primaria);
+    border: var(--primaria) 1px solid;
+
+    &:hover {
+      background-color: var(--primaria);
+      color: var(--secundaria);
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .zera-meta {
+    font-size: 4rem;
+  }
+
+  .descricao {
+    bottom: 14rem;
+    max-width: 400px;
+
+    h3 {
+      font-size: 2rem !important;
+    }
+
+  }
+
+  .bem-vindo {
+    font-size: 2rem !important;
+  }
+
+  .botao-entrar,
+  .botao-conta {
+    width: 20rem !important;
+    font-size: 1rem !important;
+  }
+
 }

@@ -38,6 +38,10 @@ ol {
 
 /* Define fonte base e cor */
 body {
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // justify-content: flex-start;
   font-family: Arial, Helvetica, sans-serif;
   background: #e9e9e9;
   color: #0e3553;
@@ -67,14 +71,52 @@ section {
 // Exemplos de media queries padrão
 
 @media (max-width: 2768px) {
-  body {
+  .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('assets/Prototipos/fundo-ZeraMeta2.png');
+    justify-content: flex-start;
+    height: 100dvh;
+    width: 100dvw;
+    // padding: 1rem;
+    font-size: 1rem;
+    color: var(--primaria);
+
+    background-image: url('assets/Prototipos/fundo-ZeraMeta2-desktop.png');
     background-size: cover;
-    background-position: top;
+    background-position: center;
     background-repeat: no-repeat;
+
+    .icone-zera-meta svg {
+      // position: fixed;
+      // top: 1rem;
+      width: 5rem;
+      height: 5rem;
+    }
+
+    .voltar svg {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      width: 3rem;
+      height: 3rem;
+    }
+
+    .voltar-metas svg {
+      position: relative;
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .config svg {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      width: 3rem;
+      height: 3rem;
+      z-index: 1000;
+    }
+
   }
 }
 
@@ -86,15 +128,16 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     height: 100dvh;
     width: 100dvw;
+    
     // padding: 1rem;
     font-size: 1rem;
     color: var(--primaria);
 
     background-image: url('assets/Prototipos/fundo-ZeraMeta2.png');
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
